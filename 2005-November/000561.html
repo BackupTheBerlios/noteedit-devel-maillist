@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Re: Missing Features
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Missing%20Features&In-Reply-To=%3C43885CCF.6000001%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000560.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Re: Missing Features</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Missing%20Features&In-Reply-To=%3C43885CCF.6000001%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Re: Missing Features">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Nov 26 14:02:07 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000560.html">[Noteedit-devel] Re: Missing Features
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#561">[ date ]</a>
+              <a href="thread.html#561">[ thread ]</a>
+              <a href="subject.html#561">[ subject ]</a>
+              <a href="author.html#561">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yes, you're refering to the score layout and rendering problems. I have
+lots of those in my TODO list as well, but unfortunately, there are many
+issues that have to be resolved before (like proper export to the
+current formats, complete migration to QT4 library, MIDI playback bugs
+and more!). Beautifying of notes, better layout and so on are a bit less
+important (although *very* annoying!), but I'm gonna look at them asap.
+
+
+Best wishes!
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;|<i> I'm not sure what do you have in mind by 'moving notes horizontally'. Do
+</I>&gt;|<i> you mean voices? If so, go to Format-&gt;Staff properties-&gt;Voices and
+</I>&gt;|<i> create a new voice. You can cycle through voices by left/right clicking
+</I>&gt;|<i> the rectangle showing the current voice number. Voices are independent
+</I>&gt;|<i> one of another. For further information about handling multiple voices,
+</I>&gt;|<i> look at
+</I>&gt;|<i> <A HREF="http://noteedit.berlios.de/doc/mulvoices.html">http://noteedit.berlios.de/doc/mulvoices.html</A>
+</I>&gt;<i>
+</I>&gt;<i>Sorry for being to confusing. The problem I'm referring to is the following: 
+</I>&gt;<i>Imagine a line with two voices. Voice 1 has to play 1/2 note, let's say g'. 
+</I>&gt;<i>Voice 2 begins at the same time with 1/8 g' (of course there are a number of 
+</I>&gt;<i>notes following during the 1/2 note of voice 1, but this doesn't matter). 
+</I>&gt;<i>Noteedit sets both g' together, the one of voice 2 with a stem down (and a 
+</I>&gt;<i>flag), the one of voice 1 with a stem up. Because one of the notes is an 
+</I>&gt;<i>eigtht (could be a quarter too), the head of the note is filled.
+</I>&gt;<i>The problem: you can't see, that voice 1 plays an half note, it looks like a 
+</I>&gt;<i>quarter note (you have to count the notes to find it out). The usual solution 
+</I>&gt;<i>is to move the half note one width of a note to the left or the right, so 
+</I>&gt;<i>both g' are lying side by side.
+</I>&gt;<i>
+</I>&gt;|<i> Hm... what do you mean by break? NoteEdit writes the whole score into
+</I>&gt;|<i> single line, without page or line breaks. If you mean rests, you can
+</I>&gt;|<i> simply place them in individual voices independently one to another.
+</I>&gt;<i>
+</I>&gt;<i>Yes, I meant rest (sorry for my english). The problem is, that you can move 
+</I>&gt;<i>ALL notes of one voice up or down. But sometimes a voice containes notes in 
+</I>&gt;<i>an area, where the rest of the other voice would be placed usually. Then you 
+</I>&gt;<i>have to lower or raise the rest to avoid it be placed over the notes.
+</I>&gt;<i>
+</I>&gt;<i>Greetings
+</I>&gt;<i>Michael
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Noteedit-devel mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051126/31b33361/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051126/31b33361/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000560.html">[Noteedit-devel] Re: Missing Features
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#561">[ date ]</a>
+              <a href="thread.html#561">[ thread ]</a>
+              <a href="subject.html#561">[ subject ]</a>
+              <a href="author.html#561">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Qt UI spacing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Qt%20UI%20spacing&In-Reply-To=%3C434ADED6.9000605%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000532.html">
+   <LINK REL="Next"  HREF="000534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Qt UI spacing</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Qt%20UI%20spacing&In-Reply-To=%3C434ADED6.9000605%40web.de%3E"
+       TITLE="[Noteedit-devel] Qt UI spacing">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Oct 10 23:36:22 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000532.html">[Noteedit-devel] Qt UI spacing
+</A></li>
+        <LI>Next message: <A HREF="000534.html">[Noteedit-devel] Qt UI spacing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#533">[ date ]</a>
+              <a href="thread.html#533">[ thread ]</a>
+              <a href="subject.html#533">[ subject ]</a>
+              <a href="author.html#533">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matevz,
+
+I already have worked on the export layout and solved the
+problem you had. It's relatively simple: The export layout currently
+does not use any layouts. I changed them in a way so all forms
+now have it's layout. You still have to be patient for the
+change though as there are quite some things to change. I have
+finished implementing of ABC and Lilypond. So &quot;only&quot; 4 left to do.
+(every format requires me to investigate the parameters read from
+within the export module and to create a structure for them as
+well as implement the set and get methods).
+
+Layouts are easily created: Load the form in the designed, click
+on one of the tabs and press (f.e.) &quot;Layout in a group&quot;.
+
+Regards,
+
+Reinhard
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> Hi!
+</I>&gt;<i> 
+</I>&gt;<i> I have a question about widgets spacing in Qt:
+</I>&gt;<i> We have many translations in NoteEdit and some are shorter, the others
+</I>&gt;<i> are longer etc. Is it possible, to define a dynamic width of a widget
+</I>&gt;<i> (label, button, text box), to fit the context of that widget. I'm
+</I>&gt;<i> looking at &quot;MIDI information line:&quot; sign at MIDI export dialog. I'd like
+</I>&gt;<i> to change it to &quot;Additional MIDI export parameters:&quot;, but in Slovenian,
+</I>&gt;<i> there is something like &quot;Dodatne MIDI nastavitve:&quot; and I would like the
+</I>&gt;<i> label itself being long as the sign is and that the QLineEdit widget
+</I>&gt;<i> right next to it fits closely to the label's right border. Is it
+</I>&gt;<i> possible &amp; does anybody has any experience with this kind of
+</I>&gt;<i> problems/solutions?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i> 
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000532.html">[Noteedit-devel] Qt UI spacing
+</A></li>
+	<LI>Next message: <A HREF="000534.html">[Noteedit-devel] Qt UI spacing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#533">[ date ]</a>
+              <a href="thread.html#533">[ thread ]</a>
+              <a href="subject.html#533">[ subject ]</a>
+              <a href="author.html#533">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

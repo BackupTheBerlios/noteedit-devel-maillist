@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Previewprint updates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Previewprint%20updates&In-Reply-To=%3C44658E89.10507%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000706.html">
+   <LINK REL="Next"  HREF="000707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Previewprint updates</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Previewprint%20updates&In-Reply-To=%3C44658E89.10507%40web.de%3E"
+       TITLE="[Noteedit-devel] Previewprint updates">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat May 13 09:45:13 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000706.html">[Noteedit-devel] Left button, not middle: Insert --&gt; Lines
+</A></li>
+        <LI>Next message: <A HREF="000707.html">[Noteedit-devel] More updates on preview print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#704">[ date ]</a>
+              <a href="thread.html#704">[ thread ]</a>
+              <a href="subject.html#704">[ subject ]</a>
+              <a href="author.html#704">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I checked in my latest changes to previewprint:
+ADDED: previewprint::setupPrinting returns whether setup was successfull
+or not and checks if preview is still running
+FIXED: create preview process only if it wasn't created already
+FIXED: print/preview: stop if preview is still running
+FIXED: delete form_ in IntPrinter destructor (does not remove the
+dialogpage though -- might lead to crashes!)
+
+In the past deleting the form_ in the IntPrinter destructor lead to
+crashes on my system, but then the
+code was still quite different from now. So if after printing NoteEdit
+crashes, simply comment the
+delete line in previewprint.cpp line 764.
+
+Also with the changes on setupPrinting you only get one dialog after
+pressing &quot;Cancel&quot;. I hope to find
+a possibility to find out why setup printing failed so the error message
+is only shown for real problems.
+
+Regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - <A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000706.html">[Noteedit-devel] Left button, not middle: Insert --&gt; Lines
+</A></li>
+	<LI>Next message: <A HREF="000707.html">[Noteedit-devel] More updates on preview print
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#704">[ date ]</a>
+              <a href="thread.html#704">[ thread ]</a>
+              <a href="subject.html#704">[ subject ]</a>
+              <a href="author.html#704">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

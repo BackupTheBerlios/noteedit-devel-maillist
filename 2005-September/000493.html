@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Code restructuring, step 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431752F2.9060400%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000491.html">
+   <LINK REL="Next"  HREF="000497.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Code restructuring, step 2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431752F2.9060400%40web.de%3E"
+       TITLE="[Noteedit-devel] Code restructuring, step 2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Sep  1 21:13:54 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000491.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+        <LI>Next message: <A HREF="000497.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#493">[ date ]</a>
+              <a href="thread.html#493">[ thread ]</a>
+              <a href="subject.html#493">[ subject ]</a>
+              <a href="author.html#493">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> Hi Csaba and others!
+</I>&gt;<i> 
+</I>&gt;<i> Sunday is ok with me. Although I have a few questions/issues I should
+</I>&gt;<i> ask about your opinion:
+</I>&gt;<i> 1) What do you think about status_type type? Is it implemented ok? I
+</I>&gt;<i> ask, because I don't know what's the common practice when coming to this
+</I>&gt;<i> kind of problems. ie. We needed 64bit integer for the most commonly used
+</I>&gt;<i> status flags, so 1) &quot;unsigned long long&quot; was IMO too long to write in
+</I>&gt;<i> the code every time and 2) the 64bit integer isn't uniquely declared in
+</I>&gt;<i> all OSes/compilers (M$VC has __uint64 for this type I think). So I came
+</I>&gt;<i> up with #define status_type idea. Is it ok? Or is there another better way?
+</I>
+Hmm, still thinking about the Chord &quot;states&quot;. We have these many &quot;stats&quot;
+(I wouldn't call them states but something like property). First I find
+the current solution quite horrible to read and to understand. But I 
+have no quick solution for the state &quot;problem&quot;. 64bit types are not 
+really portable, the only one I know is &quot;long long&quot; (see how Qt defines
+64bit types). On the other hand I don't know really how deep these
+&quot;states&quot; are part of NoteEdit. I would even prefer a state structure
+to the current way states are handled, something like
+
+typedef struct NMusStatus
+{
+   int state_categ1,
+   int state_categ2
+} NMusStatus_T;
+
+and later we could try to find a better solution for these states
+while still keeping the set/get methods with this structure.
+
+&gt;<i> 2) The reason why status2 existed from the first place was IMO the upper
+</I>&gt;<i> limit of 32 bits for status. Pedal markings would exceed that limit, so
+</I>&gt;<i> a new status2 was introduced. Now that this limit was expanded to
+</I>&gt;<i> 64bits, these two could be simply merged. My question is, what will we
+</I>&gt;<i> do, if we exceed 64bits for status type - what else will or won't we
+</I>&gt;<i> store in status? IMO, we should store musElement properties which are
+</I>&gt;<i> present in status, to separate variables as well. I would propose a
+</I>&gt;<i> rule, that status should only include the most commonly used - where
+</I>&gt;<i> speed/bitwise operations are critical. All other properties should only
+</I>&gt;<i> be stored in separate variable.
+</I>
+After reading your statement I think a structure for storing this
+information is the best solution for the problem. So if NoteEdit has
+a need (like time-critical operations) for bitwise operations on states
+we could keep them as states like now and all other properties could
+be stored in another way.
+
+&gt;<i> 3) Current status's flags positions in status are important. I tried to
+</I>&gt;<i> sort out most of the problems, when I migrated from 32bit to 64bit
+</I>&gt;<i> integer by using status_type instead of int, but I left some. eg. All
+</I>&gt;<i> the dotted/ddotted note methods still use status_type &lt;-&gt; plain integer
+</I>&gt;<i> or even char casting, as the dotted note flag is one of the first bits
+</I>&gt;<i> of the status, so the methods preserve some memory. I think we should
+</I>&gt;<i> force all the methods that do anything with status in any case, to use
+</I>&gt;<i> status_type in the future though (eg. int != uint troubles). However,
+</I>&gt;<i> what I don't know is again the common practice in this case - is it the
+</I>&gt;<i> right thing to do (speed/memory consuption/administration).
+</I>
+On time critical operations I would tend to be able to change state
+operations directly but not on the global state but only local. When
+the time critical operation is over the state can be globally updated
+with one of the get/set methods. This way we gain more data 
+encapsulation while still keeping performance at a high level.
+Encapsulation is also important if we ever want to make NoteEdit more
+modular.
+
+Rule 20 of Effective C++ says: Avoid data members in the practice.
+Also very important for our design: Rule 34: Minimize compilation
+dependencies between files. Even better would be if we would be able
+avoid having all the same state handling throughout NoteEdit. That
+would mean if anyone make a larger change on the State structure
+we would have to change a large portion of the NoteEdit code again.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000491.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+	<LI>Next message: <A HREF="000497.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#493">[ date ]</a>
+              <a href="thread.html#493">[ thread ]</a>
+              <a href="subject.html#493">[ subject ]</a>
+              <a href="author.html#493">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

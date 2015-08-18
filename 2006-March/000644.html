@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Problem running noteedit cvs // Translation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problem%20running%20noteedit%20cvs%20//%20Translation&In-Reply-To=%3C200603302134.35895.rafadev%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000643.html">
+   <LINK REL="Next"  HREF="000645.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Problem running noteedit cvs // Translation</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problem%20running%20noteedit%20cvs%20//%20Translation&In-Reply-To=%3C200603302134.35895.rafadev%40gmail.com%3E"
+       TITLE="[Noteedit-devel] Problem running noteedit cvs // Translation">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Mar 31 02:34:35 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000643.html">[Noteedit-devel] Problem running noteedit cvs // Translation
+</A></li>
+        <LI>Next message: <A HREF="000645.html">[Noteedit-devel] Problem running noteedit cvs // Translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#644">[ date ]</a>
+              <a href="thread.html#644">[ thread ]</a>
+              <a href="subject.html#644">[ subject ]</a>
+              <a href="author.html#644">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I forgot to change the sender and I sent it with the other mail. Just ignore 
+the <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">rafa.dex at gmail.com</A> one.
+
+On Thursday 30 March 2006 18:56, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt; If I run noteedit CVS without using any option (it tries to use ALSA) it
+</I>&gt;<i> &gt; crashes.
+</I>&gt;<i> &gt; This is the gdb backtrace output:
+</I>&gt;<i>
+</I>&gt;<i> Is your ALSA midi working? Did you try pmidi --list and tse3play?
+</I>&gt;<i> NoteEdit is known to crash, when it tries to create a midi scheduler, if
+</I>&gt;<i> no alsa devices are present. The bug is still there...
+</I>
+I tried using pmidi and it plays perfectly, it lists the following: 
+
+128:0     TiMidity                          TiMidity port 0
+128:1     TiMidity                          TiMidity port 1
+128:2     TiMidity                          TiMidity port 2
+128:3     TiMidity                          TiMidity port 3
+129:0     Client-129                        aRts
+129:1     Client-129                        aRts
+129:2     Client-129                        aRts
+129:3     Client-129                        aRts
+
+The curious thing is that when I try to play with tse3play I get the following 
+(it doesn't play a thing):
+TSE3: Cannot subscribe to 129:0
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:1
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:2
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:3
+      (Operation not permitted)
+-------------------------------
+
+
+
+
+
+
+
+
+       Finished playing
+
+
+0-1-2-3-4-5-6-7-8-9-A-B-C-D-E-F
+-------------------------------
+0:1       (LA: 10)
+
+If I list with tse3play I get the following:
+TSE3: Cannot subscribe to 129:0
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:1
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:2
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:3
+      (Operation not permitted)
+MidiScheduler details follow
+
+  Implementation name: AlsaMidiScheduler version [0.9] 1.02
+            Num ports: 8
+  ------- Port number: 128
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 0 128:0
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 129
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 1 128:1
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 130
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 2 128:2
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 131
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 3 128:3
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 132
+                 Type: ALSA MIDI port
+                 Name: aRts 129:0
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 133
+                 Type: ALSA MIDI port
+                 Name: aRts 129:1
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 134
+                 Type: ALSA MIDI port
+                 Name: aRts 129:2
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 135
+                 Type: ALSA MIDI port
+                 Name: aRts 129:3
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+
+
+Well hope that you can help me with this.
+Thanks a lot,
+                            Rafael.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000643.html">[Noteedit-devel] Problem running noteedit cvs // Translation
+</A></li>
+	<LI>Next message: <A HREF="000645.html">[Noteedit-devel] Problem running noteedit cvs // Translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#644">[ date ]</a>
+              <a href="thread.html#644">[ thread ]</a>
+              <a href="subject.html#644">[ subject ]</a>
+              <a href="author.html#644">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

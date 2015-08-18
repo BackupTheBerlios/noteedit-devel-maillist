@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] svn checkout
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20svn%20checkout&In-Reply-To=%3C200505272003.19416.raphael-langerhorst%40gmx.at%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000297.html">
+   <LINK REL="Next"  HREF="000302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] svn checkout</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20svn%20checkout&In-Reply-To=%3C200505272003.19416.raphael-langerhorst%40gmx.at%3E"
+       TITLE="[Noteedit-devel] svn checkout">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri May 27 20:03:18 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000297.html">[Noteedit-devel] svn checkout
+</A></li>
+        <LI>Next message: <A HREF="000302.html">[Noteedit-devel] svn checkout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 27 May 2005 13:01, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Somewhere it's documented, somewhere under SVN. But shortly, let's
+</I>&gt;<i> say, if your personal berlios username (unixname) is 'atberlios',
+</I>&gt;<i> you have to do those two commands:
+</I>&gt;<i>
+</I>&gt;<i>     export SVN_SSH=&quot;ssh -l atberlios&quot;
+</I>&gt;<i>     svn checkout svn+<A HREF="ssh://svn.berlios.de/svnroot/repos/noteedit">ssh://svn.berlios.de/svnroot/repos/noteedit</A>
+</I>&gt;<i>
+</I>&gt;<i> To work with berlios is great!
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg
+</I>
+ok, it's really wrong as it were on the homepage... now, that's 
+probably to your unlucky repository layout (you should put what's 
+called &quot;CVS HEAD&quot; in the CVS world into /trunk in the SVN world). 
+Since no trunk was created, you have the following URL:
+
+svn checkout <A HREF="svn://svn.berlios.de/noteedit/">svn://svn.berlios.de/noteedit/</A>
+
+Whereas here on the web (see 
+<A HREF="http://developer.berlios.de/svn/?group_id=2232">http://developer.berlios.de/svn/?group_id=2232</A>) it says:
+
+svn checkout <A HREF="svn://svn.berlios.de/noteedit/trunk">svn://svn.berlios.de/noteedit/trunk</A>
+
+
+I have downloaded it now.
+
+Note that you will have a hard time creating branches if you do not 
+use /trunk or something in your repository for your main line of 
+development. Branches in Subversion are just a different path, 
+like /branches/noteedit-2 or /georg/make-it-cool-branch
+whatever :)
+
+... I don't know if you need instructions for subversion or not, but 
+in case you do I know a little bit about it. But I don't want to 
+sound like I knew everything.
+
+Just in case you need more info, there is the complete subversion 
+handbook: <A HREF="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</A>
+
+Regards,
+Raphael
+
+-- 
+Raphael Langerhorst
+<A HREF="http://raphael.g-system.at/blog">http://raphael.g-system.at/blog</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000297.html">[Noteedit-devel] svn checkout
+</A></li>
+	<LI>Next message: <A HREF="000302.html">[Noteedit-devel] svn checkout
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

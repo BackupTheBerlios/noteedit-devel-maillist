@@ -1,0 +1,2790 @@
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  1 21:12:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 01 Jun 2005 21:12:45 +0200
+Subject: [Noteedit-devel] key signature question
+In-Reply-To: <429CCED8.20903@guest.arnes.si>
+References: <429CCED8.20903@guest.arnes.si>
+Message-ID: <429E08AD.8020701@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> When opening the insert key signature dialog, I don't see any note names 
+> (C, D, E, F...) at the top of the accidentals panel (in class NKeyOffs, 
+> grp->setTitle(note_name); is called, but is obviously not working), for 
+> selecting custom/showing current accidentals. I want to know if that 
+> appears to me only (maybe a setting to turn off titles/captions for 
+> GroupButton panel in KDE?) or is it a bug?
+> 
+
+It looks a bit different for me but I haven't looked at the code
+yet. See attached screenshot.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: keysig.png
+Type: image/png
+Size: 20608 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050601/6d463894/attachment.png>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  2 01:09:43 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 02 Jun 2005 01:09:43 +0200
+Subject: [Noteedit-devel] key signature question
+In-Reply-To: <429E08AD.8020701@web.de>
+References: <429CCED8.20903@guest.arnes.si> <429E08AD.8020701@web.de>
+Message-ID: <429E4037.9050605@guest.arnes.si>
+
+Hm... interesting. As far as I can tell, the Title is set to each 
+buttonGroup correctly. And it is shown ok if the width of buttonGroups 
+is enlarged. IMO, if the current width is used (maybe if I set a general 
+KDE font to size 6, it works fine as well?), the title isn't cut-off, 
+but hidden instead, as the whole title wouldn't get shown.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> noteedit-devel-admin at berlios.de schrieb:
+>
+>> When opening the insert key signature dialog, I don't see any note 
+>> names (C, D, E, F...) at the top of the accidentals panel (in class 
+>> NKeyOffs, grp->setTitle(note_name); is called, but is obviously not 
+>> working), for selecting custom/showing current accidentals. I want to 
+>> know if that appears to me only (maybe a setting to turn off 
+>> titles/captions for GroupButton panel in KDE?) or is it a bug?
+>>
+>
+> It looks a bit different for me but I haven't looked at the code
+> yet. See attached screenshot.
+>
+> Regards,
+>
+> Reinhard
+>
+> ------------------------------------------------------------------------
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  2 19:15:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 02 Jun 2005 19:15:07 +0200
+Subject: [Noteedit-devel] Concerning rc1
+Message-ID: <429F3E9B.7070204@web.de>
+
+Hi!
+
+Since some time I think we are able to release rc1. But recently
+some problems have appeared with the current beta:
+
+- Key signature dialog layout problem with fonts
+- configure problems on FreeBSD
+- Stem positions are not saved (concerns f.e. staff properties)
+- Many translations are missing
+- documentation still not updated.
+
+So if we want to fix these bug this would have to happen
+very soon as I already wanted to have the release these
+days. What do you think ?
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jun  3 09:10:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 3 Jun 2005 09:10:54 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <429F3E9B.7070204@web.de>
+References: <429F3E9B.7070204@web.de>
+Message-ID: <200506030910.56054.raphael-langerhorst@gmx.at>
+
+On Thursday 02 June 2005 19:15, noteedit-devel-admin at berlios.de wrote:
+> Hi!
+>
+> Since some time I think we are able to release rc1. But recently
+> some problems have appeared with the current beta:
+>
+> - Key signature dialog layout problem with fonts
+> - configure problems on FreeBSD
+
+Hello,
+
+Did you have a look at the patch I posted on 28th May? Configure works 
+on FreeBSD with this patch, but you should check if
+
+make -f Makefilecvs
+./configure
+
+still works on Linux - if it does, please apply the patch and commit 
+(and let me know)
+
+> - Stem positions are not saved (concerns f.e. staff properties)
+> - Many translations are missing
+> - documentation still not updated.
+
+What parts of the docs are outdated?
+
+Regards,
+
+-- 
+Raphael Langerhorst
+http://raphael.g-system.at/blog
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jun  3 10:07:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 03 Jun 2005 10:07:37 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <429F3E9B.7070204@web.de>
+References: <429F3E9B.7070204@web.de>
+Message-ID: <42A00FC9.4070809@guest.arnes.si>
+
+I think the critical one is the stem positions for voices as it 
+completely breaks the stem feature. I'm gonna fix it today if no one 
+else is doing it. Other bugs can wait IMO.
+
+About the translations, looks like most of the official translators I 
+contacted are inactive at the moment. So I'm gonna send a deadline 
+message today to all the translators that they must report a progress 
+report immediately. But I'm also gonna start to seek the OS&KDE 
+translators forums on the web and start posting requests for 
+translation. I'd say a deadline for translations should be Sunday, 12. 
+June 2005 at 23:59. Any translations sent later will not get included in 
+the release. Is the sunday too late for us? The problem is that the 
+non-familiar-with-NoteEdit translators would need some more time to do 
+the quality translation. Maybe even 12th of June is too soon for them, 
+but we need the translation till then...
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi!
+>
+> Since some time I think we are able to release rc1. But recently
+> some problems have appeared with the current beta:
+>
+> - Key signature dialog layout problem with fonts
+> - configure problems on FreeBSD
+> - Stem positions are not saved (concerns f.e. staff properties)
+> - Many translations are missing
+> - documentation still not updated.
+>
+> So if we want to fix these bug this would have to happen
+> very soon as I already wanted to have the release these
+> days. What do you think ?
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jun  3 11:27:42 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 03 Jun 2005 11:27:42 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A00FC9.4070809@guest.arnes.si>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si>
+Message-ID: <42A0228E.1090302@guest.arnes.si>
+
+Stem directions stuff is now fixed. I just added apply(); in the 
+voiceBox destructor method. This way, when a dialog is closed or a 
+switch to another staff is made, stem direction in voices get remembered 
+as well.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> I think the critical one is the stem positions for voices as it 
+> completely breaks the stem feature. I'm gonna fix it today if no one 
+> else is doing it. Other bugs can wait IMO.
+>
+> About the translations, looks like most of the official translators I 
+> contacted are inactive at the moment. So I'm gonna send a deadline 
+> message today to all the translators that they must report a progress 
+> report immediately. But I'm also gonna start to seek the OS&KDE 
+> translators forums on the web and start posting requests for 
+> translation. I'd say a deadline for translations should be Sunday, 12. 
+> June 2005 at 23:59. Any translations sent later will not get included 
+> in the release. Is the sunday too late for us? The problem is that the 
+> non-familiar-with-NoteEdit translators would need some more time to do 
+> the quality translation. Maybe even 12th of June is too soon for them, 
+> but we need the translation till then...
+>
+>
+> Regards.
+> - Matev?
+>
+> noteedit-devel-admin at berlios.de wrote:
+>
+>> Hi!
+>>
+>> Since some time I think we are able to release rc1. But recently
+>> some problems have appeared with the current beta:
+>>
+>> - Key signature dialog layout problem with fonts
+>> - configure problems on FreeBSD
+>> - Stem positions are not saved (concerns f.e. staff properties)
+>> - Many translations are missing
+>> - documentation still not updated.
+>>
+>> So if we want to fix these bug this would have to happen
+>> very soon as I already wanted to have the release these
+>> days. What do you think ?
+>>
+>> Best regards,
+>>
+>> Reinhard Katzmann
+>
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 09:17:27 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 09:17:27 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A00FC9.4070809@guest.arnes.si>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si>
+Message-ID: <42A15587.9010104@web.de>
+
+Hi,
+
+noteedit-devel-admin at berlios.de schrieb:
+> I think the critical one is the stem positions for voices as it 
+> completely breaks the stem feature. I'm gonna fix it today if no one 
+> else is doing it. Other bugs can wait IMO.
+
+Ok, thanks for the feedback and the fix!
+
+> About the translations, looks like most of the official translators I 
+> contacted are inactive at the moment. So I'm gonna send a deadline 
+> message today to all the translators that they must report a progress 
+> report immediately. But I'm also gonna start to seek the OS&KDE 
+> translators forums on the web and start posting requests for 
+> translation. I'd say a deadline for translations should be Sunday, 12. 
+> June 2005 at 23:59. Any translations sent later will not get included in 
+
+Ok, then we can release the rc1 now with an announcement that we
+seek translators. Do you already have put it in word so that I
+could include it ?
+
+> the release. Is the sunday too late for us? The problem is that the 
+> non-familiar-with-NoteEdit translators would need some more time to do 
+> the quality translation. Maybe even 12th of June is too soon for them, 
+> but we need the translation till then...
+
+No sunday is not too late. Also I'm ready to release a 2.8.1 only for
+translation updates since it costs usually quite some time to do a
+completely new translation. I will put in the announcement header that
+we search for translators.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 10:19:31 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 10:19:31 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A15587.9010104@web.de>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A15587.9010104@web.de>
+Message-ID: <42A16413.5090008@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>> About the translations, looks like most of the official translators I 
+>> contacted are inactive at the moment. So I'm gonna send a deadline 
+>> message today to all the translators that they must report a progress 
+>> report immediately. But I'm also gonna start to seek the OS&KDE 
+>> translators forums on the web and start posting requests for 
+>> translation. I'd say a deadline for translations should be Sunday, 
+>> 12. June 2005 at 23:59. Any translations sent later will not get 
+>> included in 
+>
+>
+> Ok, then we can release the rc1 now with an announcement that we
+> seek translators. Do you already have put it in word so that I
+> could include it ?
+
+Yes, RC1 should be released ASAP. I already contacted translators again 
+yesterday, but didn't recieve a single reply yet. I attached the two 
+messages I sent so far (the first one a month ago, when b1 was 
+released). I hope it helps anything. I also think we'll have to find 
+some alternative translators tomorrow if I don't recieve any replies. Do 
+you know of any translators or any other wider development forums and 
+places. My idea was to go to KDE homepage and from there to as many 
+forums and mailing lists as possible and send requests for the translation.
+
+>
+>> the release. Is the sunday too late for us? The problem is that the 
+>> non-familiar-with-NoteEdit translators would need some more time to 
+>> do the quality translation. Maybe even 12th of June is too soon for 
+>> them, but we need the translation till then...
+>
+>
+> No sunday is not too late. Also I'm ready to release a 2.8.1 only for
+> translation updates since it costs usually quite some time to do a
+> completely new translation. I will put in the announcement header that
+> we search for translators.
+>
+My thoughts the same. Version 2.8.1 should all in all include bugfixes 
+only and a translation update is a very important fix for non-english 
+speakers.
+btw. When we're going to release 2.8 version, the plan is to split a svn 
+tree to trunk-unstable (2.9.x) and stable (2.8.x), right? Also, homepage 
+should be a separate tree IMO.
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+An embedded message was scrubbed...
+From: Matevz Jekovec <matevz.jekovec at guest.arnes.si>
+Subject: NoteEdit RC1 translation
+Date: Fri, 03 Jun 2005 14:56:50 +0200
+Size: 1615
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050604/61b61670/attachment.mht>
+-------------- next part --------------
+An embedded message was scrubbed...
+From: Matevz Jekovec <matevz.jekovec at guest.arnes.si>
+Subject: NoteEdit translation
+Date: Mon, 02 May 2005 23:17:59 +0200
+Size: 1926
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050604/61b61670/attachment-0001.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 13:40:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 13:40:47 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <200506030910.56054.raphael-langerhorst@gmx.at>
+References: <429F3E9B.7070204@web.de> <200506030910.56054.raphael-langerhorst@gmx.at>
+Message-ID: <42A1933F.8070801@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> On Thursday 02 June 2005 19:15, noteedit-devel-admin at berlios.de wrote:
+> 
+>>Hi!
+>>
+>>Since some time I think we are able to release rc1. But recently
+>>some problems have appeared with the current beta:
+>>
+>>- Key signature dialog layout problem with fonts
+>>- configure problems on FreeBSD
+> 
+> 
+> Hello,
+> 
+> Did you have a look at the patch I posted on 28th May? Configure works 
+> on FreeBSD with this patch, but you should check if
+> 
+> make -f Makefilecvs
+> ./configure
+>  
+
+Yes I did, and it works on my system. As nobody else seems to have
+problems with it until now, I have checked the patched configure.in.in
+into svn. Thanks for the patch and best regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 13:42:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 13:42:11 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <200506030910.56054.raphael-langerhorst@gmx.at>
+References: <429F3E9B.7070204@web.de> <200506030910.56054.raphael-langerhorst@gmx.at>
+Message-ID: <42A19393.5010305@web.de>
+
+Hi,
+
+Forgot to answer the second part of the mail...
+
+>>- documentation still not updated.
+> 
+> 
+> What parts of the docs are outdated?
+> 
+> Regards,
+> 
+
+Well mainly those things being changed since the last release (mainly 
+the new staff properties dialog).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 15:00:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 4 Jun 2005 15:00:41 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A1933F.8070801@web.de>
+References: <429F3E9B.7070204@web.de> <200506030910.56054.raphael-langerhorst@gmx.at> <42A1933F.8070801@web.de>
+Message-ID: <200506041500.42414.raphael-langerhorst@gmx.at>
+
+On Saturday 04 June 2005 13:40, noteedit-devel-admin at berlios.de wrote:
+> noteedit-devel-admin at berlios.de schrieb:
+> > On Thursday 02 June 2005 19:15, noteedit-devel-admin at berlios.de 
+wrote:
+> >>Hi!
+> >>
+> >>Since some time I think we are able to release rc1. But recently
+> >>some problems have appeared with the current beta:
+> >>
+> >>- Key signature dialog layout problem with fonts
+> >>- configure problems on FreeBSD
+> >
+> > Hello,
+> >
+> > Did you have a look at the patch I posted on 28th May? Configure
+> > works on FreeBSD with this patch, but you should check if
+> >
+> > make -f Makefilecvs
+> > ./configure
+>
+> Yes I did, and it works on my system. As nobody else seems to have
+> problems with it until now, I have checked the patched
+> configure.in.in into svn. Thanks for the patch and best regards,
+>
+> Reinhard
+
+Hi,
+
+that's great, thanks.
+
+Attached is the next patch that removes the alloca.h includes (it is 
+included in stdlib.h, also on Linux, but on Linux you have alloca.h 
+separately as well). On FreeBSD, alloca.h is not available at all. 
+(`man alloca` tells me to include stdlib.h)
+
+Anyway, there should be no need to explicitely include alloca.h, 
+attached patch comments out these includes. Can you please test with 
+Linux and apply the patch if it works for you as well?
+
+Thanks!!
+-- 
+Raphael Langerhorst
+http://raphael.g-system.at/blog
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: no_alloca_includes.patch
+Type: text/x-diff
+Size: 1237 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050604/adbda092/attachment.patch>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 15:26:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 15:26:48 +0200
+Subject: [Noteedit-devel] rc1 uploaded
+Message-ID: <42A1AC18.9060806@web.de>
+
+Hi,
+
+I uploaded rc1 to Berlios. For this release I created a makefile
+that makes it more easy to create the release. I attached it
+to the mail.
+"make release" creates the archive from a freshly checked out
+svn repository.
+"make testrelease" unpacks the archive and creates the noteedit
+binary. You still have to do a manual "make install" from the
+noteedit directory as this requires root privileges.
+
+I will upload another archive with the fresh patch from
+raphael in about half an hour, so the officially announcement
+is delayed until then.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 15:28:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 15:28:23 +0200
+Subject: [Noteedit-devel] rc1 uploaded
+Message-ID: <42A1AC77.6030500@web.de>
+
+Hi,
+
+I uploaded rc1 to Berlios. For this release I created a makefile
+that makes it more easy to create the release. I attached it
+to the mail.
+"make release" creates the archive from a freshly checked out
+svn repository.
+"make testrelease" unpacks the archive and creates the noteedit
+binary. You still have to do a manual "make install" from the
+noteedit directory as this requires root privileges.
+
+I will upload another archive with the fresh patch from
+raphael in about half an hour, so the officially announcement
+is delayed until then.
+
+Regards,
+
+Reinhard
+
+P.S.
+This time with the patch
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: Makefile
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050604/5101cd7d/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 16:24:16 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 16:24:16 +0200
+Subject: [Noteedit-devel] 2.8.0 Release Candidate 1 released
+Message-ID: <42A1B990.6000100@web.de>
+
+This is the release candidate in the release cycle of the coming 2.8.0 
+release of NoteEdit.
+If you still find bugs post them in the Bug tracker. or mail them to the 
+developer mailing list.
+Known bugs can be found in the Bug tracker as well.
+
+Since now, we were successfully maintaining the original English, German 
+(most of NE developers), Slovenian (myself) and Slovakian (Zdenko 
+Podobn?) translation. However, we did not recieve any progress report or 
+confirmation about the translations to other languages.
+Let me remind you that the deadline to commit the translation files is 
+on Sunday, 12th June 2005, 23:59 CET.
+Translations not being sent until Sunday will not make it to the stable 
+2.8.0 version.
+
+Please contact us immediately if you're making or going to make the 
+translation work for your language. If we won't recieve a confirmation 
+within 48 hours, we will assume that this message didn't reach
+you and we'll start to search for another translators.
+
+Release 2.8.0 RC1
+--------------------
+New features:
+- Updated translations and fixed Makefile to include Slovenian translation.
+- RFE #573 - Soprano clef added.
+- Score info fields and staff names can now include double quotes ("), 
+updated
+export filters.
+- RFE #730 - Direct MIDI import - one-click MIDI file import implemented.
+- RFE #729 - warning message before TSE3 -> Score added.
+- Automatic bar placement disabled if no time signature defined.
+- Allow bar placement in empty staffs with no clef/key/time signature.
+- Merged staff properties and voice dialog.
+- Staff properties can now change all staffs at once, not only the 
+current one.
+- Menu point staff -> voices invokes the staff properties.
+- More improvements to the menu: Easier access via keys, some better 
+menu names
+   (like Close / Quit, Select Multi Staff).
+- Main window title now includes score title and subtitle by default, if 
+none
+   defined yet, it the current uses file name.
+- Many score layout window improvements (bottom-up selection, resized 
+buttons to
+   fit captions on buttons, added form caption).
+- Removed fuzzyness from german translation and updated all po(t) files
+   (others will have fuzzyness as well until translated).
+- Removed a thrilling MusiXTeX warning when exporting and replaced it with a
+   nice notice dialog.
+- New icon.
+- Implemented splash screen.
+- New playback shortcut. Changed Edit Mode and Insert Rest default 
+shortcuts.
+- Save main window position and size (default: available screen geometry).
+- Toolbar settings of every toolbar are saved and restored.
+- Integrated patch 403 - Better menu structure.
+- Removed "Report Bug" menu item from help menu.
+- The last selected key or time signature is now remembered and gets 
+selected
+   automatically when inserting it the second time.
+- configure now works on FreeBSD (thanks to Raphael Langerhorst)
+
+Bug fixes:
+- Fixed #3944 - polyphony importing wrong in MusicXML.
+- Fixed #3969 - Score layout: Text on buttons uncomplete.
+- Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
+- Fixed #3935 - deleting element doesn't make document edited - also 
+some rework
+                 in delete element code.
+- Fixed #3934 - discard changes dialog ignored on exit.
+- Fixed #3914 - crash when a pasting to new staff.
+- Fixed #3504 - bad file save without clef.
+- Fixed #3861 - Multirests in non-4/4 measure broken.
+- Fixed #3862 - measures after multirests not numbered correctly.
+- Fixed #3183 - multistaff broken - warning message added.
+- Fixed #3403 - export lilypond 2.4 lyrics problem.
+- Fixed #3418 - Doesn't save icon settings
+- Fixed #3484 - crash on midi import.
+- Fixed #3503 - hard crash on midi export.
+- Fixed #3505 - ABC export when leading repeat open and other voices.
+- Fixed #3786 - midi export crashes noteedit.
+- Fixed #3791 - staff->delete / import recording warnings wrong.
+- Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
+- Fixed #2930 - noteedit stops playing still held notes in other voices.
+- Fixed #4119 - Stem directions in voice dialog don't get rememberd.
+
+Remarks:
+- LilyPond export of different drum notes inside a single chord is 
+suppressed to
+   prevent choking of Lily. The user should use multiple voices instead.
+
+
+Download the release candidate here: 
+http://download.berlios.de/noteedit/noteedit-2.8.0-rc1.tar.gz
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 20:33:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 20:33:23 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A0228E.1090302@guest.arnes.si>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si>
+Message-ID: <42A1F3F3.5090602@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Stem directions stuff is now fixed. I just added apply(); in the
+> voiceBox destructor method. ...
+Hi Matev?,
+
+thanks for fixing it! You found that faster :)
+
+Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun  4 21:34:00 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Jun 2005 21:34:00 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A1F3F3.5090602@schwaben.de>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de>
+Message-ID: <42A20228.7060200@guest.arnes.si>
+
+I think I should rather call  this a temporary fix, because 1) it's 
+dependent on voiceBox and actual voices and 2) it doesn't support undo, 
+neither the cancel button works for voices, but it doesn't work for 
+deleting/creating voice too, so I'm not the only one:). In 2.9.x I think 
+the staff properties dialog should be worked on even more to fix these 
+issues.
+
+What I like in staff properties is that the overspace, underspace is 
+reflected in the score the same time you move the scroll. What do you 
+think about the current state of staff properties, Reinhard, Georg? I'm 
+gonna update wiki to write some ideas down about the staff properties.
+
+
+btw. I've been thinking about submitting a Summer of code 
+(http://code.google.com/summerofcode.html) project on NoteEdit. I'd like 
+to implement a scripting language similar to Lisp for NoteEdit 
+(command-line beside the mouse&keyboard interface, macro&plugin support) 
+and a more advanced NoteEdit API (so the scripts written could do 
+anything useful at all). Well, I probably won't even get among those 200 
+lucky projects, but anyway:).
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>noteedit-devel-admin at berlios.de wrote:
+>  
+>
+>>Stem directions stuff is now fixed. I just added apply(); in the
+>>voiceBox destructor method. ...
+>>    
+>>
+>Hi Matev?,
+>
+>thanks for fixing it! You found that faster :)
+>
+>Regards,
+>Georg.
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun  5 11:15:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Jun 2005 11:15:46 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A20228.7060200@guest.arnes.si>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de> <42A20228.7060200@guest.arnes.si>
+Message-ID: <42A2C2C2.2070703@web.de>
+
+Hi Matev?,
+
+noteedit-devel-admin at berlios.de schrieb:
+> I think I should rather call  this a temporary fix, because 1) it's 
+> dependent on voiceBox and actual voices and 2) it doesn't support undo, 
+> neither the cancel button works for voices, but it doesn't work for 
+> deleting/creating voice too, so I'm not the only one:). In 2.9.x I think 
+> the staff properties dialog should be worked on even more to fix these 
+> issues.
+
+Agreed. I saw this weakness when I implemented the staff/voice 
+properties but as it was already existant I didn't change it as
+I don't know much about the NoteEdit internals. (Also undo/redo
+improvement is already on our list).
+
+> What I like in staff properties is that the overspace, underspace is 
+> reflected in the score the same time you move the scroll. What do you 
+> think about the current state of staff properties, Reinhard, Georg? I'm 
+> gonna update wiki to write some ideas down about the staff properties.
+> 
+
+Here I don't understand what you are trying to explain. Also I can't
+say much about staff properties currently as I don't know all 
+possibilities NoteEdit has or can have.
+
+> btw. I've been thinking about submitting a Summer of code 
+> (http://code.google.com/summerofcode.html) project on NoteEdit. I'd like 
+> to implement a scripting language similar to Lisp for NoteEdit 
+> (command-line beside the mouse&keyboard interface, macro&plugin support) 
+> and a more advanced NoteEdit API (so the scripts written could do 
+> anything useful at all). Well, I probably won't even get among those 200 
+> lucky projects, but anyway:).
+
+I'm against a lisp scripting language as it is for the normal user much
+more complicated to learn than an object oriented programming language.
+My favourite is ruby. Concerning Lilypond: If a user is able to make 
+changes in his lilypond score that touch the lisp interface of lilypond
+than he has completely different abilities than a normal NoteEdit user
+has. Many of the possible NoteEdit users I know would ever dare to touch
+a script written in a lisp language.
+
+The first step for an advanced API is to actually document the API. The
+base is of course the doxygen documentation and with that I would have
+to find out where the interface between the script and NoteEdit has to
+be drawn. The NoteEdit library is too big as an API for the scripting 
+language itself (actually it contains complete NoteEdit, I ask myself
+why the library is so big). What could be inside the API ?
+
+- control of all typesetting elements
+- control of staff / voices
+- editing control
+- file control
+- Midi interface control
+- import/export control
+
+Things like transposition, change clef etc. should be done via scripts
+or macros in the future. Also my idea is to provide many default macros 
+to the user as a base for composition work and for own scripts/macros.
+
+There probably is no real difference between macros and scripts. I would
+call a macro a short script which can be recorded and played back within
+noteedit. This would be another way to create a basic script that can
+later be expanded with your favourite text editor :).
+
+Currently I can't really imagine why NoteEdit requires a real plugin
+support. I think scripting / macros support is enough. It still probably
+will be painful enough to expand NoteEdit so that a scripting interface
+can be created.
+
+> 
+> Regards.
+> - Matev?
+> 
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun  5 12:50:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Jun 2005 12:50:12 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A2C2C2.2070703@web.de>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de> <42A20228.7060200@guest.arnes.si> <42A2C2C2.2070703@web.de>
+Message-ID: <42A2D8E4.4050103@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+
+>> btw. I've been thinking about submitting a Summer of code 
+>> (http://code.google.com/summerofcode.html) project on NoteEdit. I'd 
+>> like to implement a scripting language similar to Lisp for NoteEdit 
+>> (command-line beside the mouse&keyboard interface, macro&plugin 
+>> support) and a more advanced NoteEdit API (so the scripts written 
+>> could do anything useful at all). Well, I probably won't even get 
+>> among those 200 lucky projects, but anyway:).
+> 
+
+Read also
+http://music.columbia.edu/pipermail/linux-audio-dev/2005-June/012444.html
+
+As the LAD is no mentoring organization it will get really difficult
+for us. Also NoteEdit is not yet part of a foundry.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun  5 20:53:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Jun 2005 20:53:53 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A2C2C2.2070703@web.de>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de> <42A20228.7060200@guest.arnes.si> <42A2C2C2.2070703@web.de>
+Message-ID: <42A34A41.8050407@guest.arnes.si>
+
+> I'm against a lisp scripting language as it is for the normal user much
+> more complicated to learn than an object oriented programming language.
+> My favourite is ruby. Concerning Lilypond: If a user is able to make 
+> changes in his lilypond score that touch the lisp interface of lilypond
+> than he has completely different abilities than a normal NoteEdit user
+> has. Many of the possible NoteEdit users I know would ever dare to touch
+> a script written in a lisp language. 
+
+Personally I don't know the lisp language. I'm only aware of it through 
+LilyPond, so that's why I first took a look on lisp. I'll take a look at 
+ruby this evening. Also, what about python or perl languages? Or lua? 
+What I have are some short ideas of why the scripts could be used for. 
+I'm still searching the net for the right language as we're not going to 
+write our own one, right?
+
+> The first step for an advanced API is to actually document the API. The
+> base is of course the doxygen documentation and with that I would have
+> to find out where the interface between the script and NoteEdit has to
+> be drawn. The NoteEdit library is too big as an API for the scripting 
+> language itself (actually it contains complete NoteEdit, I ask myself
+> why the library is so big). What could be inside the API ?
+>
+> - control of all typesetting elements
+> - control of staff / voices
+> - editing control
+> - file control
+> - Midi interface control
+> - import/export control
+
+Some features that just came to my mind that NoteEdit should also 
+provide are actions like Selecting the certain chord (which selects all 
+the notes in all voices and staffs which are held simultaniously at that 
+moment), calculating intervals (the quality (major, minor, perfect, 
+diminished, augmented) and quantity (prime, second, third, fourth, fifth 
+etc.)) and so on. I think the scripts should have a useful framework so 
+they could actually be made useful (for harmonization or whatever already).
+
+> Things like transposition, change clef etc. should be done via scripts
+> or macros in the future. Also my idea is to provide many default 
+> macros to the user as a base for composition work and for own 
+> scripts/macros.
+
+I agree, these things and probably many others in the future should be 
+performed by NoteEdit's system scripts (the same as different engravers 
+are made in LilyPond, only the core and cpu most demanding stuff is in 
+C++) and not the NoteEdit itself.
+
+> There probably is no real difference between macros and scripts. I would
+> call a macro a short script which can be recorded and played back within
+> noteedit. This would be another way to create a basic script that can
+> later be expanded with your favourite text editor :).
+
+Yes, a very important feature of a scripting language should be 
+inclusion of other scripts. So NoteEdit should offer some basic scripts 
+(or macros). You should then only include them and make a more complex 
+scenario based on the included scripts.
+
+> Currently I can't really imagine why NoteEdit requires a real plugin
+> support. I think scripting / macros support is enough. It still probably
+> will be painful enough to expand NoteEdit so that a scripting interface
+> can be created.
+
+That's correct. I didn't have a real idea of differnce bw/ plugin, 
+script and macro. If plugins are treated as precompiled modules attached 
+to the main app, then no, we don't need plugins. Scripts should satisfy. 
+They can also fit nicely into NoteEdit UI (they should be a part of the 
+menu and the user wouldn't even know what's behind the UI, a script 
+should be ran in a separate thread and a user could stop it, a script 
+could report the current progress so the status bar in NoteEdit will get 
+updated and so on).
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun  5 22:14:31 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Jun 2005 22:14:31 +0200
+Subject: [Noteedit-devel] [Fwd: updated NoteEdit translation request]
+Message-ID: <42A35D27.6000204@guest.arnes.si>
+
+I posted a request for the updated translations for the following languages:
+- French
+- Spanish
+- Italian
+- Hungarian
+- Swedish
+- Russian
+
+I subscribed to their local mailing lists, found at kde.org under 
+Translation/Translation teams sections. I hope we'll get any replies in 
+the following days and hopefully any updated translations.
+
+
+Regards.
+- Matev?
+
+-------- Original Message --------
+Subject: 	updated NoteEdit translation request
+Date: 	Sun, 05 Jun 2005 22:11:32 +0200
+From: 	Matevz Jekovec <matevz.jekovec at guest.arnes.si>
+To: 	kde at kde.hu, kde-russian at lists.kde.ru, kde-es at kybs.de, 
+kde-i18n-it at kde.org, swedoc at lists.lysator.liu.se, kde-francophone at kde.org
+
+
+
+Dear translation teams!
+
+We're happy to announce that a new version of NoteEdit - a Qt/KDE music 
+score editor, is going to be released in a few weeks. We're even happier 
+as this is our first major release developed by the new development 
+team, since the original author and maintainer for a long time J?rg 
+Anders left the project. A new 2.8.0 version brings many new features 
+and even more bug squashes. You can read more about them on the project 
+website.
+
+The important thing is that a new release brought many menu 
+reorganizations, new warnings and messages, different signs and labels 
+and so on. The old 2.7.3 version of NoteEdit already included a 
+translation for languages de, es, fr, hu, it, ru, sk and sv. We managed 
+to keep updated the original English, German (most of developers), a new 
+Slovenian (myself) and Slovakian (Zdenko Podobny) translation. We 
+contacted the original translators, but for the exception of Zdenko, 
+didn't recieved any replies. So, we'd like you to visit our website 
+(http://noteedit.berlios.de), download the latest Release Candidate 
+version (or the SVN version) of NoteEdit and send us the updated 
+translation file for your language. A deadline for the translations that 
+will make it to 2.8.0 is Sunday, 12th June 2005, 23:59. Translations 
+sent later will not make it to the 2.8.0 version, but will be included 
+in the next one, which will probably be released within a month.
+
+Please let us know if you recieved this message and if anyone of you is 
+prepared to do a translation for his/her language. If no replies are 
+recieved, we'll assume that this message didn't make it to the mailing 
+list and we'll start searching for other translators and try to contact 
+other translator centers.
+
+
+Best wishes & good luck!
+- Matev? Jekovec
+------------------------
+NoteEdit developer
+http://noteedit.berlios.de
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun  5 22:38:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Jun 2005 22:38:03 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A20228.7060200@guest.arnes.si>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de> <42A20228.7060200@guest.arnes.si>
+Message-ID: <42A362AB.7000203@schwaben.de>
+
+>>> Stem directions stuff is now fixed. I just added apply(); in the
+>>> voiceBox destructor method. ...
+>>>   
+>>
+>> thanks for fixing it! You found that faster :)
+>>
+
+Hi Matev?,
+
+I would like to report that the stem direction gets only remembered when
+you open the voice dialog at least two times. It's reproducable:
+
+    -- start new File
+    -- create two voices, voice one stems up, voice two stems down
+    -- add clef
+    -- add time signature
+    -- select 1st voice
+    -- insert notes                    stems are up or down: not working,
+
+but with this one:
+
+    -- start new File
+    -- create two voices, voice one stems up, voice two stems down
+    -- add clef
+    -- add time signature
+    -- open voice dialog again, close it with ok
+    -- select 1st voice
+    -- insert notes                    stems are up: working.
+
+I guess I'll not have time to dig in it, next week I'm on travel, but
+would check stemPolicy_ being set (?).
+
+Best Regards,
+Georg
+
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun  5 23:08:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Jun 2005 23:08:59 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A34A41.8050407@guest.arnes.si>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de> <42A20228.7060200@guest.arnes.si> <42A2C2C2.2070703@web.de> <42A34A41.8050407@guest.arnes.si>
+Message-ID: <42A369EB.7040405@web.de>
+
+Hi,
+
+>> My favourite is ruby. Concerning Lilypond: If a user is able to make 
+>> changes in his lilypond score that touch the lisp interface of lilypond
+>> than he has completely different abilities than a normal NoteEdit user
+>> has. Many of the possible NoteEdit users I know would ever dare to touch
+>> a script written in a lisp language. 
+> 
+> 
+> Personally I don't know the lisp language. I'm only aware of it through 
+> LilyPond, so that's why I first took a look on lisp. I'll take a look at 
+> ruby this evening. Also, what about python or perl languages? Or lua? 
+> What I have are some short ideas of why the scripts could be used for. 
+> I'm still searching the net for the right language as we're not going to 
+> write our own one, right?
+
+Ok, I have found a python <-> ruby comparison on the ruby page (FAQ):
+http://www.rubygarden.org/faq/entry/show/14
+
+And a comparison chart:
+http://www.approximity.com/ruby/Comparison_rb_st_m_java.html
+
+I cannot recommand perl as it's syntax tends programmers to make
+unreadable code. It's of course very powerful and has a lot of
+add-on modules (CPan) but it's no pure object-oriented language like 
+ruby (python has also procedural elements like Perl). I don't know
+LUA but from it's description it's also a procedural language. The
+main difference between Python and Ruby seems to be the complexity.
+You can also download a ruby book:
+
+The basic question is if we want to have every element of Noteedit
+as an object or not. I vote for yes as it is the more natural way
+of programming. It also should make the transition from C++ NoteEdit
+code to scripting code more easily.
+
+>> The first step for an advanced API is to actually document the API. The
+>> base is of course the doxygen documentation and with that I would have
+>> to find out where the interface between the script and NoteEdit has to
+>> be drawn. The NoteEdit library is too big as an API for the scripting 
+>> language itself (actually it contains complete NoteEdit, I ask myself
+>> why the library is so big). What could be inside the API ?
+>>
+>> - control of all typesetting elements
+>> - control of staff / voices
+>> - editing control
+>> - file control
+>> - Midi interface control
+>> - import/export control
+> 
+> 
+> Some features that just came to my mind that NoteEdit should also 
+> provide are actions like Selecting the certain chord (which selects all 
+> the notes in all voices and staffs which are held simultaniously at that 
+> moment), calculating intervals (the quality (major, minor, perfect, 
+> diminished, augmented) and quantity (prime, second, third, fourth, fifth 
+> etc.)) and so on. I think the scripts should have a useful framework so 
+> they could actually be made useful (for harmonization or whatever already).
+
+Selection of whatever (notes, chords, systems, voices, ...) if of course
+part of editing control. The rest would probably be simple methods on
+one note (concerning interval calculating). Maybe it would help to sort
+the API also on objects (note, staffs, voices, files, rests, ...)
+
+>> There probably is no real difference between macros and scripts. I would
+>> call a macro a short script which can be recorded and played back within
+>> noteedit. This would be another way to create a basic script that can
+>> later be expanded with your favourite text editor :).
+> 
+> Yes, a very important feature of a scripting language should be 
+> inclusion of other scripts. So NoteEdit should offer some basic scripts 
+> (or macros). You should then only include them and make a more complex 
+> scenario based on the included scripts.
+
+All of the above languages support such an include feature.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun  6 18:24:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 06 Jun 2005 18:24:19 +0200
+Subject: [Noteedit-devel] homepage update?
+Message-ID: <42A478B3.2020501@guest.arnes.si>
+
+As a reply to the translation request, Alexandre Prokoudine (from a
+Russian mailing list) was kind enough to make a new design of our
+website. Reinhard, could you look at it and maybe add some missing
+features (authors need to be added) and then update the current site?
+
+
+Regards!
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: noteedit.tar.bz2
+Type: application/x-bzip2
+Size: 80359 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050606/fbb9b48d/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun  6 19:07:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 06 Jun 2005 19:07:54 +0200
+Subject: [Noteedit-devel] Concerning rc1
+In-Reply-To: <42A362AB.7000203@schwaben.de>
+References: <429F3E9B.7070204@web.de> <42A00FC9.4070809@guest.arnes.si> <42A0228E.1090302@guest.arnes.si> <42A1F3F3.5090602@schwaben.de> <42A20228.7060200@guest.arnes.si> <42A362AB.7000203@schwaben.de>
+Message-ID: <42A482EA.7040009@guest.arnes.si>
+
+Yes, the patch doesn't work as expected. I made a new cleaner patch 
+(which should work?), but I'm waiting for SVN to get working (it's 
+currently having some problems...). I'll commit ASAP. Please test then.
+
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>>>>Stem directions stuff is now fixed. I just added apply(); in the
+>>>>voiceBox destructor method. ...
+>>>>  
+>>>>        
+>>>>
+>>>thanks for fixing it! You found that faster :)
+>>>
+>>>      
+>>>
+>
+>Hi Matev?,
+>
+>I would like to report that the stem direction gets only remembered when
+>you open the voice dialog at least two times. It's reproducable:
+>
+>    -- start new File
+>    -- create two voices, voice one stems up, voice two stems down
+>    -- add clef
+>    -- add time signature
+>    -- select 1st voice
+>    -- insert notes                    stems are up or down: not working,
+>
+>but with this one:
+>
+>    -- start new File
+>    -- create two voices, voice one stems up, voice two stems down
+>    -- add clef
+>    -- add time signature
+>    -- open voice dialog again, close it with ok
+>    -- select 1st voice
+>    -- insert notes                    stems are up: working.
+>
+>I guess I'll not have time to dig in it, next week I'm on travel, but
+>would check stemPolicy_ being set (?).
+>
+>Best Regards,
+>Georg
+>
+>
+>
+>
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 15:47:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 7 Jun 2005 08:47:14 -0500
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+Message-ID: <200506070847.14425.jjbenham@chicagoguitar.com>
+
+I have gentoo on an amd64 in 64 bit mode.
+kde 3.4.1
+tse3 0.2.7
+
+
+LilyPond check: found version: 2.4.2
+WITHOUT semicolons.
+WITH wavelines (for trills)
+WITH slures in graces
+NOTE LENGTHs after chords
+"\property" keyword does not exist
+terminate called after throwing an instance of 'TSE3::MidiSchedulerError'
+  what():  Failed to create the MIDI scheduler
+KCrash: Application 'lt-noteedit' crashing...
+Unable to start Dr. Konqi
+
+
+What else do you guys need to know? I would like to get this to work. What 
+should I do?
+
+Thanks,
+Jeremiah
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 18:11:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 07 Jun 2005 18:11:41 +0200
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <200506070847.14425.jjbenham@chicagoguitar.com>
+References: <200506070847.14425.jjbenham@chicagoguitar.com>
+Message-ID: <42A5C73D.3070403@guest.arnes.si>
+
+What about trying with --noalsa or --nooss parameters. This way, no
+sound playback will be available, but you could still use NoteEdit.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>I have gentoo on an amd64 in 64 bit mode.
+>kde 3.4.1
+>tse3 0.2.7
+>
+>
+>LilyPond check: found version: 2.4.2
+>WITHOUT semicolons.
+>WITH wavelines (for trills)
+>WITH slures in graces
+>NOTE LENGTHs after chords
+>"\property" keyword does not exist
+>terminate called after throwing an instance of 'TSE3::MidiSchedulerError'
+>  what():  Failed to create the MIDI scheduler
+>KCrash: Application 'lt-noteedit' crashing...
+>Unable to start Dr. Konqi
+>
+>
+>What else do you guys need to know? I would like to get this to work. What 
+>should I do?
+>
+>Thanks,
+>Jeremiah
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 18:12:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 07 Jun 2005 18:12:47 +0200
+Subject: [Noteedit-devel] [Fwd: Re: noteedit in russian etc.]
+Message-ID: <42A5C77F.1010708@guest.arnes.si>
+
+
+
+-------- Original Message --------
+Subject: 	Re: noteedit in russian etc.
+Date: 	Tue, 7 Jun 2005 19:13:59 +0400
+From: 	Alexandre Prokoudine <alexandre.prokoudine at gmail.com>
+Reply-To: 	Alexandre Prokoudine <alexandre.prokoudine at gmail.com>
+To: 	Matevz Jekovec <matevz.jekovec at guest.arnes.si>
+References: 	<733f2c7305060517225eb6d909 at mail.gmail.com> 
+<42A47799.7080505 at guest.arnes.si> 
+<733f2c7305060702193423db03 at mail.gmail.com>
+
+
+
+On 6/7/05, Alexandre Prokoudine <alexandre.prokoudine at gmail.com> wrote:
+> On 6/6/05, Matevz Jekovec <matevz.jekovec at guest.arnes.si> wrote:
+> > Hi!
+> >
+> > Thanks for a quick reply, a new homepage (I'll send updates to the
+> > project coordinator&maintainer of the website) and for your effort in
+> > the translation work!
+> 
+> Still no news from Pavlo. However I created a 800x100px large header
+> for the website and therefore changed style.css as well last night.
+> Will send them to you a bit later today.
+
+Like I said, here is my update :)
+
+Probably you might like recompressing the graphics.
+
+In all *.html files just replace <font ... >NoteEdit</font> with <img
+src="img/logo.png" alt="logo"> in the first <div</div>
+
+Alexandre
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: logo.png
+Type: image/png
+Size: 71170 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050607/b2fa2f3a/attachment.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: style.css
+Type: text/css
+Size: 1469 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050607/b2fa2f3a/attachment.css>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 18:14:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 07 Jun 2005 18:14:47 +0200
+Subject: [Noteedit-devel] SVN question
+Message-ID: <42A5C7F7.8020804@guest.arnes.si>
+
+Is SVN working for you guys? I was trying to checkout the latest version 
+and commit my voice stem direction fixes these days and I didn't manage 
+to get any response from the SVN Berlios server. Or is it just my firewall?
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 19:18:42 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 07 Jun 2005 19:18:42 +0200
+Subject: [Noteedit-devel] SVN question
+In-Reply-To: <42A5C7F7.8020804@guest.arnes.si>
+References: <42A5C7F7.8020804@guest.arnes.si>
+Message-ID: <42A5D6F2.4030604@schwaben.de>
+
+Hi,
+
+for me it's also not working since yesterday. It worked 'till now all
+the time. Only mail had sometimes a delay of one/two days at weekends.
+Strange.
+
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 19:57:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 07 Jun 2005 19:57:32 +0200
+Subject: [Noteedit-devel] homepage update?
+In-Reply-To: <42A478B3.2020501@guest.arnes.si>
+References: <42A478B3.2020501@guest.arnes.si>
+Message-ID: <42A5E00C.2090801@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> As a reply to the translation request, Alexandre Prokoudine (from a
+> Russian mailing list) was kind enough to make a new design of our
+> website. Reinhard, could you look at it and maybe add some missing
+> features (authors need to be added) and then update the current site?
+> 
+
+Great! I tried to check in after some updates to the
+new homepage but failed, svn seems not to be working...
+I haven't checked Berlios, but this is since more than 1 day now.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 20:48:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 07 Jun 2005 20:48:46 +0200
+Subject: [Noteedit-devel] SVN question
+In-Reply-To: <42A5D6F2.4030604@schwaben.de>
+References: <42A5C7F7.8020804@guest.arnes.si> <42A5D6F2.4030604@schwaben.de>
+Message-ID: <42A5EC0E.4090801@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi,
+> 
+> for me it's also not working since yesterday. It worked 'till now all
+> the time. Only mail had sometimes a delay of one/two days at weekends.
+> Strange.
+> 
+
+So far I only found out that the last access to the repository
+seemed to have been: 2005-06-06 13:24
+
+At that time I was probably eating in the firm I work where I don't do
+any NoteEdit development.
+
+svnadmin recover /svnroot/repos/noteedit
+
+gives the following error message:
+svn: Failed to get exclusive repository access; perhaps another process
+such as httpd, svnserve or svn has it open?
+
+I haven't found out anything other (lock files or similar) blocking
+the db access. Web Access (i.e. read) access is also impossible at
+the moment. Any further ideas ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  7 22:16:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 7 Jun 2005 15:16:11 -0500
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <42A5C73D.3070403@guest.arnes.si>
+References: <200506070847.14425.jjbenham@chicagoguitar.com> <42A5C73D.3070403@guest.arnes.si>
+Message-ID: <20050607201611.GA330@chicagoguitar.com>
+
+On Tue, Jun 07, 2005 at 06:11:41PM +0200, noteedit-devel-admin at berlios.de wrote:
+> What about trying with --noalsa or --nooss parameters. This way, no
+> sound playback will be available, but you could still use NoteEdit.
+
+I tried with --noalsa then --nooss. All three
+combinatations gave me the same results as below.
+
+Qt: 3.3.4
+KDE: 3.4.1
+NoteEdit: 2.8.0-rc1	
+
+What else could it be. Is it because I am in 64bit mode or do I need
+tse3 0.2.5 insteas of 0.2.7?
+
+Jeremiah
+
+> 
+> 
+> Regards.
+> - Matev??
+> 
+> noteedit-devel-admin at berlios.de wrote:
+> 
+> >I have gentoo on an amd64 in 64 bit mode.
+> >kde 3.4.1
+> >tse3 0.2.7
+> >
+> >
+> >LilyPond check: found version: 2.4.2
+> >WITHOUT semicolons.
+> >WITH wavelines (for trills)
+> >WITH slures in graces
+> >NOTE LENGTHs after chords
+> >"\property" keyword does not exist
+> >terminate called after throwing an instance of 'TSE3::MidiSchedulerError'
+> > what():  Failed to create the MIDI scheduler
+> >KCrash: Application 'lt-noteedit' crashing...
+> >Unable to start Dr. Konqi
+> >
+> >
+> >What else do you guys need to know? I would like to get this to work. What 
+> >should I do?
+> >
+> >Thanks,
+> >Jeremiah
+> >_______________________________________________
+> >Noteedit-devel mailing list
+> >Noteedit-devel at lists.berlios.de
+> >http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> >
+> >
+> > 
+> >
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  8 00:29:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 08 Jun 2005 00:29:11 +0200
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <20050607201611.GA330@chicagoguitar.com>
+References: <200506070847.14425.jjbenham@chicagoguitar.com> <42A5C73D.3070403@guest.arnes.si> <20050607201611.GA330@chicagoguitar.com>
+Message-ID: <42A61FB7.6070008@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>On Tue, Jun 07, 2005 at 06:11:41PM +0200, noteedit-devel-admin at berlios.de wrote:
+>  
+>>What about trying with --noalsa or --nooss parameters. This way, no
+>>sound playback will be available, but you could still use NoteEdit.
+>>    
+>
+>I tried with --noalsa then --nooss. All three
+>combinatations gave me the same results as below.
+>
+>Qt: 3.3.4
+>KDE: 3.4.1
+>NoteEdit: 2.8.0-rc1	
+>
+>What else could it be. Is it because I am in 64bit mode or do I need
+>tse3 0.2.5 insteas of 0.2.7?
+>
+>Jeremiah
+>
+>  
+Hmm, maybe you could try it the other way around? I'm also on amd64, and
+things are working nicely. Maybe your sound is not working at all? Maybe
+you should first get timidity running in server mode, connect it, with
+kaconnect or something else, with vkeybd and play some sounds? Then
+start NoteEdit. (I also have KDE's artsd shut down, and run timidity on
+jack.)
+
+Report what's going on,
+Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  8 01:23:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 7 Jun 2005 18:23:47 -0500
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <42A61FB7.6070008@schwaben.de>
+References: <200506070847.14425.jjbenham@chicagoguitar.com> <42A5C73D.3070403@guest.arnes.si> <20050607201611.GA330@chicagoguitar.com> <42A61FB7.6070008@schwaben.de>
+Message-ID: <20050607232347.GA668@chicagoguitar.com>
+
+On Wed, Jun 08, 2005 at 12:29:11AM +0200, noteedit-devel-admin at berlios.de wrote:
+> Hmm, maybe you could try it the other way around? I'm also on amd64, and
+> things are working nicely. Maybe your sound is not working at all? Maybe
+> you should first get timidity running in server mode, connect it, with
+> kaconnect or something else, with vkeybd and play some sounds? Then
+> start NoteEdit. (I also have KDE's artsd shut down, and run timidity on
+> jack.)
+
+So I launched jack then I launched timidity with the following options:
+
+timidity  -iA -Oj
+
+This launched timidity with jack output and as an alsa sequencer client.
+Then I did aconnect 64:0 128:0 and hit a few keys on my keyboard. I had sound.
+
+Noteedit crashed again with the same errors. I decided to run it in gdb
+and do a backtrace on it. 
+
+The binary does not have debugging support enabled. I can recompile it
+with debugging into the binary if you think it will help.
+
+Here it is:
+
+Program received signal SIGABRT, Aborted.
+[Switching to Thread 16384 (LWP 31214)]
+0x00002aaaaeeebe69 in kill () from /lib/libc.so.6
+(gdb) bt
+#0  0x00002aaaaeeebe69 in kill () from /lib/libc.so.6
+#1  0x00002aaaae589891 in pthread_kill () from /lib/libpthread.so.0
+#2  0x00002aaaae589c12 in raise () from /lib/libpthread.so.0
+#3  0x00002aaaaeeebb62 in raise () from /lib/libc.so.6
+#4  0x00002aaaaeeecef2 in abort () from /lib/libc.so.6
+#5  0x00002aaaaeaeac38 in __gnu_cxx::__verbose_terminate_handler () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#6  0x00002aaaaeae8e06 in __cxa_call_unexpected () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#7  0x00002aaaaeae8e33 in std::terminate () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#8  0x00002aaaaeae8f33 in __cxa_throw () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#9  0x00002aaaaafaa260 in TSE3::MidiSchedulerFactory::createScheduler ()
+from /usr/lib/libtse3.so.0
+#10 0x00002aaaaacd03ec in NMidiMapper::NMidiMapper () from
+/usr/lib/libnoteedit.so.1
+#11 0x0000000000402e8e in ?? ()
+#12 0x00002aaaaeed8e31 in __libc_start_main () from /lib/libc.so.6
+
+
+I guess maybe the problem is with tse3 or somethings.
+
+
+Thanks,
+Jeremiah
+
+
+> 
+> Report what's going on,
+> Regards,
+> Georg.
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  8 06:34:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 08 Jun 2005 06:34:12 +0200
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <20050607232347.GA668@chicagoguitar.com>
+References: <200506070847.14425.jjbenham@chicagoguitar.com> <42A5C73D.3070403@guest.arnes.si> <20050607201611.GA330@chicagoguitar.com> <42A61FB7.6070008@schwaben.de> <20050607232347.GA668@chicagoguitar.com>
+Message-ID: <42A67544.9060200@schwaben.de>
+
+Hmm, further debugging could be helpful, but now I'm offline 'till next
+week, so only as a short comment: I'm on Suse 9.3, and their rpm might
+give insight if  any patch/build option is needed ...
+
+That's all for the moment from me,
+Regards
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  8 07:10:22 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 08 Jun 2005 07:10:22 +0200
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <20050607232347.GA668@chicagoguitar.com>
+References: <200506070847.14425.jjbenham@chicagoguitar.com> <42A5C73D.3070403@guest.arnes.si> <20050607201611.GA330@chicagoguitar.com> <42A61FB7.6070008@schwaben.de> <20050607232347.GA668@chicagoguitar.com>
+Message-ID: <42A67DBE.20906@web.de>
+
+Hi,
+
+> Noteedit crashed again with the same errors. I decided to run it in gdb
+> and do a backtrace on it. 
+> 
+> The binary does not have debugging support enabled. I can recompile it
+> with debugging into the binary if you think it will help.
+> 
+> Here it is:
+> 
+> #9  0x00002aaaaafaa260 in TSE3::MidiSchedulerFactory::createScheduler ()
+> from /usr/lib/libtse3.so.0
+> #10 0x00002aaaaacd03ec in NMidiMapper::NMidiMapper () from
+> /usr/lib/libnoteedit.so.1
+> #11 0x0000000000402e8e in ?? ()
+> #12 0x00002aaaaeed8e31 in __libc_start_main () from /lib/libc.so.6
+> 
+> 
+> I guess maybe the problem is with tse3 or somethings.
+> 
+
+Maybe, here is what NoteEdit actually does:
+
+NMidiMapper::NMidiMapper() : QObject() {
+         theScheduler_ = 0;
+         echoChannel_ = 0;
+         theScheduler_ = 0;
+         channelPool_ = 0x0;
+         lastSelectedChannel_ = 0;
+#ifdef TSE3_HAS_ARTS
+         if (NResource::schedulerRequest_ & ARTS_SCHEDULER_REQUESTED) {
+                 try {
+ 
+TSE3::Plt::UnixMidiSchedulerFactory::setPreferredPlatform(TSE3::Plt::UnixMidiSchedulerFactory::UnixPlatform_Arts);
+                         theScheduler_ = theFactory_.createScheduler();
+                         cout << "TSE3 aRts MIDI scheduler created" << endl;
+                 }
+                 catch (TSE3::MidiSchedulerError e) {
+                         cerr << "cannot create an aRts MIDI Scheduler" 
+<< endl;
+                 }
+         }
+#endif
+
+The other problem might be arts if you have compiled with arts.
+Else another midi scheduler gets created:
+
+ 
+TSE3::Plt::UnixMidiSchedulerFactory::setPreferredPlatform(TSE3::Plt::UnixMidiSchedulerFactory::UnixPlatform_Alsa);
+                         theScheduler_ = theFactory_.createScheduler();
+
+
+I don't know anything about this stuff except those things from the FAQ.
+The only thing I can tell you to check your midi kernel modules or try
+to compile/start without midi support. Maybe the tse3 test program can
+help trying to find out what's going wrong.
+
+I have the following midi modules loaded:
+$ lsmod | grep midi
+
+snd-seq-midi            6688  0
+snd-seq-virmidi         5952  0
+snd-rawmidi            20768  3 snd-usb-lib,snd-seq-midi,snd-seq-virmidi
+snd-seq-midi-event      6592  3 snd-seq-oss,snd-seq-midi,snd-seq-virmidi
+snd-seq                49552  9 
+snd-seq-dummy,snd-seq-oss,snd-seq-midi-emul,snd-seq-midi,snd-seq-instr,snd-seq-virmidi,snd-seq-midi-event
+snd-seq-device          6860  5 
+snd-seq-dummy,snd-seq-oss,snd-seq-midi,snd-rawmidi,snd-seq
+snd                    49220  14 
+snd-seq-oss,snd-usb-audio,snd-pcm-oss,snd-mixer-oss,snd-intel8x0,snd-ac97-codec,snd-pcm,snd-seq-virmidi,snd-rawmidi,snd-seq,snd-timer,snd-seq-device
+
+modprobe.preload contrains the following midi modules:
+snd-seq
+snd-seq-virmidi
+snd-seq-instr
+snd-seq-midi
+snd-seq-midi-emul
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  8 08:12:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 08 Jun 2005 08:12:59 +0200
+Subject: [Noteedit-devel] SVN question
+In-Reply-To: <42A5EC0E.4090801@web.de>
+References: <42A5C7F7.8020804@guest.arnes.si> <42A5D6F2.4030604@schwaben.de> <42A5EC0E.4090801@web.de>
+Message-ID: <42A68C6B.4020205@web.de>
+
+Hi,
+
+noteedit-devel-admin at berlios.de schrieb:
+> noteedit-devel-admin at berlios.de schrieb:
+> 
+>> Hi,
+>>
+>> for me it's also not working since yesterday. It worked 'till now all
+>> the time. Only mail had sometimes a delay of one/two days at weekends.
+>> Strange.
+>>
+> 
+> So far I only found out that the last access to the repository
+> seemed to have been: 2005-06-06 13:24
+> 
+> At that time I was probably eating in the firm I work where I don't do
+> any NoteEdit development.
+> 
+> svnadmin recover /svnroot/repos/noteedit
+> 
+> gives the following error message:
+> svn: Failed to get exclusive repository access; perhaps another process
+> such as httpd, svnserve or svn has it open?
+> 
+
+I have posted a bug report at berlios. There is at least one other 
+project having access problems though not described in detail.
+
+On svn.berlios.de I found out that the db directory is still accessed
+by whiteangel, itsgeorg and suamor (svnserve processes). Maybe there
+is a way to kill all these processes. I haven't studied the svn manual
+in this regard.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  9 22:30:57 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 09 Jun 2005 22:30:57 +0200
+Subject: [Noteedit-devel] SVN working again
+Message-ID: <42A8A701.5010202@web.de>
+
+Hi,
+
+Whatever the berlios folks did, SVN is now working again.
+I just checked in the new homepage with several modifications
+of me. I'm still not finished with it, but some other can
+do this as well as I won't have time to do it until sunday.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  9 23:45:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 09 Jun 2005 23:45:07 +0200
+Subject: [Noteedit-devel] SVN working again
+In-Reply-To: <42A8A701.5010202@web.de>
+References: <42A8A701.5010202@web.de>
+Message-ID: <42A8B863.9060405@guest.arnes.si>
+
+Cool, I finally commited the working 
+remember-stem-direction-in-voice-dialog patch. Please test.
+
+Meanwhile, I'm trying to dig out the ritardando/accellerando MIDI 
+playback bug. It was present from every version of NE I remember. It 
+goes like this:
+When eg. Ritardando sign is present, the notes after the sign sometimes 
+get accellerated (instead of slowed down), sometimes even to a few 
+miliseconds (so all you hear is a loud bang when MIDI playback comes to 
+rit.). However, it's not quite repeatable. In the following example, you 
+can try to playback from note to note before the rit. sign and you 
+should be able to spot the bug. From what I found out, I can tell that 
+if you playback the second time from the same note, the rit. always gets 
+played correctly. And if you try to playback from the last note before 
+rit. it's always repeatable. And if you move from note to note randomly, 
+it sometimes work and sometimes doesn't. I don't know... are your 
+findings the same?
+
+I'm not sure if I'll be able to fix this bug till 2.8.0. Maybe it should 
+be critical along with some similar trill. bugs (if accidental is 
+placed, pitches not always played correctly) and maybe a negative time 
+for grace notes solution, I spotted, for 2.8.1?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi,
+>
+> Whatever the berlios folks did, SVN is now working again.
+> I just checked in the new homepage with several modifications
+> of me. I'm still not finished with it, but some other can
+> do this as well as I won't have time to do it until sunday.
+>
+> Best Regards,
+>
+> Reinhard Katzmann
+
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: NE_ritardando_test.not
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050609/cb5f5a15/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun 12 23:21:55 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Jun 2005 23:21:55 +0200
+Subject: [Noteedit-devel] translation status
+Message-ID: <42ACA773.5070101@guest.arnes.si>
+
+In reply to my last translation request for all the unupdated languages 
+we support, I managed to get the the Russian and Italian translations 
+done. So, we currently have the following translations updated for the 
+release:
+- original English
+- German
+- Slovenian
+- Slovakian
+- Italian
+- Russian
+
+Still pending are the French, Spanish, Swedish and Hungarian. I didn't 
+recieve any replies from either of them, so I don't think we'll get 
+their translations done for 2.8.0.
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 13 00:09:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 13 Jun 2005 00:09:46 +0200
+Subject: [Noteedit-devel] translation status
+In-Reply-To: <42ACA773.5070101@guest.arnes.si>
+References: <42ACA773.5070101@guest.arnes.si>
+Message-ID: <42ACB2AA.6030108@web.de>
+
+Hi Matev?,
+
+> In reply to my last translation request for all the unupdated languages 
+> we support, I managed to get the the Russian and Italian translations 
+> done. So, we currently have the following translations updated for the 
+> release:
+> - original English
+> - German
+> - Slovenian
+> - Slovakian
+> - Italian
+> - Russian
+
+This really sounds great! I didn't expect anything as I didn't get any
+feedback the last days on translation.
+
+> Still pending are the French, Spanish, Swedish and Hungarian. I didn't 
+> recieve any replies from either of them, so I don't think we'll get 
+> their translations done for 2.8.0.
+
+I hope that we get the french translation, but I don't think we
+get feedback for that until wendsday when Georg has returned. Also
+there is still the crash bug I couldn't reproduce until now but I
+haven't looked closer the last 4 days.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun 16 23:34:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 16 Jun 2005 22:34:18 +0100
+Subject: [Noteedit-devel] Fw: Bug#313942: noteedit: [INTL:de] German PO file corrections
+Message-ID: <20050616213418.GA13343@localhost>
+
+Hi all,
+
+Please find attached corrections from Jens Seidel for the German
+translation of 2.7.4, along with english typos fixes. This patch was
+sent to the Debian Bug Tracking System (see also [1] and [2])
+http://bugs.debian.org/313942 and http://bugs.debian.org/noteedit)
+
+Unfortunately I haven't had the time to test 2.8.0-rc1 yet, but I have
+prepared a debian package for 2.7.4. The current version can be found at
+http://piem.org/debian/noteedit/ . You will find all the modifications
+made in the .diff.gz file. Comments and feedback welcome.
+
+I noted the following issues in version 2.7.4:
+
+ - i did get to reproduce #230891 after loading a large
+   multichannel midifile [1].
+
+ - the kprinter box is broken, only pdf works. it seems to fail finding
+   tools in /usr/bin. the error is: "Cannot save print file to
+   /home/piem/print.ps. Check that you have write access to it."
+
+ - tse3play does not seem to be willing to play at all (most likely a
+   tse3play bug).
+
+ - autobar, on some files [2], eats all the cpu and never returns
+
+ - autobeam sometimes crashes on createUndo
+
+ - quite a few warnings when compiling (debian unstable / powerpc)
+   examples include:
+
+mainframewidget.cpp:674: warning: `connectItem' is deprecated (declared at 
+   /usr/include/kde/kaccel.h:337)
+mainframewidget.cpp:675: warning: `insertItem' is deprecated (declared at 
+   /usr/include/kde/kaccel.h:329)
+
+...
+
+tse3handler.cpp:220: warning: comparison is always true due to limited range of 
+   data type
+tse3handler.cpp:223: warning: passing `double' for converting 1 of `
+   TSE3::Clock::Clock(int)'
+
+ - temporary files locations are a bit weird (should use kde temp dir
+   instead) 
+
+
+Cheers, Paul
+
+(please cc me as i am not yet registered to this list)
+
+[1] http://www.mutopiaproject.org/cgibin/piece-info.cgi?id=57
+[2] http://www.mutopiaproject.org/cgibin/piece-info.cgi?id=543
+
+----- Forwarded message from Jens Seidel <jensseidel at users.sf.net> -----
+
+Subject: Bug#313942: noteedit: [INTL:de] German PO file corrections
+Date: Thu, 16 Jun 2005 19:41:11 +0200
+From: Jens Seidel <jensseidel at users.sf.net>
+To: 313942 at bugs.debian.org
+Resent-Sender: Debian BTS <debbugs at bugs.debian.org>
+Resent-Date: Thu, 16 Jun 2005 18:40:03 +0100
+
+On Thu, Jun 16, 2005 at 03:59:32PM +0100, Paul Brossier wrote:
+> Hi Jens,
+> 
+> thank you for the update. i am currently packaging 2.7.4, and the po
+> files completely changed from 2.7.1. Please review the attached de.po
+> instead.
+
+OK.
+
+I noticed that nearly all problems I reported vanished in 2.7.4, very
+good. Nevertheless I found many minor issues during a complete
+proofread.
+
+Since the text was written in new German orthography I ensured that it is
+consistently used.
+
+I also found a few issues with English texts:
+
+#: voicedialog.cpp:114
+msgid ""
+"The direction of the stems of the notes in voice number %1 will be chosen "
+s/chosen/choosen/
+
+#: configuredialog.cpp:135
+msgid ""
+"The last score that was open the last time the appliaction was used will be "
+s/appliaction/application/
+
+#: uiconnect.cpp:222
+msgid ""
+"Actually LilyPond is not supported by your system. Do you realy want to make "
+s/realy/really/
+
+#: lilyexport.cpp:529
+msgid "Staff %1, measure %2: 128th in mesaure; minimum is 64th\n"
+It should be "measure" not "mesaure", right?
+
+#: filehandler.cpp:549
+msgid "Staff %1 ; measure %2 :The multirests are not aligned\n"
+spaces!!!
+
+#: musixtex.cpp:656
+msgid "too many beams in measure: %1; maximum: %2\n"
+s/too/Too/
+
+Please do not forget to send it upstream,
+Jens
+
+
+
+----- End forwarded message -----
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: de.po.diff.gz
+Type: application/octet-stream
+Size: 6849 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050616/7b977d83/attachment.obj>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun 19 16:34:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 19 Jun 2005 16:34:41 +0200
+Subject: [Noteedit-devel] Flyer for the Linuxtag 2005
+Message-ID: <42B58281.80604@web.de>
+
+Hi,
+
+I created a first version for a LinuxTag 2005 flyer (see attachment for
+files). It is based on the Logo from the splash screen and the icon
+both converted to BW with gimp. (If you don't have the svg's any
+longer and need them just drop me a note).
+
+Most of the text is from the README and doesn't need to be changed.
+I added a "Help Us" section and expanded Homepage & Mailing list under
+a "Get in Contact" headline. If you have better ideas to improve
+this just go ahead and mail it (or change the document directly).
+
+I've also added some information how to get noteedit source and
+binaries as well as some hints what is in the noteedit archive.
+
+I'm also restarting work on the poster after I get back from a
+bicycle ride (in one or two hours).
+
+Linuxtag 2005 preparation is costing much time so there was no
+time left for me doing something on NoteEdit. The release is
+still pending and I wouldn't disagree if someone could bring
+it out even if the crash bug at start still isn't fixed (I
+didn't have the time to look for that as well).
+
+Georg: I've sent you the administration passwords when I
+created the mailing lists. If you don't have them any
+more just tell me.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: icon_only_bw.png
+Type: image/png
+Size: 65859 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050619/71a895b7/attachment.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: logo_bw.png
+Type: image/png
+Size: 91929 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050619/71a895b7/attachment-0001.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: noteedit_flyer.sxw
+Type: application/vnd.sun.xml.writer
+Size: 166849 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050619/71a895b7/attachment.sxw>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun 19 19:03:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 19 Jun 2005 19:03:29 +0200
+Subject: [Noteedit-devel] greetings
+Message-ID: <42B5A561.4000805@guest.arnes.si>
+
+Hello to all!
+
+As we haven't heard in a while, I'd like to bring some update. I tackled 
+with some minor bugs in NoteEdit this week (like "nothing to play" -> 
+"Nothing to play!" and "d flat major; b minor" -> "d flat major; b flat 
+minor" typos and appropriately updating translations). However, I've 
+been quite busy with the exams and I don't doubt you were busy too. 
+Also, how's with LinuxTag?
+
+About development, I think it's high time to release the 2.8.0 and make 
+a 2.9.x branch. I have some harder bugs to fix and some brainstorm ideas 
+and would need the 2.9.x being available asap. Meanwhile, I updated our 
+wiki brainstorm ideas a bit. Please let me know what do you think about 
+the new Dynamic tempo idea. Soon, the exams will end and I might be able 
+to get myself coding! Ideas like implementation of Ruby scripting 
+language, a new API, new keyboard shortcuts and UI, tons of new features 
+introduced on Wiki are waiting in my head to get out:). Ugh, I also hope 
+I don't lose my anxiousness when I start the real coding:).
+
+
+Best summer regards!
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun 19 20:07:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 19 Jun 2005 20:07:47 +0200
+Subject: [Noteedit-devel] greetings
+In-Reply-To: <42B5A561.4000805@guest.arnes.si>
+References: <42B5A561.4000805@guest.arnes.si>
+Message-ID: <42B5B473.9020607@web.de>
+
+Hi Matev?,
+
+I'm on IRC now, too and meanwhile playing viola a bit for the
+summer concerts (Haendel Messias).
+
+> As we haven't heard in a while, I'd like to bring some update. I tackled 
+> with some minor bugs in NoteEdit this week (like "nothing to play" -> 
+> "Nothing to play!" and "d flat major; b minor" -> "d flat major; b flat 
+> minor" typos and appropriately updating translations). However, I've 
+> been quite busy with the exams and I don't doubt you were busy too. 
+> Also, how's with LinuxTag?
+
+I wrote about on an extra Mail. For recapitulation: I will be on the
+LinuxTag from Di (afternoon, we're building the Audio booth there
+and in the evening we have some lunch) to Saturday afternoon (in
+the evening I will have my serenace concert). Meanwhile I was busy
+preparing (mainly cleaning up and backuping my laptop, still not
+finished with that work.).
+
+I wish you all the best with your exams!
+
+> About development, I think it's high time to release the 2.8.0 and make 
+> a 2.9.x branch. I have some harder bugs to fix and some brainstorm ideas 
+
+Yes, the release can be done anytime soon. I just have priority on
+flyer and poster so basically some needs to checkout SVN run my build
+scripts on them. Before doing that in all files 2.8.0-rc1 has to be
+replaced by 2.8.0.
+
+> and would need the 2.9.x being available asap. Meanwhile, I updated our 
+
+2.9.x leading to 3.0.x will be in a new branch. It's not really
+difficult to do that according to the docs but still I haven't managed
+it to do that up to now.
+
+> wiki brainstorm ideas a bit. Please let me know what do you think about 
+> the new Dynamic tempo idea. Soon, the exams will end and I might be able 
+> to get myself coding! Ideas like implementation of Ruby scripting 
+> language, a new API, new keyboard shortcuts and UI, tons of new features 
+> introduced on Wiki are waiting in my head to get out:). Ugh, I also hope 
+> I don't lose my anxiousness when I start the real coding:).
+
+Well I'd be happy if I'd finally finished reading the docs but that's
+probably needs some more days as well (probably continue on wednesday).
+After that I wanted to start a real comparison between QT 4 and the
+current gtkmm (including gconfmm as gtkmm has now configuration support 
+AFAIK). Concerning coding I mainly will work on 2.8 first as the 
+printing dialog will be hopefully in one of the next releases also.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun 19 22:15:25 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 19 Jun 2005 22:15:25 +0200
+Subject: [Noteedit-devel] Concerning Release 2.8.0
+Message-ID: <42B5D25D.9060003@web.de>
+
+Hi!
+
+As you probably already noted the 2.8.0 release is still pending.
+As we just got some improvements to the german translation and
+I don't have the time for a release today and tomorrow I will
+do it on tuesday. That leaves some time for last-minute tests
+as well. I there is any reason not to release 2.8.0 please tell
+it very soon because for the Linuxtag me, Georg and Matevz would
+really like to have the release out.
+
+I hope to have some time left on the Linuxtag to start the
+2.9.x branch. After that everything is open again :)
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 20 20:32:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 20 Jun 2005 20:32:14 +0200
+Subject: [Noteedit-devel] Flyer and T-Shirt for NoteEdit
+Message-ID: <42B70BAE.10600@web.de>
+
+Hi,
+
+I have created a Flyer and a T-Shirt for NoteEdit / LAD / Linuxtag.
+If you want to print your own one (there are dozens of shops printing
+T-Shirts from PDF-Files) you have to change the Name on the back
+of the T-Shirt. Alternatively you could change some of the Logos
+(replacing them f.e. with the NoteEdit-Logo). Also everything
+is black-white. (for dark-color-shirts you probably would have
+to change the file as well).
+
+The flyer is in available in english and german while the t-shirt
+is only german (just kidding ;-). I did not include postscript or
+pdf files but I recommand to print to postscript with OpenOffice
+first as the pdf version of my OOWriter inverses the NoteEdit Logo.
+To create a PDF you could use ps2pdf.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tshirt_flyer.tar.gz
+Type: application/x-gzip
+Size: 707744 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050620/5beed44c/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun 22 13:44:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 22 Jun 2005 13:44:52 +0200
+Subject: [Noteedit-devel] tse3
+Message-ID: <42B94F34.9000401@guest.arnes.si>
+
+For the information, Pete Goodliffe after two years since the last 
+release, released 0.3.0 version of TSE3! This is a very good news for 
+NoteEdit I persume as we're almost all that it's left of TSE3 
+applications. However, are there any real alternatives at all we could 
+consider (free, portable, mature&working&useful as tse3)? I read about 
+PortMidi, but it's a long way from being a usable sequencer lib (not 
+only a driver for sending midi commands to midi port). Do Qt/gtkmm have 
+any midi libraries included?
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun 22 15:16:27 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 22 Jun 2005 15:16:27 +0200
+Subject: [Noteedit-devel] some stuff
+Message-ID: <42B964AB.9070407@guest.arnes.si>
+
+I searched the web for occurences of NoteEdit and found many sites 
+pointing to the old Joerg's place. I went through all the first page of 
+Google's hits and contacted their site administrators to correct the 
+links to the new home. I also spotted TSE3 home being not up to date and 
+contacted Pete. I think people shouldn't have the feeling that this 
+project is dieing out by looking at the old NE's home. Sometimes I feel 
+like people don't take this project seriously enough.
+
+Second, I removed the QtCheckBox warning every time NoteEdit is ran, by 
+deleting the value Checked with string "true" from mupWarning.ui. I'm 
+not sure why this was good in the first place, because checked is 
+already a binary value with bool true/false. If anyone knows, please 
+correct it back.
+
+Third, I removed the Lily warnings (like \property not found, WITHOUT 
+slures, WITH semicolons etc.) from lilytest.cpp. I think they are not 
+needed anymore now, because Lily export is tested enough and works fine 
+and I also think they are obsolete (some ranging to <2.0 versions of 
+lily) and shouldn't be mentioned anymore as convert-ly should convert 
+the whatever-version-already-exported to the latest version of Lilypond 
+syntax. The only warning I left was the Lilypond version found output 
+(returns x.y.z or not found).
+
+Fourth, I added my Ballade no.1 and Fugue no.1 I composed some time ago 
+to NoteEdit examples. Anyone knows if the examples are installed to 
+/usr/share/noteedit as well? Because currently, looking at /usr/local 
+I'm not able to find them anywhere. They're only present in NoteEdit 
+source dir.
+
+
+Best regards!
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun 22 22:49:51 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 22 Jun 2005 22:49:51 +0200
+Subject: [Noteedit-devel] some stuff
+In-Reply-To: <42B964AB.9070407@guest.arnes.si>
+References: <42B964AB.9070407@guest.arnes.si>
+Message-ID: <42B9CEEF.7060002@schwaben.de>
+
+Thanks, great stuff. I like your music especially. Had to tune the
+volumes a little bit. I like to have this other style and contemporary
+stuff in the examples.
+
+Hopefully will soon have more time,
+Regards,
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun 25 20:53:50 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Jun 2005 20:53:50 +0200
+Subject: [Noteedit-devel] Re: noteedit-2.8.0 rc1  & suse pro 9.3 crash
+In-Reply-To: <200506241155.j5OBtJrI027912@unicorn.berlios.de>
+References: <200506241155.j5OBtJrI027912@unicorn.berlios.de>
+Message-ID: <42BDA83E.2020401@web.de>
+
+Hello Philippe,
+
+Thanks for the hint. We had one bug report reporting a
+crash on startup. This person had a problem with the midi
+scheduler, I suppose a problem with the tse3 library according
+to the backtrace he sent me.
+
+I don't have this problem and never had a similar one. I just
+suppose that it is either midi modules from the kernel missing
+(try to load snd--seq-virmidi or snd-seq-dummy (the last one
+creates a Midi Through device).
+
+Also there was a new tse3 library released end of may so you
+might want to check that one as well as some patches included
+with the Mandrake tse3 library (included as attachment).
+(use patch -p1 < patchname to apply one patch in the noteedit
+build directory)
+
+You should be able to find more about the bug by building
+noteedit with the --enable-debug option which includes symbols
+in the noteedit binary so it is easier to find out why and
+where it crashed. If you start noteedit within the build
+directory (after make install) like this:
+
+$ gdb noteedit/.libs/noteedit
+
+and start it with "run" you get back at the gdb prompt as
+soon as it crashed. doing a "bt" (backtrace) afterwards
+shows the line where it crashed.
+
+You can read on the noteedit project page bug #4235 and support
+request #101375 for more information. It would be nice to know
+if it is the same bug and if the above methods fix the problem.
+
+Philippe De Muyter schrieb:
+> I downloaded and compiled noteedit-2.8.0 rc1 on suse linux
+> professional 9.3. 
+> Altough compilation seemed to be fine,  I cannot even start
+> the new (uninstalled) noteedit.  I get IIRC a knotify
+> SIGSEGV, but nothing useable to mention here.  I did the
+> same with 2.7.3 and that worked fine.
+> 
+> Do you think of obvious reasons why 2.8.0 would not work on
+> suse 9.3, or do you have it already built as a rpm for suse
+> 9.3, or do you know a start point on how to look at the
+> problem. (I am an experienced programmer, but do not know
+> anything of kde/qt/noteedit internalls)
+> 
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tse3-fix-compile-amd64.patch.bz2
+Type: application/x-bzip
+Size: 475 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050625/93c7c8a4/attachment.bin>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tse3-fix-compile-gcc-3.4.patch.bz2
+Type: application/x-bzip
+Size: 953 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050625/93c7c8a4/attachment-0001.bin>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tse3_alsa1.x_and_sustain.patch.bz2
+Type: application/x-bzip
+Size: 809 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050625/93c7c8a4/attachment-0002.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun 25 23:59:06 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Jun 2005 23:59:06 +0200
+Subject: [Noteedit-devel] tse3
+In-Reply-To: <42B94F34.9000401@guest.arnes.si>
+References: <42B94F34.9000401@guest.arnes.si>
+Message-ID: <42BDD3AA.5050702@web.de>
+
+Hi Matev? & all
+
+I'm back from the Linuxtag (very succesfull!) and will do some answers 
+first.
+
+noteedit-devel-admin at berlios.de schrieb:
+> For the information, Pete Goodliffe after two years since the last 
+> release, released 0.3.0 version of TSE3! This is a very good news for 
+> NoteEdit I persume as we're almost all that it's left of TSE3 
+> applications. However, are there any real alternatives at all we could 
+
+At least the applications on the tse3 page seem to have no development 
+anymore since more than 2 years (except noteedit).
+
+> consider (free, portable, mature&working&useful as tse3)? I read about 
+> PortMidi, but it's a long way from being a usable sequencer lib (not 
+> only a driver for sending midi commands to midi port). Do Qt/gtkmm have 
+> any midi libraries included?
+
+No they don't. I know of MidiShare being still developed and being 
+portable, also I read that berlios contains a simple midi library
+(Click on the main project page in the description on the "Midi"-Topic
+to see the midi application containing simili.
+
+I also read on freshmeat.net about libjdkmidi (quite old, last change
+in spring of last year), libkmid (well known to us), Also saw some
+on http://www.linux-sound.org/ but didn't look at it yet. MidiShare
+still is my favourite.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 27 17:02:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 27 Jun 2005 17:02:09 +0200
+Subject: [Noteedit-devel] NoteEdit on-line doc
+Message-ID: <42C014F1.7070002@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Reinhard & others!
+
+Could you please (if you have it) upload the on-line documentation (as
+seen on the old website) to let's say htdocs/doc folder and make a
+link to it under the Documentation section on the webpage. When I sent
+requests for the NoteEdit new home to the first Google hits I got
+describing NoteEdit , I got replies from many webmasters that they had
+a link to the documentation of NoteEdit on their site as well, but
+they cannot find any on the new site anymore.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFCwBTxm1IQqmP8KVgRAhwAAJ0XVfJyKq7cg4vV/uRBSkWGt1uk0wCdFlEK
+HEI5e9o3G1oisdMrvKOYKPY=
+=g/5C
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 27 17:10:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 27 Jun 2005 17:10:48 +0200
+Subject: [Noteedit-devel] svn down again:(
+Message-ID: <42C016F8.1030108@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Is it just me... or is our SVN server down again? I can login, but I'm
+unable to update/commit anything.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFCwBb4m1IQqmP8KVgRAoN/AJ4gWnM2DVXrjEBGnk/bTCvwrxrB7QCgjEcj
+zpXE46niMWmwL/EUPA/ku5M=
+=KI9R
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 27 22:09:50 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 27 Jun 2005 22:09:50 +0200
+Subject: [Noteedit-devel] svn down again:(
+In-Reply-To: <42C016F8.1030108@guest.arnes.si>
+References: <42C016F8.1030108@guest.arnes.si>
+Message-ID: <42C05D0E.1090209@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Ok, it works now fine. Probably a maintainence or a bad luck:). Sorry
+for the dust.
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Is it just me... or is our SVN server down again? I can login, but
+> I'm unable to update/commit anything.
+>
+>
+> Regards. - Matev?
+
+
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFCwF0Om1IQqmP8KVgRAqOhAJsEqiYY1Xl8A47LD6f8aJrpBLt/3gCffEtq
+m94MAYsaYcNgDGnRlah9j38=
+=llOH
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun 28 08:20:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 28 Jun 2005 08:20:39 +0200
+Subject: [Noteedit-devel] NoteEdit on-line doc
+In-Reply-To: <42C014F1.7070002@guest.arnes.si>
+References: <42C014F1.7070002@guest.arnes.si>
+Message-ID: <42C0EC37.2040607@web.de>
+
+Hi Matev?,
+
+> Hi Reinhard & others!
+> 
+> Could you please (if you have it) upload the on-line documentation (as
+> seen on the old website) to let's say htdocs/doc folder and make a
+> link to it under the Documentation section on the webpage. When I sent
+> requests for the NoteEdit new home to the first Google hits I got
+> describing NoteEdit , I got replies from many webmasters that they had
+> a link to the documentation of NoteEdit on their site as well, but
+> they cannot find any on the new site anymore.
+
+Ok, I put the online documentation online again :-).
+I also put up the new homepage as all of you probably already noted :).
+Also for those knowing the "new" homepage already: I added a help page.
+
+There is still some work to do:
+- Properly integrate the FAQ
+- More screenshots from you.
+- Make a script modyfing the generated html pages from meinproc in a
+   way that it fits to the homepage design.
+
+I leave this work as an exercise to the reader :-)
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun 29 22:50:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 29 Jun 2005 22:50:12 +0200
+Subject: [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+In-Reply-To: <42A67DBE.20906@web.de>
+References: <200506070847.14425.jjbenham@chicagoguitar.com> <42A5C73D.3070403@guest.arnes.si> <20050607201611.GA330@chicagoguitar.com> <42A61FB7.6070008@schwaben.de> <20050607232347.GA668@chicagoguitar.com> <42A67DBE.20906@web.de>
+Message-ID: <42C30984.4080009@web.de>
+
+Hi,
+
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi,
+> 
+>> Noteedit crashed again with the same errors. I decided to run it in gdb
+>> and do a backtrace on it.
+>>
+>> #9  0x00002aaaaafaa260 in TSE3::MidiSchedulerFactory::createScheduler ()
+>> from /usr/lib/libtse3.so.0
+>> #10 0x00002aaaaacd03ec in NMidiMapper::NMidiMapper () from
+>> /usr/lib/libnoteedit.so.1
+>> #11 0x0000000000402e8e in ?? ()
+>> #12 0x00002aaaaeed8e31 in __libc_start_main () from /lib/libc.so.6
+>>
+>>
+>> I guess maybe the problem is with tse3 or somethings.
+>>
+> 
+> Maybe, here is what NoteEdit actually does:
+
+<skipped>
+
+Another thing: Did you try out the patches for tse3 I sent to the
+mailing list as well as the latest tse3 ? I'd really like to know
+if they fix this problem as it doesn't happen on several systems
+I tested.
+
+Best Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+

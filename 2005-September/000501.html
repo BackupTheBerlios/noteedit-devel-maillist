@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Code restructuring, step 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431B5751.5070607%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000500.html">
+   <LINK REL="Next"  HREF="000503.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Code restructuring, step 2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431B5751.5070607%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] Code restructuring, step 2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Sep  4 22:21:37 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000500.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+        <LI>Next message: <A HREF="000503.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#501">[ date ]</a>
+              <a href="thread.html#501">[ thread ]</a>
+              <a href="subject.html#501">[ subject ]</a>
+              <a href="author.html#501">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Csaba,
+
+without grepping yet I would vote for a change to the new name. As you
+mention 1000 lines, I guess you would want to create a script to do this
+change. Could we first create, run, test such a script before we do a
+svn change? This may give more base for a decision or give us the job
+done. What do you think?
+
+Regards,
+Georg
+
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i>I only unified the status_ and status2_ variables.
+</I>&gt;<i>
+</I>&gt;<i>The setter / getter methods were not made.
+</I>&gt;<i>
+</I>&gt;<i>I had the following problems:
+</I>&gt;<i>
+</I>&gt;<i>- the name 'status_' should be changed to 'property_' as
+</I>&gt;<i>  status_ was misleading
+</I>&gt;<i>- for better understandability in each local variable 'status' should
+</I>&gt;<i>  be changed to 'property'
+</I>&gt;<i>- the 'status' member of NNote should also be changed to 'property'
+</I>&gt;<i>- some structure names contain 'status' and this requires also change
+</I>&gt;<i>- constants beginning with STAT_ should be changed to PROP_
+</I>&gt;<i>
+</I>&gt;<i>This requires more than a single day to make, and may cause big
+</I>&gt;<i>instability. More than 1000 lines should be changed.
+</I>&gt;<i>
+</I>&gt;<i>What would be the best solution?
+</I>&gt;<i>- don't rename 'status' to 'property',even though 'status' is misleading
+</I>&gt;<i>- change 'status' to 'property' only in a small part of the code
+</I>&gt;<i>  which may cause naming incoherency
+</I>&gt;<i>- make the changes gradually
+</I>&gt;<i>- postpone and do it later with a cleaner code
+</I>&gt;<i>- don't make setter / getter methods
+</I>&gt;<i>...
+</I>&gt;<i>
+</I>&gt;<i>I think, that this kind of immense changes requires some discussion.
+</I>&gt;<i>
+</I>&gt;<i>Bye,
+</I>&gt;<i>
+</I>&gt;<i>    Csaba
+</I>&gt;<i>  
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000500.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+	<LI>Next message: <A HREF="000503.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#501">[ date ]</a>
+              <a href="thread.html#501">[ thread ]</a>
+              <a href="subject.html#501">[ subject ]</a>
+              <a href="author.html#501">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

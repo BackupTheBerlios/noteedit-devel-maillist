@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Problems installing noteedit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problems%20installing%20noteedit&In-Reply-To=%3C200507121330.02549.andre.hinrichs%40gmx.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000385.html">
+   <LINK REL="Next"  HREF="000387.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Problems installing noteedit</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problems%20installing%20noteedit&In-Reply-To=%3C200507121330.02549.andre.hinrichs%40gmx.de%3E"
+       TITLE="[Noteedit-devel] Problems installing noteedit">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Jul 12 13:30:02 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000385.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+        <LI>Next message: <A HREF="000387.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#386">[ date ]</a>
+              <a href="thread.html#386">[ thread ]</a>
+              <a href="subject.html#386">[ subject ]</a>
+              <a href="author.html#386">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Did some more tries with tse3-0.2.5 and tse3-0.3.0.
+The installation of tse3-0.2.5 does create the right file names for libs:
+
+-rwxr-xr-x  1 root root   1474 Jul 12 13:12 libtse3.la
+lrwxrwxrwx  1 root root     16 Jul 12 13:12 libtse3.so -&gt; libtse3.so.0.0.0
+lrwxrwxrwx  1 root root     16 Jul 12 13:12 libtse3.so.0 -&gt; libtse3.so.0.0.0
+-rwxr-xr-x  1 root root 997660 Jul 12 13:12 libtse3.so.0.0.0
+
+And tse3-0.3.0 does not as you can see in the privious mails.
+Unfortunately, your hint of linking the library to a file with correct
+name does not help. Also tried to rename all files (and running ldconfig
+afterwards).
+
+How do your tse3 lib files look? Where are they located?
+
+Greetings,
+Andre
+
+On Tuesday 12 July 2005 09:53, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Try linking libtse3.so -&gt; libtse3.0.0.0. It works for me.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000385.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+	<LI>Next message: <A HREF="000387.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#386">[ date ]</a>
+              <a href="thread.html#386">[ thread ]</a>
+              <a href="subject.html#386">[ subject ]</a>
+              <a href="author.html#386">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

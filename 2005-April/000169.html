@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Qt Port of Mainwindow and menu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Qt%20Port%20of%20Mainwindow%20and%20menu&In-Reply-To=%3C426C8EEF.3040404%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000167.html">
+   <LINK REL="Next"  HREF="000168.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Qt Port of Mainwindow and menu</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Qt%20Port%20of%20Mainwindow%20and%20menu&In-Reply-To=%3C426C8EEF.3040404%40web.de%3E"
+       TITLE="[Noteedit-devel] Qt Port of Mainwindow and menu">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Apr 25 08:32:15 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000167.html">[Noteedit-devel] Qt Port of Mainwindow and menu
+</A></li>
+        <LI>Next message: <A HREF="000168.html">[Noteedit-devel] 2.7.5 / 2.8 Release and FRQ #310
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> Is there a way to make this configurable? I would find it sad if the
+</I>&gt;<i> integration into kde would be removed. I tend to respect the work the
+</I>&gt;<i> authers of noteedit did ...
+</I>
+Theoretically we could maintain both a Qt and KDE Version of NoteEdit
+but I think it would mean quite some work to keep both versions as
+not only for the main window and the menu there has to be code doubled
+but also for file dialogs, settings, standard dialogs etc.
+Of course I do respect the works of the original noteedit author(s)
+as well. Going to pure Qt will make things a little bit more 
+complicated. OTOH it is much easier to port to other platforms after
+this step as we are only dependent on one user interface API.
+
+&gt;<i> Persoonally I don't need the integration, but I just imagine the shuffle
+</I>&gt;<i> of files on the Desktop to call noteedit might be easier. More
+</I>&gt;<i> substantial critic I can't give in the moment. The option to be able to
+</I>&gt;<i> run without kde is a plus, of course.
+</I>
+Concerning the KDE integration maybe we could support a minimal
+desktop integration (mainly for theming and such). It would have
+to be done in a way that these addons can be switched easily with
+#ifdef KDE. Other things like Midi / TSE3 / arts (the audio integration)
+is a completely different topic I would not change at this time.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000167.html">[Noteedit-devel] Qt Port of Mainwindow and menu
+</A></li>
+	<LI>Next message: <A HREF="000168.html">[Noteedit-devel] 2.7.5 / 2.8 Release and FRQ #310
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

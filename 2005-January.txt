@@ -1,0 +1,1474 @@
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 16 16:29:34 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 16 Jan 2005 16:29:34 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+Message-ID: <200501161629.35032.leon.vinken@hetnet.nl>
+
+Hi all,
+
+in order to create/maintain our credibility as NoteEdit maintainers, I think 
+we should release new versions regularly. Therefore I propose to fix a few 
+more bugs, and then release 2.7.4.
+
+As far as I am concerned, we should fix at least the easy bugs and then 
+release a new version within a few weeks. As always, I am willing to help.
+
+Comments, offers for help and suggestions about what to fix an when to release 
+are welcome.
+
+Best regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jan 17 19:22:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 17 Jan 2005 19:22:11 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+Message-ID: <200501171922.11360.leon.vinken@hetnet.nl>
+
+Hi all,
+
+I have assigned bugs 2581, 2807 and 2809 to myself and intend to fix them in 
+time for inclusion in 2.7.4.
+
+Best regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jan 18 22:41:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 18 Jan 2005 22:41:07 +0100
+Subject: [Noteedit-devel] patch255
+Message-ID: <200501182241.07624.leon.vinken@hetnet.nl>
+
+Hi all,
+
+does anyone knows the status of patch #255 (uploaded by whiteangel on nov 
+26) ? Should that be merged in before the next release ? Can anyone verify 
+it's correctness ?
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jan 18 22:48:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 18 Jan 2005 22:48:18 +0100
+Subject: [Noteedit-devel] bug #2809 fixed
+Message-ID: <200501182248.18398.leon.vinken@hetnet.nl>
+
+Fix committed tonight, please check.
+
+regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jan 18 22:48:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 18 Jan 2005 22:48:59 +0100
+Subject: [Noteedit-devel] patch255
+In-Reply-To: <200501182241.07624.leon.vinken@hetnet.nl>
+References: <200501182241.07624.leon.vinken@hetnet.nl>
+Message-ID: <41ED844B.3000105@guest.arnes.si>
+
+Yes, I uploaded it few months ago. It mainly fixes the LilyPond export 
+stuff (adds \version "2.0", so the convert-ly works out of the box and 
+fixes few idents, so the contexts are ligned up correctly in multi-voice 
+scores).
+
+
+- Matevz
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi all,
+>
+>does anyone knows the status of patch #255 (uploaded by whiteangel on nov 
+>26) ? Should that be merged in before the next release ? Can anyone verify 
+>it's correctness ?
+>
+>Regards, Leon.
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 01:12:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 01:12:02 +0100
+Subject: [Noteedit-devel] patch255
+In-Reply-To: <41ED844B.3000105@guest.arnes.si>
+References: <200501182241.07624.leon.vinken@hetnet.nl> <41ED844B.3000105@guest.arnes.si>
+Message-ID: <41EDA5D2.3080707@schwaben.de>
+
+patch #255 is correct, please apply (as I posted in December).
+
+Regards,
+Georg.
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Yes, I uploaded it few months ago. It mainly fixes the LilyPond export 
+> stuff (adds \version "2.0", so the convert-ly works out of the box and 
+> fixes few idents, so the contexts are ligned up correctly in 
+> multi-voice scores).
+>
+>
+> - Matevz
+>
+> noteedit-devel-admin at berlios.de wrote:
+>
+>> Hi all,
+>>
+>> does anyone knows the status of patch #255 (uploaded by whiteangel on 
+>> nov 26) ? Should that be merged in before the next release ? Can 
+>> anyone verify it's correctness ?
+>>
+>> Regards, Leon.
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 02:34:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 02:34:41 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501171922.11360.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl>
+Message-ID: <41EDB931.2040009@schwaben.de>
+
+Hi Leon,
+
+I appreciate very much your release proposals. That makes sense.
+
+I think the LAC in april in Karlsruhe is also an event to show noteedit 
+is alive, and I hope to put a poster there. Last year I attended one 
+day, and it was very interesting, and fun.
+
+In my vacations I did some adaptions to lilypond 2.4 export. This gives 
+nice lyrics printout, with many verses possible over and beneath the 
+score. But instead of spreading many if's for the different lily 
+versions, I propose to duplicate NLilyExport::exportStaffs() in 
+lilyexport.cpp for lilypond >= 2.4. I'm afraid to damage export for 
+older lily's, which I don't have nor test. Does anyone have a thought 
+about that? I think we should have two of them. lily develops nicely, 
+with many (small) changes.
+
+At the weekend I did some arranging, and suddenly triples input didn't 
+work anymore: It works only with mouse input, not by external midi 
+keyboard, or vkeybd, if you don't have a real one. Leon, could you look 
+at this, maybe?
+
+Something more: My devel machine is a suse 9.2 x64, and my build process 
+is adventerous. The suse provided noteedit-2.7.3 rpm builds by itself, 
+thanks. It includes a patch. This is my base. What works is 1) download 
+svn repository from berlios 2) apply the patch from suse rpm 3) workout 
+the commands according to the suse spec file. Although this beeing very 
+intuitive it gives me atleast a working noteedit. The documentation is 
+far from that. The bones of my script are:
+
+    cd noteedit
+    cp /usr/src/packages/SOURCES/noteedit-2.7.3/configure.in .
+    cp /usr/src/packages/SOURCES/noteedit-2.7.3/Makefile.in .
+    patch -p1 < /usr/src/packages/SOURCES/noteedit-2.7.3.dif
+    cp /opt/kde3/share/apps/kdelibs/admin/acinclude.m4.in acinclude.m4
+    libtoolize --force
+    aclocal
+    autoconf
+    ./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64 
+--with-qt-libraries=/usr/lib/qt3/lib64 \
+        --disable-final --with-libtse3-libs=/usr/lib64
+    make
+
+How should we deal with that magic? Should I try something? Maybe to 
+postpone it for later?
+
+Best Regards,
+Georg.
+
+
+
+ 
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 02:34:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 02:34:41 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501171922.11360.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl>
+Message-ID: <41EDB931.2040009@schwaben.de>
+
+Hi Leon,
+
+I appreciate very much your release proposals. That makes sense.
+
+I think the LAC in april in Karlsruhe is also an event to show noteedit 
+is alive, and I hope to put a poster there. Last year I attended one 
+day, and it was very interesting, and fun.
+
+In my vacations I did some adaptions to lilypond 2.4 export. This gives 
+nice lyrics printout, with many verses possible over and beneath the 
+score. But instead of spreading many if's for the different lily 
+versions, I propose to duplicate NLilyExport::exportStaffs() in 
+lilyexport.cpp for lilypond >= 2.4. I'm afraid to damage export for 
+older lily's, which I don't have nor test. Does anyone have a thought 
+about that? I think we should have two of them. lily develops nicely, 
+with many (small) changes.
+
+At the weekend I did some arranging, and suddenly triples input didn't 
+work anymore: It works only with mouse input, not by external midi 
+keyboard, or vkeybd, if you don't have a real one. Leon, could you look 
+at this, maybe?
+
+Something more: My devel machine is a suse 9.2 x64, and my build process 
+is adventerous. The suse provided noteedit-2.7.3 rpm builds by itself, 
+thanks. It includes a patch. This is my base. What works is 1) download 
+svn repository from berlios 2) apply the patch from suse rpm 3) workout 
+the commands according to the suse spec file. Although this beeing very 
+intuitive it gives me atleast a working noteedit. The documentation is 
+far from that. The bones of my script are:
+
+    cd noteedit
+    cp /usr/src/packages/SOURCES/noteedit-2.7.3/configure.in .
+    cp /usr/src/packages/SOURCES/noteedit-2.7.3/Makefile.in .
+    patch -p1 < /usr/src/packages/SOURCES/noteedit-2.7.3.dif
+    cp /opt/kde3/share/apps/kdelibs/admin/acinclude.m4.in acinclude.m4
+    libtoolize --force
+    aclocal
+    autoconf
+    ./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64 
+--with-qt-libraries=/usr/lib/qt3/lib64 \
+        --disable-final --with-libtse3-libs=/usr/lib64
+    make
+
+How should we deal with that magic? Should I try something? Maybe to 
+postpone it for later?
+
+Best Regards,
+Georg.
+
+
+
+ 
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 18:44:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 18:44:29 +0100
+Subject: [Noteedit-devel] patch255
+In-Reply-To: <41EDA5D2.3080707@schwaben.de>
+References: <200501182241.07624.leon.vinken@hetnet.nl> <41ED844B.3000105@guest.arnes.si> <41EDA5D2.3080707@schwaben.de>
+Message-ID: <200501191844.29753.leon.vinken@hetnet.nl>
+
+OK,
+
+I will have a look at it and merge it into the source tree. Please note that I 
+don't use LilyPond, so I cannot verify I did it correctly.
+
+Regards, Leon.
+
+On Wednesday 19 January 2005 01:12, noteedit-devel-admin at berlios.de wrote:
+> patch #255 is correct, please apply (as I posted in December).
+>
+> Regards,
+> Georg.
+>
+> noteedit-devel-admin at berlios.de wrote:
+> > Yes, I uploaded it few months ago. It mainly fixes the LilyPond export
+> > stuff (adds \version "2.0", so the convert-ly works out of the box and
+> > fixes few idents, so the contexts are ligned up correctly in
+> > multi-voice scores).
+> >
+> >
+> > - Matevz
+> >
+> > noteedit-devel-admin at berlios.de wrote:
+> >> Hi all,
+> >>
+> >> does anyone knows the status of patch #255 (uploaded by whiteangel on
+> >> nov 26) ? Should that be merged in before the next release ? Can
+> >> anyone verify it's correctness ?
+> >>
+> >> Regards, Leon.
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 19:02:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 19:02:41 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <41EDB931.2040009@schwaben.de>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <41EDB931.2040009@schwaben.de>
+Message-ID: <200501191902.42033.leon.vinken@hetnet.nl>
+
+Hi Georg,
+
+answers below (as far as I have them).
+
+Regards, Leon.
+
+On Wednesday 19 January 2005 02:34, noteedit-devel-admin at berlios.de wrote:
+> Hi Leon,
+>
+> I appreciate very much your release proposals. That makes sense.
+>
+> I think the LAC in april in Karlsruhe is also an event to show noteedit
+> is alive, and I hope to put a poster there. Last year I attended one
+> day, and it was very interesting, and fun.
+>
+> In my vacations I did some adaptions to lilypond 2.4 export. This gives
+> nice lyrics printout, with many verses possible over and beneath the
+> score. But instead of spreading many if's for the different lily
+> versions, I propose to duplicate NLilyExport::exportStaffs() in
+> lilyexport.cpp for lilypond >= 2.4. I'm afraid to damage export for
+> older lily's, which I don't have nor test. Does anyone have a thought
+> about that? I think we should have two of them. lily develops nicely,
+> with many (small) changes.
+
+That would probably be workable, but I suspect it would lead to a large code 
+duplication. I am not fundamentally against that, but we should try to avoid 
+it. Note that I don't have an easy way out either. The best solution depends 
+on the amount of common code anyway.
+
+Possible other solutions might be to put all the required if's in anyway and 
+do regression testing to verify nothing is broken.
+
+Or, do it the object-oriented way: create a LilyPond export class containing 
+the common code, and use inheritance to support the differences required for 
+the different versions. Never tried this myself, don't know if it would work.
+
+>
+> At the weekend I did some arranging, and suddenly triples input didn't
+> work anymore: It works only with mouse input, not by external midi
+> keyboard, or vkeybd, if you don't have a real one. Leon, could you look
+> at this, maybe?
+
+For the time being I don't completely understand your problem. Is it releated 
+to my triplet changes ? What exactly happens ? How can I reproduce it ? Could 
+you send more info off-list ?
+
+>
+> Something more: My devel machine is a suse 9.2 x64, and my build process
+> is adventerous. The suse provided noteedit-2.7.3 rpm builds by itself,
+> thanks. It includes a patch. This is my base. What works is 1) download
+> svn repository from berlios 2) apply the patch from suse rpm 3) workout
+> the commands according to the suse spec file. Although this beeing very
+> intuitive it gives me atleast a working noteedit. The documentation is
+> far from that. The bones of my script are:
+>
+>     cd noteedit
+>     cp /usr/src/packages/SOURCES/noteedit-2.7.3/configure.in .
+>     cp /usr/src/packages/SOURCES/noteedit-2.7.3/Makefile.in .
+>     patch -p1 < /usr/src/packages/SOURCES/noteedit-2.7.3.dif
+>     cp /opt/kde3/share/apps/kdelibs/admin/acinclude.m4.in acinclude.m4
+>     libtoolize --force
+>     aclocal
+>     autoconf
+>     ./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64
+> --with-qt-libraries=/usr/lib/qt3/lib64 \
+>         --disable-final --with-libtse3-libs=/usr/lib64
+>     make
+>
+> How should we deal with that magic? Should I try something? Maybe to
+> postpone it for later?
+
+Would it help if we merged the Suse patch into the source tree, if possible ? 
+Building the SVN tree is still an issue that should be solved IMHO. For the 
+time being I also build by starting with the 2.7.3 tarball and adding the 
+changed sources.
+
+>
+> Best Regards,
+> Georg.
+>
+>
+>
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 23:39:44 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 23:39:44 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501191902.42033.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <41EDB931.2040009@schwaben.de> <200501191902.42033.leon.vinken@hetnet.nl>
+Message-ID: <41EEE1B0.5060909@schwaben.de>
+
+Hi Leon,
+
+the easy answers come here immediately:
+
+>>It works only with mouse input, not by external midi
+>>keyboard, or vkeybd, if you don't have a real one. Leon, could you look
+>>at this, maybe?
+>>
+
+In other words: I discovered that triplet input works only when you 
+insert notes with the mouse, not with the midi keyboard. This is in non 
+edit mode, of course. If you want to see it: start noteedit, kaconnect 
+and vkeybd. Connect in kaconnect vkeybd (in my setup usually 131:0) with 
+noteedit (usually 130:0). When you press the black keyboard icon in 
+noteedit you should hear the playing from vkeybd. When you press the red 
+keyboard icon in noteedit you can enter notes like you do with the mouse.
+
+>Is it releated to my triplet changes ? What exactly happens ?
+>
+The setting of the triplet icon is just ignored when the triplet notes 
+come from vkeybd. (With an external keyboard it's very convenient to 
+insert chords.) Triplets insert works now atleast better.
+
+>....
+>Would it help if we merged the Suse patch into the source tree, if possible ? 
+>Building the SVN tree is still an issue that should be solved IMHO. For the 
+>time being I also build by starting with the 2.7.3 tarball and adding the 
+>changed sources.
+>
+About the build processes to be supported some others time ...
+
+Best Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 22:23:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 22:23:19 +0100
+Subject: [Noteedit-devel] patch255
+In-Reply-To: <200501191844.29753.leon.vinken@hetnet.nl>
+References: <200501182241.07624.leon.vinken@hetnet.nl> <41EDA5D2.3080707@schwaben.de> <200501191844.29753.leon.vinken@hetnet.nl>
+Message-ID: <200501192223.19130.leon.vinken@hetnet.nl>
+
+Hi all,
+
+patch 255 applied cleanly, see log below. Seems to work OK. Change was 
+committed tonight.
+
+Regards, Leon.
+
+[lvi at athlon64 aaa]$ patch --verbose lilyexport.cpp noteedit-patch000255
+Hmm...  Looks like a new-style context diff to me...
+The text leading up to this was:
+--------------------------
+|*** lilyexport.cpp     Fri Nov 26 15:35:32 2004
+|--- lilyexport.cpp.new Fri Nov 26 15:46:26 2004
+--------------------------
+Patching file lilyexport.cpp using Plan A...
+Hunk #1 succeeded at 147.
+Hunk #2 succeeded at 292.
+Hunk #3 succeeded at 955 (offset 12 lines).
+done
+[lvi at athlon64 aaa]$
+
+On Wednesday 19 January 2005 18:44, noteedit-devel-admin at berlios.de wrote:
+> OK,
+>
+> I will have a look at it and merge it into the source tree. Please note
+> that I don't use LilyPond, so I cannot verify I did it correctly.
+>
+> Regards, Leon.
+>
+> On Wednesday 19 January 2005 01:12, noteedit-devel-admin at berlios.de wrote:
+> > patch #255 is correct, please apply (as I posted in December).
+> >
+> > Regards,
+> > Georg.
+> >
+> > noteedit-devel-admin at berlios.de wrote:
+> > > Yes, I uploaded it few months ago. It mainly fixes the LilyPond export
+> > > stuff (adds \version "2.0", so the convert-ly works out of the box and
+> > > fixes few idents, so the contexts are ligned up correctly in
+> > > multi-voice scores).
+> > >
+> > >
+> > > - Matevz
+> > >
+> > > noteedit-devel-admin at berlios.de wrote:
+> > >> Hi all,
+> > >>
+> > >> does anyone knows the status of patch #255 (uploaded by whiteangel on
+> > >> nov 26) ? Should that be merged in before the next release ? Can
+> > >> anyone verify it's correctness ?
+> > >>
+> > >> Regards, Leon.
+> >
+> > _______________________________________________
+> > Noteedit-devel mailing list
+> > Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 19 22:32:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 19 Jan 2005 22:32:07 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <41EEE1B0.5060909@schwaben.de>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <200501191902.42033.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de>
+Message-ID: <200501192232.07906.leon.vinken@hetnet.nl>
+
+Hi Georg,
+
+currently I am in the process of downloading both vkeybd and kaconnect. If 
+these work, I will try to fix the bug. Never used them before, therefore no 
+time estimate yet. Could you file a bug report for this problem ?
+
+Thanks, Leon.
+
+On Wednesday 19 January 2005 23:39, noteedit-devel-admin at berlios.de wrote:
+> Hi Leon,
+>
+> the easy answers come here immediately:
+> >>It works only with mouse input, not by external midi
+> >>keyboard, or vkeybd, if you don't have a real one. Leon, could you look
+> >>at this, maybe?
+>
+> In other words: I discovered that triplet input works only when you
+> insert notes with the mouse, not with the midi keyboard. This is in non
+> edit mode, of course. If you want to see it: start noteedit, kaconnect
+> and vkeybd. Connect in kaconnect vkeybd (in my setup usually 131:0) with
+> noteedit (usually 130:0). When you press the black keyboard icon in
+> noteedit you should hear the playing from vkeybd. When you press the red
+> keyboard icon in noteedit you can enter notes like you do with the mouse.
+>
+> >Is it releated to my triplet changes ? What exactly happens ?
+>
+> The setting of the triplet icon is just ignored when the triplet notes
+> come from vkeybd. (With an external keyboard it's very convenient to
+> insert chords.) Triplets insert works now atleast better.
+>
+> >....
+> >Would it help if we merged the Suse patch into the source tree, if
+> > possible ? Building the SVN tree is still an issue that should be solved
+> > IMHO. For the time being I also build by starting with the 2.7.3 tarball
+> > and adding the changed sources.
+>
+> About the build processes to be supported some others time ...
+>
+> Best Regards,
+> Georg.
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 23 21:28:50 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 23 Jan 2005 21:28:50 +0100
+Subject: [Noteedit-devel] bug 2807 mostly fixed
+Message-ID: <200501232128.50208.leon.vinken@hetnet.nl>
+
+Hi all,
+
+tonight I've committed almost the complete fix for bug 2807 (rests with 
+fermatas).
+
+NoteEdit now supports editing rests with fermatas and writing these 
+in .abc, .not, .ly (untested), .tex (untested) and .xml format. Writing 
+in .pmx format is not supported. Reading in .xml format is supported.
+
+As I am not familiar with lex and yacc, it would cost me a significant amount 
+time to also implement reading in .not format. Could someone else please do 
+that ?
+
+The small print: I don't use either MusixTeX or LilyPond, thus the 
+implementation is untested and may be incorrect. Please report any problems. 
+Furthermore, I (arbitrarily) decided to support fermatas only on normal rests 
+and not on multirests.
+
+Enjoy, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 26 10:50:10 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Jan 2005 10:50:10 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501192232.07906.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <200501191902.42033.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de> <200501192232.07906.leon.vinken@hetnet.nl>
+Message-ID: <41F767D2.1030207@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Georg,
+>
+>currently I am in the process of downloading both vkeybd and kaconnect. If 
+>these work, I will try to fix the bug. Never used them before, therefore no 
+>time estimate yet. Could you file a bug report for this problem ?
+>
+>Thanks, Leon.
+>
+>  
+>
+Done, Regards, Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 26 11:25:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Jan 2005 11:25:45 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+Message-ID: <41F77029.1040705@schwaben.de>
+
+Hi all,
+
+I added export in lilypond-2.4.2 format, older versions are not 
+affected/corrected at all. Lyrics get typset much nicer now.
+
+Corrections were done in octave-lowered violin clef, syncing of lyrics 
+with tie-melismas. Slur melismas still go out of sync, but they are not 
+needed so heavily. This needs more investigation. A tempo assignment 
+makes lily choking, needs maybe a newer lily. Export of drum note heads 
+is incomplete. Whole bar rests in three beat bars (maybe only after four 
+beat music) should be exported with r2., not r1.
+
+And, we have a lot of if's in lilyexport. After the 2.4 release we 
+should consider to drop support for lily 1.x. Any comments?
+
+I'm considering to change the syntax of the score layout section that I 
+can easily adopt the lilypond file to move the lyrics also above the 
+notes. This syntax is a bit wired, but I think it might be good that 
+noteedit gives in default already the hint how to do that.
+
+What might be annoying: If there is no alsa-midi synthesizer up and 
+running, noteedit is crashing without comment. This might scare people 
+away. A printf somewhere is minimum, better a window in case you start 
+through a desktop icon. Who might do that? If I'm more familiar with 
+noteedit I will consider to work more with bug-assignment on berlios ...
+
+Anyway, enjoy,
+and Best Regards.
+Georg Rudolph.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jan 26 21:33:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Jan 2005 21:33:19 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <41F77029.1040705@schwaben.de>
+References: <41F77029.1040705@schwaben.de>
+Message-ID: <41F7FE8F.9090605@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>
+> And, we have a lot of if's in lilyexport. After the 2.4 release we 
+> should consider to drop support for lily 1.x. 
+
+Oops, I meant the noteedit 2.7.4 release :)
+
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jan 27 11:08:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 27 Jan 2005 11:08:46 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <41F77029.1040705@schwaben.de>
+References: <41F77029.1040705@schwaben.de>
+Message-ID: <41F8BDAE.5090009@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi all,
+>
+> I added export in lilypond-2.4.2 format, older versions are not 
+> affected/corrected at all. Lyrics get typset much nicer now.
+
+Did you change the \version to "2.4.2" in the beginning of the export?
+
+> Corrections were done in octave-lowered violin clef, syncing of lyrics 
+> with tie-melismas. Slur melismas still go out of sync, but they are 
+> not needed so heavily. This needs more investigation. A tempo 
+> assignment makes lily choking, needs maybe a newer lily. Export of 
+> drum note heads is incomplete. Whole bar rests in three beat bars 
+> (maybe only after four beat music) should be exported with r2., not r1.
+
+I'm not sure how lyrics are treated in NoteEdit, but LilyPond has the 
+following:
+- every blank is a new note, multiple blanks one after another are 
+ignored and are treated as one
+- for melisma __ (double underline) is used, but doesn't take an extra 
+note for that. eg. If you want to express "Oh_______________ the days." 
+(and Oh is melisma long 5 notes) in Lily, you make a slur (start of 
+melisma) and on the note that starts the slur, you write Oh and then __ 
+(means the start of melisma, the underline will hold until the end of 
+slur) and later the days (two normal separated notes): Oh __ the days.
+- if you want to divide a single word's sylables to more than one note, 
+the -- (double dash) is used and again doesn't need an extra note for 
+that. eg. If you want to express "Li - ly - pond rules!" (4 notes), the 
+syntax should be Li -- ly -- pond rules!
+- ties are treated the same as slurs; you can write melisma or treat it 
+as a single note which doesn't need it
+
+For rests, there is a common notation nowadays (and don't ask me why, 
+because it's stupid and harder to read IMHO) that if a certain measure 
+is empty (doesn't contain any notes), it has the whole rest which means 
+that this measure is really empty (despite the actual number of 
+beats/length of the measure).
+
+>
+> And, we have a lot of if's in lilyexport. After the 2.4 release we 
+> should consider to drop support for lily 1.x. Any comments?
+
+1.x is IMO dead for quite some time now. 3.0 is being actively developed 
+in the moment (and the most exciting new feature that I'm waiting for a 
+few years already is utf-8 support!:)), but is at least 6 months away.
+
+> I'm considering to change the syntax of the score layout section that 
+> I can easily adopt the lilypond file to move the lyrics also above the 
+> notes. This syntax is a bit wired, but I think it might be good that 
+> noteedit gives in default already the hint how to do that.
+
+LilyPond also offers a separate context for lyrics which is independent 
+to actual staves, but can connect to certain real voices as well. I'd 
+think more in that way. So we should have something like
+Insert--Context--Staff
+               --Lyrics
+               --Chords
+               --Tablature
+               --GeneralBas markings
+               --Harmonics
+
+Which is more or less the LilyPond syntax already. Applying certain 
+Lyrics to voice as I said should be also possible if not necessary.
+A few brainstorming ideas for the future:).
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jan 27 23:05:06 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 27 Jan 2005 23:05:06 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <41F77029.1040705@schwaben.de>
+References: <41F77029.1040705@schwaben.de>
+Message-ID: <200501272305.06640.leon.vinken@hetnet.nl>
+
+Hi Georg,
+
+nice work. This means that besides bug fixes we also have a feature for the 
+next release.
+
+Could you also add a note to the documentation explaining which Lily versions 
+are supported and to what level?
+
+Regards, Leon.
+
+On Wednesday 26 January 2005 11:25, noteedit-devel-admin at berlios.de wrote:
+> Hi all,
+>
+> I added export in lilypond-2.4.2 format, older versions are not
+> affected/corrected at all. Lyrics get typset much nicer now.
+>
+> Corrections were done in octave-lowered violin clef, syncing of lyrics
+> with tie-melismas. Slur melismas still go out of sync, but they are not
+> needed so heavily. This needs more investigation. A tempo assignment
+> makes lily choking, needs maybe a newer lily. Export of drum note heads
+> is incomplete. Whole bar rests in three beat bars (maybe only after four
+> beat music) should be exported with r2., not r1.
+>
+> And, we have a lot of if's in lilyexport. After the 2.4 release we
+> should consider to drop support for lily 1.x. Any comments?
+>
+> I'm considering to change the syntax of the score layout section that I
+> can easily adopt the lilypond file to move the lyrics also above the
+> notes. This syntax is a bit wired, but I think it might be good that
+> noteedit gives in default already the hint how to do that.
+>
+> What might be annoying: If there is no alsa-midi synthesizer up and
+> running, noteedit is crashing without comment. This might scare people
+> away. A printf somewhere is minimum, better a window in case you start
+> through a desktop icon. Who might do that? If I'm more familiar with
+> noteedit I will consider to work more with bug-assignment on berlios ...
+>
+> Anyway, enjoy,
+> and Best Regards.
+> Georg Rudolph.
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jan 28 22:12:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 28 Jan 2005 22:12:41 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <41F8BDAE.5090009@guest.arnes.si>
+References: <41F77029.1040705@schwaben.de> <41F8BDAE.5090009@guest.arnes.si>
+Message-ID: <41FAAAC9.8030200@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+Hi Matev?,
+
+thanks for your insights.
+
+>
+> Did you change the \version to "2.4.2" in the beginning of the export?
+>
+Yes, when it detects a lily >= 2.4.0, and in all others cases \version 
+"2.0.3", even when it exports for older lilies. It's okay, I think.
+
+>
+> I'm not sure how lyrics are treated in NoteEdit, but LilyPond has the 
+> following: ......
+
+Thank you very much for your valuable explanation. I'll study it, learn 
+it, though not easy ..
+
+> For rests, there is a common notation nowadays (and don't ask me why, 
+> because it's stupid and harder to read IMHO) that if a certain measure 
+> is empty (doesn't contain any notes), it has the whole rest which 
+> means that this measure is really empty (despite the actual number of 
+> beats/length of the measure).
+>
+So r1 in a three beat bar should be accepted by lily 2.4.2, no 
+correction in noteedit neccessary?
+
+> LilyPond also offers a separate context for lyrics which is 
+> independent to actual staves, but can connect to certain real voices 
+> as well. I'd think more in that way. So we should have something like
+> Insert--Context--Staff
+>               --Lyrics
+>               --Chords
+>               --Tablature
+>               --GeneralBas markings
+>               --Harmonics
+>
+> Which is more or less the LilyPond syntax already. Applying certain 
+> Lyrics to voice as I said should be also possible if not necessary.
+> A few brainstorming ideas for the future:).
+>
+About the mechanics of lilypond context I don't have a good idea yet. 
+Maybe I'll post my proposal of the syntax template, and you might check 
+it then ...
+
+Best Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jan 28 23:38:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 28 Jan 2005 23:38:45 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <41FAAAC9.8030200@schwaben.de>
+References: <41F77029.1040705@schwaben.de> <41F8BDAE.5090009@guest.arnes.si> <41FAAAC9.8030200@schwaben.de>
+Message-ID: <41FABEF5.5060108@guest.arnes.si>
+
+>> For rests, there is a common notation nowadays (and don't ask me why, 
+>> because it's stupid and harder to read IMHO) that if a certain 
+>> measure is empty (doesn't contain any notes), it has the whole rest 
+>> which means that this measure is really empty (despite the actual 
+>> number of beats/length of the measure).
+>>
+> So r1 in a three beat bar should be accepted by lily 2.4.2, no 
+> correction in noteedit neccessary?
+
+No, Lily wouldn't accept it (I tested with 2.4.2 and it doesn't work). 
+Above, I only tried to explain how the notation usually looks nowadays 
+(LilyPond output actually). But for Lily input, it's necessary to insert 
+exact values (that is r2. (half dotted rest) for full measure length 
+rest in 3/4 beat). I'm not aware of the NoteEdit bug, so I apologize for 
+the misconception.
+
+>
+>> LilyPond also offers a separate context for lyrics which is 
+>> independent to actual staves, but can connect to certain real voices 
+>> as well. I'd think more in that way. So we should have something like
+>> Insert--Context--Staff
+>>               --Lyrics
+>>               --Chords
+>>               --Tablature
+>>               --GeneralBas markings
+>>               --Harmonics
+>>
+>> Which is more or less the LilyPond syntax already. Applying certain 
+>> Lyrics to voice as I said should be also possible if not necessary.
+>> A few brainstorming ideas for the future:).
+>>
+> About the mechanics of lilypond context I don't have a good idea yet. 
+> Maybe I'll post my proposal of the syntax template, and you might 
+> check it then ...
+
+That would be a good idea. I'm working on a project of mine (still at 
+blueprints and numerous tests, but thinking a lot:)) meant as a perfect 
+composition tool. I've taken the concept of staves, lyrics etc. from 
+LilyPond and I think it is the best around (comparing to Finale or the 
+typesetting programs abc and musicxml). That's why I put so much 
+preasure on this, because NoteEdit currently is very close to this 
+perfect composition tool already (ie. the freedom  of inserting clefs, 
+measure lines, MIDI commands, text signs) and I already made some good 
+music with it. The downside of NoteEdit is however, ugly not-commented 
+C++ code and KDE non-portability. But as this is free software, the 
+first can be fixed, and the second is not conserning us as developers 
+neither as composers.
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jan 29 10:02:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 29 Jan 2005 10:02:30 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <200501272305.06640.leon.vinken@hetnet.nl>
+References: <41F77029.1040705@schwaben.de> <200501272305.06640.leon.vinken@hetnet.nl>
+Message-ID: <41FB5126.7040102@schwaben.de>
+
+>Could you also add a note to the documentation explaining which Lily versions 
+>are supported and to what level?
+>
+>Regards, Leon.
+>
+>  
+>
+
+Hi Leon,
+
+could you maybe give me a hint to open which file and with which tool 
+(???) to edit the documentation? I guess some file in noteedit/doc, and  
+I guessed already too much :). What should I read?
+
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jan 29 13:19:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 29 Jan 2005 13:19:45 +0100
+Subject: [Noteedit-devel] lily-2.4 export added
+In-Reply-To: <41FB5126.7040102@schwaben.de>
+References: <41F77029.1040705@schwaben.de> <200501272305.06640.leon.vinken@hetnet.nl> <41FB5126.7040102@schwaben.de>
+Message-ID: <200501291319.45642.leon.vinken@hetnet.nl>
+
+Georg,
+
+that is:
+doc/noteedit/index.docbook (English version)
+doc/de/index.docbook (German version)
+doc/de/de.po (not sure about this one)
+
+Note that I already made minor changes to the English manual, to reflect 
+NoteEdit's new home and maintainers. These still need to be translated into 
+German. Please do so, as my German is not good enough for error-free writing.
+
+Regards, Leon.
+
+On Saturday 29 January 2005 10:02, noteedit-devel-admin at berlios.de wrote:
+> >Could you also add a note to the documentation explaining which Lily
+> > versions are supported and to what level?
+> >
+> >Regards, Leon.
+>
+> Hi Leon,
+>
+> could you maybe give me a hint to open which file and with which tool
+> (???) to edit the documentation? I guess some file in noteedit/doc, and
+> I guessed already too much :). What should I read?
+>
+> Regards,
+> Georg.
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jan 29 13:25:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 29 Jan 2005 13:25:08 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <41EEE1B0.5060909@schwaben.de>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <200501191902.42033.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de>
+Message-ID: <200501291325.08331.leon.vinken@hetnet.nl>
+
+Hi all,
+
+it seems I am running out of simple things to fix. Therefore i would like to 
+create the 2.7.4 release shortly. Are there things anyone is doing that needs 
+to be done before 2.7.4 ? If so, please let me know a.s.a.p.
+
+At least the documentation (user manual) still needs a few updates, which are 
+waiting for a native German speaker.
+
+Lacking volunteers to fix the file loader, I plan to finish bug 2807 myself. 
+May take a few days.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jan 29 16:09:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 29 Jan 2005 16:09:09 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501291325.08331.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <200501191902.42033.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de> <200501291325.08331.leon.vinken@hetnet.nl>
+Message-ID: <41FBA715.3070409@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi all,
+>
+>it seems I am running out of simple things to fix. Therefore i would like to 
+>create the 2.7.4 release shortly. Are there things anyone is doing that needs 
+>to be done before 2.7.4 ? If so, please let me know a.s.a.p.
+>
+>  
+>
+To do a release is okay, because 2.7.4 will only be better than 2.7.3. 
+For me anyway better :)
+
+>At least the documentation (user manual) still needs a few updates, which are 
+>waiting for a native German speaker.
+>
+>  
+>
+Tomorrow hopefully, I'll do that.
+
+As I understood the build procedure is not yet updated sufficiently, 
+I'll test that it installs on a kernl 2.4 system according to J?rgs 
+documentation. And I'll also test if the new tarball will work when 
+dropped in the Suse 9.2 rpm, without modifying the spec file and the 
+acompanying patch.
+
+Best Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 30 12:38:06 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Jan 2005 12:38:06 +0100
+Subject: [Noteedit-devel] bug 2807 mostly fixed
+In-Reply-To: <200501232128.50208.leon.vinken@hetnet.nl>
+References: <200501232128.50208.leon.vinken@hetnet.nl>
+Message-ID: <200501301238.06984.leon.vinken@hetnet.nl>
+
+Hi all,
+
+yes, I've finally discovered how to persuade the Yacc code to also read .not 
+files containing rests with fermatas. Bug #2807 is closed. Nevertheless, 
+please test ...
+
+Regards, Leon.
+
+On Sunday 23 January 2005 21:28, noteedit-devel-admin at berlios.de wrote:
+> Hi all,
+>
+> tonight I've committed almost the complete fix for bug 2807 (rests with
+> fermatas).
+>
+> NoteEdit now supports editing rests with fermatas and writing these
+> in .abc, .not, .ly (untested), .tex (untested) and .xml format. Writing
+> in .pmx format is not supported. Reading in .xml format is supported.
+>
+> As I am not familiar with lex and yacc, it would cost me a significant
+> amount time to also implement reading in .not format. Could someone else
+> please do that ?
+>
+> The small print: I don't use either MusixTeX or LilyPond, thus the
+> implementation is untested and may be incorrect. Please report any
+> problems. Furthermore, I (arbitrarily) decided to support fermatas only on
+> normal rests and not on multirests.
+>
+> Enjoy, Leon.
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 30 15:25:43 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Jan 2005 15:25:43 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501291325.08331.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <200501191902.42033.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de> <200501291325.08331.leon.vinken@hetnet.nl>
+Message-ID: <41FCEE67.4070605@schwaben.de>
+
+Hi all,
+
+does anyone know how to edit index.docbook in an editor with 
+preview/wysiwig? I searched around, and I can't believe to edit docbook 
+documentation isn't comfortable and easy. Maybe I just don't know how to 
+start one of the many editors I got, may I first have to load a proper 
+style sheet? Any hint is appreciated.
+
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 30 17:02:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Jan 2005 17:02:04 +0100
+Subject: [Noteedit-devel] Slovenian translation
+Message-ID: <41FD04FC.9000302@guest.arnes.si>
+
+I'm sending a Slovenian translated .po file in a hope of including it in 
+2.7.4 version.
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sl.po
+Type: text/x-gettext-translation
+Size: 94054 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050130/129a0928/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 30 19:37:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Jan 2005 19:37:02 +0100
+Subject: [Noteedit-devel] Slovenian translation
+In-Reply-To: <41FD04FC.9000302@guest.arnes.si>
+References: <41FD04FC.9000302@guest.arnes.si>
+Message-ID: <41FD294E.4010205@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> I'm sending a Slovenian translated .po file in a hope of including it 
+> in 2.7.4 version.
+>
+>
+> Regards.
+> - Matev?
+>
+Thanks, checked into svn. Could you also send a patch of 
+noteedit/po/Makefile.in, where you probably have to connect it to the 
+build process, or somebody else?
+
+Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 30 19:22:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Jan 2005 19:22:11 +0100
+Subject: [Noteedit-devel] Slovenian translation
+In-Reply-To: <41FD294E.4010205@schwaben.de>
+References: <41FD04FC.9000302@guest.arnes.si> <41FD294E.4010205@schwaben.de>
+Message-ID: <41FD25D3.6010502@guest.arnes.si>
+
+Done.
+
+patch -p1 /noteedit/po/Makefile.in < Makefile.diff
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> noteedit-devel-admin at berlios.de wrote:
+>
+>> I'm sending a Slovenian translated .po file in a hope of including it 
+>> in 2.7.4 version.
+>>
+>>
+>> Regards.
+>> - Matev?
+>>
+> Thanks, checked into svn. Could you also send a patch of 
+> noteedit/po/Makefile.in, where you probably have to connect it to the 
+> build process, or somebody else?
+>
+> Regards,
+> Georg.
+>
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: Makefile.diff
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050130/ec57ac2a/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jan 30 23:29:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Jan 2005 23:29:03 +0100
+Subject: [Noteedit-devel] Slovenian translation
+In-Reply-To: <41FD25D3.6010502@guest.arnes.si>
+References: <41FD04FC.9000302@guest.arnes.si> <41FD294E.4010205@schwaben.de> <41FD25D3.6010502@guest.arnes.si>
+Message-ID: <41FD5FAF.9000209@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Done.
+>
+> patch -p1 /noteedit/po/Makefile.in < Makefile.diff
+>
+Applied,
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jan 31 03:16:56 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 31 Jan 2005 03:16:56 +0100
+Subject: [Noteedit-devel] 2.7.4 release
+In-Reply-To: <200501291325.08331.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <200501191902.42033.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de> <200501291325.08331.leon.vinken@hetnet.nl>
+Message-ID: <41FD9518.8000807@schwaben.de>
+
+Hi Leon,
+
+>At least the documentation (user manual) still needs a few updates, which are 
+>waiting for a native German speaker.
+>
+>
+Your changes in doc/index.docbook (triplet insertion) are now reflected 
+in doc/de/index.docbook.
+
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jan 31 08:18:28 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 31 Jan 2005 08:18:28 +0100
+Subject: [Noteedit-devel] authors
+Message-ID: <200501310818.28926.leon.vinken@hetnet.nl>
+
+Hi NoteEdit developers,
+
+if you want to, please add your name to the list of NoteEdit developer's 
+before we release 2.7.4. Changes should be in AUTHORS (of course) and 
+noteedit/noteedit_part.cpp (NoteeditFactory::aboutData(), the info shown by 
+help/about).
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jan 31 08:19:27 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 31 Jan 2005 08:19:27 +0100
+Subject: [Noteedit-devel] midi keyboard and triplets (bug #3088)
+In-Reply-To: <200501192232.07906.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de> <200501192232.07906.leon.vinken@hetnet.nl>
+Message-ID: <200501310819.27856.leon.vinken@hetnet.nl>
+
+Georg,
+
+yesterday I compiled both vkeybd and kaconnect without problems. Apparently 
+there is an issue with my ALSA setup, because both fail with the message 
+"ALSA lib seq_hw.c:446:(snd_seq_hw_open) open /dev/snd/seq failed: No such 
+file or directory". For the time being I don't know how to solve that.
+
+Won't be able to make much progress on bug #3088 ...
+
+In case you are familiar with ALSA: my setup is Fedora Core 3, on-board AC97 
+audio. /dev/snd only contains control, pcm and timer devices.
+
+Regards, Leon.
+
+On Wednesday 19 January 2005 22:32, noteedit-devel-admin at berlios.de wrote:
+> Hi Georg,
+>
+> currently I am in the process of downloading both vkeybd and kaconnect. If
+> these work, I will try to fix the bug. Never used them before, therefore no
+> time estimate yet. Could you file a bug report for this problem ?
+>
+> Thanks, Leon.
+>
+> On Wednesday 19 January 2005 23:39, noteedit-devel-admin at berlios.de wrote:
+> > Hi Leon,
+> >
+> > the easy answers come here immediately:
+> > >>It works only with mouse input, not by external midi
+> > >>keyboard, or vkeybd, if you don't have a real one. Leon, could you look
+> > >>at this, maybe?
+> >
+> > In other words: I discovered that triplet input works only when you
+> > insert notes with the mouse, not with the midi keyboard. This is in non
+> > edit mode, of course. If you want to see it: start noteedit, kaconnect
+> > and vkeybd. Connect in kaconnect vkeybd (in my setup usually 131:0) with
+> > noteedit (usually 130:0). When you press the black keyboard icon in
+> > noteedit you should hear the playing from vkeybd. When you press the red
+> > keyboard icon in noteedit you can enter notes like you do with the mouse.
+> >
+> > >Is it releated to my triplet changes ? What exactly happens ?
+> >
+> > The setting of the triplet icon is just ignored when the triplet notes
+> > come from vkeybd. (With an external keyboard it's very convenient to
+> > insert chords.) Triplets insert works now atleast better.
+> >
+> > >....
+> > >Would it help if we merged the Suse patch into the source tree, if
+> > > possible ? Building the SVN tree is still an issue that should be
+> > > solved IMHO. For the time being I also build by starting with the 2.7.3
+> > > tarball and adding the changed sources.
+> >
+> > About the build processes to be supported some others time ...
+> >
+> > Best Regards,
+> > Georg.
+> >
+> > _______________________________________________
+> > Noteedit-devel mailing list
+> > Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jan 31 23:26:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 31 Jan 2005 23:26:12 +0100
+Subject: [Noteedit-devel] Re: Learning How to Modify Noteedit
+In-Reply-To: <20050128155741.35462.qmail@web30805.mail.mud.yahoo.com>
+References: <20050128155741.35462.qmail@web30805.mail.mud.yahoo.com>
+Message-ID: <41FEB084.1000802@web.de>
+
+Hi Michael,
+
+Welcome to the club ;-) I've added you as a developer to the project.
+We're close to release 2.7.4 though I have not much time currently
+to help on that (no problem to create tarballs for me). The main
+problems I encountered are project management with KDE.
+
+When you have checked out the current SVN code you could either
+try to use the configure scripts inclued in the 2.7.3 archive or
+
+- Create a new "noteedit" project with kdevelop
+- Copy the SVN directory (I call it noteedit_work, a working copy)
+- Copy the admin files and the Makefile.cvs to the working copy.
+- Try to build it: make -f Makefile.cvs, ./configure.
+- Check if Makefiles were created for doc and noteedit directory.
+   if not add some line to configure.in:
+
+AC_CONFIG_FILES([ doc/Makefile ])
+AC_CONFIG_FILES([ doc/de/Makefile ])
+AC_CONFIG_FILES([ doc/noteedit/Makefile ])
+AC_CONFIG_FILES([ kguitar_excerpt/Makefile ])
+AC_CONFIG_FILES([ noteedit/Makefile ])
+AC_CONFIG_FILES([ noteedit/icons/Makefile ])
+AC_CONFIG_FILES([ noteedit/resources/Makefile ])
+AC_CONFIG_FILES([ po/Makefile ])
+
+These have to be added after the line
+AC_CONFIG_FILES([ Makefile ])
+
+Try to 'make' it.
+
+QT: The user interface is created from XML files
+uic take a .ui files and generated .cpp / .h files.
+
+KDE: Don't have much experience with KDE development myself.
+
+If you have a good idea for solving the build nightmare ;-)
+just drop us a note on the devel ML.
+
+You can also try to use kdevelop as integrated development
+environment. It has gdb support.
+
+Best regards,
+
+Reinhard Katzmann
+
+Michael Carroll schrieb:
+> Reinhard,
+> 
+> Thanks for the warm welcome.  My belios username is
+> mcarroll.
+> 
+> I look forward to working with you.
+> 
+> Thus far, I have learned how to set breakpoints at
+> various points of interest (primarily function/method
+> calls) and try to trigger these using the GUI.  I must
+> admit that I am somewhat new to debugging event-driven
+> GUIs.  I'm an oldtime programmer from the command-line
+> days.  I've used gdb alot before with Linux c
+> programs, but never with Qt or KDE, so I have plenty
+> to learn.  But I'm determined to do so.
+> 
+> 
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jan 31 23:43:24 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 31 Jan 2005 23:43:24 +0100
+Subject: [Noteedit-devel] midi keyboard and triplets (bug #3088)
+In-Reply-To: <200501310819.27856.leon.vinken@hetnet.nl>
+References: <200501171922.11360.leon.vinken@hetnet.nl> <41EEE1B0.5060909@schwaben.de> <200501192232.07906.leon.vinken@hetnet.nl> <200501310819.27856.leon.vinken@hetnet.nl>
+Message-ID: <41FEB48C.2060109@web.de>
+
+Hi Leon,
+
+> Georg,
+> 
+> yesterday I compiled both vkeybd and kaconnect without problems. Apparently 
+> there is an issue with my ALSA setup, because both fail with the message 
+> "ALSA lib seq_hw.c:446:(snd_seq_hw_open) open /dev/snd/seq failed: No such 
+> file or directory". For the time being I don't know how to solve that.
+> 
+> Won't be able to make much progress on bug #3088 ...
+
+This can be easily solved. You need to modprobe snd-seq drivers like
+snd-seq
+snd-seq-dummy
+snd-seq-midi-emul
+snd-seq-virmidi      --> Virtual Midi in case you don't have "real" Midi
+snd-seq-instr
+snd-seq-midi-event
+snd-seq-device
+snd-seq-midi
+
+vkeybd works fine with that.
+
+You might want to add some of these to /etc/modules (2.4.x) or 
+/etc/modprobe.preload (2.6.x).
+
+> In case you are familiar with ALSA: my setup is Fedora Core 3, on-board AC97 
+> audio. /dev/snd only contains control, pcm and timer devices.
+
+I've installed Fedora Core 3 today and want to test the KDE installation 
+as well as my external USB sound card (24 Bit 96 Khz) with Noteedit.
+
+You can also try the sound server jack(it) as alternative to arts or 
+esd. Take a look at qjackctl.sf.net. You might want to have the 
+realtime-lsm module installed, see www.joq,us "Linux Audio kernel modules".
+
+> Regards, Leon.
+> 
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+

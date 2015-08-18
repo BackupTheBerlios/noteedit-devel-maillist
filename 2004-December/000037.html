@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Partial fix to bug #2528 committed.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed.&In-Reply-To=%3CHNEXFE10Z4kcltA05Bq00020ac4%40hnexfe10.hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Partial fix to bug #2528 committed.</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed.&In-Reply-To=%3CHNEXFE10Z4kcltA05Bq00020ac4%40hnexfe10.hetnet.nl%3E"
+       TITLE="[Noteedit-devel] Partial fix to bug #2528 committed.">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Dec 14 23:13:57 CET 2004</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000036.html">[Noteedit-devel] Partial fix to bug #2528 committed.
+</A></li>
+        <LI>Next message: <A HREF="000038.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg,
+
+thanks for your reply. I do agree with you on not breaking the tuplet when 
+depressing the button. The current behaviour is strange anyway, as you have 
+to select three notes to create a triplet, but select a single note to break 
+it. I will change the button depress behaviour to leave the triplet intact.
+
+Please note that the fix is still incomplete, I would also want to build a 
+triplet when entering two notes of values that can form a triplet (1/4 + 1/8 
+etc.), remove the debugging code and update the documentation (english 
+version only, leaving the german translation to someone else !) accordingly.
+
+I'm not sure how to handle edit mode, will have a look at that.
+
+Best regards, Leon.
+
+On Tuesday 14 December 2004 02:46 am, you wrote:
+&gt;<i> Hello Leon,
+</I>&gt;<i>
+</I>&gt;<i> thanks a lot for this fix. It works beautifully.
+</I>&gt;<i>
+</I>&gt;<i> A small issue I would like to mention: With time values and beams I'm
+</I>&gt;<i> used in insert mode to choose in advance. To match this behavior I felt
+</I>&gt;<i> that it would be better to leave the last triplet in place when
+</I>&gt;<i> depressing 3, even when the last note is still selected. In edit mode
+</I>&gt;<i> opening up the triplet I would expect. It might be a matter of habits, I
+</I>&gt;<i> will just use it and get used to it more.
+</I>&gt;<i>
+</I>&gt;<i> Regards, Georg
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt;Hi all,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;see title. Please give it a test drive and report any issues to me.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Triplets can now be inserted by pressing the triplet key and entering
+</I>&gt;<i> &gt; three notes of the same length. Note that this leaves the last of the
+</I>&gt;<i> &gt; three notes selected (red). Depressing the triplet key will break the
+</I>&gt;<i> &gt; triplet as long as this note is selected. Thus, first deselect the last
+</I>&gt;<i> &gt; note (e.g. by clicking anywhere outside of the staff) before depressing
+</I>&gt;<i> &gt; the triplet button.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Regards, Leon.
+</I>&gt;<i> &gt;_______________________________________________
+</I>&gt;<i> &gt;Noteedit-devel mailing list
+</I>&gt;<i> &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt;<A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000036.html">[Noteedit-devel] Partial fix to bug #2528 committed.
+</A></li>
+	<LI>Next message: <A HREF="000038.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

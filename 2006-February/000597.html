@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] scons error ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20scons%20error%20...&In-Reply-To=%3C43E4A162.8050508%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000596.html">
+   <LINK REL="Next"  HREF="000599.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] scons error ...</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20scons%20error%20...&In-Reply-To=%3C43E4A162.8050508%40gmail.com%3E"
+       TITLE="[Noteedit-devel] scons error ...">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Feb  4 13:43:14 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000596.html">[Noteedit-devel] scons error ...
+</A></li>
+        <LI>Next message: <A HREF="000599.html">[Noteedit-devel] scons error ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#597">[ date ]</a>
+              <a href="thread.html#597">[ thread ]</a>
+              <a href="subject.html#597">[ subject ]</a>
+              <a href="author.html#597">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard.
+
+Now I have another problem :( .
+I completely cleaned the /usr/local directory. And when I start noteedit
+installed by scons install, I get segfault. I think it's something
+missing. Does &quot;scons install&quot; even copy libnoteedit.so to usr/local?
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>If I do
+</I>&gt;<i>export LD_LIBRARY_PATH=~/apps/noteedit/trunk/kguitar_excerpt
+</I>&gt;<i>, it works fine.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Regards.
+</I>&gt;<i>- Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>I'm having problem locating the libkguitar_excerpt.so. The copy is
+</I>&gt;&gt;<i>located in kguitar_excerpt dir and in has a symlink in noteedit dir as well.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Any ideas?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:~/apps/noteedit/trunk$ scons
+</I>&gt;&gt;<i>scons: Reading SConscript files ...
+</I>&gt;&gt;<i>The path to 1st source is: abcexport.cpp
+</I>&gt;&gt;<i>WARNING: moc.cpp for noteedit_part.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for numberdisplay.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for previewprint.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for staffPropFrm.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for textDialog_impl.h consider using #include
+</I>&gt;&gt;<i>&lt;file.moc&gt; instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for scaleedit_impl.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for noteedit_part.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for numberdisplay.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for previewprint.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for staffPropFrm.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for textDialog_impl.h consider using #include
+</I>&gt;&gt;<i>&lt;file.moc&gt; instead
+</I>&gt;&gt;<i>WARNING: moc.cpp for scaleedit_impl.h consider using #include &lt;file.moc&gt;
+</I>&gt;&gt;<i>instead
+</I>&gt;&gt;<i>scons: done reading SConscript files.
+</I>&gt;&gt;<i>scons: Building targets ...
+</I>&gt;&gt;<i>Retrieved `noteedit/grammar.cc' from cache
+</I>&gt;&gt;<i>bison -y -d -pNEDIT -o noteedit/grammar.cc noteedit/grammar.yy
+</I>&gt;&gt;<i>g++ -Wl,--rpath=/usr/lib -Wl,--rpath=/usr/lib/kde3 -Wl,--rpath=/usr/lib
+</I>&gt;&gt;<i>-o noteedit/noteedit noteedit/main.o -Lnoteedit -L/usr/lib -L/usr/lib
+</I>&gt;&gt;<i>-lnoteedit
+</I>&gt;&gt;<i>/usr/bin/ld: warning: libkguitar_excerpt.so, needed by
+</I>&gt;&gt;<i>noteedit/libnoteedit.so, not found (try using -rpath or -rpath-link)
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to
+</I>&gt;&gt;<i>`ChordSelector::transposeChordName(QString*, int)'
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to `note_name_res(int, int)'
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to
+</I>&gt;&gt;<i>`ChordSelector::reconfigureMenues()'
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to
+</I>&gt;&gt;<i>`ChordSelector::ChordSelector(NMainFrameWidget*, char const*)'
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to `identifyChord(QString,
+</I>&gt;&gt;<i>char*, QString&amp;, int&amp;, int&amp;, int&amp;, int&amp;, int&amp;, int&amp;, int&amp;)'
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to
+</I>&gt;&gt;<i>`ChordSelector::setFingers(char*)'
+</I>&gt;&gt;<i>noteedit/libnoteedit.so: undefined reference to `buildName(int, int,
+</I>&gt;&gt;<i>int, int, int, int, int, int, int, int, int)'
+</I>&gt;&gt;<i>collect2: ld returned 1 exit status
+</I>&gt;&gt;<i>scons: *** [noteedit/noteedit] Error 1
+</I>&gt;&gt;<i>scons: building terminated because of errors.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Regards.
+</I>&gt;&gt;<i>- Matev&#382;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Noteedit-devel mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000596.html">[Noteedit-devel] scons error ...
+</A></li>
+	<LI>Next message: <A HREF="000599.html">[Noteedit-devel] scons error ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#597">[ date ]</a>
+              <a href="thread.html#597">[ thread ]</a>
+              <a href="subject.html#597">[ subject ]</a>
+              <a href="author.html#597">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] NoteEdit SVN update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20NoteEdit%20SVN%20update&In-Reply-To=%3C42EA8EDB.8090707%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000422.html">
+   <LINK REL="Next"  HREF="000425.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] NoteEdit SVN update</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20NoteEdit%20SVN%20update&In-Reply-To=%3C42EA8EDB.8090707%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] NoteEdit SVN update">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Jul 29 22:17:31 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000422.html">[Noteedit-devel] Compiling on OSX, FAQ
+</A></li>
+        <LI>Next message: <A HREF="000425.html">[Noteedit-devel] Mouse scroll wheel behaviour
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#424">[ date ]</a>
+              <a href="thread.html#424">[ thread ]</a>
+              <a href="subject.html#424">[ subject ]</a>
+              <a href="author.html#424">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I made two tags in /tags directory, 2.8.0 and 2.7.4 respectively.
+These directories are now fixed and are not to be changed. They
+represent the state of 2.8.0 and 2.7.4 releases.
+
+I also reorganized NEWS and Changelogs in both trunk and stable
+branch. Here's what I had in mind:
+- - NEWS only describes the new features/bug fixes that impact end-user
+(and it describes them in the way that the end-user understands them).
+It also contains major announcments (like the new organization, new
+dependencies etc.).
+- - Changelog is meant for developers only. It describes every new
+feature/bugfix and its description, commit number in SVN and so on in
+the more precision and technical way.
+
+Changelog should preserve history of changes for *the whole current
+major version* (1.x.y, 2.x.y, 3.x.y), whereas the NEWS should contain
+only information that inpact *the latest release*. Currently, both
+NEWS and Changelog in trunk/ should contain changes to 2.8.0 version
+until 2.9.0 is released. Then, they will contain only changes to 2.9.0
+and so on. If 2.8.1 will be released before 2.9.0, it should still
+contain changes to 2.8.0 as it's the junction where the branches split.
+
+Now, an example of making a new feature or a bugfix first in trunk and
+then over time backport it to stable:
+1) You make certain changes to source in /trunk branch.
+2) You write the changes to Changelog (along with the revision number
+you're going to get) and appropriate announcment of the feature in NEWS.
+3) Feature is tested and in time, you backport the feature to 2.8.x
+branch:
+4) You look at the trunk's Changelog or SVN log to get the revision
+number, when you commited that feature.
+5) You merge the branches by svn -r
+&lt;featureRevisionNumber-1&gt;:&lt;featureRevisionNumber&gt; trunk
+branches/stable-2.8. This looks for the differences you made from the
+previous revision when you implemented the feature to the actual one
+for directory trunk and then apply the differences to
+branches/stable-2.8 directory.
+6) You appropriately edit the stable branch's Changelog (and write the
+new revision number that this feature is going to get) and NEWS file.
+7) You commit the changes.
+
+If the feature is to be implemented in 2.9.x only, you only need to
+stick to the first two steps.
+
+What do you think?
+
+
+Regards.
+- - Matev&#382;
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://enigmail.mozdev.org">http://enigmail.mozdev.org</A>
+
+iD8DBQFC6o7bm1IQqmP8KVgRAtPGAJ0ej/CrO0v+j2WuIgHi2ojurfbq9ACgiRLx
+bC/6jzFCGNur9siVS/79Ch4=
+=6bG5
+-----END PGP SIGNATURE-----
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000422.html">[Noteedit-devel] Compiling on OSX, FAQ
+</A></li>
+	<LI>Next message: <A HREF="000425.html">[Noteedit-devel] Mouse scroll wheel behaviour
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#424">[ date ]</a>
+              <a href="thread.html#424">[ thread ]</a>
+              <a href="subject.html#424">[ subject ]</a>
+              <a href="author.html#424">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

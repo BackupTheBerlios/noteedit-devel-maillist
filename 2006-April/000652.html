@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Building noteedit w/ kde 3.5.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Building%20noteedit%20w/%20kde%203.5.2&In-Reply-To=%3C4430ACA6.9050608%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000651.html">
+   <LINK REL="Next"  HREF="000653.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Building noteedit w/ kde 3.5.2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Building%20noteedit%20w/%20kde%203.5.2&In-Reply-To=%3C4430ACA6.9050608%40charter.net%3E"
+       TITLE="[Noteedit-devel] Building noteedit w/ kde 3.5.2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Apr  3 07:03:34 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000651.html">[Noteedit-devel] Building noteedit
+</A></li>
+        <LI>Next message: <A HREF="000653.html">[Noteedit-devel] Building noteedit w/ kde 3.5.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#652">[ date ]</a>
+              <a href="thread.html#652">[ thread ]</a>
+              <a href="subject.html#652">[ subject ]</a>
+              <a href="author.html#652">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is the error I get from 'make':
+
+if /bin/sh ../libtool --silent --mode=compile --tag=CXX g++ 
+-DHAVE_CONFIG_H -I. -I. -I.. -I/usr/lib/qt3//include 
+-I/usr/X11R6/include  -I/usr/include    -DQT_THREAD_SUPPORT 
+-D_REENTRANT  -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall -W 
+-Wpointer-arith -Wwrite-strings -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE 
+-Wcast-align -Wconversion -Wchar-subscripts -O2 -Wformat-security 
+-Wmissing-format-attribute -fno-exceptions -fno-check-new -fno-common 
+-MT pmxexportform.lo -MD -MP -MF &quot;.deps/pmxexportform.Tpo&quot; \
+   -c -o pmxexportform.lo `test -f 'pmxexportform.cc' || echo 
+'./'`pmxexportform.cc; \
+then mv -f &quot;.deps/pmxexportform.Tpo&quot; &quot;.deps/pmxexportform.Plo&quot;; \
+else rm -f &quot;.deps/pmxexportform.Tpo&quot;; exit 1; \
+fi
+pmxexportform.cc:23:24: nscaleedit.h: No such file or directory
+make[3]: *** [pmxexportform.lo] Error 1
+make[3]: Leaving directory 
+`/home/galen/src/MUSIC/noteedit/noteedit-2.8.1-beta/noteedit'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory 
+`/home/galen/src/MUSIC/noteedit/noteedit-2.8.1-beta/noteedit'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory 
+`/home/galen/src/MUSIC/noteedit/noteedit-2.8.1-beta'
+make: *** [all] Error 2
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000651.html">[Noteedit-devel] Building noteedit
+</A></li>
+	<LI>Next message: <A HREF="000653.html">[Noteedit-devel] Building noteedit w/ kde 3.5.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#652">[ date ]</a>
+              <a href="thread.html#652">[ thread ]</a>
+              <a href="subject.html#652">[ subject ]</a>
+              <a href="author.html#652">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

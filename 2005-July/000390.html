@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] some more or less future&amp;minor stuff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20some%20more%20or%20less%20future%26minor%20stuff&In-Reply-To=%3C42D81A1E.8010409%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000389.html">
+   <LINK REL="Next"  HREF="000391.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] some more or less future&amp;minor stuff</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20some%20more%20or%20less%20future%26minor%20stuff&In-Reply-To=%3C42D81A1E.8010409%40web.de%3E"
+       TITLE="[Noteedit-devel] some more or less future&amp;minor stuff">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Jul 15 22:18:38 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000389.html">[Noteedit-devel] some more or less future&amp;minor stuff
+</A></li>
+        <LI>Next message: <A HREF="000391.html">[Noteedit-devel] 2.8.0 Final released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#390">[ date ]</a>
+              <a href="thread.html#390">[ thread ]</a>
+              <a href="subject.html#390">[ subject ]</a>
+              <a href="author.html#390">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matevz &amp; Co. :-),
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> -----BEGIN PGP SIGNED MESSAGE-----
+</I>&gt;<i> Hash: SHA1
+</I>&gt;<i> 
+</I>&gt;<i> Reinhard,
+</I>&gt;<i> 
+</I>&gt;<i> 1) I see you managed to release 2.8.0 these days. I would like to
+</I>&gt;<i> remind you to make a copy of the released 2.8.0 version into
+</I>&gt;<i> /tags/2.8.0 in our SVN repository.
+</I>
+Ok, somewhen when I have time again...
+
+&gt;<i> 2) I played downloaded&amp;compiled&amp;installed Qt4.0. I like it so far, but
+</I>&gt;<i> wasn't able to make much with NoteEdit yet (configure doesn't find
+</I>&gt;<i> it?!?). Can you say anything about your plans, when and how are you
+</I>&gt;<i> going to migrate to Qt4.0? We'd have to update our configure to work
+</I>&gt;<i> properly (or maybe even rewrite it completely?), remove code in #if
+</I>&gt;<i> QT_VERSION &lt;300 block, make changes to fit a new Qt API and announce
+</I>&gt;<i> that NoteEdit 2.9 requires now Qt &gt;= 300.
+</I>
+I haven't thought about it and I probably won't start thinking about
+it until Noteedit 2.8.1 has been released. Scripting and the printing
+dialog are the main features needed by NoteEdit in the near future IMO.
+I want to wait for that until my distribution officially includes QT4
+in some form (that will probably happen in late autumn, end of october
+or so). Basically I would drop Qt 3.x support completely as there is
+a QT3.x backward compatibility interface in Qt4 and because the 
+differences are to large for maintaining backward compatibility. I
+also don't think we will se an unstable release this year except we
+some developers having more time than me to work on it.
+
+&gt;<i> 3) I tried compiling NoteEdit with gcc-4.0, but had no luck. I fixed
+</I>&gt;<i> the configure script and it works fine. The problem is that it cannot
+</I>&gt;<i> compile TSE3 headers (MANY syntax errors like the wrong use of
+</I>&gt;<i> type-def, friend classes, templates etc.!). I contacted Pete and I
+</I>&gt;<i> hope he'll manage to release a gcc4-compatible version asap. I don't
+</I>&gt;<i> think Debian is going to accept our program without being gcc4-compatible.
+</I>
+gcc4.0 is in Cooker for Mandriva and I won't switch to it until the
+next version of Mandriva is released (maybe if I have time I'll test
+the release candidate for Mandriva somewhen in September/October).
+I think all other distribution will switch to gcc4 before Debian
+will officially start to use it (i.e. at least in testing).
+
+I hoped to manage more than the homepage update an the release
+itself but the Linux Info Tag here in Pforzheim where I'm doing
+the Linux audio booth alone took too much preparation time (and
+still will be incomplete, so I have to improvise a bit). I will
+present NoteEdit there as well though I don't think that we will
+get a new developer from that day. Maybe I can spend an hour on NoteEdit
+on sunday if there is no work left from saturday. The following
+week I'll have to prepare for the next concert, so again only
+very few time left.
+
+I'm very satisfied with the work and the plans you do and hope
+that end of july I be able start working on NoteEdit again on a
+more regular base.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000389.html">[Noteedit-devel] some more or less future&amp;minor stuff
+</A></li>
+	<LI>Next message: <A HREF="000391.html">[Noteedit-devel] 2.8.0 Final released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#390">[ date ]</a>
+              <a href="thread.html#390">[ thread ]</a>
+              <a href="subject.html#390">[ subject ]</a>
+              <a href="author.html#390">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

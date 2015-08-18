@@ -1,0 +1,1370 @@
+From noteedit-devel-admin at lists.berlios.de  Thu Feb  2 13:58:21 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 02 Feb 2006 13:58:21 +0100
+Subject: [Noteedit-devel] scons error ...
+Message-ID: <43E201ED.2070003@guest.arnes.si>
+
+I'm having problem locating the libkguitar_excerpt.so. The copy is
+located in kguitar_excerpt dir and in has a symlink in noteedit dir as well.
+
+Any ideas?
+
+matevz at mojazver:~/apps/noteedit/trunk$ scons
+scons: Reading SConscript files ...
+The path to 1st source is: abcexport.cpp
+WARNING: moc.cpp for noteedit_part.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for numberdisplay.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for previewprint.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for staffPropFrm.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for textDialog_impl.h consider using #include
+<file.moc> instead
+WARNING: moc.cpp for scaleedit_impl.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for noteedit_part.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for numberdisplay.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for previewprint.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for staffPropFrm.h consider using #include <file.moc>
+instead
+WARNING: moc.cpp for textDialog_impl.h consider using #include
+<file.moc> instead
+WARNING: moc.cpp for scaleedit_impl.h consider using #include <file.moc>
+instead
+scons: done reading SConscript files.
+scons: Building targets ...
+Retrieved `noteedit/grammar.cc' from cache
+bison -y -d -pNEDIT -o noteedit/grammar.cc noteedit/grammar.yy
+g++ -Wl,--rpath=/usr/lib -Wl,--rpath=/usr/lib/kde3 -Wl,--rpath=/usr/lib
+-o noteedit/noteedit noteedit/main.o -Lnoteedit -L/usr/lib -L/usr/lib
+-lnoteedit
+/usr/bin/ld: warning: libkguitar_excerpt.so, needed by
+noteedit/libnoteedit.so, not found (try using -rpath or -rpath-link)
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::transposeChordName(QString*, int)'
+noteedit/libnoteedit.so: undefined reference to `note_name_res(int, int)'
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::reconfigureMenues()'
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::ChordSelector(NMainFrameWidget*, char const*)'
+noteedit/libnoteedit.so: undefined reference to `identifyChord(QString,
+char*, QString&, int&, int&, int&, int&, int&, int&, int&)'
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::setFingers(char*)'
+noteedit/libnoteedit.so: undefined reference to `buildName(int, int,
+int, int, int, int, int, int, int, int, int)'
+collect2: ld returned 1 exit status
+scons: *** [noteedit/noteedit] Error 1
+scons: building terminated because of errors.
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060202/027d80d8/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  4 11:37:20 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Feb 2006 11:37:20 +0100
+Subject: [Noteedit-devel] scons error ...
+In-Reply-To: <43E201ED.2070003@guest.arnes.si>
+References: <43E201ED.2070003@guest.arnes.si>
+Message-ID: <43E483E0.4030607@gmail.com>
+
+If I do
+export LD_LIBRARY_PATH=~/apps/noteedit/trunk/kguitar_excerpt
+, it works fine.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>I'm having problem locating the libkguitar_excerpt.so. The copy is
+>located in kguitar_excerpt dir and in has a symlink in noteedit dir as well.
+>
+>Any ideas?
+>
+>matevz at mojazver:~/apps/noteedit/trunk$ scons
+>scons: Reading SConscript files ...
+>The path to 1st source is: abcexport.cpp
+>WARNING: moc.cpp for noteedit_part.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for numberdisplay.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for previewprint.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for staffPropFrm.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for textDialog_impl.h consider using #include
+><file.moc> instead
+>WARNING: moc.cpp for scaleedit_impl.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for noteedit_part.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for numberdisplay.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for previewprint.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for staffPropFrm.h consider using #include <file.moc>
+>instead
+>WARNING: moc.cpp for textDialog_impl.h consider using #include
+><file.moc> instead
+>WARNING: moc.cpp for scaleedit_impl.h consider using #include <file.moc>
+>instead
+>scons: done reading SConscript files.
+>scons: Building targets ...
+>Retrieved `noteedit/grammar.cc' from cache
+>bison -y -d -pNEDIT -o noteedit/grammar.cc noteedit/grammar.yy
+>g++ -Wl,--rpath=/usr/lib -Wl,--rpath=/usr/lib/kde3 -Wl,--rpath=/usr/lib
+>-o noteedit/noteedit noteedit/main.o -Lnoteedit -L/usr/lib -L/usr/lib
+>-lnoteedit
+>/usr/bin/ld: warning: libkguitar_excerpt.so, needed by
+>noteedit/libnoteedit.so, not found (try using -rpath or -rpath-link)
+>noteedit/libnoteedit.so: undefined reference to
+>`ChordSelector::transposeChordName(QString*, int)'
+>noteedit/libnoteedit.so: undefined reference to `note_name_res(int, int)'
+>noteedit/libnoteedit.so: undefined reference to
+>`ChordSelector::reconfigureMenues()'
+>noteedit/libnoteedit.so: undefined reference to
+>`ChordSelector::ChordSelector(NMainFrameWidget*, char const*)'
+>noteedit/libnoteedit.so: undefined reference to `identifyChord(QString,
+>char*, QString&, int&, int&, int&, int&, int&, int&, int&)'
+>noteedit/libnoteedit.so: undefined reference to
+>`ChordSelector::setFingers(char*)'
+>noteedit/libnoteedit.so: undefined reference to `buildName(int, int,
+>int, int, int, int, int, int, int, int, int)'
+>collect2: ld returned 1 exit status
+>scons: *** [noteedit/noteedit] Error 1
+>scons: building terminated because of errors.
+>
+>
+>Regards.
+>- Matev?
+>
+>  
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  4 13:43:14 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Feb 2006 13:43:14 +0100
+Subject: [Noteedit-devel] scons error ...
+In-Reply-To: <43E483E0.4030607@gmail.com>
+References: <43E201ED.2070003@guest.arnes.si> <43E483E0.4030607@gmail.com>
+Message-ID: <43E4A162.8050508@gmail.com>
+
+Hi Reinhard.
+
+Now I have another problem :( .
+I completely cleaned the /usr/local directory. And when I start noteedit
+installed by scons install, I get segfault. I think it's something
+missing. Does "scons install" even copy libnoteedit.so to usr/local?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>If I do
+>export LD_LIBRARY_PATH=~/apps/noteedit/trunk/kguitar_excerpt
+>, it works fine.
+>
+>
+>Regards.
+>- Matev?
+>
+>noteedit-devel-admin at berlios.de wrote:
+>
+>  
+>
+>>I'm having problem locating the libkguitar_excerpt.so. The copy is
+>>located in kguitar_excerpt dir and in has a symlink in noteedit dir as well.
+>>
+>>Any ideas?
+>>
+>>matevz at mojazver:~/apps/noteedit/trunk$ scons
+>>scons: Reading SConscript files ...
+>>The path to 1st source is: abcexport.cpp
+>>WARNING: moc.cpp for noteedit_part.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for numberdisplay.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for previewprint.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for staffPropFrm.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for textDialog_impl.h consider using #include
+>><file.moc> instead
+>>WARNING: moc.cpp for scaleedit_impl.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for noteedit_part.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for numberdisplay.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for previewprint.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for staffPropFrm.h consider using #include <file.moc>
+>>instead
+>>WARNING: moc.cpp for textDialog_impl.h consider using #include
+>><file.moc> instead
+>>WARNING: moc.cpp for scaleedit_impl.h consider using #include <file.moc>
+>>instead
+>>scons: done reading SConscript files.
+>>scons: Building targets ...
+>>Retrieved `noteedit/grammar.cc' from cache
+>>bison -y -d -pNEDIT -o noteedit/grammar.cc noteedit/grammar.yy
+>>g++ -Wl,--rpath=/usr/lib -Wl,--rpath=/usr/lib/kde3 -Wl,--rpath=/usr/lib
+>>-o noteedit/noteedit noteedit/main.o -Lnoteedit -L/usr/lib -L/usr/lib
+>>-lnoteedit
+>>/usr/bin/ld: warning: libkguitar_excerpt.so, needed by
+>>noteedit/libnoteedit.so, not found (try using -rpath or -rpath-link)
+>>noteedit/libnoteedit.so: undefined reference to
+>>`ChordSelector::transposeChordName(QString*, int)'
+>>noteedit/libnoteedit.so: undefined reference to `note_name_res(int, int)'
+>>noteedit/libnoteedit.so: undefined reference to
+>>`ChordSelector::reconfigureMenues()'
+>>noteedit/libnoteedit.so: undefined reference to
+>>`ChordSelector::ChordSelector(NMainFrameWidget*, char const*)'
+>>noteedit/libnoteedit.so: undefined reference to `identifyChord(QString,
+>>char*, QString&, int&, int&, int&, int&, int&, int&, int&)'
+>>noteedit/libnoteedit.so: undefined reference to
+>>`ChordSelector::setFingers(char*)'
+>>noteedit/libnoteedit.so: undefined reference to `buildName(int, int,
+>>int, int, int, int, int, int, int, int, int)'
+>>collect2: ld returned 1 exit status
+>>scons: *** [noteedit/noteedit] Error 1
+>>scons: building terminated because of errors.
+>>
+>>
+>>Regards.
+>>- Matev?
+>>
+>> 
+>>
+>>    
+>>
+>
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>  
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  4 14:07:14 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 04 Feb 2006 14:07:14 +0100
+Subject: [Noteedit-devel] hotkey issue
+In-Reply-To: <200601272356.23276.adamsz@gmx.net>
+References: <200601272356.23276.adamsz@gmx.net>
+Message-ID: <43E4A702.5020102@gmail.com>
+
+Hi Adam!
+
+Keyboard shortcuts didn't work for me as well under Debian and KDE3.5.
+Your fix is commited in R399.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi folks,
+>
+>I had an issue with hotkeys with KDE 3.5. Being not even able to delete notes 
+>I started investigating this issue and found out that it can be fixed by 
+>changing a line in mainframewidget.cpp:
+>
+>keys_ = new KAccel(this);
+>to
+>keys_ = new KAccel((QWidget*)this->parent());
+>
+>Dunno whether this was a KDE bug but with this change the svn version seems to 
+>work in KDE 3.5 on an x86_64. The configure script should be adapted to find 
+>libtse3 in /usr/lib64.
+>Please CC me for answers.
+>  
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  5 14:38:12 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 05 Feb 2006 14:38:12 +0100
+Subject: [Noteedit-devel] scons error ...
+In-Reply-To: <43E4A162.8050508@gmail.com>
+References: <43E201ED.2070003@guest.arnes.si> <43E483E0.4030607@gmail.com> <43E4A162.8050508@gmail.com>
+Message-ID: <43E5FFC4.7050602@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi Reinhard.
+> 
+> Now I have another problem :( .
+> I completely cleaned the /usr/local directory. And when I start noteedit
+> installed by scons install, I get segfault. I think it's something
+> missing. Does "scons install" even copy libnoteedit.so to usr/local?
+> 
+
+I really don't have tested scons install up to now, so probably
+not. The reason was mainly that I don't have two libraries installed
+and the installed version being used for debug instead of the
+version just compiled. I everything works well, scons should
+install everything in the directory specified with prefix.
+
+We can also talk on IRC (freenode:#noteedit) if you're online currently.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 13:49:24 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 13:49:24 +0100
+Subject: [Noteedit-devel] hotkeys
+Message-ID: <43EF2ED4.6080001@guest.arnes.si>
+
+I'm looking at mainframewidget.cpp and I'd like some keys to react on
+keypress event and others on keyrelease event. Currently, all the keys
+react on keypress event. I'd like to show a Insert measureline dialog if
+you'd hold the TAB key for more than a second or so.
+
+Any ideas?
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060212/9b90d1c4/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 21:20:04 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 21:20:04 +0100
+Subject: [Noteedit-devel] compiler warnings
+Message-ID: <43EF9874.3030305@guest.arnes.si>
+
+Hello to all.
+
+In R403, I comitted many compiler warning fixes, among them I got rid of
+mainframewidget.cpp and resource.cpp ones. The toughest problems to
+solve were the unsigned<->signed integer conversions, which still exist
+in places.
+
+Please test!
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060212/d5272574/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 21:40:38 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 21:40:38 +0100
+Subject: [Noteedit-devel] minor lilyexport fix
+Message-ID: <43EF9D46.2010108@schwaben.de>
+
+Hi all,
+
+only for the openess here as a mail: In R400 I arranged in the morning
+the lilypond export of lyrics in a piano staff, the staff with a brace.
+
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 22:02:52 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 22:02:52 +0100
+Subject: [Noteedit-devel] minor lilyexport fix
+In-Reply-To: <43EF9D46.2010108@schwaben.de>
+References: <43EF9D46.2010108@schwaben.de>
+Message-ID: <43EFA27C.4070905@gmail.com>
+
+Hi Georg.
+
+I don't quite understand this. Usually, staffs which are "braced" don't
+contain lyrics AFAIK. For eg. You have a piano or organ staffs (right,
+left hand) connected with brace. So, you don't need lyrics here. Lyrics
+usually appears when the staffs are connected with bracket (ChoirGroup
+context in Lily) or the staffs aren't connected at all (e.g. piano +
+vocal solo - only piano staffs are connected with brace, solo is separated).
+
+Can you give an example of this?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi all,
+>
+>only for the openess here as a mail: In R400 I arranged in the morning
+>the lilypond export of lyrics in a piano staff, the staff with a brace.
+>
+>Georg
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>  
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 22:20:29 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 22:20:29 +0100
+Subject: [Noteedit-devel] minor lilyexport fix
+In-Reply-To: <43EFA27C.4070905@gmail.com>
+References: <43EF9D46.2010108@schwaben.de> <43EFA27C.4070905@gmail.com>
+Message-ID: <43EFA69D.1080204@gmail.com>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>usually appears when the staffs are connected with bracket (ChoirGroup
+>  
+>
+Oops, make that ChoirStaff :)
+
+
+Regards.
+- Matev?
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 22:55:00 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 22:55:00 +0100
+Subject: [Noteedit-devel] minor lilyexport fix
+In-Reply-To: <43EFA27C.4070905@gmail.com>
+References: <43EF9D46.2010108@schwaben.de> <43EFA27C.4070905@gmail.com>
+Message-ID: <43EFAEB4.5030504@schwaben.de>
+
+Hi Matev?,
+
+you're right that usually lyrics don't appear in a piano staff. But why to forbid it? The Choirstaff is still possible, and in simple songs it's handy to add the lyrics to the melody in the right hand, without opening an extra vocal staff. Don't see a problem yet.
+
+Best Regards,
+Georg
+
+
+
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi Georg.
+>
+> I don't quite understand this. Usually, staffs which are "braced" don't
+> contain lyrics AFAIK. For eg. You have a piano or organ staffs (right,
+> left hand) connected with brace. So, you don't need lyrics here. Lyrics
+> usually appears when the staffs are connected with bracket (ChoirGroup
+> context in Lily) or the staffs aren't connected at all (e.g. piano +
+> vocal solo - only piano staffs are connected with brace, solo is separated).
+>
+> Can you give an example of this?
+>
+>
+> Regards.
+> - Matev?
+>
+> noteedit-devel-admin at berlios.de wrote:
+>
+>   
+>> Hi all,
+>>
+>> only for the openess here as a mail: In R400 I arranged in the morning
+>> the lilypond export of lyrics in a piano staff, the staff with a brace.
+>>
+>> Georg
+>> _______________________________________________
+>> Noteedit-devel mailing list
+>> Noteedit-devel at lists.berlios.de
+>> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>>
+>>  
+>>
+>>     
+>
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>   
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 12 23:38:45 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 12 Feb 2006 23:38:45 +0100
+Subject: [Noteedit-devel] hotkeys
+In-Reply-To: <43EF2ED4.6080001@guest.arnes.si>
+References: <43EF2ED4.6080001@guest.arnes.si>
+Message-ID: <43EFB8F5.9000400@schwaben.de>
+
+Hi Matev?,
+
+key accelerators I like very much, I would like to encourage to improve
+things in that direction. What you would like to accomplish with the
+measure line dialog?
+
+Some concern I would like to share: Probably this kind of keys operation
+will not be adjustable in the keys configuration, which is inherited
+from KDE. And, to have timing in the keys might be not the best
+solution, maybe it would be better to intruduce a new mode.
+
+Regards,
+Georg
+
+
+noteedit-devel-admin at berlios.de schrieb:
+> I'm looking at mainframewidget.cpp and I'd like some keys to react on
+> keypress event and others on keyrelease event. Currently, all the keys
+> react on keypress event. I'd like to show a Insert measureline dialog if
+> you'd hold the TAB key for more than a second or so.
+>
+> Any ideas?
+>
+>
+> Regards.
+> - Matev?
+>
+>   
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Feb 13 16:41:32 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 13 Feb 2006 16:41:32 +0100
+Subject: [Noteedit-devel] hotkeys
+In-Reply-To: <43EFB8F5.9000400@schwaben.de>
+References: <43EF2ED4.6080001@guest.arnes.si> <43EFB8F5.9000400@schwaben.de>
+Message-ID: <43F0A8AC.8000907@gmail.com>
+
+Hm... I don't know. I usually find myself wasting time when composing,
+when I'm looking for the right bar in Insert dialog (double bar, end
+bar, repeat etc.). I think holding a TAB key (or whatever key for
+placing barlines already) for a longer time and showing a dialog then is
+useful. Maybe even for some other elements, not just barlines.
+
+About KDE accelerators. I don't exactly know how they're used or why
+they exist anyway (ok ok, I'll gonna take a look at KDE.org and stop
+complaining :) ). Meanwhile, I'll probably implement the measureline
+dialog with SHIFT+Key_Tab combination :).
+
+Reinhard, are there any Qt solutions to KDE accelerators or an
+easy-to-maintain-both-solutions alternatives?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Matev?,
+>
+>key accelerators I like very much, I would like to encourage to improve
+>things in that direction. What you would like to accomplish with the
+>measure line dialog?
+>
+>Some concern I would like to share: Probably this kind of keys operation
+>will not be adjustable in the keys configuration, which is inherited
+>from KDE. And, to have timing in the keys might be not the best
+>solution, maybe it would be better to intruduce a new mode.
+>
+>Regards,
+>Georg
+>  
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Feb 13 23:20:32 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 13 Feb 2006 23:20:32 +0100
+Subject: [Noteedit-devel] hotkeys
+In-Reply-To: <43EF2ED4.6080001@guest.arnes.si>
+References: <43EF2ED4.6080001@guest.arnes.si>
+Message-ID: <43F10630.8000400@web.de>
+
+Hi Matevz,
+
+I don't know about key release events. QKeyevent doesn't seem to
+distinguish between release and press events. QKeySequence, if
+is used to implement accelerators.
+I'd find it strange if the program reacted on both key release
+and press event. Of course you still could react on a key press
+event by starting a timer when the key was pressed. But I have
+no idea how to catch the release event.
+
+Regards,
+
+Reinhard
+
+noteedit-devel-admin at berlios.de wrote:
+> I'm looking at mainframewidget.cpp and I'd like some keys to react on
+> keypress event and others on keyrelease event. Currently, all the keys
+> react on keypress event. I'd like to show a Insert measureline dialog if
+> you'd hold the TAB key for more than a second or so.
+> 
+> Any ideas?
+> 
+> 
+> Regards.
+> - Matev?
+> 
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb 14 23:38:27 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 14 Feb 2006 23:38:27 +0100
+Subject: [Noteedit-devel] svn access
+Message-ID: <43F25BE3.3030406@guest.arnes.si>
+
+Does the SVN write access work for you guys? I'm having problems with
+authorizing myself when I want to commit files via https. I also cannot
+login myself into NE project page at Berlios via SSL.
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060214/8bf77191/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 06:17:10 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 06:17:10 +0100
+Subject: [Noteedit-devel] svn access
+In-Reply-To: <43F25BE3.3030406@guest.arnes.si>
+References: <43F25BE3.3030406@guest.arnes.si>
+Message-ID: <43F2B956.9040700@schwaben.de>
+
+Hi Matev?,
+
+for me commit/login works at the moment, as usual. Sometimes they seem
+to go offline. Probably we'll not have to wait very long to enjoy your work.
+
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 08:38:29 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 08:38:29 +0100
+Subject: [Noteedit-devel] svn access
+In-Reply-To: <43F25BE3.3030406@guest.arnes.si>
+References: <43F25BE3.3030406@guest.arnes.si>
+Message-ID: <43F2DA75.4060506@gmail.com>
+
+I clicked "Forget your password" button and reactivated my password. It
+works fine now, sorry :) .
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Does the SVN write access work for you guys? I'm having problems with
+>authorizing myself when I want to commit files via https. I also cannot
+>login myself into NE project page at Berlios via SSL.
+>
+>
+>Regards.
+>- Matev?
+>
+>  
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 19:00:07 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 19:00:07 +0100
+Subject: [Noteedit-devel] R405
+Message-ID: <43F36C27.3040401@guest.arnes.si>
+
+Hi.
+
+I've just committed R405.
+
+From ChangeLog:
+* R405: ADDED:
+          - implemented Insert special barline dialog
+          - if an element is selected, barline is inserted right after
+it. Otherwise, only the selected barline becomes the current item being
+placed when you first click on the score.
+          - added menu option Insert->Special barline...
+          - added shortcut key SHIFT+Key_Tab for this
+          - Escape key now unselects the current active sign to be
+placed (e.g. barline)
+          - Home/End keys hit multiple times select the first/last element
+          - Home/End keys goes to the last X pos of the current staff
+          - some other minor fixes and additions
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060215/3ae44870/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 20:00:43 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 20:00:43 +0100
+Subject: [Noteedit-devel] R405
+In-Reply-To: <43F36C27.3040401@guest.arnes.si>
+References: <43F36C27.3040401@guest.arnes.si>
+Message-ID: <43F37A5B.9070202@schwaben.de>
+
+Hi Matev?,
+
+usefull features! A small caveat: After startup I select a new sheet,
+then hit SHIFT-TAB, and cancel or close the dialog, then after an
+"internal error" display NoteEdit shuts down. It says "unknown sign",
+errorcode -1.
+
+This happens also when selecting a barline in a staff, then canceling
+the dialog. The upper description seemed simpler to reproduce.
+
+Thanks for this additions. I'll test more soon, Regards,
+Georg
+
+
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi.
+>
+> I've just committed R405.
+>
+> From ChangeLog:
+> * R405: ADDED:
+>           - implemented Insert special barline dialog
+>           - if an element is selected, barline is inserted right after
+> it. Otherwise, only the selected barline becomes the current item being
+> placed when you first click on the score.
+>           - added menu option Insert->Special barline...
+>           - added shortcut key SHIFT+Key_Tab for this
+>           - Escape key now unselects the current active sign to be
+> placed (e.g. barline)
+>           - Home/End keys hit multiple times select the first/last element
+>           - Home/End keys goes to the last X pos of the current staff
+>           - some other minor fixes and additions
+>
+>
+> Regards.
+> - Matev?
+>
+>   
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 20:38:36 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 20:38:36 +0100
+Subject: [Noteedit-devel] R405
+In-Reply-To: <43F37A5B.9070202@schwaben.de>
+References: <43F36C27.3040401@guest.arnes.si> <43F37A5B.9070202@schwaben.de>
+Message-ID: <43F3833C.2070906@gmail.com>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Matev?,
+>
+>usefull features! A small caveat: After startup I select a new sheet,
+>then hit SHIFT-TAB, and cancel or close the dialog, then after an
+>"internal error" display NoteEdit shuts down. It says "unknown sign",
+>errorcode -1.
+>  
+>
+Thanks, fixed.
+
+Do you think, this dialog could replace the separate insert double bar,
+repeat bars and end bar options in Insert menu? I'd say yes for the
+Insert menu. For the toolbar, I'd say we have to rearrange some other
+stuff there as well.
+For e.g. End bar button would many times be used more often than Change
+instrument button and the second one is there in the toolbar, whereas
+the first one isn't.
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 21:48:59 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 21:48:59 +0100
+Subject: [Noteedit-devel] enum or constants?
+Message-ID: <43F393BB.9020908@guest.arnes.si>
+
+Hi.
+
+I know I'm pretty PITA the last few days :), but there's another
+issue/question that came to my mind:
+Is there any common practice or a written/non-written rule about using
+enumeration values over the predefined constants using #define SOMETHING
+SOMEVALUE.
+For eg. I'd like to have a currentMode_ property in mainframewidget,
+that would hold the current mode state (select mode, insert mode, edit
+mode, play mode etc.).
+Is it better to use #define SELECT_MODE 0, #define INSERT_MODE 1 and so
+on and to declare int currentMode_ then or to declare enum CurrentMode
+{selectMode, insertMode, playMode etc.} and then declare CurrentMode
+currentMode_ ?
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060215/731f9252/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb 15 22:13:37 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Feb 2006 22:13:37 +0100
+Subject: [Noteedit-devel] enum or constants?
+In-Reply-To: <43F393BB.9020908@guest.arnes.si>
+References: <43F393BB.9020908@guest.arnes.si>
+Message-ID: <43F39981.3020407@web.de>
+
+Hi Matevz,
+
+Enums for me are just what they are: enumberations, so
+it is especially useful if you have comboboxes in the
+user interfaces and replace their number with enum.
+
+If the entry of comboboxes change under a certain
+context, you can even use a simple mapping to map
+the used entry to the real enum number using a
+vector:
+
+typedef enum
+{
+  Entry_First    = 0,  // Not necessary, just for easier identification
+  Entry_Special,
+  Entry_All,
+  Entry_Notes,
+  Entry_Usual,
+  Entry_Tea,
+  Entry_Coffee,
+  Entry_NeverUsed,
+  Entry_Last
+} Entry_T;
+
+int entryMap[10];
+entryMap[0] = Entry_First
+entryMap[1] = Entry_All
+entryMap[2] = Entry_NeverUsed
+entryMap[3] = Entry_Tea
+entryMap[4] = Entry_Last
+
+This way you can easily fill your combobox with
+the entries until Entry_Last is found (or start
+with the last entry until the first).
+
+In your case it depends how you use the mode.
+If several modes can be used at the same time,
+I wouldn't normally use enums except you define
+them in a way so you can bitwise and / or them:
+
+typedef enum
+{
+  NEM_Select = 1,
+  NEM_Insert = 2,
+  NEM_Edit   = 4
+   .
+   .
+   .
+}
+NoteEditMode_T;
+
+Regards,
+
+Reinhard
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi.
+> 
+> I know I'm pretty PITA the last few days :), but there's another
+> issue/question that came to my mind:
+> Is there any common practice or a written/non-written rule about using
+> enumeration values over the predefined constants using #define SOMETHING
+> SOMEVALUE.
+> For eg. I'd like to have a currentMode_ property in mainframewidget,
+> that would hold the current mode state (select mode, insert mode, edit
+> mode, play mode etc.).
+> Is it better to use #define SELECT_MODE 0, #define INSERT_MODE 1 and so
+> on and to declare int currentMode_ then or to declare enum CurrentMode
+> {selectMode, insertMode, playMode etc.} and then declare CurrentMode
+> currentMode_ ?
+> 
+> 
+> Regards.
+> - Matev?
+> 
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb 18 22:26:08 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 18 Feb 2006 22:26:08 +0100
+Subject: [Noteedit-devel] Some Music XML bugs
+Message-ID: <43F790F0.1080900@web.de>
+
+Hi Leon,
+
+When importing a music xml file I got the following errors in the import
+filter:
+
+- Tempo alla breve was imported as 2/2 instead of 4/2
+- Multimeasure rests with 1 bar are interpreted as 64'th pause
+- I got 4 extra 64'th pause in the first bar containing a 4 bar
+  multimeasure rest
+- 2 bar multimeasure rest did result in 2 64'th pause bars
+- composer, title etc. is not read
+- some mup warnings not visible in the resulting lilypond file.
+  (after correcting the above bugs manually)
+
+I've appended the music xml file to my mail.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Fantasia-a4-exC-1.xml
+Type: text/xml
+Size: 77427 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060218/02182e0d/attachment.xml>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 19 18:54:38 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 19 Feb 2006 18:54:38 +0100
+Subject: [Noteedit-devel] Printing fixed
+Message-ID: <43F8B0DE.10600@web.de>
+
+Hi,
+
+I just checked in a printing fix, so printing works now as expected.
+One function used a global variable instead of the parameter. Also
+I implemented PMX, MusiXTeX, Midi, MusicXML and mup/not (read from
+file directly), but those are untested (I don't have pmx/musixtex
+installed and the other three are experimental anyway).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb 21 09:22:18 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 21 Feb 2006 09:22:18 +0100
+Subject: [Noteedit-devel] Canorus - a music score editor
+Message-ID: <43FACDBA.1040004@guest.arnes.si>
+
+Hello to all.
+
+We had a long-lasting conversations on IRC & messanger with Reinhard
+about the current NoteEdit state and issues for the past few days.
+Myself, I've been thriving to fix a crescendo bug for 6 hours with no
+luck, while he was fixing and polishing the last additions to the
+printing code. During the talk we both agreed that the current structure
+and development done in NoteEdit needs major reorganization and
+restructuring, let it be transitions like Qt3->4 interface,
+Makefile->Scons, non-object-oriented->complete-object-oriented,
+manually-made-interface->qtDesigner-interface while on the other hand a
+major rewrite and rethinking on the most parts of the code, as no
+developer currently actually understands it due to a lack of code
+documentation (comments, Doxygen, illogical variable names). In the end,
+we came to a conclusion that we:
+1) completely rewrite the current NoteEdit project or
+2) begin a new project from scratch with no connection to NoteEdit
+whatsoever
+
+We kind of agreed that a complete new project with a well-thought-out
+base classes and structures from the beginning would be more appropriate
+than a complete rewrite of NoteEdit having such a history. We decided to
+officially create a new project, Canorus - a music score editor (canorus
+- sweet, rich, full sounding in Latin). We also made some basic
+guidelines of the project:
+**
+
+    * Source view of the score
+    * Command line & Scripting language support (Ruby?)
+    * XML file format
+    * Qt4 and cross-platform ability
+    * New Doxygen documentation
+    * Primary library: Qt4.x
+    * Primary IDE: Eclipse with Scons, Qt, Subversion and VEX plugins
+    * Primary MIDI library: Midishare <http://midishare.sf.net>
+
+
+Reinhard set up a project page at berlios (http://canorus.berlios.de).
+SVN and mailing lists should be up shortly, while the basic homepage
+(mostly copied from NoteEdit) is already there. Also, I'm going to make
+a Canorus' Wiki on Berlios. We decided that this time, development and
+user Wiki should be common, both public. Currently, me and Reinhard are
+the project admins and Georg is marked as a developer as well. Anyone
+interested in development should contact me or him, if he wants to join
+the team!
+
+From my perspective, the main reason why Cantorus project was born is
+the time needed for NoteEdit's further development and bug fixing due to
+a bad structure and lack of code documentation (6 hours of unsuccessful
+bughunting could be much better replaced by a quality coding and
+thinking about the new project). Therefore I decided to alternate my
+strength into the new project than losing precious time on NoteEdit.
+I'll be there for any minor issues or fixes, but I'm not going to make
+any larger further development of NoteEdit anymore.
+
+
+Best wishes and regards to all!
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060221/15976bca/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb 21 21:45:35 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 21 Feb 2006 21:45:35 +0100
+Subject: [Noteedit-devel] Canorus - a music score editor
+In-Reply-To: <43FACDBA.1040004@guest.arnes.si>
+References: <43FACDBA.1040004@guest.arnes.si>
+Message-ID: <43FB7BEF.9080908@web.de>
+
+Hello NoteEdit developers,
+
+I completely agree to the post Matevz has written and really
+hope you are not too much disappointed by our decision.
+
+Some aspects I see as well I want to tell you as well. One
+concern I have that NoteEdit should serve us as a base (from
+the user point of view) what features Canorus should have.
+So I'm aiming that we will port many things available now
+in NoteEdit to Canorus. Parts we don't like will then of
+course be replaced.
+
+Especially I'm interested in keeping/porting one of the strongest
+feature of NoteEdit and even enhance it: Import and Export.
+
+Everything else are details and I really would be happy if you
+decide to help us with our new project. As Matevz wrote I will
+also not completely abandon this project but will do minor bug
+fixes to the code as necessary.
+
+Probably you have noted that we are behind the schedule concerning
+the next NoteEdit release (mainy because of lack of time on my
+side due to other music projects and work and also a bit of
+motivation due to the current state ot the code). We will put
+out one major new version somewhen in march.
+
+Finally I like to thank all the people who have helped to made
+it possible that NoteEdit became a good score editor (which it really
+is, despite it's bugs). I will keep the project page,
+even when there is no longer development in this project.
+
+Best regards,
+
+Reinhard Katzmann
+
+noteedit-devel-admin at berlios.de wrote:
+> Hello to all.
+> 
+> We had a long-lasting conversations on IRC & messanger with Reinhard
+> about the current NoteEdit state and issues for the past few days.
+> Myself, I've been thriving to fix a crescendo bug for 6 hours with no
+> luck, while he was fixing and polishing the last additions to the
+> printing code. During the talk we both agreed that the current structure
+> and development done in NoteEdit needs major reorganization and
+> restructuring, let it be transitions like Qt3->4 interface,
+> Makefile->Scons, non-object-oriented->complete-object-oriented,
+> manually-made-interface->qtDesigner-interface while on the other hand a
+> major rewrite and rethinking on the most parts of the code, as no
+> developer currently actually understands it due to a lack of code
+> documentation (comments, Doxygen, illogical variable names). In the end,
+> we came to a conclusion that we:
+> 1) completely rewrite the current NoteEdit project or
+> 2) begin a new project from scratch with no connection to NoteEdit
+> whatsoever
+> 
+> We kind of agreed that a complete new project with a well-thought-out
+> base classes and structures from the beginning would be more appropriate
+> than a complete rewrite of NoteEdit having such a history. We decided to
+> officially create a new project, Canorus - a music score editor (canorus
+> - sweet, rich, full sounding in Latin). We also made some basic
+> guidelines of the project:
+> **
+> 
+>     * Source view of the score
+>     * Command line & Scripting language support (Ruby?)
+>     * XML file format
+>     * Qt4 and cross-platform ability
+>     * New Doxygen documentation
+>     * Primary library: Qt4.x
+>     * Primary IDE: Eclipse with Scons, Qt, Subversion and VEX plugins
+>     * Primary MIDI library: Midishare <http://midishare.sf.net>
+> 
+> 
+> Reinhard set up a project page at berlios (http://canorus.berlios.de).
+> SVN and mailing lists should be up shortly, while the basic homepage
+> (mostly copied from NoteEdit) is already there. Also, I'm going to make
+> a Canorus' Wiki on Berlios. We decided that this time, development and
+> user Wiki should be common, both public. Currently, me and Reinhard are
+> the project admins and Georg is marked as a developer as well. Anyone
+> interested in development should contact me or him, if he wants to join
+> the team!
+> 
+> From my perspective, the main reason why Cantorus project was born is
+> the time needed for NoteEdit's further development and bug fixing due to
+> a bad structure and lack of code documentation (6 hours of unsuccessful
+> bughunting could be much better replaced by a quality coding and
+> thinking about the new project). Therefore I decided to alternate my
+> strength into the new project than losing precious time on NoteEdit.
+> I'll be there for any minor issues or fixes, but I'm not going to make
+> any larger further development of NoteEdit anymore.
+> 
+> 
+> Best wishes and regards to all!
+> - Matev?
+> 
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb 21 23:59:39 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 21 Feb 2006 23:59:39 +0100
+Subject: [Noteedit-devel] Canorus - a music score editor
+In-Reply-To: <43FACDBA.1040004@guest.arnes.si>
+References: <43FACDBA.1040004@guest.arnes.si>
+Message-ID: <43FB9B5B.7020502@schwaben.de>
+
+Hi,
+
+let me tell, at this occasion, that I had already a lot fun with
+NoteEdit. If you developers decide to move forward, on another a
+seperated codebase, even under another name, let it be. I'll try to
+help, here and there. I also would like to thank everybody who worked on
+NoteEdit, and all the other free software it depends on.
+
+Best Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Feb 23 22:20:43 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 23 Feb 2006 22:20:43 +0100
+Subject: [Noteedit-devel] Some Music XML bugs
+In-Reply-To: <43F790F0.1080900@web.de>
+References: <43F790F0.1080900@web.de>
+Message-ID: <200602232220.43817.leon.vinken@hetnet.nl>
+
+Hi Reinhard,
+
+your xml file behaves the same way on the NoteEdit versions I have (2.7.3 and 
+2.8.0).
+
+The 2/2 I believe to be correct, as my music theory books state that alla 
+breve is 2/2 and also the data in the xml file states 2/2 (<beats> and 
+<beat-type> both are 2).
+
+The 64th rest is of course incorrect, I will have to look into that. Will take 
+a few days.
+
+Regards, Leon.
+
+On Saturday 18 February 2006 22:26, noteedit-devel-admin at berlios.de wrote:
+> Hi Leon,
+>
+> When importing a music xml file I got the following errors in the import
+> filter:
+>
+> - Tempo alla breve was imported as 2/2 instead of 4/2
+> - Multimeasure rests with 1 bar are interpreted as 64'th pause
+> - I got 4 extra 64'th pause in the first bar containing a 4 bar
+>   multimeasure rest
+> - 2 bar multimeasure rest did result in 2 64'th pause bars
+> - composer, title etc. is not read
+> - some mup warnings not visible in the resulting lilypond file.
+>   (after correcting the above bugs manually)
+>
+> I've appended the music xml file to my mail.
+>
+> Regards,
+>
+> Reinhard
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 26 10:30:16 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 26 Feb 2006 10:30:16 +0100
+Subject: [Noteedit-devel] Some Music XML bugs
+In-Reply-To: <200602232220.43817.leon.vinken@hetnet.nl>
+References: <43F790F0.1080900@web.de> <200602232220.43817.leon.vinken@hetnet.nl>
+Message-ID: <200602261030.16187.leon.vinken@hetnet.nl>
+
+Hi Reinhard,
+
+the 64th rests (actually 128th) are in the xml file, but as breve (double 
+whole) rests. These are not supported by NoteEdit, but the MusicXML importer 
+thinks they are and tries to create them anyway (let's call that an xml 
+import bug). This results in many "Unknown rest 1290240" messages, where 
+1290240 is the internal representation of "double whole length". The rest 
+itself (see NRest::calculateDimensionsAndPixmaps()) displays unknown rests as 
+128th.
+
+Possible solutions:
+
+1) report an error when importing breve rests (easy)
+
+2) detect breve rests but insert these as two whole rests (also easy)
+
+3) support breve rests (more work, creating pixmaps and fixing NRest plus 
+changing the GUI for inserting breve rests)
+
+If you want, I could do 1) or 2) for you, but I don't have time to work on 3).
+
+Warnings when exporting to Lilypond are also caused by the unknown rests.
+
+Regards, Leon.
+
+On Thursday 23 February 2006 22:20, noteedit-devel-admin at berlios.de wrote:
+> Hi Reinhard,
+>
+> your xml file behaves the same way on the NoteEdit versions I have (2.7.3
+> and 2.8.0).
+>
+> The 2/2 I believe to be correct, as my music theory books state that alla
+> breve is 2/2 and also the data in the xml file states 2/2 (<beats> and
+> <beat-type> both are 2).
+>
+> The 64th rest is of course incorrect, I will have to look into that. Will
+> take a few days.
+>
+> Regards, Leon.
+>
+> On Saturday 18 February 2006 22:26, noteedit-devel-admin at berlios.de wrote:
+> > Hi Leon,
+> >
+> > When importing a music xml file I got the following errors in the import
+> > filter:
+> >
+> > - Tempo alla breve was imported as 2/2 instead of 4/2
+> > - Multimeasure rests with 1 bar are interpreted as 64'th pause
+> > - I got 4 extra 64'th pause in the first bar containing a 4 bar
+> >   multimeasure rest
+> > - 2 bar multimeasure rest did result in 2 64'th pause bars
+> > - composer, title etc. is not read
+> > - some mup warnings not visible in the resulting lilypond file.
+> >   (after correcting the above bugs manually)
+> >
+> > I've appended the music xml file to my mail.
+> >
+> > Regards,
+> >
+> > Reinhard
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+

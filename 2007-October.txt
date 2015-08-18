@@ -1,0 +1,38 @@
+From noteedit-devel at lists.berlios.de  Fri Oct  5 10:23:15 2007
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 05 Oct 2007 10:23:15 +0200
+Subject: [Noteedit-devel] University of Alicante in Spain
+Message-ID: <1191572595.5882.19.camel@tomas>
+
+First of all, I'm sorry if this is the no correct place to ask about
+TSE3 library.
+
+In the university of Alicante are working to build an interface of midi
+songs, with play, stop and pause buttons.
+
+The play and stop functions are clear, but the problems is the pause
+function.
+
+TSE3 don't have a pause method in the transport object, so I'm trying to
+develop the pause function doing transport.stop() and save the last
+clock of the MidiScheduler class, after than I do play() with the last
+clock saved.
+
+The problem is that the song loose the tempo and the musical
+instruments, it assume the piano as melody instument, and 120 pulses of
+tempo. It seems that the song begin at middle and don't read the tempo
+and instrument.
+
+They is some way of inject the instrument and tempo in a song?
+
+
+I have very been thankful if you can help me. 
+
+Best regards.
+
+Tomas Perez Garcia
+Technician of Prosemus project.
+http://grfia.dlsi.ua.es/cm/projects/prosemus/index.php
+
+
+

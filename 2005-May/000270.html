@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Splash in a thread
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Splash%20in%20a%20thread&In-Reply-To=%3C428A3E20.6070309%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000269.html">
+   <LINK REL="Next"  HREF="000271.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Splash in a thread</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Splash%20in%20a%20thread&In-Reply-To=%3C428A3E20.6070309%40web.de%3E"
+       TITLE="[Noteedit-devel] Splash in a thread">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue May 17 20:55:28 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000269.html">[Noteedit-devel] Splash in a thread
+</A></li>
+        <LI>Next message: <A HREF="000271.html">[Noteedit-devel] Splash in a thread
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#270">[ date ]</a>
+              <a href="thread.html#270">[ thread ]</a>
+              <a href="subject.html#270">[ subject ]</a>
+              <a href="author.html#270">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I occasionally got an example of a threaded QT example before my eyes.
+</I>&gt;<i> So I made our splash screen disappear after 3 s. Just with dummy waits
+</I>&gt;<i> and messages. It works for me (once I had an XLib connect error).
+</I>&gt;<i> 
+</I>&gt;<i> What is strange, during compile I get this message:
+</I>&gt;<i> 
+</I>&gt;<i>     main.cpp: In function `int main(int, char**)':
+</I>&gt;<i>     main.cpp:107: warning: unused variable `NResource*nr'
+</I>&gt;<i> 
+</I>&gt;<i> When I remove 'NResource *nr' the app doesn't start up, which I don't
+</I>&gt;<i> understand. What it's that for?
+</I>&gt;<i> I attached the patch. I would like the automatic switch off of the
+</I>&gt;<i> splash screen, but enough time to look at it :)
+</I>&gt;<i> 
+</I>
+Looking at the code and understanding it is easy (see resource.h).
+Everything in this class is static and so you can directly access
+all resources through NResource::... method calls or direct member
+access. Of course in the real object oriented C++ world this is not
+really a good design. But you need once to load all the resources
+and hold it in memory. This is done in the main program. To get rid
+of the warning I added a (void)nr; line in the next line.
+
+The splash screen patch itself has a bad interface to the main program.
+I have added two methods, one showing the splash and another one
+changing the message text. After loading the program it stays
+on top about 3 seconds using the start method already in the thread
+and dissappear afterwards. Get it from SVN.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000269.html">[Noteedit-devel] Splash in a thread
+</A></li>
+	<LI>Next message: <A HREF="000271.html">[Noteedit-devel] Splash in a thread
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#270">[ date ]</a>
+              <a href="thread.html#270">[ thread ]</a>
+              <a href="subject.html#270">[ subject ]</a>
+              <a href="author.html#270">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

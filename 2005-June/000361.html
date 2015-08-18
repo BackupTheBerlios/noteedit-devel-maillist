@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Fw: Bug#313942: noteedit: [INTL:de] German PO file corrections
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Fw%3A%20Bug%23313942%3A%20noteedit%3A%20%5BINTL%3Ade%5D%20German%20PO%20file%20corrections&In-Reply-To=%3C20050616213418.GA13343%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000360.html">
+   <LINK REL="Next"  HREF="000362.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Fw: Bug#313942: noteedit: [INTL:de] German PO file corrections</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Fw%3A%20Bug%23313942%3A%20noteedit%3A%20%5BINTL%3Ade%5D%20German%20PO%20file%20corrections&In-Reply-To=%3C20050616213418.GA13343%40localhost%3E"
+       TITLE="[Noteedit-devel] Fw: Bug#313942: noteedit: [INTL:de] German PO file corrections">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Jun 16 23:34:18 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000360.html">[Noteedit-devel] translation status
+</A></li>
+        <LI>Next message: <A HREF="000362.html">[Noteedit-devel] Flyer for the Linuxtag 2005
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Please find attached corrections from Jens Seidel for the German
+translation of 2.7.4, along with english typos fixes. This patch was
+sent to the Debian Bug Tracking System (see also [1] and [2])
+<A HREF="http://bugs.debian.org/313942">http://bugs.debian.org/313942</A> and <A HREF="http://bugs.debian.org/noteedit">http://bugs.debian.org/noteedit</A>)
+
+Unfortunately I haven't had the time to test 2.8.0-rc1 yet, but I have
+prepared a debian package for 2.7.4. The current version can be found at
+<A HREF="http://piem.org/debian/noteedit/">http://piem.org/debian/noteedit/</A> . You will find all the modifications
+made in the .diff.gz file. Comments and feedback welcome.
+
+I noted the following issues in version 2.7.4:
+
+ - i did get to reproduce #230891 after loading a large
+   multichannel midifile [1].
+
+ - the kprinter box is broken, only pdf works. it seems to fail finding
+   tools in /usr/bin. the error is: &quot;Cannot save print file to
+   /home/piem/print.ps. Check that you have write access to it.&quot;
+
+ - tse3play does not seem to be willing to play at all (most likely a
+   tse3play bug).
+
+ - autobar, on some files [2], eats all the cpu and never returns
+
+ - autobeam sometimes crashes on createUndo
+
+ - quite a few warnings when compiling (debian unstable / powerpc)
+   examples include:
+
+mainframewidget.cpp:674: warning: `connectItem' is deprecated (declared at 
+   /usr/include/kde/kaccel.h:337)
+mainframewidget.cpp:675: warning: `insertItem' is deprecated (declared at 
+   /usr/include/kde/kaccel.h:329)
+
+...
+
+tse3handler.cpp:220: warning: comparison is always true due to limited range of 
+   data type
+tse3handler.cpp:223: warning: passing `double' for converting 1 of `
+   TSE3::Clock::Clock(int)'
+
+ - temporary files locations are a bit weird (should use kde temp dir
+   instead) 
+
+
+Cheers, Paul
+
+(please cc me as i am not yet registered to this list)
+
+[1] <A HREF="http://www.mutopiaproject.org/cgibin/piece-info.cgi?id=57">http://www.mutopiaproject.org/cgibin/piece-info.cgi?id=57</A>
+[2] <A HREF="http://www.mutopiaproject.org/cgibin/piece-info.cgi?id=543">http://www.mutopiaproject.org/cgibin/piece-info.cgi?id=543</A>
+
+----- Forwarded message from Jens Seidel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">jensseidel at users.sf.net</A>&gt; -----
+
+Subject: Bug#313942: noteedit: [INTL:de] German PO file corrections
+Date: Thu, 16 Jun 2005 19:41:11 +0200
+From: Jens Seidel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">jensseidel at users.sf.net</A>&gt;
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">313942 at bugs.debian.org</A>
+Resent-Sender: Debian BTS &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">debbugs at bugs.debian.org</A>&gt;
+Resent-Date: Thu, 16 Jun 2005 18:40:03 +0100
+
+On Thu, Jun 16, 2005 at 03:59:32PM +0100, Paul Brossier wrote:
+&gt;<i> Hi Jens,
+</I>&gt;<i> 
+</I>&gt;<i> thank you for the update. i am currently packaging 2.7.4, and the po
+</I>&gt;<i> files completely changed from 2.7.1. Please review the attached de.po
+</I>&gt;<i> instead.
+</I>
+OK.
+
+I noticed that nearly all problems I reported vanished in 2.7.4, very
+good. Nevertheless I found many minor issues during a complete
+proofread.
+
+Since the text was written in new German orthography I ensured that it is
+consistently used.
+
+I also found a few issues with English texts:
+
+#: voicedialog.cpp:114
+msgid &quot;&quot;
+&quot;The direction of the stems of the notes in voice number %1 will be chosen &quot;
+s/chosen/choosen/
+
+#: configuredialog.cpp:135
+msgid &quot;&quot;
+&quot;The last score that was open the last time the appliaction was used will be &quot;
+s/appliaction/application/
+
+#: uiconnect.cpp:222
+msgid &quot;&quot;
+&quot;Actually LilyPond is not supported by your system. Do you realy want to make &quot;
+s/realy/really/
+
+#: lilyexport.cpp:529
+msgid &quot;Staff %1, measure %2: 128th in mesaure; minimum is 64th\n&quot;
+It should be &quot;measure&quot; not &quot;mesaure&quot;, right?
+
+#: filehandler.cpp:549
+msgid &quot;Staff %1 ; measure %2 :The multirests are not aligned\n&quot;
+spaces!!!
+
+#: musixtex.cpp:656
+msgid &quot;too many beams in measure: %1; maximum: %2\n&quot;
+s/too/Too/
+
+Please do not forget to send it upstream,
+Jens
+
+
+
+----- End forwarded message -----
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: de.po.diff.gz
+Type: application/octet-stream
+Size: 6849 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050616/7b977d83/attachment.obj">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050616/7b977d83/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000360.html">[Noteedit-devel] translation status
+</A></li>
+	<LI>Next message: <A HREF="000362.html">[Noteedit-devel] Flyer for the Linuxtag 2005
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

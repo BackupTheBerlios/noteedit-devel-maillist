@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] how to upload 2.7.4 tarball to berliOS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20how%20to%20upload%202.7.4%20tarball%20to%20berliOS&In-Reply-To=%3C200502012242.53676.leon.vinken%40hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000080.html">
+   <LINK REL="Next"  HREF="000081.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] how to upload 2.7.4 tarball to berliOS</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20how%20to%20upload%202.7.4%20tarball%20to%20berliOS&In-Reply-To=%3C200502012242.53676.leon.vinken%40hetnet.nl%3E"
+       TITLE="[Noteedit-devel] how to upload 2.7.4 tarball to berliOS">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb  1 22:42:53 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000080.html">[Noteedit-devel] how to upload 2.7.4 tarball to berliOS
+</A></li>
+        <LI>Next message: <A HREF="000081.html">[Noteedit-devel] Release 2.7.4 tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+I am not especially looking forward to the job of release technician, just 
+trying to push 2.7.4 out of the door. I am perfectly happy with you making 
+the release (even happier then when I would have to do it :-)).
+
+Apparently, I was not clear enough about my intentions: I also made a tarball 
+tonight. Doesn't matter, but let's try to avoid wasting time like this. Once 
+again, I am perfectly happy with your version. Feel free to test and release 
+it. In case you run into problems, I also have a version available that at 
+least builds and works OK on Fedora Core 3. Let me know if you need it.
+
+This is what I did:
+unzip/untar noteedit-2.7.3.tgz
+- note: be careful to check the five links in admin !
+mv noteedit-2.7.3 noteedit-2.7.4-beta1
+replace following files by svn versions:
+- AUTHORS
+- FAQ
+- FAQ.de
+- INSTALL
+- INSTALL.de
+- README
+- VERSION
+- doc/de/index.docbook
+- doc/noteedit/index.docbook
+- noteedit/* (all updated files)
+- noteedit/po/Makefile.in
+- noteedit/po/sl.po
+note: don't copy:
+- Makefile.cvs
+- entire admin directory
+edit 2.7.3 into 2.7.4 in:
+- configure.in.in
+- configure.in
+- configure
+
+If you need help in testing your tarball, I would be happy to do that too. 
+Available platforms are Core 3 and RedHat 7.2 (old, but 2.7.3 still works on 
+it). Just tell me where to download it from.
+
+Regards, Leon.
+
+On Tuesday 01 February 2005 20:10, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+</I>&gt;<i> &gt; Hi guys,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; title says it all: how do I upload a tarball to berliOS ? I can find a
+</I>&gt;<i> &gt; &quot;download&quot; but no &quot;upload&quot; button. If I can't do it myself, who do I send
+</I>&gt;<i> &gt; it to ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I intend to create a 2.7.4 beta tarball today or tomorrow.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards, Leon.
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Noteedit-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> Currently only me and Georg can do this.
+</I>&gt;<i> I go to Admin -&gt; Edit/Release files
+</I>&gt;<i> I upload the tarball to ftp.berlios.de
+</I>&gt;<i>
+</I>&gt;<i> After that I can start to create a new release.
+</I>&gt;<i> You either have to be admin or release technician to do the job.
+</I>&gt;<i> I had planned to do it myself.
+</I>&gt;<i>
+</I>&gt;<i> I'd used the current source from SVN, create a release TAG to it
+</I>&gt;<i> and add the old configure / admin files to the files and remove
+</I>&gt;<i> the CVS specific files.
+</I>&gt;<i>
+</I>&gt;<i> If you want to be a release technician, Leon, just tell me and
+</I>&gt;<i> I change your user data.
+</I>&gt;<i>
+</I>&gt;<i> Also I wanted to compile it on Mandrake 10.2 beta and Fedora
+</I>&gt;<i> Core 3 for myself (tarball and rpms).
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard Katzmann
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000080.html">[Noteedit-devel] how to upload 2.7.4 tarball to berliOS
+</A></li>
+	<LI>Next message: <A HREF="000081.html">[Noteedit-devel] Release 2.7.4 tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

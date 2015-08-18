@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Warnings in mainframewidget.cpp
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Warnings%20in%20mainframewidget.cpp&In-Reply-To=%3C4295C8A2.4020506%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000288.html">
+   <LINK REL="Next"  HREF="000291.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Warnings in mainframewidget.cpp</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Warnings%20in%20mainframewidget.cpp&In-Reply-To=%3C4295C8A2.4020506%40web.de%3E"
+       TITLE="[Noteedit-devel] Warnings in mainframewidget.cpp">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu May 26 15:01:22 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000288.html">[Noteedit-devel] #3505 abc export fixed
+</A></li>
+        <LI>Next message: <A HREF="000291.html">[Noteedit-devel] Report bug menu removed (finally)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+If anyone wants to start reducing some warnings in NoteEdit he can do it
+in mainframewidget.cpp:
+
+Replace the keyboard shortcut creation insertItem() and connectItem() by
+one single line insert(). The insert method requires an What's this 
+string (i.e. a more or less detailed help, more than a simple tool tip).
+I've added a patch to this mail not yet in svn so you get an idea how
+to it.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mainframewidget.patch
+Type: text/x-patch
+Size: 3730 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050526/37a1bed0/attachment.bin">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050526/37a1bed0/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000288.html">[Noteedit-devel] #3505 abc export fixed
+</A></li>
+	<LI>Next message: <A HREF="000291.html">[Noteedit-devel] Report bug menu removed (finally)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] scons error update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20scons%20error%20update&In-Reply-To=%3C43C13BEB.2090405%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000590.html">
+   <LINK REL="Next"  HREF="000591.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] scons error update</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20scons%20error%20update&In-Reply-To=%3C43C13BEB.2090405%40gmail.com%3E"
+       TITLE="[Noteedit-devel] scons error update">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Jan  8 17:20:59 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000590.html">[Noteedit-devel] scons error update
+</A></li>
+        <LI>Next message: <A HREF="000591.html">[Noteedit-devel] scons error update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Still no joy :(.
+
+...
+scons: *** Tried to lookup File 'noteedit/noteedit' as a Dir.
+scons: building terminated because of errors.
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Hi Matevz &amp; friends,
+</I>&gt;<i>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Hi Reinhard.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Sorry, I didn't see the last message you sent to the list. I touched
+</I>&gt;&gt;<i>kguitar_excerpt/config.h and the kguitar part was compiled fine with
+</I>&gt;&gt;<i>scons. Another error I got was that lyrics.ui was not found - I had to
+</I>&gt;&gt;<i>manually copy lyrics.ui.qt3 -&gt; lyrics.ui. Now, I got an error that
+</I>&gt;&gt;<i>strstream.h is not found. That is because GCC_MAJ_VERS was probably not
+</I>&gt;&gt;<i>set and it wanted to include obsolete headers that aren't present on my
+</I>&gt;&gt;<i>system anymore. Can you update the scons script so it checks for the gcc
+</I>&gt;&gt;<i>version and set the variables up as well?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>No, I won't do that. I simply assume that gcc-3x or higher is used.
+</I>&gt;<i>I declare gcc2.x as deprecated like kde2 / qt2 is deprecated. At the
+</I>&gt;<i>moment I simplay have added a -DGCC_MAJ_VERS=3 to the SConstruct but
+</I>&gt;<i>in the long run these gcc compiler specific things should be completely
+</I>&gt;<i>removed (we want to have a portable NoteEdit with as less as possible
+</I>&gt;<i>&quot;special cases&quot; for compiling).
+</I>&gt;<i>
+</I>&gt;<i>I have checked in new SConstruct, SConsscript (noteedit) and changed
+</I>&gt;<i>so WITH_SCONS is checked before including config.h. Also I added
+</I>&gt;<i>VERSION and WITH_FADE_IN options. Next I added copying of lyrics.ui
+</I>&gt;<i>if it was missing. Finally I added the output of the log file when
+</I>&gt;<i>lilypond output is missing and removed &quot;--ps&quot; (to show the error that
+</I>&gt;<i>lilypond up to 2.6.4 does fail when trying to create a pdf file).
+</I>&gt;<i>
+</I>&gt;<i>Automake fails for me currently, tse3handler symbols are for some
+</I>&gt;<i>strange reasons not found though they are defined somewhere in the
+</I>&gt;<i>libnoteedit.o / tse3handler.o
+</I>&gt;<i>
+</I>&gt;<i>Regards,
+</I>&gt;<i>
+</I>&gt;<i>Reinhard
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000590.html">[Noteedit-devel] scons error update
+</A></li>
+	<LI>Next message: <A HREF="000591.html">[Noteedit-devel] scons error update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] hard crash on midi playing/export fixed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20hard%20crash%20on%20midi%20playing/export%20fixed&In-Reply-To=%3C4251DEAE.3090503%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] hard crash on midi playing/export fixed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20hard%20crash%20on%20midi%20playing/export%20fixed&In-Reply-To=%3C4251DEAE.3090503%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] hard crash on midi playing/export fixed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Apr  5 02:41:18 CEST 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000130.html">[Noteedit-devel] crash on midi import
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#129">[ date ]</a>
+              <a href="thread.html#129">[ thread ]</a>
+              <a href="subject.html#129">[ subject ]</a>
+              <a href="author.html#129">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+after quite some investigations, and although not yet fully 
+understanding the inner workings of this area of noteedit, anyway I 
+think the attatched fix is a good fix for bug #3503. The tool pmem shows 
+that no memory whole is introduced. And things are working again. 3503 I 
+closed now, svn rev 69.
+
+I didn't do any cleanup work as a reminder, because similar code 
+contructs with segno repeats might show similar problems. This needs to 
+be kept an eye on, maybe.
+
+Thanks for the bug report.
+
+Best Regards,
+Georg
+
+
+
+
+
+--------------010805080706070106020406
+Content-Type: text/plain;
+ name=&quot;patch.staff.cpp&quot;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename=&quot;patch.staff.cpp&quot;
+
+Index: staff.cpp
+===================================================================
+--- staff.cpp	(revision 68)
++++ staff.cpp	(working copy)
+@@ -504,7 +504,13 @@
+ 	NVoice *voice_elem;
+ 	playClef_ = repeatClef_;
+ 	if (playKeySig_) {
+-		delete playKeySig_;
++		/* This delete commented out fixes crash bug #3503, which hitted midi playing
++		and export whith multiple repeats. The tool pmem doesn't show a memory leak
++		caused by this. Similar constructs should come under investigation, see below?
++		The parameter &quot;again&quot; is set but not actually in use. 4/2005.
++		*/
++		// delete playKeySig_;
++		
+ 	}
+ 	playKeySig_ = repeatKeySig_;
+ 	voice_elem = voicelist_.first();
+
+--------------010805080706070106020406--
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000130.html">[Noteedit-devel] crash on midi import
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#129">[ date ]</a>
+              <a href="thread.html#129">[ thread ]</a>
+              <a href="subject.html#129">[ subject ]</a>
+              <a href="author.html#129">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

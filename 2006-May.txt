@@ -1,0 +1,1041 @@
+From noteedit-devel-admin at lists.berlios.de  Mon May  1 10:00:39 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 May 2006 10:00:39 +0200
+Subject: [Noteedit-devel] Last fixes (print preview)
+Message-ID: <4455C027.1050905@web.de>
+
+Hi,
+
+I finally found the reason why preview print and export did
+not work correctly and also fixed some other related problems.
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  1 11:59:30 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 May 2006 11:59:30 +0200
+Subject: [Noteedit-devel] Last fixes (print preview)
+In-Reply-To: <4455C027.1050905@web.de>
+References: <4455C027.1050905@web.de>
+Message-ID: <4455DC02.30600@schwaben.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+Hi Reinhard,
+
+nice, preview is now working for me. It makes proof reading easier,
+getting this multiline display. Ofcourse, a bug to report: When I start
+preview a second time, with the first xpdf or gv still left open,
+NoteEdit is blocked, has to be killed. I guess you find a solution ...
+
+Thanks, Regards,
+Georg
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  1 12:27:11 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 May 2006 12:27:11 +0200
+Subject: [Noteedit-devel] Last fixes (print preview)
+In-Reply-To: <4455C027.1050905@web.de>
+References: <4455C027.1050905@web.de>
+Message-ID: <4455E27F.1090006@schwaben.de>
+
+As a side note: I had to remove my
+
+    ~/.kde/share/config/noteeditrc
+
+to get rid of reproducable crashes when switching from gv to kpdf in the
+preview program setting.
+
+Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  1 13:00:21 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 May 2006 13:00:21 +0200
+Subject: [Noteedit-devel] Bug fixes for shortcuts and a new one
+Message-ID: <4455EA45.8070701@web.de>
+
+Hi,
+
+I justed added a new shortcut for breve (idea from the lilypond ML).
+Also I fixed two of those having a wrong signal<->slot assignment
+(namely Jump to measure and Insert Keyboard Mode).
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed May  3 11:01:50 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 3 May 2006 09:01:50 GMT
+Subject: [Noteedit-devel] Japanese message catalog for NoteEdit 2.8.1
+Message-ID: <060503180150.M0203645@mix.syd.odn.ne.jp>
+
+Hello list,
+
+I'm Takeshi Hamasaki from Japan.
+I subscribed to this ML just few minutes ago.
+
+I placed a ja.po file for NoteEdit 2.8.1 at:
+http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1.ja.po
+
+Now its status is: 
+357 translated messages, 9 fuzzy translations, 590 untranslated messages.
+
+according to the output from msgfmt.
+Yes, it is far way to complete, I think it is better than nothing.
+I'll work to increase the translated messages day by day 
+and replace ja.po file at same URL.
+
+I'm happy if this ja.po is included in release.
+
+Thanks,
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu May  4 07:03:40 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 04 May 2006 07:03:40 +0200
+Subject: [Noteedit-devel] Japanese message catalog for NoteEdit 2.8.1
+In-Reply-To: <060503180150.M0203645@mix.syd.odn.ne.jp>
+References: <060503180150.M0203645@mix.syd.odn.ne.jp>
+Message-ID: <44598B2C.1020800@schwaben.de>
+
+Hi,
+
+happily we'll include it.
+
+Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 01:25:42 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 6 May 2006 01:25:42 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one staff
+Message-ID: <200605060125.42724.Stefan-Hackl@gmx.de>
+
+Hello,
+
+First of all I would like to thank all developers! Noteedit is a fantastic 
+program! Especially the latest beta with the direct print option. 
+
+I would like to contribute but I don't know much about programming, so I 
+thought I could help with bug reports. 
+
+I spent a lot of time getting known to lilypond and detected three bugs in the 
+lilypond export of noteedit. I think it won't be a big thing fixing them:
+
+1. Two staves can be joined in different ways:
+a) with a brace on the left and connected bar-lines (export works perfectly)
+b) with a bracket on the left and connected bar-lines (BUG: bar-lines not 
+connected!)  --> "StaffGroup" is the correct identifier for this, while 
+Noteedit creates a "ChoirStaff"
+c) with a bracket on the left and seperate bar-lines (export works perfectly)
+d) without bracket on the left and seperate bar-lines (export works perfectly)
+
+See Lilypond-Documentation:
+http://lilypond.org/doc/v2.8/Documentation/user/lilypond/System-start-delimiters.html#System-start-delimiters
+
+2. Instrument names are exported incorrectly for polyphonic staves. 
+A simple Example:
+This is a fragment of the Lilypond export file
+
+GitarreXBAVoiceA = \relative c' {
+	\voiceOne 
+	\clef G
+	\time 4/4 
+	                   
+	e'4 e d f 
+	\bar "|."
+}
+GitarreXBAVoiceB = \relative c' {
+	\voiceTwo 
+	\partial 1
+	                   
+	e2 d 
+}
+GitarreXBA = \simultaneous {
+	\set Staff.instrument = #"Gitarre 1 "
+	\context Voice="GitarreXBAVoiceA" \GitarreXBAVoiceA
+	\context Voice="GitarreXBAVoiceB" \GitarreXBAVoiceB
+}
+
+In order to make the instrument name visible in the lilypond output file the 
+command  \set Staff.instrument = #"Gitarre 1 " should be added in the first 
+voice part:
+
+GitarreXBAVoiceA = \relative c' {
+	\voiceOne 
+	\clef G
+	\time 4/4 
+	\set Staff.instrument = #"Gitarre 1 "
+	                   
+	e'4 e d f 
+	\bar "|."
+}
+GitarreXBAVoiceB = \relative c' {
+	\voiceTwo 
+	\partial 1
+	                   
+	e2 d 
+}
+GitarreXBA = \simultaneous {
+	\context Voice="GitarreXBAVoiceA" \GitarreXBAVoiceA
+	\context Voice="GitarreXBAVoiceB" \GitarreXBAVoiceB
+}
+
+
+3. For vocal music with two or more stanzas the  \set stanza = "1."  ,  \set 
+stanza = "2." , ... line should be added within the  \lyricmode { ... } part. 
+Otherwise the stanza number will not be visible.
+
+Example:
+
+StimmeATextA = \lyricmode { \set stanza = "1." 
+		
+		
+		
+		
+		So troll'n wir uns ganz 
+		fromm und sacht von Wein- ge- lag und 
+		Freu- den- schmaus, wenn uns der Tod sagt: 
+		''Gu- te Nacht, dein Stun- den-  _ glas rinnt 
+		aus!'' Wer heut noch frech den 
+		Schna- bel wetzt und glaubt ein gro- ?er 
+		Herr zu sein, pa? auf der Schrei- ner 
+		ho- belt jetzt schon grad an  _ dei- nem 
+		Schrein. Scheint das Grab dir tief und 
+		dumpf sein Druck, A- la- vott, so nimm noch 
+		ei- nen Schluck und noch ei- nen hin- ter- her und noch 
+		zwei, drei mehr, dann stirbst  _ du  _ nicht  _ so  _ 
+		schwer. 
+		
+		
+		}
+StimmeATextB = \lyricmode { \set stanza = "2." 
+		
+		
+		
+		
+		Der nach des an- dern 
+		Lieb- ster schielt und doch sich f?hlt als 
+		No- bel- mann. Pa? auf! Dem Spiel- mann 
+		der dir spielt springst du ins  _ Grab vo- 
+		ran. Und du, der toll vor 
+		Ei- fer- sucht zer- schmi? einst je- des 
+		Glas im Saal. Wenn dich der Tod im 
+		Bett be- sucht, hoch le- be  _ dein Ri- 
+		val. Scheint das Grab dir tief und 
+		dumpf sein Druck, A- la- vott, so nimm noch 
+		ei- nen Schluck! Und noch ei- nen gleich da- bei und noch 
+		zwei oder drei, dann stirbst  _ du  _ sor-  _ gen-  _ 
+		frei. 
+		
+		
+		}
+
+
+I am using Lilypond 2.8.1. may be some of this problems were not present with 
+Lily 2.6.x, but running convert-ly doesn't fix them.
+
+If you cannot understand anythind in this mail, I can write in german, it 
+seems there are xome german developers.
+
+Greetings 
+
+Stefan Hackl
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 01:46:07 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 6 May 2006 01:46:07 +0200
+Subject: [Noteedit-devel] Lilypond lyric export
+Message-ID: <200605060146.07264.Stefan-Hackl@gmx.de>
+
+Hello again,
+
+Lyrics in Lilypond look better if hyphenation (german: "Silbentrennung)  is 
+written with a double dash and a space charakter after the word: " --"
+
+Example:
+ 
+                So troll'n wir uns ganz 
+                fromm und sacht von Wein -- ge -- lag und 
+                Freu -- den -- schmaus, wenn uns der Tod sagt: 
+                ''Gu -- te Nacht, dein Stun -- den -- glas rinnt 
+                aus!'' 
+
+If it is written this way, lilypond will create a centered hyphen (german: 
+"Trennungsstrich"), which looks better than a hyphen sticking to one word 
+part.
+
+Best Regards,
+
+Stefan
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 13:49:21 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 06 May 2006 13:49:21 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one
+ staff
+In-Reply-To: <200605060125.42724.Stefan-Hackl@gmx.de>
+References: <200605060125.42724.Stefan-Hackl@gmx.de>
+Message-ID: <445C8D41.6090309@gmail.com>
+
+noteedit-devel-admin at berlios.de wrote:
+> 3. For vocal music with two or more stanzas the  \set stanza = "1."  ,  \set 
+> stanza = "2." , ... line should be added within the  \lyricmode { ... } part. 
+> Otherwise the stanza number will not be visible.
+>
+> Example:
+>
+> StimmeATextA = \lyricmode { \set stanza = "1." 
+>   
+
+This works for me. \set stanza = "1." is in the score block below in
+\context lyrics {}.
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 18:20:35 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 6 May 2006 18:20:35 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one staff
+In-Reply-To: <445C8D41.6090309@gmail.com>
+References: <200605060125.42724.Stefan-Hackl@gmx.de> <445C8D41.6090309@gmail.com>
+Message-ID: <200605061820.35771.Stefan-Hackl@gmx.de>
+
+Am Samstag, 6. Mai 2006 13:49 schrieb noteedit-devel-admin at berlios.de:
+> noteedit-devel-admin at berlios.de wrote:
+> > 3. For vocal music with two or more stanzas the  \set stanza = "1."  , 
+> > \set stanza = "2." , ... line should be added within the  \lyricmode {
+> > ... } part. Otherwise the stanza number will not be visible.
+> >
+> > Example:
+> >
+> > StimmeATextA = \lyricmode { \set stanza = "1."
+>
+> This works for me. \set stanza = "1." is in the score block below in
+> \context lyrics {}.
+>
+Yes it is, but with Lilypond 2.8.1. it seems to be the wrong position. If I 
+run lilypond with the file the stanza number doesn't apear.
+
+Stefan Hackl
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 21:04:48 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 06 May 2006 21:04:48 +0200
+Subject: [Noteedit-devel] Lilypond lyric export
+In-Reply-To: <200605060146.07264.Stefan-Hackl@gmx.de>
+References: <200605060146.07264.Stefan-Hackl@gmx.de>
+Message-ID: <445CF350.70100@gmail.com>
+
+Yes, NoteEdit doesn't support more advanced hyphens. It uses a simple -
+after the first word to mark that it's not complete. It supports
+multiple sillables per note using < and > signs though.
+
+
+Regards.
+- Matev?
+
+
+noteedit-devel-admin at berlios.de wrote:
+> Hello again,
+>
+> Lyrics in Lilypond look better if hyphenation (german: "Silbentrennung)  is 
+> written with a double dash and a space charakter after the word: " --"
+>
+> Example:
+>  
+>                 So troll'n wir uns ganz 
+>                 fromm und sacht von Wein -- ge -- lag und 
+>                 Freu -- den -- schmaus, wenn uns der Tod sagt: 
+>                 ''Gu -- te Nacht, dein Stun -- den -- glas rinnt 
+>                 aus!'' 
+>
+> If it is written this way, lilypond will create a centered hyphen (german: 
+> "Trennungsstrich"), which looks better than a hyphen sticking to one word 
+> part.
+>
+> Best Regards,
+>
+> Stefan
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>   
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 23:15:19 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 06 May 2006 23:15:19 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one
+ staff
+In-Reply-To: <200605060125.42724.Stefan-Hackl@gmx.de>
+References: <200605060125.42724.Stefan-Hackl@gmx.de>
+Message-ID: <445D11E7.9010805@gmail.com>
+
+noteedit-devel-admin at berlios.de wrote:
+> 1. Two staves can be joined in different ways:
+> a) with a brace on the left and connected bar-lines (export works perfectly)
+> b) with a bracket on the left and connected bar-lines (BUG: bar-lines not 
+> connected!)  --> "StaffGroup" is the correct identifier for this, while 
+> Noteedit creates a "ChoirStaff"
+> c) with a bracket on the left and seperate bar-lines (export works perfectly)
+> d) without bracket on the left and seperate bar-lines (export works perfectly)
+>   
+Implemented in R459, please test.
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May  6 23:19:22 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 06 May 2006 23:19:22 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one
+ staff
+In-Reply-To: <200605060125.42724.Stefan-Hackl@gmx.de>
+References: <200605060125.42724.Stefan-Hackl@gmx.de>
+Message-ID: <445D12DA.40301@gmail.com>
+
+I cannot reproduce the other two: I'm using LilyPond 2.8.1 and export
+from NE works fine.
+
+I'm attaching the example. Could you be more specific?
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: na_oknu.ly
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060506/78497d22/attachment.ksh>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: na_oknu.not
+Type: application/octet-stream
+Size: 4041 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060506/78497d22/attachment.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: na_oknu.pdf
+Type: application/pdf
+Size: 206160 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060506/78497d22/attachment.pdf>
+
+From noteedit-devel-admin at lists.berlios.de  Sun May  7 17:15:03 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 7 May 2006 17:15:03 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one staff
+In-Reply-To: <445D11E7.9010805@gmail.com>
+References: <200605060125.42724.Stefan-Hackl@gmx.de> <445D11E7.9010805@gmail.com>
+Message-ID: <200605071715.03983.Stefan-Hackl@gmx.de>
+
+Am Samstag, 6. Mai 2006 23:15 schrieb noteedit-devel-admin at berlios.de:
+> noteedit-devel-admin at berlios.de wrote:
+> > 1. Two staves can be joined in different ways:
+> > a) with a brace on the left and connected bar-lines (export works
+> > perfectly) b) with a bracket on the left and connected bar-lines (BUG:
+> > bar-lines not connected!)  --> "StaffGroup" is the correct identifier for
+> > this, while Noteedit creates a "ChoirStaff"
+> > c) with a bracket on the left and seperate bar-lines (export works
+> > perfectly) d) without bracket on the left and seperate bar-lines (export
+> > works perfectly)
+>
+> Implemented in R459, please test.
+
+Thanks! It works!
+
+Stefan Hackl
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun May  7 17:27:43 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 7 May 2006 17:27:43 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one staff
+In-Reply-To: <445D12DA.40301@gmail.com>
+References: <200605060125.42724.Stefan-Hackl@gmx.de> <445D12DA.40301@gmail.com>
+Message-ID: <200605071727.44025.Stefan-Hackl@gmx.de>
+
+Hello,
+
+Thank you for your efforts!
+I attach an example file for you. In this file instrument name of second staff 
+and stanza numbers are missing. 
+
+In the file "corrected-version.ly" the problem doesn't appear.
+
+Regards 
+Stefan
+
+
+Am Samstag, 6. Mai 2006 23:19 schrieb noteedit-devel-admin at berlios.de:
+> I cannot reproduce the other two: I'm using LilyPond 2.8.1 and export
+> from NE works fine.
+>
+> I'm attaching the example. Could you be more specific?
+>
+>
+> Regards.
+> - Matev?
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: corrected-version.ly
+Type: application/x-kdeuser1
+Size: 5881 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060507/309cfa94/attachment.bin>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: corrected-version.pdf
+Type: application/pdf
+Size: 60763 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060507/309cfa94/attachment.pdf>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sotrollnwiruns.pdf
+Type: application/pdf
+Size: 60217 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060507/309cfa94/attachment-0001.pdf>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sotrollnwiruns.ly
+Type: application/x-kdeuser1
+Size: 5881 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060507/309cfa94/attachment-0001.bin>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sotrollnwiruns.not
+Type: application/notedit
+Size: 9619 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060507/309cfa94/attachment-0002.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Sun May  7 20:11:08 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 07 May 2006 20:11:08 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one
+ staff
+In-Reply-To: <200605061820.35771.Stefan-Hackl@gmx.de>
+References: <200605060125.42724.Stefan-Hackl@gmx.de> <445C8D41.6090309@gmail.com> <200605061820.35771.Stefan-Hackl@gmx.de>
+Message-ID: <445E383C.9090707@schwaben.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Am Samstag, 6. Mai 2006 13:49 schrieb noteedit-devel-admin at berlios.de:
+>   
+>> noteedit-devel-admin at berlios.de wrote:
+>>     
+>>> 3. For vocal music with two or more stanzas the  \set stanza = "1."  , 
+>>> \set stanza = "2." , ... line should be added within the  \lyricmode {
+>>> ... } part. Otherwise the stanza number will not be visible.
+>>>
+>>> Example:
+>>>
+>>> StimmeATextA = \lyricmode { \set stanza = "1."
+>>>       
+>> This works for me. \set stanza = "1." is in the score block below in
+>> \context lyrics {}.
+>>
+>>     
+> Yes it is, but with Lilypond 2.8.1. it seems to be the wrong position. If I 
+> run lilypond with the file the stanza number doesn't apear.
+>   
+Hi all,
+
+in R460 it's fixed, please test. The stanza number is now at the
+beginning of lyrics, not at the beginning of the score. I like this
+better now, too :)
+
+I'm on lily 2.6.5, and it behaves like 2.8.1 I conclude.
+
+Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  8 01:32:03 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 08 May 2006 01:32:03 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one
+ staff
+In-Reply-To: <200605060125.42724.Stefan-Hackl@gmx.de>
+References: <200605060125.42724.Stefan-Hackl@gmx.de>
+Message-ID: <445E8373.60505@gmail.com>
+
+noteedit-devel-admin at berlios.de wrote:
+> 2. Instrument names are exported incorrectly for polyphonic staves. 
+> A simple Example:
+> This is a fragment of the Lilypond export file
+>   
+Hi again!
+
+I fixed this in R462. It should export instrument name for multi-voice
+staff too now. Please test...
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  8 01:36:19 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 08 May 2006 01:36:19 +0200
+Subject: [Noteedit-devel] Lilypond lyric export
+In-Reply-To: <200605060146.07264.Stefan-Hackl@gmx.de>
+References: <200605060146.07264.Stefan-Hackl@gmx.de>
+Message-ID: <445E8473.4010805@gmail.com>
+
+Hi Stefan.
+
+More advanced hyphens and melismas (hyphen, when the word is already
+finished) are now implemented in R462. If you put a simple - after the
+word, it's now interpreted as " --" and LilyPond uses it as a real
+hyphen. Moreover, I also implemented melismas - if you put _ righr after
+the note, melisma (underline) is drawn until it ends. For the notes,
+where the hyphen/melisma line should be, you can use a simple - or _ per
+note too.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+> Hello again,
+>
+> Lyrics in Lilypond look better if hyphenation (german: "Silbentrennung)  is 
+> written with a double dash and a space charakter after the word: " --"
+>
+> Example:
+>  
+>                 So troll'n wir uns ganz 
+>                 fromm und sacht von Wein -- ge -- lag und 
+>                 Freu -- den -- schmaus, wenn uns der Tod sagt: 
+>                 ''Gu -- te Nacht, dein Stun -- den -- glas rinnt 
+>                 aus!'' 
+>
+> If it is written this way, lilypond will create a centered hyphen (german: 
+> "Trennungsstrich"), which looks better than a hyphen sticking to one word 
+> part.
+>
+> Best Regards,
+>
+> Stefan
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>   
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  8 07:15:52 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 08 May 2006 07:15:52 +0200
+Subject: [Noteedit-devel] Lilypond lyric export
+In-Reply-To: <445E8473.4010805@gmail.com>
+References: <200605060146.07264.Stefan-Hackl@gmx.de> <445E8473.4010805@gmail.com>
+Message-ID: <445ED408.1080803@schwaben.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi Stefan.
+>
+> More advanced hyphens and melismas (hyphen, when the word is already
+> finished) are now implemented in R462. If you put a simple - after the
+> word, it's now interpreted as " --" and LilyPond uses it as a real
+> hyphen. Moreover, I also implemented melismas - if you put _ righr after
+> the note, melisma (underline) is drawn until it ends. For the notes,
+> where the hyphen/melisma line should be, you can use a simple - or _ per
+> note too.
+>
+>
+> Regards.
+> - Matev?
+>   
+Tanks for the improvements. As a regression test i run all examples in
+trunk/noteedit/examples through lilypond 2.6.5 by print preview, and got
+lilypond choking with these:
+
+    example3, example7, example9, fugue_no1.
+
+Is the experience with lilypond 2.8.1 the same? Upgrading to lilypond
+2.8.1 for me looks very tedious, so I backed out this for the moment.
+Probably it doesn't matter either. I think our examples should render
+with the recent lilyponds, and fixing probably is not too difficult.
+
+With example4 the words get shifted, so in this Matev? maybe you should
+have a look?
+
+Best Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon May  8 13:32:04 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 8 May 2006 13:32:04 +0200
+Subject: [Noteedit-devel] Bug lilypond export with many voices in one staff
+In-Reply-To: <445E8373.60505@gmail.com>
+References: <200605060125.42724.Stefan-Hackl@gmx.de> <445E8373.60505@gmail.com>
+Message-ID: <200605081332.04212.Stefan-Hackl@gmx.de>
+
+Hello Matev?,
+
+you have really done good work! Thank you very much!
+
+Stefan
+
+
+Am Montag, 8. Mai 2006 01:32 schrieb noteedit-devel-admin at berlios.de:
+> noteedit-devel-admin at berlios.de wrote:
+> > 2. Instrument names are exported incorrectly for polyphonic staves.
+> > A simple Example:
+> > This is a fragment of the Lilypond export file
+>
+> Hi again!
+>
+> I fixed this in R462. It should export instrument name for multi-voice
+> staff too now. Please test...
+>
+>
+> Regards.
+> - Matev?
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue May  9 19:13:59 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 09 May 2006 19:13:59 +0200
+Subject: [Noteedit-devel] Lily improvements
+Message-ID: <4460CDD7.9070901@guest.arnes.si>
+
+Hello to all.
+
+I made many Lily additions lately. It's too much to describe. Briefly, I
+added:
+- Hyphens and Melisma support for lyrics
+- New drum note support for rectangle note - diamond
+- Support for different drum notes in a singal chord - requires Lily 2.8.x.
+- Some smaller fixes.
+
+Now, the exported document look almost perfect! The new direct printing
+function is getting more and more useful :)
+Please test - thoroughly! Example4 looks fine now btw.
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060509/605b7f71/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 13 06:03:26 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 13 May 2006 04:03:26 GMT
+Subject: [Noteedit-devel] Left button, not middle: Insert --> Lines
+Message-ID: <060513130326.M0103488@mix.syd.odn.ne.jp>
+
+Hi,
+
+Line is inserted when push left button of mouse, not middle, after selecting
+a line from Insert --> Line.
+
+Description in Today's Tips:
+   <b>...that you can insert lines?</b><br/><br/>\n
+   Select <code>Insert --&gt; lines</code>, choose a line and middle click\ton\n
+   a note.\n
+
+Should I open a bug for this on bug tracking system on Berlios.de?
+I found it during testing 2.8.1-beta1 and translating message catalog 
+into Japanese.
+
+Regards,
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 13 08:15:43 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 13 May 2006 08:15:43 +0200
+Subject: [Noteedit-devel] Left button, not middle: Insert --> Lines
+In-Reply-To: <060513130326.M0103488@mix.syd.odn.ne.jp>
+References: <060513130326.M0103488@mix.syd.odn.ne.jp>
+Message-ID: <4465798F.9040004@gmail.com>
+
+Thanks, fixed. Please update your translations.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi,
+>
+> Line is inserted when push left button of mouse, not middle, after selecting
+> a line from Insert --> Line.
+>
+> Description in Today's Tips:
+>    <b>...that you can insert lines?</b><br/><br/>\n
+>    Select <code>Insert --&gt; lines</code>, choose a line and middle click\ton\n
+>    a note.\n
+>
+> Should I open a bug for this on bug tracking system on Berlios.de?
+> I found it during testing 2.8.1-beta1 and translating message catalog 
+> into Japanese.
+>
+> Regards,
+> --------------------------------------------------
+>     Takeshi Hamasaki
+>     E-mail: hma at syd.odn.ne.jp
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>   
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 13 09:45:13 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 13 May 2006 09:45:13 +0200
+Subject: [Noteedit-devel] Previewprint updates
+Message-ID: <44658E89.10507@web.de>
+
+Hi,
+
+I checked in my latest changes to previewprint:
+ADDED: previewprint::setupPrinting returns whether setup was successfull
+or not and checks if preview is still running
+FIXED: create preview process only if it wasn't created already
+FIXED: print/preview: stop if preview is still running
+FIXED: delete form_ in IntPrinter destructor (does not remove the
+dialogpage though -- might lead to crashes!)
+
+In the past deleting the form_ in the IntPrinter destructor lead to
+crashes on my system, but then the
+code was still quite different from now. So if after printing NoteEdit
+crashes, simply comment the
+delete line in previewprint.cpp line 764.
+
+Also with the changes on setupPrinting you only get one dialog after
+pressing "Cancel". I hope to find
+a possibility to find out why setup printing failed so the error message
+is only shown for real problems.
+
+Regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 13 16:37:56 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 13 May 2006 14:37:56 GMT
+Subject: [Noteedit-devel] Left button, not middle: Insert --> Lines
+In-Reply-To: Your message of "Sat, 13 May 2006 08:15:43 +0200".
+	<4465798F.9040004@gmail.com>
+Message-ID: <060513233756.M0204238@mix.syd.odn.ne.jp>
+
+Thanks,
+I updated ja.po .
+
+The file is placed at
+  http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1.ja.po
+
+Now its statistics from msgfmt is:
+  762 translated messages, 14 fuzzy translations, 185 untranslated messages.
+
+The pace of translation process is going to slow down or even once stop
+since it requires more knowledge of music staff writing than now I have.
+So it is good time to take the file in subversion tree, I think.
+
+Regards,
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+In article <4465798F.9040004 at gmail.com>
+noteedit-devel-admin at berlios.de writes:
+
+>> Thanks, fixed. Please update your translations.
+>> 
+>> 
+>> Regards.
+>> - Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 13 20:53:08 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 13 May 2006 20:53:08 +0200
+Subject: [Noteedit-devel] Left button, not middle: Insert --> Lines
+In-Reply-To: <060513233756.M0204238@mix.syd.odn.ne.jp>
+References: <060513233756.M0204238@mix.syd.odn.ne.jp>
+Message-ID: <44662B14.3060708@gmail.com>
+
+Thanks, added to SVN.
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+> Thanks,
+> I updated ja.po .
+>
+> The file is placed at
+>   http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1.ja.po
+>
+> Now its statistics from msgfmt is:
+>   762 translated messages, 14 fuzzy translations, 185 untranslated messages.
+>
+> The pace of translation process is going to slow down or even once stop
+> since it requires more knowledge of music staff writing than now I have.
+> So it is good time to take the file in subversion tree, I think.
+>
+> Regards,
+> --------------------------------------------------
+>     Takeshi Hamasaki
+>     E-mail: hma at syd.odn.ne.jp
+>
+> In article <4465798F.9040004 at gmail.com>
+> noteedit-devel-admin at berlios.de writes:
+>
+>   
+>>> Thanks, fixed. Please update your translations.
+>>>
+>>>
+>>> Regards.
+>>> - Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun May 14 19:22:22 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 14 May 2006 19:22:22 +0200
+Subject: [Noteedit-devel] More updates on preview print
+Message-ID: <4467674E.3040408@web.de>
+
+Hi,
+
+Again some changes to the preview print code:
+- ADDED: convert-ly process before calling lilypond
+- FIXED: two formats were missing for the custom export formats
+- FIXED: a more logical sequence for the export formats
+
+Also there is a piece of commented code where I tried to
+remove the print export dialog page. This code leads to
+a crash on my system unfortunately and I also browsed the
+KDE sources (kprinter.cpp/h / kmuimanager.cpp/h) but did
+not find out how to get rid of the dialog page.
+
+Regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 27 22:00:04 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 27 May 2006 22:00:04 +0200
+Subject: [Noteedit-devel] German documentation updates
+Message-ID: <4478AFC4.501@web.de>
+
+Hi,
+
+I finally have finished the update work on the german
+documentation. I mainly translated back the english one
+with some improvements. These were not translated back
+to english up to know. Also I fixed a small issue in the german
+translation (Stanza -> Strophe)
+
+Regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat May 27 22:10:40 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 27 May 2006 22:10:40 +0200
+Subject: [Noteedit-devel] Release Candidate 2.8.1 of NoteEdit published
+Message-ID: <4478B240.3090801@web.de>
+
+Hi,
+
+Finally the release candidate one week later than planned due to the
+german documentation updated has been released by me. As usual
+report any problems with the release candidate to this list. The only
+planned changes are updates to the translations as there were quite
+some user interface updates during the beta period.
+Have fun with the RC!
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+

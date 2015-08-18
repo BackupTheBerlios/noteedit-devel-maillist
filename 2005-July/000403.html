@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Participating in the noteedit project
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Participating%20in%20the%20noteedit%20project&In-Reply-To=%3C42E681D9.60608%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000402.html">
+   <LINK REL="Next"  HREF="000404.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Participating in the noteedit project</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Participating%20in%20the%20noteedit%20project&In-Reply-To=%3C42E681D9.60608%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Participating in the noteedit project">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Jul 26 20:32:57 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000402.html">[Noteedit-devel] Participating in the noteedit project
+</A></li>
+        <LI>Next message: <A HREF="000404.html">[Noteedit-devel] Participating in the noteedit project
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#403">[ date ]</a>
+              <a href="thread.html#403">[ thread ]</a>
+              <a href="subject.html#403">[ subject ]</a>
+              <a href="author.html#403">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;&gt;<i> It would be a nice add-on feature though we currently concentrate
+</I>&gt;&gt;<i> on two different things: Improving printing usability and
+</I>&gt;&gt;<i> integrating a scripting engine into NoteEdit. Most other things
+</I>&gt;&gt;<i> (except lilypond export enhancement for the 2.6 version) are bug
+</I>&gt;&gt;<i> fixes.
+</I>&gt;<i>
+</I>&gt;<i> Thank you for the answer. Yes, printing is really the most
+</I>&gt;<i> important thing to do. To tell the truth, printing and exporting
+</I>&gt;<i> into OOo should use the same code.
+</I>
+I think you should read more about the LilyPond project (or other free
+engraving software like ABC music). The project is mature, it's very
+complex and it has history (Lily was known as Gnutella a long time
+ago). Engraving and notation were in past very respectful jobs.
+LilyPond project studied the note engraving science and they tend to
+make an engraving engine that offers a unique look of the score as it
+would have been made by hand. LilyPond with its syntax is today the
+de-facto standard for music publishing as LaTeX is for publishing the
+technical literature and Docbook for application documentation.
+
+If we are to make OOo compatibility/plugin, I don't think we should
+make a new engraving engine from scratch by ourselves. I would rather
+automate the NoteEdit&lt;-&gt;OOo via LilyPond process as possible.
+
+Also, our plan for 2.8.1 is to remake and automate the printing
+procedures. In short, we're going to automate the export to Lily/ABC,
+compilation of the exported file to pdf and calling a printing/viewing
+application for that document. In the future, LilyPond for example is
+taking some interesting new frontends (eg. Guile and LilyPad), which
+render the written syntax on-the-fly. They even allow you to grab
+certain elements and move them around freely, to fine-tune the look of
+the score. So in the even farther future when these projects get
+mature, NoteEdit is probably going to call them upon the current score.
+
+Note that these are my thoughts and visions only. I don't want you to
+lose any interest in your goal. I just don't want you to rush and
+double the work that has already been done up there.
+
+&gt;<i> The OpenOffice.org 2.0 Draw file format is a zip file containing
+</I>&gt;<i> XML files.
+</I>&gt;<i>
+</I>&gt;<i> These XML files contain lines, texts, bitmaps,... It's similar to
+</I>&gt;<i> the windows metafile (WMF).
+</I>&gt;<i>
+</I>&gt;<i> All I have to do is to create a new Paint Engine, which collects
+</I>&gt;<i> the drawing shapes from QPainter and stores it in odg (The
+</I>&gt;<i> OpenOffice 2.0 Draw format). It's easier, than I expected.
+</I>
+Keep in mind that this way you won't get vector graphics out of it for
+note heads, clefs and other non-linear objects (look at
+noteedit/resources for the source images). Using an external engraver
+will produce any vector file you want. Also, OOo is written in GTK as
+far as I know. Or not?
+
+&gt;<i> Drawbacks of my solution: - QPaintEngine is defined in QT 4.0,
+</I>&gt;<i> which requires at least KDE 4 - The odg file format requires at
+</I>&gt;<i> least OpenOffice 2.0
+</I>&gt;<i>
+</I>&gt;<i> I don't suggest to keep the compatibility with KDE 3.x, and OOo
+</I>&gt;<i> 1.x, as it makes the solution much harder. Conditional compilation
+</I>&gt;<i> can be used, till everybody will use at least KDE 4.x.
+</I>
+Our plan is not to sustain compatibility with KDE at all in the
+future. We are to migrate to Qt4-only. This way, we'll break the KDE
+dependency (easier to maintain Qt4 only) and achieve better
+portability. As for OOo, I think the 2.0 is going to become a standard
+soon and 1.1.5 will support odg file format as well afaik.
+
+I told before I was thinking about this idea a few months ago. I
+thought that OOo can do the texts, sheets, presentations, drawings and
+databases. What it lacks is a 3D modeller and a music score editor.
+Now LilyPond offers a tool called lily-book which works hand-to-hand
+with LaTeX. You actually write the whole book in TeX and only place
+blocks of code in Lily syntax where you wish a musical example to take
+place. When compiling the book then, LaTeX automatically calls
+LilyPond for compilation of the music elements where the Lily syntax
+block is found. For myself, that seemed to be too complex (not
+everyone is familiar with LaTeX?!?) and I was thinking about an easier
+way to write a document in eg. OOo and then to include some musical
+examples produced by LilyPond (but not by hand like exporting an
+example to .ly, importing the produced png/svg file and then update it
+every time when something changes etc.).
+
+I'm wondering, why do you wish to implement an OpenOffice.org
+in&#359;eroperability with NoteEdit?
+
+
+Regards!
+- - Matev&#382;
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://enigmail.mozdev.org">http://enigmail.mozdev.org</A>
+
+iD8DBQFC5oHYm1IQqmP8KVgRAkDZAJ9gQUbT8n0JRDYsLt97qFrhhN7UDACdFdG4
+sZcewr+NBGwGX4cBzg41n5Y=
+=fdQI
+-----END PGP SIGNATURE-----
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000402.html">[Noteedit-devel] Participating in the noteedit project
+</A></li>
+	<LI>Next message: <A HREF="000404.html">[Noteedit-devel] Participating in the noteedit project
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#403">[ date ]</a>
+              <a href="thread.html#403">[ thread ]</a>
+              <a href="subject.html#403">[ subject ]</a>
+              <a href="author.html#403">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

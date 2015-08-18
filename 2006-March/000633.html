@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Scons news
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Scons%20news&In-Reply-To=%3C4426FC39.8060402%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000632.html">
+   <LINK REL="Next"  HREF="000634.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Scons news</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Scons%20news&In-Reply-To=%3C4426FC39.8060402%40web.de%3E"
+       TITLE="[Noteedit-devel] Scons news">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Mar 26 22:40:25 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000632.html">[Noteedit-devel] Concerning the 2.8.1 (beta) release: Many problems
+</A></li>
+        <LI>Next message: <A HREF="000634.html">[Noteedit-devel] News from trunk / release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#633">[ date ]</a>
+              <a href="thread.html#633">[ thread ]</a>
+              <a href="subject.html#633">[ subject ]</a>
+              <a href="author.html#633">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+As I wrote in the announcements for the beta release I worked
+on scons files. I updated to the recent scons and noteedit can
+again be compiled but installation is unchanged (i.e. incomplete).
+
+The main issue remains midi.py. The tse3 library is detected fine
+and I set the CXXFLAGS properly. But upon compiling the flags
+are not added. I compared with other scripts and changed my own
+script but still no luck (compare R416 to the current R431).
+
+Searching for an example I browsed the scons/bksys homepage (the
+scons_admin files are based upon bksys). I was quite astonished
+to find out that there is no more bksys development. Instead the
+author has started a new scons branch called waf. See
+<A HREF="http://www.freehackers.org/~tnagy/bksys.html">http://www.freehackers.org/~tnagy/bksys.html</A> for details and reasons.
+
+The KDE folks seem to have moved away currently from scons just
+last month. They have migrated their projects to CMAKE for
+various reasons. This is in my opinion a step back though cmake
+has several advantages compared to bksys.
+
+bksys/cmake is the framework (or build tool) similar to autoconf.
+scons/make are the build systems to create the libraries and executables.
+
+This of course puts me into a troublesome situation as I invested
+so much time in scons (and still think it superiour from the
+basic concept though it still need much time to mature).
+
+To make the long story short, I will try somewhen in the not so
+near future to work on a cmake port because I don't see a real
+alternative (midi/tse3 is not supported by cmake similar as bksys).
+There is a tool making migration from automake easier but a
+FindTSE3 module I would have to develop myself (this is the hard
+part).
+
+Several reasons get me to do this:
+- Testing how good cmake is in practice
+- Hope that cmake makes it easier for people to port to windows
+  (though automake/autoconf is not bad in this regard)
+- Only build system except qmake with QT4 support (for Canorus).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000632.html">[Noteedit-devel] Concerning the 2.8.1 (beta) release: Many problems
+</A></li>
+	<LI>Next message: <A HREF="000634.html">[Noteedit-devel] News from trunk / release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#633">[ date ]</a>
+              <a href="thread.html#633">[ thread ]</a>
+              <a href="subject.html#633">[ subject ]</a>
+              <a href="author.html#633">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

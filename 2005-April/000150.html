@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] build from svn question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20build%20from%20svn%20question&In-Reply-To=%3C426976FA.5080703%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000149.html">
+   <LINK REL="Next"  HREF="000151.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] build from svn question</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20build%20from%20svn%20question&In-Reply-To=%3C426976FA.5080703%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] build from svn question">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr 23 00:13:14 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000149.html">[Noteedit-devel] build from svn question
+</A></li>
+        <LI>Next message: <A HREF="000151.html">[Noteedit-devel] build from svn question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#150">[ date ]</a>
+              <a href="thread.html#150">[ thread ]</a>
+              <a href="subject.html#150">[ subject ]</a>
+              <a href="author.html#150">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i> Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;&gt;<i> Building from the svn subtree is still not functioning. Is there 
+</I>&gt;&gt;<i> really a reason why we don't keep admin files from 2.7.4 version in 
+</I>&gt;&gt;<i> the current trunk tree as well (as described in bug #2814)?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Not really for me, I just don't know how well they behave on other 
+</I>&gt;<i> systems. I have managed to get all working with the current kde version
+</I>&gt;<i> and created admin files with the help of kdevelop. But I had to patch
+</I>&gt;<i> the noteedit/Makefile.am file to get things running properly.
+</I>&gt;<i>
+</I>&gt;<i> Can some of you test, if everything runs well with the applied patch ?
+</I>&gt;<i> If I don't apply the patch I can no longer build noteedit because
+</I>&gt;<i> libtool does not correctly ignore some of the moc files.
+</I>&gt;<i>
+</I>&gt;<i> Another issue for me is that the kdevelop project I created has the
+</I>&gt;<i> problem that the uic (user interface compiler) doesn't get invoked.
+</I>&gt;<i> make from the console works fine. Also the &quot;run automake and friends&quot;
+</I>&gt;<i> does not work correctly, only running &quot;make -f Makefile.cvs&quot; manually 
+</I>&gt;<i> seems to produce the correct configure file.
+</I>&gt;<i> I have put my current kdevelop files to svn (Requires version 3.1.2). 
+</I>&gt;<i> Maybe there is a bug in one of the options I changed or something 
+</I>&gt;<i> different has to be changed to get things working correctly with 
+</I>&gt;<i> kdevelop.
+</I>
+Ok, I cleaned my tree and redownloaded the current svn version and 
+applied your patch. But when I invoked make -f Makefile.cvs, I get 
+immediate error that libtool.m4.in is not found. When I renamed 
+admin/old-* to admin/*, the error was fixed, but got another one:( :
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:~/apps/noteedit$ make -f Makefile.cvs
+This Makefile is only for the CVS repository
+This will be deleted before making the distribution
+
+*** Creating acinclude.m4
+!!! If you get recursion errors from autoconf, it is advisable to set the
+    environment variable M4 to something including &quot;--nesting-limit=500&quot;
+*** Creating list of subdirectories
+*** Creating configure.in
+*** Creating aclocal.m4
+configure.in:67: warning: underquoted definition of FIND_PACKAGE
+  run info '(automake)Extending aclocal'
+  or see 
+<A HREF="http://sources.redhat.com/automake/automake.html#Extending%20aclocal">http://sources.redhat.com/automake/automake.html#Extending%20aclocal</A>
+configure.in:94: warning: underquoted definition of AC_NEW_ARG
+acinclude.m4:44: warning: underquoted definition of KDE_PATH_X_DIRECT
+acinclude.m4:168: warning: underquoted definition of AC_FIND_FILE
+acinclude.m4:187: warning: underquoted definition of KDE_FIND_PATH
+acinclude.m4:240: warning: underquoted definition of KDE_MOC_ERROR_MESSAGE
+acinclude.m4:252: warning: underquoted definition of KDE_UIC_ERROR_MESSAGE
+acinclude.m4:265: warning: underquoted definition of KDE_CHECK_UIC_FLAG
+...
+acinclude.m4:4482: warning: underquoted definition of KDE_CHECK_INITGROUPS
+acinclude.m4:4522: warning: underquoted definition of KDE_CHECK_JAVA_DIR
+acinclude.m4:4655: warning: underquoted definition of KDE_NEED_FLEX
+acinclude.m4:4667: warning: underquoted definition of AC_PATH_QTOPIA
+/usr/share/aclocal/smpeg.m4:13: warning: underquoted definition of 
+AM_PATH_SMPEG
+/usr/share/aclocal/ost_check2.m4:25: warning: underquoted definition of 
+OST_CCXX2_DYNLOADER
+/usr/share/aclocal/ost_check2.m4:33: warning: underquoted definition of 
+OST_CCXX2_VERSION
+/usr/share/aclocal/ost_check2.m4:100: warning: underquoted definition of 
+OST_CCXX2_FOX
+/usr/share/aclocal/ost_check2.m4:111: warning: underquoted definition of 
+OST_CCXX2_HOARD
+/usr/share/aclocal/ost_check2.m4:121: warning: underquoted definition of 
+OST_CCXX2_XML
+/usr/share/aclocal/lib3ds.m4:4: warning: underquoted definition of 
+AM_PATH_LIB3DS
+/usr/share/aclocal/glib.m4:8: warning: underquoted definition of 
+AM_PATH_GLIB
+/usr/share/aclocal/allegro.m4:14: warning: underquoted definition of 
+AM_PATH_ALLEGRO
+/usr/share/aclocal/aalib.m4:12: warning: underquoted definition of 
+AM_PATH_AALIB
+configure.in:570: error: m4_popdef: undefined macro: AC_Dest
+autoconf/status.m4:848: AC_CONFIG_FILES is expanded from...
+configure.in:570: the top level
+autom4te: /usr/bin/m4 failed with exit status: 1
+aclocal: autom4te failed with exit status: 1
+make[1]: *** [cvs] Error 1
+make: *** [all] Error 2
+
+I didn't want to copy any other files from non-svn version anymore then. 
+I unpatched the Makefile.am of your patch, but the error stayed. When 
+KDevelop wanted to run automake &amp; friends, it returned the same errors 
+(it just runs make -f Makefile.cvs?). Any other files/patches needed?
+Using automake 1.8.5, make 3.0, g++ 3.3.5, kde 3.3.2, qt 3.3.4 and 
+kdevelop 3.2.0, Debian unstable.
+
+Regards.
+- Matev&#382;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000149.html">[Noteedit-devel] build from svn question
+</A></li>
+	<LI>Next message: <A HREF="000151.html">[Noteedit-devel] build from svn question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#150">[ date ]</a>
+              <a href="thread.html#150">[ thread ]</a>
+              <a href="subject.html#150">[ subject ]</a>
+              <a href="author.html#150">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] GUI Patch #403
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20GUI%20Patch%20%23403&In-Reply-To=%3C4255BC9F.6090201%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000132.html">
+   <LINK REL="Next"  HREF="000134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] GUI Patch #403</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20GUI%20Patch%20%23403&In-Reply-To=%3C4255BC9F.6090201%40web.de%3E"
+       TITLE="[Noteedit-devel] GUI Patch #403">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Apr  8 01:05:03 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000132.html">[Noteedit-devel] GUI Patch #403
+</A></li>
+        <LI>Next message: <A HREF="000134.html">[Noteedit-devel] GUI Patch #403
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Matev&#382;,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> If I understsand you correctly, Staff becomes Format? So we should
+</I>&gt;<i> change add to add staff, remove to remove staff, voices to staff voices
+</I>&gt;<i> etc. I'd somehow (though it needs a lot of work) merge the voices and
+</I>&gt;<i> staff properties menu options into one form widget, but this should be a
+</I>&gt;<i> question for other thread sometime in the future.
+</I>
+No, just the menu point &quot;staff properties&quot; was moved to the menu format.
+Concerning merging voices and staff properties: We could do that simply
+by using tabs. I tend not to completely merge it as this makes the
+dialog quite crowded.
+
+Also: Does anyone know if there is a way to move a menu item betwenn
+a default menu. I'm currently unable to move &quot;window new&quot; to the place
+I want to have it.
+
+&gt;<i> Otherwise, I like it. We're finally moving towards a standard outlook of
+</I>&gt;<i> apps menus.
+</I>&gt;<i> 
+</I>
+Thanks for your feedback,
+
+Reinhard Katzmann
+
+&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This evening I looked into the GUI patch. In contains the following 
+</I>&gt;&gt;<i> changes to make the menu structure more logical:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> - &quot;New window&quot; moved to the file menu (probably better to be placed
+</I>&gt;&gt;<i>   below &quot;New&quot;
+</I>&gt;&gt;<i> - Submenu for import and export
+</I>&gt;&gt;<i> - First Import submenu, then Export submenu
+</I>&gt;&gt;<i> - Close All (close all windows) in the file menu
+</I>&gt;&gt;<i> - Comments changed in the edit menu (with errors)
+</I>&gt;&gt;<i> - Setting (staff) moved to the menu Format
+</I>&gt;&gt;<i> - New menu &quot;Format&quot;
+</I>&gt;&gt;<i> - Extras/Tools menu moved to the right of the TSE3 menu
+</I>&gt;&gt;<i> - Output parameters moved to the menu settings
+</I>&gt;&gt;<i> - Swap &quot;Keyboard config&quot; and &quot;Configure noteedit&quot;
+</I>&gt;&gt;<i> - Comment to the help menu (to be corrected).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To test the patch: Save the raw patch as noteeditui.rc and replace
+</I>&gt;&gt;<i> this file from the one in the noteedit subdirectory. If you have
+</I>&gt;&gt;<i> noteedit already installed you might need to replace the installed
+</I>&gt;&gt;<i> file (restoring it should be no problem) as noteedit might use the
+</I>&gt;&gt;<i> installed one instead of the one installed in the noteedit directory.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'd like to have some feedback before I apply the (modified) patch
+</I>&gt;&gt;<i> to svn. Thanks for your help!
+</I>&gt;&gt;<i>
+</I>-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000132.html">[Noteedit-devel] GUI Patch #403
+</A></li>
+	<LI>Next message: <A HREF="000134.html">[Noteedit-devel] GUI Patch #403
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

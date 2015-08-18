@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Code restructuring, step 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C43174031.2090304%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000497.html">
+   <LINK REL="Next"  HREF="000498.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Code restructuring, step 2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C43174031.2090304%40web.de%3E"
+       TITLE="[Noteedit-devel] Code restructuring, step 2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Sep  1 19:53:53 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000497.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+        <LI>Next message: <A HREF="000498.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#492">[ date ]</a>
+              <a href="thread.html#492">[ thread ]</a>
+              <a href="subject.html#492">[ subject ]</a>
+              <a href="author.html#492">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Csiba,
+
+Thanks for the efforts you take into the cleanup.
+As I won't be able to start working on the printing
+dialog before sunday (and it does not directly concert
+your changes) you can go ahead and start modifying the
+code (if no other one disagrees).
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> Hi! 
+</I>&gt;<i>  
+</I>&gt;<i> Now, it seems, that I'll have some time to continue the cleanup activity. 
+</I>&gt;<i> Till now, I was quite overloaded at the office.  
+</I>&gt;<i>  
+</I>&gt;<i> I would like to do the following changes on sunday: 
+</I>&gt;<i>  
+</I>&gt;<i> Playable::status_ and NPlayable::status2_ cleanup: 
+</I>&gt;<i>  
+</I>&gt;<i> 1. unify the status_ and status2_ into one variable, as they does 
+</I>&gt;<i>     logically the same thing. 
+</I>&gt;<i>  
+</I>&gt;<i> 2. setter and getter methods instead of public declaration 
+</I>&gt;<i>  
+</I>&gt;<i>      The setter, getter methods are very important for the further 
+</I>&gt;<i> development, as we could emit a statusChanged(...) signal to inform 
+</I>&gt;<i> NChord or NRest about the change. 
+</I>&gt;<i>  
+</I>&gt;<i> Setter method: 
+</I>&gt;<i>  
+</I>&gt;<i> void setStatus( status_type value, int manner = NPlayable::Set ); 
+</I>&gt;<i>     NPlayable::Add - sets the 1-bits in 'value' to 1 in the status. 
+</I>&gt;<i>     NPlayable::Del - sets the 1-bits in 'value' to 0 in the status. 
+</I>&gt;<i>     NPlayable::Set - sets the status variable to 'value'  
+</I>&gt;<i>     NPlayable::Xor - is a logical XOR with the status value 
+</I>
+Isn't it possible to make the status more simple ? I admit I don't
+know the current interface but the Add/Del/Set/Xor method confuses
+me more than it helps me understanding the interface. I like the
+idea to emit statusChanged signal but that's probably cause I'm
+used to Qt manner of handling events :-).
+
+Can you elaborate how the setStatus method is used and should be
+used in the future ? Maybe I'll have a better interface suggestion
+for these methods after that. I usually prefer working with
+enums when having to use states. If the state handling is really
+so complex that there can be several states once at a time it might
+be useful to categorize these states and write an own method
+for each state category. I think even though this would mean to
+have more methods it would be easier to understand for someone
+who does not use the state code very often like me (probably).
+
+&gt;<i>  
+</I>&gt;<i> Getter method: 
+</I>&gt;<i>  
+</I>&gt;<i>      status_type status( status_type mask = (status_type)(-1) ); 
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i> PLEASE: 
+</I>&gt;<i>  
+</I>&gt;<i> COMMIT EVERY CHANGES YOU MADE INTO THE SVN! 
+</I>&gt;<i>  
+</I>&gt;<i> I'll modify the majority of the code again. If you have some code locally 
+</I>&gt;<i> stored on your computer, the next commit will be very problematic as the 
+</I>&gt;<i> merge won't be easy. 
+</I>&gt;<i>  
+</I>&gt;<i> If the Sunday is too early, I could postpone the modifications. 
+</I>&gt;<i>  
+</I>
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000497.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+	<LI>Next message: <A HREF="000498.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#492">[ date ]</a>
+              <a href="thread.html#492">[ thread ]</a>
+              <a href="subject.html#492">[ subject ]</a>
+              <a href="author.html#492">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Soprano clef
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Soprano%20clef&In-Reply-To=%3C426BACDB.3070403%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000159.html">
+   <LINK REL="Next"  HREF="000166.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Soprano clef</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Soprano%20clef&In-Reply-To=%3C426BACDB.3070403%40web.de%3E"
+       TITLE="[Noteedit-devel] Soprano clef">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Apr 24 16:27:39 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000159.html">[Noteedit-devel] Soprano clef
+</A></li>
+        <LI>Next message: <A HREF="000166.html">[Noteedit-devel] Qt Port of Mainwindow and menu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> I just noted that mup doesn't like clef changes in the mid of the
+</I>&gt;&gt;<i> bar.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Could you be more specific? I made a test with a treble clef long 2.5 
+</I>&gt;<i> measures, then I placed a soprano clef in the middle of the third 
+</I>&gt;<i> measure and continued writing in it. I saved, closed NE, open it again 
+</I>&gt;<i> and it showed fine.
+</I>
+Just use the Schubert piece I sent with the mail and save it.
+
+Here is the error message:
+
+staff 1; measure 5: MUP cannot deal with clef changes in the middle of 
+measure
+
+But as I said I think it's a general problem, not something special
+about the Soprano clef.
+
+&gt;<i> Lilypond tries to make the outlook nicer and more readable by the 
+</I>&gt;<i> performer:
+</I>&gt;<i> It ignores the exact position of the clef in .ly file (before or right 
+</I>&gt;<i> after the measureline), but always places it before the measureline 
+</I>&gt;<i> where the clef is about to change. Why is it good? Well, the performer 
+</I>&gt;<i> register it more quickly. And besides it's quite common in literature (I 
+</I>&gt;<i> checked my Henle's Chopin's Etudes and Edition Peters Czerny's Etudes) 
+</I>&gt;<i> to place the new clef right before the measure where it changes and not 
+</I>&gt;<i> in the measure measure itself. That's the LilyPond view.
+</I>&gt;<i> 
+</I>&gt;<i> IMO, this works as it should from the first place. Or did you have 
+</I>&gt;<i> something else in mind?
+</I>
+So from the point of view of the mup file noteedit behaves correct.
+Only if the user would like to see the position of the clef where
+it will be placed by lilypond it'd be a minor issue.
+
+Thanks for the comment and best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000159.html">[Noteedit-devel] Soprano clef
+</A></li>
+	<LI>Next message: <A HREF="000166.html">[Noteedit-devel] Qt Port of Mainwindow and menu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] State printing / export
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20State%20printing%20/%20export&In-Reply-To=%3C435F8A5A.5070803%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000537.html">
+   <LINK REL="Next"  HREF="000541.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] State printing / export</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20State%20printing%20/%20export&In-Reply-To=%3C435F8A5A.5070803%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] State printing / export">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Oct 26 15:53:30 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000537.html">[Noteedit-devel] State printing / export
+</A></li>
+        <LI>Next message: <A HREF="000541.html">[Noteedit-devel] State printing / export
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#540">[ date ]</a>
+              <a href="thread.html#540">[ thread ]</a>
+              <a href="subject.html#540">[ subject ]</a>
+              <a href="author.html#540">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard!
+
+I'd like to fix some more beaming issues till the release (2 bugs -
+Another beaming of already beamed notes result sometimes in crash,
+Autobeam in non-first voice doesn't work) and maybe improve our MusicXML
+import (import of tuplets) and export (rythm in non-first-two voices is
+completely messed up). But then, I'd go for the release!
+
+What did you mean by 8.0.1??!? You mean NoteEdit 2.8.1? (or did we
+change the versioning policy)
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Hi Reinhard,
+</I>&gt;<i>
+</I>&gt;<i>things seem still to work! Thanks! I'm here on gcc 3.3.5 and whatever
+</I>&gt;<i>glibc, so I needed the attatched patch. I'm not shure if I should cast
+</I>&gt;<i>to double. Could you decide?
+</I>&gt;<i>
+</I>&gt;<i>Nevertheless, I'm looking forward to the new release with the new
+</I>&gt;<i>printing feature, gcc4 support and all the other goodies.
+</I>&gt;<i>Regards,
+</I>&gt;<i>Georg.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I just checked into svn my current state of the art changes.
+</I>&gt;&gt;<i>There were a lot of changes I already talked about.
+</I>&gt;&gt;<i>Note that I haven't tested any of the exports with my
+</I>&gt;&gt;<i>changed (removed also some warnings). I have tested that
+</I>&gt;&gt;<i>the export form works.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I have since over a week now a Mandriva 2006.0 based system
+</I>&gt;&gt;<i>with gcc4.0 and other fine things. I still have to install
+</I>&gt;&gt;<i>all those music systems to be able to further test the
+</I>&gt;&gt;<i>export, printing and print preview. Still only abc is
+</I>&gt;&gt;<i>completely implemented though I have neither tested with
+</I>&gt;&gt;<i>my changes to export. I also bumped the library version
+</I>&gt;&gt;<i>to 1.0.1.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>As soon as I have done more tests and finished the rest
+</I>&gt;&gt;<i>of the printing stuff I think I'm ready for release.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I don't think it is useful to start on scripting for the
+</I>&gt;&gt;<i>current release as it will cost as too much time or it will
+</I>&gt;&gt;<i>have only basic quality to start with.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>So I'd release 8.0.1 with printing and as soon as we have
+</I>&gt;&gt;<i>finished scripting and hopefully macro recording we can
+</I>&gt;&gt;<i>release 8.1.0.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>What do you think ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Regards,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Reinhard
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;<i>------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>Index: miditimescale.cpp
+</I>&gt;<i>===================================================================
+</I>&gt;<i>--- miditimescale.cpp	(Revision 379)
+</I>&gt;<i>+++ miditimescale.cpp	(Arbeitskopie)
+</I>&gt;<i>@@ -621,7 +621,7 @@
+</I>&gt;<i> 		}
+</I>&gt;<i> 		else if ((ptr1-&gt;eventType &amp; EVT_CLASS_NOTE) &amp;&amp; (ptr-&gt;eventType &amp; EVT_CLASS_NOTE)){
+</I>&gt;<i> 			ptr-&gt;decision_tree[j].costs = (int) (PITCH_DIST_COST_FAC * fabs(ptr-&gt;ave_pitch - ptr1-&gt;ave_pitch) +
+</I>&gt;<i>-								START_DIST_FAC * fabs(ptr1-&gt;start_time -  ptr-&gt;stop_time));
+</I>&gt;<i>+								START_DIST_FAC * fabs((float)(ptr1-&gt;start_time -  ptr-&gt;stop_time)));
+</I>&gt;<i> 		}
+</I>&gt;<i> 		j++;
+</I>&gt;<i> 	}
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051026/de0e6757/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051026/de0e6757/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000537.html">[Noteedit-devel] State printing / export
+</A></li>
+	<LI>Next message: <A HREF="000541.html">[Noteedit-devel] State printing / export
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#540">[ date ]</a>
+              <a href="thread.html#540">[ thread ]</a>
+              <a href="subject.html#540">[ subject ]</a>
+              <a href="author.html#540">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

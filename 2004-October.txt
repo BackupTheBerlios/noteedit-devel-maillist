@@ -1,0 +1,76 @@
+From noteedit-devel-admin at lists.berlios.de  Fri Oct  1 18:11:35 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 01 Oct 2004 18:11:35 +0200
+Subject: [Noteedit-devel] [Fwd: On the development of NoteEdit]
+Message-ID: <415D81B7.4080402@web.de>
+
+No comment from me currently
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: Guido Gonzato <guido.gonzato at poste.it>
+Subject: On the development of NoteEdit
+Date: Fri, 1 Oct 2004 11:24:13 +0200 (CEST)
+Size: 2172
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20041001/8126b1e9/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Oct  2 13:10:16 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 2 Oct 2004 08:10:16 -0300
+Subject: [Noteedit-devel] Re: On the development of NoteEdit
+In-Reply-To: <200410010924.i919ODIc011312@unicorn.berlios.de>
+References: <200410010924.i919ODIc011312@unicorn.berlios.de>
+Message-ID: <200410020810.17052.knight_rs@yahoo.com.br>
+
+Em Sex 01 Out 2004 06:24, you wrote:
+> Hello,
+>
+> my name is Guido, I'm the guy who regularly made the
+> noteedit RPMs. It's refreshing to see that somebody is
+> resuming the development of such a wonderful program. Thank
+> you very much, fellows.
+>
+> I was wondering whether the following features may get some
+> consideration:
+>
+> -  detachment from KDE, and development using QT only. The
+> Kile project underwent a similar treatment, and it was split
+> into two programs: KDE Kile (http://kile.sourceforge.net/)
+> and Texmaker (http://www.xm1math.net/texmaker/index.html).
+> This would make it possible to produce a version for all
+> those poor musicians who use Windows (they're the vast
+> majority!)
+
+hmmm
+if somebody  is interested in working this.... 
+I think that the integration with KDE to provide many functionalities. Windows 
+users have many other options to make music.
+
+> - command-line XML converters for all NoteEdit supported
+> formats.
+
+This is a good idea.
+Create a plugin interface to make easy create converters.
+Perhaps make a small "container" to execute plugins in command line. Then it 
+is easy to make converters as
+lilypond -> musicxml
+abc -> musicxml
+musicxml -> lilypond
+etc
+Ideas?
+
+I am working in an importer for lilypond, using flex and bison (lex and yacc). 
+I place this as wish?
+
+Best regards,
+Huberto
+
+

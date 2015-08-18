@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Compiling on OSX, FAQ
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Compiling%20on%20OSX%2C%20FAQ&In-Reply-To=%3C20050729065114.52314.qmail%40web30610.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000438.html">
+   <LINK REL="Next"  HREF="000424.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Compiling on OSX, FAQ</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Compiling%20on%20OSX%2C%20FAQ&In-Reply-To=%3C20050729065114.52314.qmail%40web30610.mail.mud.yahoo.com%3E"
+       TITLE="[Noteedit-devel] Compiling on OSX, FAQ">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Jul 29 08:51:14 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000438.html">[Noteedit-devel] Kernel freeze after starting noteedit
+</A></li>
+        <LI>Next message: <A HREF="000424.html">[Noteedit-devel] NoteEdit SVN update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#422">[ date ]</a>
+              <a href="thread.html#422">[ thread ]</a>
+              <a href="subject.html#422">[ subject ]</a>
+              <a href="author.html#422">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've been trying to get noteedit 2.8.0 to compile on
+OSX, using gcc4 but --without-libs (I don't think TSE3
+has been ported to OSX). I managed to do this somehow
+with an older version of noteedit (2.7.3 or .4) some
+time ago, but I can't remember how.
+
+The problem I'm having is that configure can't find
+qt-mt &gt;=3.0, even though it is installed at
+/sw/lib/libqt-mt.3.3.3.dylib (fink installs everything
+under /sw), with symlinks libqt-mt.3.3.dylib,
+libqt-mt.3.dylib, and libqt-mt.dylib. I have tried
+setting environment variables and configure options,
+but nothing seems to work; I've included a couple more
+details at the end of this email.
+
+I noticed that the FAQ says that I might get that
+error if Qt has been compiled with a different gcc
+version than what is installed. I don't think I have
+upgraded gcc since I installed KDE (fink compiles
+packages from source), and like I said I managed to
+compile and run and older version of noteedit. Short
+of recompiling, is there a way to find out what
+version of gcc Qt was compiled with? Any other insight
+into this problem would be greatly appreciated.
+
+I also noticed that the website is asking for a HTML
+version of the FAQ, so I made one; see the attached
+file.
+
+Cheers,
+
+Sam Hernandez
+
+--
+
+This is how I'm running configure:
+
+export DYLD_LIBRARY_PATH=&quot;/sw/lib/&quot;
+export LD_LIBRARY_PATH=&quot;/sw/lib/&quot;
+
+./configure     --prefix=/sw/                      \
+                --with-qt-includes=/sw/include/qt/ \
+                --with-extra-libs=/sw/lib/         \
+                --with-extra-includes=/sw/include/ \
+                --with-qt-dir=/sw/                 \
+                --without-libs
+
+
+
+Here is the relevant snippet from config.log:
+
+
+configure:28350: checking for Qt
+configure: 28418: /sw/include/qt/qstyle.h
+taking that
+configure:28533: rm -rf SunWS_cache; g++ -o conftest
+-Wnon-virtual-dtor -Wno-long-long -Wundef -Wall
+ -W -Wpointer-arith -Wwrite-strings -O2
+-fno-exceptions -fno-check-new -fno-common
+-I/sw/include/qt 
+-I/usr/X11R6/include  -DQT_THREAD_SUPPORT   -L/sw/lib
+-L/usr/X11R6/lib  -L/sw/lib/  conftest.cc  -lq
+t-mt -lpng -lz -lm -ljpeg -ldl  -lXext -lX11 -lSM
+-lICE  -lpthread 1&gt;&amp;5
+/usr/bin/ld: Undefined symbols:
+typeinfo for QPtrCollection
+collect2: ld returned 1 exit status
+configure:28536: $? = 1
+configure: failed program was:
+#include &quot;confdefs.h&quot;
+#include &lt;qglobal.h&gt;
+#include &lt;qapplication.h&gt;
+#include &lt;qcursor.h&gt;
+#include &lt;qstylefactory.h&gt;
+#include &lt;private/qucomextra_p.h&gt;
+#if ! (QT_VERSION &gt;= 300)
+#error 1
+#endif
+
+int main() {
+    (void)QStyleFactory::create(QString::null);
+    QCursor c(Qt::WhatsThisCursor);
+    return 0;
+}
+configure:28576: error: Qt (&gt;= Qt 3.0) (library qt-mt)
+not found. Please check your installation!
+For more details about this problem, look at the end
+of config.log.
+Make sure that you have compiled Qt with thread support!
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050728/118686bf/attachment.html">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050728/118686bf/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000438.html">[Noteedit-devel] Kernel freeze after starting noteedit
+</A></li>
+	<LI>Next message: <A HREF="000424.html">[Noteedit-devel] NoteEdit SVN update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#422">[ date ]</a>
+              <a href="thread.html#422">[ thread ]</a>
+              <a href="subject.html#422">[ subject ]</a>
+              <a href="author.html#422">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

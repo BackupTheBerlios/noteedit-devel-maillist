@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] bug 2807 mostly fixed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20bug%202807%20mostly%20fixed&In-Reply-To=%3C200501232128.50208.leon.vinken%40hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000046.html">
+   <LINK REL="Next"  HREF="000068.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] bug 2807 mostly fixed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20bug%202807%20mostly%20fixed&In-Reply-To=%3C200501232128.50208.leon.vinken%40hetnet.nl%3E"
+       TITLE="[Noteedit-devel] bug 2807 mostly fixed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Jan 23 21:28:50 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000046.html">[Noteedit-devel] bug #2809 fixed
+</A></li>
+        <LI>Next message: <A HREF="000068.html">[Noteedit-devel] bug 2807 mostly fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#56">[ date ]</a>
+              <a href="thread.html#56">[ thread ]</a>
+              <a href="subject.html#56">[ subject ]</a>
+              <a href="author.html#56">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+tonight I've committed almost the complete fix for bug 2807 (rests with 
+fermatas).
+
+NoteEdit now supports editing rests with fermatas and writing these 
+in .abc, .not, .ly (untested), .tex (untested) and .xml format. Writing 
+in .pmx format is not supported. Reading in .xml format is supported.
+
+As I am not familiar with lex and yacc, it would cost me a significant amount 
+time to also implement reading in .not format. Could someone else please do 
+that ?
+
+The small print: I don't use either MusixTeX or LilyPond, thus the 
+implementation is untested and may be incorrect. Please report any problems. 
+Furthermore, I (arbitrarily) decided to support fermatas only on normal rests 
+and not on multirests.
+
+Enjoy, Leon.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000046.html">[Noteedit-devel] bug #2809 fixed
+</A></li>
+	<LI>Next message: <A HREF="000068.html">[Noteedit-devel] bug 2807 mostly fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#56">[ date ]</a>
+              <a href="thread.html#56">[ thread ]</a>
+              <a href="subject.html#56">[ subject ]</a>
+              <a href="author.html#56">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

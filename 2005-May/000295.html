@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20noteedit%202.8.0-beta2%20on%20FreeBSD%2C%20still%20some%20issues&In-Reply-To=%3C200505271245.38978.raphael-langerhorst%40gmx.at%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000294.html">
+   <LINK REL="Next"  HREF="000300.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20noteedit%202.8.0-beta2%20on%20FreeBSD%2C%20still%20some%20issues&In-Reply-To=%3C200505271245.38978.raphael-langerhorst%40gmx.at%3E"
+       TITLE="[Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri May 27 12:45:37 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000294.html">[Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues
+</A></li>
+        <LI>Next message: <A HREF="000300.html">[Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#295">[ date ]</a>
+              <a href="thread.html#295">[ thread ]</a>
+              <a href="subject.html#295">[ subject ]</a>
+              <a href="author.html#295">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 27 May 2005 04:12, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt;Hi all,
+</I>&gt;<i>
+</I>&gt;<i> Hi, welcome.
+</I>
+Thanks, I already feel at home :)
+
+&gt;<i>
+</I>&gt;<i> &gt;I have first found noteedit in SuSE 8.0 and now I want to start
+</I>&gt;<i> &gt; doing some note editing on my machine. Meanwhile all my systems
+</I>&gt;<i> &gt; run FreeBSD so of course I try to install it there (it's not in
+</I>&gt;<i> &gt; the ports collection - which might change soon...).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Anyway, trying to compile it on FreeBSD has so far produced these
+</I>&gt;<i> &gt;results.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;a) please add -lpthread to the TSE3 tests in configure
+</I>&gt;<i>
+</I>&gt;<i> Could you provide a patch? Or somebody else has to jump in,
+</I>&gt;<i> configure is not my strong field :)
+</I>
+ok... if no one is going to do it I'll download the svn version and 
+see if I can find the appropriate places to patch (I'm not very 
+familiar with the GNU autotools as well, just directly hacked the 
+configure script).
+
+&gt;<i>
+</I>&gt;<i> &gt;b) compiling with gmake gets pretty far but finally stops as the
+</I>&gt;<i> &gt;alloca.h include file could not be found (what's that for?). I
+</I>&gt;<i> &gt;couldn't locate it on my system, what is it used for? Can anyone
+</I>&gt;<i> &gt; send me a copy of it? Is it part of any package (which one?).
+</I>&gt;<i> &gt; Logfile attached.
+</I>&gt;<i>
+</I>&gt;<i> It's part of headers glibc-devel-2.3.4-23 here on my suse. I sent
+</I>&gt;<i> you a copy just in case per pm.
+</I>
+Received it, thanks... uhm... to me it just looks like a malloc thing 
+with automatic freeing of resources, right?
+
+man alloca on FreeBSD says that the file is included in stdlib.h, and 
+I tested by removing alloca.h from the includes and - it compiled!!!
+
+So... I'll fetch the source code from svn and hopefully have a patch 
+soon... (or 2)
+
+&gt;<i>
+</I>&gt;<i> &gt;...
+</I>&gt;<i> &gt;I'm also playing the piano for 15 years now and the violin for ...
+</I>&gt;<i> &gt;more than 10 years, so I also know lot's about notes in general
+</I>&gt;<i> &gt; (some theory...)
+</I>&gt;<i>
+</I>&gt;<i> That's nice to hear. Many people here think that NoteEdit is (and
+</I>&gt;<i> should improve as) a tool for the composer, not so much for mixing
+</I>&gt;<i> sounds. It's for people that like to look at notation and to get
+</I>&gt;<i> finally a nice printout, and, of course, some little midi playback
+</I>&gt;<i> or import is helpful.
+</I>
+Yes, exactly. That's what I need as well. It's great that NoteEdit is 
+developed along those lines, I already love it :)
+
+&gt;<i>
+</I>&gt;<i> Luck for the porting effort,
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg.
+</I>
+Thanks,
+Raphael
+
+-- 
+Raphael Langerhorst
+<A HREF="http://raphael.g-system.at/blog">http://raphael.g-system.at/blog</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000294.html">[Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues
+</A></li>
+	<LI>Next message: <A HREF="000300.html">[Noteedit-devel] noteedit 2.8.0-beta2 on FreeBSD, still some issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#295">[ date ]</a>
+              <a href="thread.html#295">[ thread ]</a>
+              <a href="subject.html#295">[ subject ]</a>
+              <a href="author.html#295">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

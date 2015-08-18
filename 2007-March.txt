@@ -1,0 +1,131 @@
+From noteedit-devel at lists.berlios.de  Tue Mar 20 05:24:44 2007
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Tue, 20 Mar 2007 05:24:44 +0100
+Subject: [Noteedit-devel] Canorus 0.2.5 is out
+Message-ID: <45FF620C.9030604@gmail.com>
+
+Canorus development team is happy to announce the new release of Canorus
+- a free cross-platform music score editor, version 0.2.5. The release
+took lots of effort from core developers, various contributors, testers
+and translators. This release mostly brought huge under the hood
+changes. Among others, the most notible features are the new GUI and
+LilyPond support.
+
+Finally we would like to mention a close-related project to Canorus,
+Harmonia (http://harmonia.berlios.de). A project aimed at harmony
+analysis which works as a Canorus plugin.
+
+Changes summary:
+- New Doxygen documentation.
+- Initial work on MacOSX port.
+- Improved function marking rendering
+- Scripting engine now offers integration with Canorus menu, import/export
+dialogs and keyboard and mouse events.
+- New completely XML CanorusML format.
+- LilyPond document export support.
+- LilyPond voice import/export support.
+- Rewritten GUI. Now supports multiple main windows. Added lots of icons.
+- Translations support. Current translations: English, Slovenian.
+- Majority of the code rewritten so we have a more robust foundation now for
+future development.
+- Lots of warnings, crashes, bugfixes and memory leaks fixed in MIDI,
+GUI and
+Scripting engine.
+
+
+
+Matev? Jekovec
+Canorus project manager
+http://www.canorus.org
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20070320/c4d73402/attachment.pgp>
+
+From noteedit-devel at lists.berlios.de  Thu Mar 22 11:54:42 2007
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Thu, 22 Mar 2007 11:54:42 +0100
+Subject: [Noteedit-devel] Canorus 0.2.5 Font Problem
+In-Reply-To: <45FF620C.9030604@gmail.com>
+References: <45FF620C.9030604@gmail.com>
+Message-ID: <200703221154.42247.Stefan-Hackl@gmx.de>
+
+Hello,
+
+first of all my congretualtions to your fantastic achievements concerning 
+Canorus development. If you like, I could maybe help doing German translation 
+(but I need some instructions, how to do), or as well writing German 
+documentation when Final Release is ready. Just call me if you need my help 
+and if I find time I will contribute.
+
+I noticed an interessting problem with the current release:
+
+The fonts of notes and clefs were completely wrong on my system. Then I had an 
+Idea: On my System, I installed Feta and Emmentaler Fonts of Lilypond as 
+KDE-Fonts for me as main user. I need this to edit lilypond svg-output in 
+Inkscape. So I created a new user account, restarted KDE and Canorus and: 
+Fonts are displayed correctly. For this new user account, Feta and Emmentaler 
+fonts are not available. I am not sure, if really this is the reasen, but it 
+is my most convincing guess.
+
+I added two screenshots, both showing the same xml-file, one on my account 
+(with feta and emmentaler installed), one on the new test-account.
+
+Best regards
+Stefan Hackl
+
+
+
+Am Dienstag, 20. M?rz 2007 05:24 schrieb noteedit-devel at lists.berlios.de:
+> Canorus development team is happy to announce the new release of Canorus
+> - a free cross-platform music score editor, version 0.2.5. The release
+> took lots of effort from core developers, various contributors, testers
+> and translators. This release mostly brought huge under the hood
+> changes. Among others, the most notible features are the new GUI and
+> LilyPond support.
+>
+> Finally we would like to mention a close-related project to Canorus,
+> Harmonia (http://harmonia.berlios.de). A project aimed at harmony
+> analysis which works as a Canorus plugin.
+>
+> Changes summary:
+> - New Doxygen documentation.
+> - Initial work on MacOSX port.
+> - Improved function marking rendering
+> - Scripting engine now offers integration with Canorus menu, import/export
+> dialogs and keyboard and mouse events.
+> - New completely XML CanorusML format.
+> - LilyPond document export support.
+> - LilyPond voice import/export support.
+> - Rewritten GUI. Now supports multiple main windows. Added lots of icons.
+> - Translations support. Current translations: English, Slovenian.
+> - Majority of the code rewritten so we have a more robust foundation now
+> for future development.
+> - Lots of warnings, crashes, bugfixes and memory leaks fixed in MIDI,
+> GUI and
+> Scripting engine.
+>
+>
+>
+> Matev? Jekovec
+> Canorus project manager
+> http://www.canorus.org
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: screenshot7.png
+Type: image/png
+Size: 37024 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20070322/f149abcf/attachment.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: screenshot1.png
+Type: image/png
+Size: 55159 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20070322/f149abcf/attachment-0001.png>
+

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] MusicXML question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MusicXML%20question&In-Reply-To=%3C42F8EC14.6060502%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000451.html">
+   <LINK REL="Next"  HREF="000454.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] MusicXML question</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MusicXML%20question&In-Reply-To=%3C42F8EC14.6060502%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] MusicXML question">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Aug  9 19:47:00 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000451.html">[Noteedit-devel] The architecture of NKeySig
+</A></li>
+        <LI>Next message: <A HREF="000454.html">[Noteedit-devel] MusicXML question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#452">[ date ]</a>
+              <a href="thread.html#452">[ thread ]</a>
+              <a href="subject.html#452">[ subject ]</a>
+              <a href="author.html#452">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for the reply!
+
+Ok, I see now. I didn't know MusicXML format has unique numbers from the
+first to the last staff. I'm reimplementing the code I removed in that
+revision at the moment and testing it. I'll commit the changes ASAP.
+
+Meanwhile, I'd like you to visit our private development wiki and go to
+<A HREF="http://193.95.242.3/NoteEditWiki/index.php/NoteEdit_-_MusicXML_bugs/wishes">http://193.95.242.3/NoteEditWiki/index.php/NoteEdit_-_MusicXML_bugs/wishes</A> .
+I made two examples of MusicXML files. The first, more complex one,
+describes a DTD error when importing the xml file to Finale. And the
+second example describes the lack of tuplet support in NoteEdit's
+MusicXML code (&lt;time-modification&gt; block is not recognized by NoteEdit).
+What do you think?
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i>the reason for having the voice mapper is to be able to easily assign the 
+</I>&gt;<i>minimum number of voices necessary. As you probably know, a MusicXML part may 
+</I>&gt;<i>contain more than one staff (typical example: piano music, two staves). The 
+</I>&gt;<i>voice numbers are, however, unique for the part, not for the staff. This 
+</I>&gt;<i>means that for a piano part with two voices in both treble and bass staff, 
+</I>&gt;<i>the voices will be numbered 1 up through 4 (1 and 2 on the treble staff, 3 
+</I>&gt;<i>and 4 on the bass staff).
+</I>&gt;<i>
+</I>&gt;<i>The voicemapper implementation makes it easy to assign only two voices to both 
+</I>&gt;<i>NoteEdit staves created. This is the behaviour as it is in the 2.8.0 release, 
+</I>&gt;<i>which I would consider correct. Your implementation correctly assigns two 
+</I>&gt;<i>voices to the treble staff, but (incorrectly, IMHO) assigns four voices to 
+</I>&gt;<i>the bass staff. Two of the four voices are completely empty.
+</I>&gt;<i>
+</I>&gt;<i>Normally stem direction should not be an issue on importing, as well-behaving 
+</I>&gt;<i>MusicXML implementations should write explicit stem directions. Importing 
+</I>&gt;<i>MusicXML files without explicit stem direction should be the exception, not 
+</I>&gt;<i>the rule.
+</I>&gt;<i>
+</I>&gt;<i>Summarizing, I think the removal of the voicemapper usage and the 1:1 NE and 
+</I>&gt;<i>MusicXML voice assignment is not a good idea. It doesn't solve any real 
+</I>&gt;<i>problem but creates unnecessary empty voices. Please revert to the original 
+</I>&gt;<i>impementation.
+</I>&gt;<i>
+</I>&gt;<i>In case of further questions don't hesitate to contact me, either on 
+</I>&gt;<i>noteedit-devel or via private email (address is in the source files).
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050809/0e925203/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050809/0e925203/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000451.html">[Noteedit-devel] The architecture of NKeySig
+</A></li>
+	<LI>Next message: <A HREF="000454.html">[Noteedit-devel] MusicXML question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#452">[ date ]</a>
+              <a href="thread.html#452">[ thread ]</a>
+              <a href="subject.html#452">[ subject ]</a>
+              <a href="author.html#452">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

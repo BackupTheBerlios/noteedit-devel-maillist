@@ -1,0 +1,85 @@
+From noteedit-devel at lists.berlios.de  Mon Mar  2 11:23:36 2009
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 02 Mar 2009 11:23:36 +0100
+Subject: [Noteedit-devel] Google SOC close to be opened
+Message-ID: <49ABB3A8.7060703@web.de>
+
+Hi,
+
+The Google t is close to be opened again this year. Mentoring organizations
+are accepted starting next week(!). Details on http://code.google.com/soc.
+
+Unfortunately I neither have time this year to mentor nor to apply Canorus as 
+mentoring organization. From last year experience you will need several hours
+per week alone for that task (and mentoring also takes up some hours per week).
+
+There is still much work to do in Canorus, if we work our todo list alone we
+could provide many projects. Last year there were mentoring organizations
+fitting with some of the tasks to be done.
+
+I will put my very spare time into Canorus directly. As the LAC 2009 is quite
+close now I don't think we are able to do more but mentoring projects/tasks.
+
+Kind regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel at lists.berlios.de  Mon Mar  2 23:21:10 2009
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 02 Mar 2009 23:21:10 +0100
+Subject: [Noteedit-devel] [Canorus-devel] Google SOC close to be opened
+In-Reply-To: <49ABB3A8.7060703@web.de>
+References: <49ABB3A8.7060703@web.de>
+Message-ID: <49AC5BD6.60107@web.de>
+
+Hi,
+
+Good news on this topic: Matevz will update our Wiki pages with the old
+GSOC 2008 informations as base for an Canorus mentor organization page.
+We have basically decided who could do mentor jobs and the students, still
+it would be very helpfull if somebody else could help with the mentor
+organization work (should really only concern organization of the organization
+;-) so the two mentors (available up to now) can concentrate on mentoring.
+
+Of course anybody willing to do mentoring work can do so (in this case though
+some programming knowledge would be very helpful).
+
+Thanks and kind regards,
+
+Reinhard
+
+Reinhard Katzmann schrieb:
+> Hi,
+> 
+> The Google t is close to be opened again this year. Mentoring organizations
+> are accepted starting next week(!). Details on http://code.google.com/soc.
+> 
+> Unfortunately I neither have time this year to mentor nor to apply Canorus as 
+> mentoring organization. From last year experience you will need several hours
+> per week alone for that task (and mentoring also takes up some hours per week).
+> 
+> There is still much work to do in Canorus, if we work our todo list alone we
+> could provide many projects. Last year there were mentoring organizations
+> fitting with some of the tasks to be done.
+> 
+> I will put my very spare time into Canorus directly. As the LAC 2009 is quite
+> close now I don't think we are able to do more but mentoring projects/tasks.
+> 
+> Kind regards,
+> 
+> Reinhard Katzmann
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+

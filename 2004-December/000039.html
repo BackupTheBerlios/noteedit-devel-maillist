@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed%3A%20feedback%0A%20needed&In-Reply-To=%3C41C31DCC.1060504%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000038.html">
+   <LINK REL="Next"  HREF="000040.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed%3A%20feedback%0A%20needed&In-Reply-To=%3C41C31DCC.1060504%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Dec 17 18:56:28 CET 2004</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000038.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+        <LI>Next message: <A HREF="000040.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Georg,
+</I>&gt;<i>
+</I>&gt;<i>after looking at the triplet code for some time, I came to the conclusion 
+</I>&gt;<i>that simply not breaking the triplet when the triplet button is depressed 
+</I>&gt;<i>(after entering the third triplet note) will not be feasible.
+</I>&gt;<i>
+</I>&gt;<i>Currently there is only one way to break a triplet, and that is to select one 
+</I>&gt;<i>of the triplet notes and depress the triplet button. Simply disabling the 
+</I>&gt;<i>&quot;break triplet&quot; function in this way would leave us without any possibility 
+</I>&gt;<i>to break a triplet.
+</I>&gt;<i>
+</I>&gt;<i>The current behaviour for the similar actions make/break beam, slur and 
+</I>&gt;<i>triplet is:
+</I>&gt;<i>
+</I>&gt;<i>beam handling:
+</I>&gt;<i>make: mark block, press beam button
+</I>&gt;<i>break: select any of the beamed notes, depress beam button
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Currently, a way to break a beam is to insert any note or rest inside an 
+already made beam as well. That's a bigger problem I think. Making beams 
+should should stay the way it is now. But breaking should be only 
+available the way you wrote above, but not by inserting notes as well.
+
+&gt;<i>slur handling:
+</I>&gt;<i>make: mark block, press triplet button
+</I>&gt;<i>break: select the first slurred note, depress slur button
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Making a slur is ok. Breaking it is a bit wierd though. I think it's 
+nonsense to necesserily select the first note and then undo the slur. 
+You should be anywhere in the current slur and should be able to delete 
+the slur by simply pressing the slur button. Anyway, slurs are never 
+nested, so my option is the most feasible IMO.
+
+&gt;<i>triplet handling:
+</I>&gt;<i>make: mark block, press triplet button
+</I>&gt;<i>break: select any of the triplet notes, depress triplet button
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Making triplets is cool. Breaking them is fine as well IMO. If you 
+insert a note into an already made triplet, the triplet breaks, which is 
+correct IMO.
+
+&gt;<i>Possible solutions could be:
+</I>&gt;<i>- 1) don't change anything (keep the behaviour as is in CVS right now)
+</I>&gt;<i>- 2) break the triplet only when the first note is selected and the button is 
+</I>&gt;<i>depressed (thus being consistent with slur behaviour and fixing your problem, 
+</I>&gt;<i>same change should then also be made for beams)
+</I>&gt;<i>- 3) break the tuplet only when the whole group is selected (by pressing left 
+</I>&gt;<i>mouse button and dragging), which is consistent with the way you create a 
+</I>&gt;<i>triplet
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>First of all, slur, triplet and beam buttons (which reflect the current 
+slur/triplet/beam status of the note) should be updated every time you 
+select a note. I think the option 1) is the most feasible for triplets. 
+I think fixing the slur and beam code is more useful.
+
+&gt;<i>I believe the third option is least preferable, as it requires too much use 
+</I>&gt;<i>of the mouse. We should probably do either 1) or 2).
+</I>&gt;<i>
+</I>&gt;<i>Please let me know how you feel we should handle this. I would also like to 
+</I>&gt;<i>hear from the other readers of this list. Until I have received feedback 
+</I>&gt;<i>about this, I won't make any behavioural changes.
+</I>&gt;<i>
+</I>&gt;<i>Regards, Leon.
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000038.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+	<LI>Next message: <A HREF="000040.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

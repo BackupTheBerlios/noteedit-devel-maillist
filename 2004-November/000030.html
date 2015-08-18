@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] how to build?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2004-November/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20how%20to%20build%3F&In-Reply-To=%3CHNEXFE11iom6WQaV2uB00019fd2%40hnexfe11.hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000029.html">
+   <LINK REL="Next"  HREF="000022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] how to build?</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20how%20to%20build%3F&In-Reply-To=%3CHNEXFE11iom6WQaV2uB00019fd2%40hnexfe11.hetnet.nl%3E"
+       TITLE="[Noteedit-devel] how to build?">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Nov 30 23:09:11 CET 2004</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000029.html">[Noteedit-devel] how to build?
+</A></li>
+        <LI>Next message: <A HREF="000022.html">[Noteedit-devel] MusicXML bugs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 27 November 2004 12:10 am, you wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I've uploaded the Makefile.cvs (Hmm, shouldn't we call it
+</I>&gt;<i> Makefile.svn ? ;-) to the repository.
+</I>
+Makefile.svn is definitely way to go, but as cvs projects are still more 
+common than svn project, Makefile.cvs is the expected name. Seems like a 
+remark in README is useful.
+
+&gt;<i>
+</I>&gt;<i> Usually make -f Makefile.cvs is enough to create the
+</I>&gt;<i> configure file. I had success in September by rebuilding
+</I>&gt;<i> the admin file using kdevelop 3.0.4. I've used exactly these
+</I>&gt;<i> file on my updated Mandrake system (but not completely moved
+</I>&gt;<i> to 10.1. official) but wasn't able to compile it. That's why
+</I>&gt;<i> I decided not to upload these admin files (Beside that there
+</I>&gt;<i> are just to many different automake version (1.4, 1.7,
+</I>&gt;<i> 1.8, 1.9, I use 1.7)).
+</I>
+At my system (Fedora Core 3) it does create a configure file, but the build 
+still fails. The main issue here will probably be how to get NoteEdit 
+specific options (--with-libtse3, --with-libkmid, --with-oldlily, 
+--with-printing etc.) working correctly.
+
+&gt;<i>
+</I>&gt;<i> You can use kdevelop for yourself to create a project and
+</I>&gt;<i> update the admin files so they match for your system.
+</I>
+As I am rather unfamiliar with kdevelop and autoconf/automake I am afraid I 
+won't be able to provide much help here, besides testing.
+
+Best regards, Leon.
+
+&gt;<i>
+</I>&gt;<i> I suppose the compatibility problems never will get
+</I>&gt;<i> really solved. I currently cannot recommand a KDE version
+</I>&gt;<i> for trying it. I want to try it with kde 3.3.0 as soon as
+</I>&gt;<i> I've updated my system.
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard Katzmann
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000029.html">[Noteedit-devel] how to build?
+</A></li>
+	<LI>Next message: <A HREF="000022.html">[Noteedit-devel] MusicXML bugs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

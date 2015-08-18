@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Show-Stopper bug for release 2.8.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Show-Stopper%20bug%20for%20release%202.8.1&In-Reply-To=%3C444E62D0.2080902%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000676.html">
+   <LINK REL="Next"  HREF="000678.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Show-Stopper bug for release 2.8.1</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Show-Stopper%20bug%20for%20release%202.8.1&In-Reply-To=%3C444E62D0.2080902%40web.de%3E"
+       TITLE="[Noteedit-devel] Show-Stopper bug for release 2.8.1">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Apr 25 19:56:32 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000676.html">[Noteedit-devel] Show-Stopper bug for release 2.8.1
+</A></li>
+        <LI>Next message: <A HREF="000678.html">[Noteedit-devel] another 2 show-stopper bugs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#677">[ date ]</a>
+              <a href="thread.html#677">[ thread ]</a>
+              <a href="subject.html#677">[ subject ]</a>
+              <a href="author.html#677">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matevz,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;&gt;<i> The second is quite problematic:
+</I>&gt;&gt;<i> I search for the export and preview program using findexe. But
+</I>&gt;&gt;<i> when the called program itself calls a program (like lilypond
+</I>&gt;&gt;<i> when creating the pdf file or (k)ghostview/evince when parsing
+</I>&gt;&gt;<i> the postscript/pdf file) it seems that they have no $PATH defined.
+</I>&gt;&gt;<i> I got an error message indicating that problem when starting the
+</I>&gt;&gt;<i> preview program in foreground (KProcess::Block instead of
+</I>&gt;&gt;<i> KProcess::NotifyOnExit). As background process no error message
+</I>&gt;&gt;<i> was shown for me...
+</I>&gt;&gt;<i>   
+</I>&gt;<i> If I get this right, NoteEdit calls Lilypond to create the pdf file,
+</I>&gt;<i> then NoteEdit calls the preview program upon it. So, what's the
+</I>&gt;<i> difference between the two? Why doesn't it find the preview program and
+</I>&gt;<i> it can Lily?
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>
+There is no real difference between the two. Lilypond is called from
+inside NoteEdit using findexe as well as the preview program. The
+preview program calls gs to parse the postscript file like lilypond.
+Both report errors while doing this. GV exactly says that it does not
+find the gs interpreter. But the error message strangely is only shown
+if I run it as foreground process.
+So I suppose $PATH is not set when I start kprocess. But I cannot
+explain why I get no error message or even a window when I start the
+kprocess of the preview program in the background.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000676.html">[Noteedit-devel] Show-Stopper bug for release 2.8.1
+</A></li>
+	<LI>Next message: <A HREF="000678.html">[Noteedit-devel] another 2 show-stopper bugs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#677">[ date ]</a>
+              <a href="thread.html#677">[ thread ]</a>
+              <a href="subject.html#677">[ subject ]</a>
+              <a href="author.html#677">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

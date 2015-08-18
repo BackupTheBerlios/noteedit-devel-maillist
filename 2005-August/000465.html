@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] New internals
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20New%20internals&In-Reply-To=%3C1124347587.9303.20.camel%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000464.html">
+   <LINK REL="Next"  HREF="000466.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] New internals</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20New%20internals&In-Reply-To=%3C1124347587.9303.20.camel%40localhost%3E"
+       TITLE="[Noteedit-devel] New internals">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Aug 18 08:46:27 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000464.html">[Noteedit-devel] New internals
+</A></li>
+        <LI>Next message: <A HREF="000466.html">[Noteedit-devel] New internals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for the kind words. I was a bit afraid, that my work will cause 
+lots of troubles, because of the very big changes.
+
+Some words about my plan:
+
+The music elements should be placed into a linked list, which have
+'next' and 'prev' methods and inherits from QObject. This would be the
+base of the new architecture. 
+
+If an element requires the clef for example, just walks through the
+'prev' methods, till finds it. 
+
+If a new Clef is inserted, clefChanged(NClef *) signal will be emitted
+for all affected items in the linked list (the clefs are cached).
+
+With an architecture like that, quite high code separation could be
+reached.
+
+The current architecture is very very far from it. That's why I wrote,
+that it requires half year or more to finish.
+
+Bye,
+
+    Csaba
+
+2005-08-17, sze keltez&#233;ssel 23.30-kor <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A>
+ezt &#237;rta:
+&gt;<i> Hi Matev&#382;,
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+</I>&gt;<i> &gt; Hi Karai!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I think myself and the entire development team appreciate all the
+</I>&gt;<i> &gt; efforts you made the last bunch of commits about reorganizing NoteEdit's
+</I>&gt;<i> &gt; internals. My thoughts are the same - NoteEdit needs much reorganization
+</I>&gt;<i> &gt; of the current code, so there will be space for tons of new major
+</I>&gt;<i> &gt; features and enhancements we have in mind. I was thinking many times
+</I>&gt;<i> &gt; about the base code and a way to improve some organization stuff (along
+</I>&gt;<i> &gt; with configure/make). But unfortunately, I'm not so skilled and self
+</I>&gt;<i> &gt; confident to actually do the reorganization stuff. But I'm trying to
+</I>&gt;<i> &gt; beat that:).
+</I>&gt;<i> 
+</I>&gt;<i> I can only second your thoughts! Myself I didn't look very deep into
+</I>&gt;<i> the internals as the program is quite large and complex. But reading
+</I>&gt;<i> the ML and trying to figure out some code places already showed me
+</I>&gt;<i> that there is room for enhancement (especially comments).
+</I>&gt;<i> 
+</I>&gt;<i> If I had more time I would try to create some overview documentation
+</I>&gt;<i> over the code so that it is easier for new developers to get their/our
+</I>&gt;<i> ideas implemented. That what I had in my mind since NoteEdit was
+</I>&gt;<i> moved to Berlios. Up to now I only created a doxygen documentation
+</I>&gt;<i> with several picture. There is one very large picture showing all
+</I>&gt;<i> classes but it's not the simple overview I had in my mind.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Btw. Can you prefer any advanced C++ programming and project management
+</I>&gt;<i> &gt; books or resources (which covers something like NoteEdit and other
+</I>&gt;<i> &gt; GNU-based projects). I really think I should read more about the things
+</I>&gt;<i> &gt; how they should be done in common practice - I get the feeling just too
+</I>&gt;<i> &gt; many times that I improvize or &quot;heat the already warm water&quot; (or how
+</I>&gt;<i> &gt; it's said in English:)).
+</I>&gt;<i> 
+</I>&gt;<i> Well I had many recommendation for Design with the book &quot;Effectice C++&quot;.
+</I>&gt;<i> This one covers the basic program design matters, and an second one
+</I>&gt;<i> &quot;More Effective C++&quot; the more advanced themes. Also the STL (Standard
+</I>&gt;<i> Templace Library) is covered in an extra book. General design books
+</I>&gt;<i> concerning software projects should be based on UML-2. I have two
+</I>&gt;<i> books, but they are both in german (basics and advanced topics).
+</I>&gt;<i> Maybe UML-2-Toolkit is a book for you if you want to learn more
+</I>&gt;<i> about software analysis and design. The UML-Bible on the contrary
+</I>&gt;<i> is a book covering everything about UML, for those who want to get
+</I>&gt;<i> an UML expert. I want to buy a new book less covering UML itself but
+</I>&gt;<i> concentrating on the software design process. Maybe the book
+</I>&gt;<i> &quot;Object-Oriented Analysis and Design : Understanding System Development 
+</I>&gt;<i> with UML 2.0&quot; helps you if you want to take a similar approach.
+</I>&gt;<i> And finally you might be interested in Interface design books...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I see you made a new entry in our development Wiki. I read it through
+</I>&gt;<i> &gt; today and I'm quite impressed. The changes and new strcuture reminds me
+</I>&gt;<i> &gt; on the Qt library on times, but I think it's, as I said before, probably
+</I>&gt;<i> &gt; more a standard for Object oriented programming (the new casting methods).
+</I>&gt;<i> 
+</I>&gt;<i> Yes I agree, also the Qt book by the Qt authors is really worth a read.
+</I>&gt;<i> 
+</I>&gt;<i> Best regards,
+</I>&gt;<i> 
+</I>&gt;<i> Reinhard
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000464.html">[Noteedit-devel] New internals
+</A></li>
+	<LI>Next message: <A HREF="000466.html">[Noteedit-devel] New internals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#465">[ date ]</a>
+              <a href="thread.html#465">[ thread ]</a>
+              <a href="subject.html#465">[ subject ]</a>
+              <a href="author.html#465">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

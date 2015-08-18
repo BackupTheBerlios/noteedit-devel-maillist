@@ -1,0 +1,3509 @@
+From noteedit-devel-admin at lists.berlios.de  Sun Jul  3 09:48:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 03 Jul 2005 09:48:52 +0200
+Subject: [Noteedit-devel] 2.8.0?
+Message-ID: <42C79864.7010408@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Are there any problems why we don't release it now? I would *really*
+like to make some improvements and I already made some patches pending
+for 2.8.1, but would probably make NoteEdit a bit unstable so I don't
+want to apply them on 2.8.0.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFCx5hkm1IQqmP8KVgRAmcAAJ4hKO53SE9YyNKImnqTgtaaA2qfOQCeKhHF
+SpZCoReXSJHgLksKpFiBe+I=
+=SCTo
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul  3 14:04:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 03 Jul 2005 14:04:03 +0200
+Subject: [Noteedit-devel] 2.8.0?
+In-Reply-To: <42C79864.7010408@guest.arnes.si>
+References: <42C79864.7010408@guest.arnes.si>
+Message-ID: <42C7D433.8070207@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Are there any problems why we don't release it now? I would *really*
+> like to make some improvements and I already made some patches pending
+> for 2.8.1, but would probably make NoteEdit a bit unstable so I don't
+> want to apply them on 2.8.0.
+>
+>
+> Regards.
+> - Matev?
+I also don't see an obstacle. We just need to bug and hug Reinhard to do
+it. I think, soon he'll have time.
+
+Regards,
+Georg.
+
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul  4 22:19:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 04 Jul 2005 22:19:54 +0200
+Subject: [Noteedit-devel] new SVN branches
+Message-ID: <42C999EA.8020906@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Reinhard & Georg & others!
+
+I really wouldn't like to rush or push to anyone in the team, but I
+moved and reorganized our SVN myself now to match the common practice
+found in most projects I've seen so far and the ordinary structure
+that's in the SVN manual mentioned. This way, we can easily test and
+release 2.8.0 when it's done and meanwhile, we can develop the 2.9.x
+branch simultaniously and port any common patches to both branches. I
+hope no one here is losing his temper and going to throw me out of the
+development team because of what I made:).
+
+Our repository at svn.berlios.de/svnroot/repos/noteedit now looks like
+this:
+/branches/stable-2.8/     (the maintained stable 2.8.x branch)
+/homepage/         (our SVN for the homepage. Currently no branches
+made for it yet, but will be made later when or if we're going to make
+a _completely_ new homepage)
+/tags/2.8.0/       (not yet created - Reinhard is going to make this
+one when we make 2.8.0 public. This copy shouldn't be touched at all)
+/trunk/            (the latest unstable version)
+
+So if you want to update to the latest stable version, you should move
+to your current noteedit root dir and use (for the ssh+svn interface)
+$ svn switch
+svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/branches/stable-2.8
+$ svn update
+
+and if you want to switch to the current unstable trunk, you should type
+$ svn switch
+svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/trunk
+$ svn update
+
+in your current noteedit root dir.
+
+If you prefer the "from scratch" variant, you can delete the whole
+local repository and checkout by running for example
+$ svn co
+svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/branches/stable-2.8
+noteedit_stable
+
+or
+
+$ svn co
+svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/trunk
+noteedit_unstable
+
+for the unstable variant. Please tell me what you think!
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFCyZnqm1IQqmP8KVgRAg4IAJ4xjmikxfb6wGfxYo1lfViQBcKbIwCbBJ4E
+za8ofyh7Ph/+l7if2AoUc8Y=
+=HscT
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul  5 20:57:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 05 Jul 2005 20:57:29 +0200
+Subject: [Noteedit-devel] new SVN branches
+In-Reply-To: <42C999EA.8020906@guest.arnes.si>
+References: <42C999EA.8020906@guest.arnes.si>
+Message-ID: <42CAD819.8040402@web.de>
+
+Hello Matev?,
+
+There seems to be a curse on me not allowing to spend a minute of
+time to NoteEdit in the last few days :-(
+Over the weekend I had to work on the Messias (Haendel) project
+and this week I have to continue practicing on this and for the
+concert at the following weekend. Also I had lot's of work at
+my firm (getting at home quite late), got a new counter-system
+for the heating and so on.
+
+Concerning the branch: Great work as always from your side!
+
+> Our repository at svn.berlios.de/svnroot/repos/noteedit now looks like
+> this:
+> /branches/stable-2.8/     (the maintained stable 2.8.x branch)
+> /homepage/         (our SVN for the homepage. Currently no branches
+> made for it yet, but will be made later when or if we're going to make
+> a _completely_ new homepage)
+> /tags/2.8.0/       (not yet created - Reinhard is going to make this
+> one when we make 2.8.0 public. This copy shouldn't be touched at all)
+> /trunk/            (the latest unstable version)
+> 
+> So if you want to update to the latest stable version, you should move
+> to your current noteedit root dir and use (for the ssh+svn interface)
+> $ svn switch
+> svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/branches/stable-2.8
+> $ svn update
+> 
+> and if you want to switch to the current unstable trunk, you should type
+> $ svn switch
+> svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/trunk
+> $ svn update
+> 
+> in your current noteedit root dir.
+> 
+> If you prefer the "from scratch" variant, you can delete the whole
+> local repository and checkout by running for example
+> $ svn co
+> svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/branches/stable-2.8
+> noteedit_stable
+> 
+> or
+> 
+> $ svn co
+> svn+ssh://YOUR_NAME at svn.berlios.de/svnroot/repos/noteedit/trunk
+> noteedit_unstable
+> 
+> for the unstable variant. Please tell me what you think!
+> 
+
+Well for me I just did a simple svn update on my stable directory
+and I got as result a branches and a trunk and some other directories,
+so the above is useful if you're only interested in a part of NoteEdit
+and not the complete svn tree. I guess everyone can now the part he
+wants to work on.
+
+Concering the release: I don't have the time to do it this evening.
+I have to go early to bed and still do quite some house hold work.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul  5 21:50:36 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 05 Jul 2005 21:50:36 +0200
+Subject: [Noteedit-devel] new SVN branches
+In-Reply-To: <42CAD819.8040402@web.de>
+References: <42C999EA.8020906@guest.arnes.si> <42CAD819.8040402@web.de>
+Message-ID: <42CAE48C.2010402@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi!
+
+noteedit-devel-admin at berlios.de wrote:
+
+> There seems to be a curse on me not allowing to spend a minute of
+> time to NoteEdit in the last few days :-( Over the weekend I had to
+> work on the Messias (Haendel) project and this week I have to
+> continue practicing on this and for the concert at the following
+> weekend. Also I had lot's of work at my firm (getting at home quite
+> late), got a new counter-system for the heating and so on.
+
+I understand you perfectly! Take all the time and I wish you the best
+at the concert! NoteEdit can wait. There's gonna be an update every
+few days or so from my side though:) (btw. I commited the MusicXML
+import/export for arbitrary text yesterday, might be interesting).
+
+And don't forget on your best half:)!
+
+
+Best regards!
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFCyuSMm1IQqmP8KVgRApwWAJ9aAeDqJQC1cfGtrYBAmvDyh2xRUwCeI8xv
+hl9XsY0nuoZv63fUYuHTiRk=
+=kJPs
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 11 19:48:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 11 Jul 2005 19:48:04 +0200
+Subject: [Noteedit-devel] Problems installing noteedit
+Message-ID: <200507111948.05238.andre.hinrichs@gmx.de>
+
+Hi List!
+
+I'm just trying to install NoteEdit on my Gentoo System.
+
+I did all the configurations:
+
+export KDEDIR=/usr/kde/3.4/
+export QTDIR=/usr/qt/3/
+
+
+Then started configure as follows:
+
+./configure --prefix=/usr/kde/3.4/ --with-libtse3 --with-libtse3-include=/usr/include/tse3/ --with-libtse3-libs=/usr/lib/
+
+
+But this fails with the following error message:
+
+checking libtse3... libs in ; includes in /usr/include
+
+libtse3 not found! Please install!
+If you have installed libtse3 in an unusual directory
+use "--with-libtse3-include=" and/or "--with-libtse3-libs="
+
+There are options to bypass libtse3! But this causes some
+restrictions; see README
+
+
+
+Can anybody please give me a hint?
+
+Thanx
+Andre
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 11 20:53:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 11 Jul 2005 20:53:35 +0200
+Subject: [Noteedit-devel] Problems installing noteedit
+In-Reply-To: <200507111948.05238.andre.hinrichs@gmx.de>
+References: <200507111948.05238.andre.hinrichs@gmx.de>
+Message-ID: <42D2C02F.6050501@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Are you using the latest SVN version?
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi List!
+>
+> I'm just trying to install NoteEdit on my Gentoo System.
+>
+> I did all the configurations:
+>
+> export KDEDIR=/usr/kde/3.4/ export QTDIR=/usr/qt/3/
+>
+>
+> Then started configure as follows:
+>
+> ./configure --prefix=/usr/kde/3.4/ --with-libtse3
+> --with-libtse3-include=/usr/include/tse3/
+> --with-libtse3-libs=/usr/lib/
+>
+>
+> But this fails with the following error message:
+>
+> checking libtse3... libs in ; includes in /usr/include
+>
+> libtse3 not found! Please install! If you have installed libtse3 in
+> an unusual directory use "--with-libtse3-include=" and/or
+> "--with-libtse3-libs="
+>
+> There are options to bypass libtse3! But this causes some
+> restrictions; see README
+>
+>
+>
+> Can anybody please give me a hint?
+>
+> Thanx Andre _______________________________________________
+> Noteedit-devel mailing list Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC0sAvm1IQqmP8KVgRAqr9AJ46tAp1c8SR7Weo+MVpBOgodE4tHgCfZZ7Y
+QHUUybmw224Q5OnHy9D3XNc=
+=hBf6
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 11 23:21:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 11 Jul 2005 23:21:08 +0200
+Subject: [Noteedit-devel] Problems installing noteedit
+In-Reply-To: <42D2C02F.6050501@guest.arnes.si>
+References: <200507111948.05238.andre.hinrichs@gmx.de> <42D2C02F.6050501@guest.arnes.si>
+Message-ID: <200507112321.08399.andre.hinrichs@gmx.de>
+
+I've now tried with latest SVN version, 2.6.2, 2.7.4 and 2.8.0-rc1
+All with the same result.
+
+Some more info: Here are the contents of the appropriate directories.
+
+# ls -l /usr/lib/libtse3*
+lrwxrwxrwx  1 root root     13 Jul 11 09:57 /usr/lib/libtse3 -> libtse3.0.0.0
+lrwxrwxrwx  1 root root     13 Jul 11 09:57 /usr/lib/libtse3.0 -> libtse3.0.0.0
+-rwxr-xr-x  1 root root 997660 Jul 11 09:57 /usr/lib/libtse3.0.0.0
+-rwxr-xr-x  1 root root   1462 Jul 11 09:57 /usr/lib/libtse3.la
+
+# ls -l /usr/include/tse3/
+total 448
+-rw-r--r--  1 root root 11111 Jul 11 09:57 DisplayParams.h
+-rw-r--r--  1 root root  7014 Jul 11 09:57 Error.h
+-rw-r--r--  1 root root  7337 Jul 11 09:57 EventTrack.h
+-rw-r--r--  1 root root 12051 Jul 11 09:57 FileBlockParser.h
+-rw-r--r--  1 root root  1812 Jul 11 09:57 Filter.h
+-rw-r--r--  1 root root  3327 Jul 11 09:57 FlagTrack.h
+-rw-r--r--  1 root root  7326 Jul 11 09:57 KeySigTrack.h
+-rw-r--r--  1 root root  9384 Jul 11 09:57 Metronome.h
+-rw-r--r--  1 root root 27079 Jul 11 09:57 Midi.h
+-rw-r--r--  1 root root  2566 Jul 11 09:57 MidiCommandFilter.h
+-rw-r--r--  1 root root  3548 Jul 11 09:57 MidiData.h
+-rw-r--r--  1 root root  4592 Jul 11 09:57 MidiEcho.h
+-rw-r--r--  1 root root 12587 Jul 11 09:57 MidiFile.h
+-rw-r--r--  1 root root 11501 Jul 11 09:57 MidiFilter.h
+-rw-r--r--  1 root root  3312 Jul 11 09:57 MidiMapper.h
+-rw-r--r--  1 root root  5983 Jul 11 09:57 MidiParams.h
+-rw-r--r--  1 root root 34038 Jul 11 09:57 MidiScheduler.h
+-rw-r--r--  1 root root 11975 Jul 11 09:57 Mixer.h
+-rw-r--r--  1 root root 11054 Jul 11 09:57 Mutex.h
+-rw-r--r--  1 root root 25588 Jul 11 09:57 Notifier.h
+-rw-r--r--  1 root root  9898 Jul 11 09:57 Panic.h
+-rw-r--r--  1 root root 11203 Jul 11 09:57 Part.h
+-rw-r--r--  1 root root  5931 Jul 11 09:57 Phrase.h
+-rw-r--r--  1 root root 18914 Jul 11 09:57 PhraseEdit.h
+-rw-r--r--  1 root root  8575 Jul 11 09:57 PhraseList.h
+-rw-r--r--  1 root root  5771 Jul 11 09:57 Playable.h
+-rw-r--r--  1 root root  2157 Jul 11 09:57 Progress.h
+-rw-r--r--  1 root root  4082 Jul 11 09:57 RepeatTrack.h
+-rw-r--r--  1 root root  9281 Jul 11 09:57 Serializable.h
+-rw-r--r--  1 root root 12352 Jul 11 09:57 Song.h
+-rw-r--r--  1 root root  4243 Jul 11 09:57 TSE2MDL.h
+-rw-r--r--  1 root root  4351 Jul 11 09:57 TSE3.h
+-rw-r--r--  1 root root  6881 Jul 11 09:57 TSE3MDL.h
+-rw-r--r--  1 root root  3719 Jul 11 09:57 TempoTrack.h
+-rw-r--r--  1 root root  4715 Jul 11 09:57 TimeSigTrack.h
+-rw-r--r--  1 root root 10655 Jul 11 09:57 Track.h
+-rw-r--r--  1 root root 22659 Jul 11 09:57 Transport.h
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 app
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 cmd
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 file
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 ins
+drwxr-xr-x  5 root root  4096 Jul 11 09:57 listen
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 plt
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 util
+
+
+
+
+On Monday 11 July 2005 20:53, noteedit-devel-admin at berlios.de wrote:
+> Are you using the latest SVN version?
+> 
+> 
+> Regards.
+> - Matev?
+> 
+> noteedit-devel-admin at berlios.de wrote:
+> 
+> > Hi List!
+> >
+> > I'm just trying to install NoteEdit on my Gentoo System.
+> >
+> > I did all the configurations:
+> >
+> > export KDEDIR=/usr/kde/3.4/ export QTDIR=/usr/qt/3/
+> >
+> >
+> > Then started configure as follows:
+> >
+> > ./configure --prefix=/usr/kde/3.4/ --with-libtse3
+> > --with-libtse3-include=/usr/include/tse3/
+> > --with-libtse3-libs=/usr/lib/
+> >
+> >
+> > But this fails with the following error message:
+> >
+> > checking libtse3... libs in ; includes in /usr/include
+> >
+> > libtse3 not found! Please install! If you have installed libtse3 in
+> > an unusual directory use "--with-libtse3-include=" and/or
+> > "--with-libtse3-libs="
+> >
+> > There are options to bypass libtse3! But this causes some
+> > restrictions; see README
+> >
+> >
+> >
+> > Can anybody please give me a hint?
+> >
+> > Thanx Andre _______________________________________________
+> > Noteedit-devel mailing list Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> >
+> >
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+> 
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 12 09:53:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 12 Jul 2005 09:53:48 +0200
+Subject: [Noteedit-devel] Problems installing noteedit
+In-Reply-To: <200507112321.08399.andre.hinrichs@gmx.de>
+References: <200507111948.05238.andre.hinrichs@gmx.de> <42D2C02F.6050501@guest.arnes.si> <200507112321.08399.andre.hinrichs@gmx.de>
+Message-ID: <42D3770C.2070201@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Try linking libtse3.so -> libtse3.0.0.0. It works for me.
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> I've now tried with latest SVN version, 2.6.2, 2.7.4 and 2.8.0-rc1
+> All with the same result.
+>
+> Some more info: Here are the contents of the appropriate
+> directories.
+>
+> # ls -l /usr/lib/libtse3* lrwxrwxrwx 1 root root 13 Jul 11
+> 09:57 /usr/lib/libtse3 -> libtse3.0.0.0 lrwxrwxrwx 1 root root
+> 13 Jul 11 09:57 /usr/lib/libtse3.0 -> libtse3.0.0.0 -rwxr-xr-x 1
+> root root 997660 Jul 11 09:57 /usr/lib/libtse3.0.0.0 -rwxr-xr-x 1
+> root root 1462 Jul 11 09:57 /usr/lib/libtse3.la
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC03cMm1IQqmP8KVgRAsYDAJwM+mwLKHe7k2HoUi5zd3nwxRYyFQCeKiTY
+wM/UYqGaxk8LaBbaFDnvtdM=
+=wX6R
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 12 13:30:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 12 Jul 2005 13:30:02 +0200
+Subject: [Noteedit-devel] Problems installing noteedit
+In-Reply-To: <42D3770C.2070201@guest.arnes.si>
+References: <200507111948.05238.andre.hinrichs@gmx.de> <200507112321.08399.andre.hinrichs@gmx.de> <42D3770C.2070201@guest.arnes.si>
+Message-ID: <200507121330.02549.andre.hinrichs@gmx.de>
+
+Did some more tries with tse3-0.2.5 and tse3-0.3.0.
+The installation of tse3-0.2.5 does create the right file names for libs:
+
+-rwxr-xr-x  1 root root   1474 Jul 12 13:12 libtse3.la
+lrwxrwxrwx  1 root root     16 Jul 12 13:12 libtse3.so -> libtse3.so.0.0.0
+lrwxrwxrwx  1 root root     16 Jul 12 13:12 libtse3.so.0 -> libtse3.so.0.0.0
+-rwxr-xr-x  1 root root 997660 Jul 12 13:12 libtse3.so.0.0.0
+
+And tse3-0.3.0 does not as you can see in the privious mails.
+Unfortunately, your hint of linking the library to a file with correct
+name does not help. Also tried to rename all files (and running ldconfig
+afterwards).
+
+How do your tse3 lib files look? Where are they located?
+
+Greetings,
+Andre
+
+On Tuesday 12 July 2005 09:53, noteedit-devel-admin at berlios.de wrote:
+> Try linking libtse3.so -> libtse3.0.0.0. It works for me.
+> 
+> 
+> Regards.
+> - Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 12 14:08:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 12 Jul 2005 14:08:32 +0200
+Subject: [Noteedit-devel] Problems installing noteedit
+In-Reply-To: <200507121330.02549.andre.hinrichs@gmx.de>
+References: <200507111948.05238.andre.hinrichs@gmx.de> <200507112321.08399.andre.hinrichs@gmx.de> <42D3770C.2070201@guest.arnes.si> <200507121330.02549.andre.hinrichs@gmx.de>
+Message-ID: <42D3B2C0.2050500@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I use TSE3 0.3.0 from the author's homepage. I configured it with
+- --with-alsa --without-arts --without-oss and compiled and installed it
+with default options. It installed itself at /usr/local/lib and
+/usr/local/include/tse3.
+
+matevz at mojazver:/usr/local/lib$ ll libtse3*
+lrwxrwxrwx  1 root staff      13 2005-07-12 08:47 libtse3 -> libtse3.0.0.0
+lrwxrwxrwx  1 root staff      13 2005-07-12 08:47 libtse3.0 ->
+libtse3.0.0.0
+- -rwxr-xr-x  1 root staff 8682963 2005-07-12 08:47 libtse3.0.0.0
+- -rwxr-xr-x  1 root staff     684 2005-07-12 08:47 libtse3.la
+lrwxrwxrwx  1 root staff      13 2005-07-12 09:49 libtse3.so ->
+libtse3.0.0.0
+
+matevz at mojazver:/usr/local/include$ ll
+drwxr-sr-x   9 root staff  1328 2005-07-12 08:47 tse3
+matevz at mojazver:/usr/local/include$ ll tse3
+drwxr-sr-x  2 root staff   264 2005-07-12 08:47 app
+drwxr-sr-x  2 root staff   272 2005-07-12 08:47 cmd
+- -rw-r--r--  1 root staff 11111 2005-07-12 08:47 DisplayParams.h
+- -rw-r--r--  1 root staff  7014 2005-07-12 08:47 Error.h
+- -rw-r--r--  1 root staff  7337 2005-07-12 08:47 EventTrack.h
+drwxr-sr-x  2 root staff    96 2005-07-12 08:47 file
+- -rw-r--r--  1 root staff 12051 2005-07-12 08:47 FileBlockParser.h
+- -rw-r--r--  1 root staff  1812 2005-07-12 08:47 Filter.h
+- -rw-r--r--  1 root staff  3327 2005-07-12 08:47 FlagTrack.h
+drwxr-sr-x  2 root staff   112 2005-07-12 08:47 ins
+- -rw-r--r--  1 root staff  7326 2005-07-12 08:47 KeySigTrack.h
+drwxr-sr-x  5 root staff   912 2005-07-12 08:47 listen
+- -rw-r--r--  1 root staff  9384 2005-07-12 08:47 Metronome.h
+- -rw-r--r--  1 root staff  2566 2005-07-12 08:47 MidiCommandFilter.h
+- -rw-r--r--  1 root staff  3548 2005-07-12 08:47 MidiData.h
+- -rw-r--r--  1 root staff  4592 2005-07-12 08:47 MidiEcho.h
+- -rw-r--r--  1 root staff 12587 2005-07-12 08:47 MidiFile.h
+- -rw-r--r--  1 root staff 11501 2005-07-12 08:47 MidiFilter.h
+- -rw-r--r--  1 root staff 27078 2005-07-12 08:47 Midi.h
+- -rw-r--r--  1 root staff  3312 2005-07-12 08:47 MidiMapper.h
+- -rw-r--r--  1 root staff  5983 2005-07-12 08:47 MidiParams.h
+- -rw-r--r--  1 root staff 34038 2005-07-12 08:47 MidiScheduler.h
+- -rw-r--r--  1 root staff 11975 2005-07-12 08:47 Mixer.h
+- -rw-r--r--  1 root staff 11054 2005-07-12 08:47 Mutex.h
+- -rw-r--r--  1 root staff 25592 2005-07-12 08:47 Notifier.h
+- -rw-r--r--  1 root staff  9898 2005-07-12 08:47 Panic.h
+- -rw-r--r--  1 root staff 11203 2005-07-12 08:47 Part.h
+- -rw-r--r--  1 root staff 18914 2005-07-12 08:47 PhraseEdit.h
+- -rw-r--r--  1 root staff  5931 2005-07-12 08:47 Phrase.h
+- -rw-r--r--  1 root staff  8575 2005-07-12 08:47 PhraseList.h
+- -rw-r--r--  1 root staff  5771 2005-07-12 08:47 Playable.h
+drwxr-sr-x  2 root staff   264 2005-07-12 08:47 plt
+- -rw-r--r--  1 root staff  2157 2005-07-12 08:47 Progress.h
+- -rw-r--r--  1 root staff  4082 2005-07-12 08:47 RepeatTrack.h
+- -rw-r--r--  1 root staff  9281 2005-07-12 08:47 Serializable.h
+- -rw-r--r--  1 root staff 12352 2005-07-12 08:47 Song.h
+- -rw-r--r--  1 root staff  3719 2005-07-12 08:47 TempoTrack.h
+- -rw-r--r--  1 root staff  4715 2005-07-12 08:47 TimeSigTrack.h
+- -rw-r--r--  1 root staff 10655 2005-07-12 08:47 Track.h
+- -rw-r--r--  1 root staff 22659 2005-07-12 08:47 Transport.h
+- -rw-r--r--  1 root staff  4243 2005-07-12 08:47 TSE2MDL.h
+- -rw-r--r--  1 root staff  4351 2005-07-12 08:47 TSE3.h
+- -rw-r--r--  1 root staff  6881 2005-07-12 08:47 TSE3MDL.h
+drwxr-sr-x  2 root staff   296 2005-07-12 08:47 util
+
+
+Configure script looks only for libtse3.so or libtse3.a in libs
+directory and tse3/TSE3.h in include directory. Default libs
+directories are /usr/lib and /usr/local/lib. Default include
+directories are /usr/include and /usr/local/include.
+
+Using the latest SVN version of NoteEdit (I just made a fresh
+reinstall), with make -f Makefile.cvs; ./configure; make and it works
+out of the box for me. Which compiler and distro are you using?
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Did some more tries with tse3-0.2.5 and tse3-0.3.0. The
+> installation of tse3-0.2.5 does create the right file names for
+> libs:
+>
+> -rwxr-xr-x 1 root root 1474 Jul 12 13:12 libtse3.la lrwxrwxrwx 1
+> root root 16 Jul 12 13:12 libtse3.so -> libtse3.so.0.0.0
+> lrwxrwxrwx 1 root root 16 Jul 12 13:12 libtse3.so.0 ->
+> libtse3.so.0.0.0 -rwxr-xr-x 1 root root 997660 Jul 12 13:12
+> libtse3.so.0.0.0
+>
+> And tse3-0.3.0 does not as you can see in the privious mails.
+> Unfortunately, your hint of linking the library to a file with
+> correct name does not help. Also tried to rename all files (and
+> running ldconfig afterwards).
+>
+> How do your tse3 lib files look? Where are they located?
+>
+> Greetings, Andre
+>
+> On Tuesday 12 July 2005 09:53, noteedit-devel-admin at berlios.de
+> wrote:
+>
+>> Try linking libtse3.so -> libtse3.0.0.0. It works for me.
+>>
+>>
+>> Regards. - Matev?
+>
+> _______________________________________________ Noteedit-devel
+> mailing list Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC07LAm1IQqmP8KVgRAuZWAJ0YFAF6knYmopwpPU46UZMd/AqqOACfbPMS
+LdpkmWN3jJBr1BpLYljSgVc=
+=/GPD
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 12 15:52:22 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 12 Jul 2005 15:52:22 +0200
+Subject: [Noteedit-devel] Problems installing noteedit (Solved)
+In-Reply-To: <42D3B2C0.2050500@guest.arnes.si>
+References: <200507111948.05238.andre.hinrichs@gmx.de> <200507121330.02549.andre.hinrichs@gmx.de> <42D3B2C0.2050500@guest.arnes.si>
+Message-ID: <200507121552.22925.andre.hinrichs@gmx.de>
+
+Thanx! It works now!
+What was wrong? Simple! Even stupid...
+After installing tse3-0.3.0 the configure script of NoteEdit didn't find
+the library and I didn't recognice the false library name. So I tried
+to fix this by adding the 
+
+--with-libtse3-include=/usr/include/tse3/ --with-libtse3-libs=/usr/lib/
+
+to configure script. Even this failed. Then you gave me the hint about
+the false library name. But I (stupid) still tried to call configure with
+these extra options...
+
+Simply remove these solved the problem. And now I know that the
+include path for tse3 is NOT /usr/include/tse3/ but /usr/include/
+
+I just installed NoteEdit-2.7.4 successfully and will play with it now...
+
+
+Thank you very much for your assistance!!!
+
+
+Greetings
+Andre
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 14 23:24:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 14 Jul 2005 23:24:47 +0200
+Subject: [Noteedit-devel] some more or less future&minor stuff
+Message-ID: <42D6D81F.9080709@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Reinhard,
+
+1) I see you managed to release 2.8.0 these days. I would like to
+remind you to make a copy of the released 2.8.0 version into
+/tags/2.8.0 in our SVN repository.
+2) I played downloaded&compiled&installed Qt4.0. I like it so far, but
+wasn't able to make much with NoteEdit yet (configure doesn't find
+it?!?). Can you say anything about your plans, when and how are you
+going to migrate to Qt4.0? We'd have to update our configure to work
+properly (or maybe even rewrite it completely?), remove code in #if
+QT_VERSION <300 block, make changes to fit a new Qt API and announce
+that NoteEdit 2.9 requires now Qt >= 300.
+3) I tried compiling NoteEdit with gcc-4.0, but had no luck. I fixed
+the configure script and it works fine. The problem is that it cannot
+compile TSE3 headers (MANY syntax errors like the wrong use of
+type-def, friend classes, templates etc.!). I contacted Pete and I
+hope he'll manage to release a gcc4-compatible version asap. I don't
+think Debian is going to accept our program without being gcc4-compatible.
+
+
+Best regards!
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC1tgem1IQqmP8KVgRAih8AJ9ypS1rGJ1+gx6tOJoY1PDoMzX/4QCdEmhD
+QrbbaIGeygaAHt+nNShQGnk=
+=GpfV
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 15 22:18:38 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 15 Jul 2005 22:18:38 +0200
+Subject: [Noteedit-devel] some more or less future&minor stuff
+In-Reply-To: <42D6D81F.9080709@guest.arnes.si>
+References: <42D6D81F.9080709@guest.arnes.si>
+Message-ID: <42D81A1E.8010409@web.de>
+
+Hi Matevz & Co. :-),
+
+noteedit-devel-admin at berlios.de schrieb:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> Reinhard,
+> 
+> 1) I see you managed to release 2.8.0 these days. I would like to
+> remind you to make a copy of the released 2.8.0 version into
+> /tags/2.8.0 in our SVN repository.
+
+Ok, somewhen when I have time again...
+
+> 2) I played downloaded&compiled&installed Qt4.0. I like it so far, but
+> wasn't able to make much with NoteEdit yet (configure doesn't find
+> it?!?). Can you say anything about your plans, when and how are you
+> going to migrate to Qt4.0? We'd have to update our configure to work
+> properly (or maybe even rewrite it completely?), remove code in #if
+> QT_VERSION <300 block, make changes to fit a new Qt API and announce
+> that NoteEdit 2.9 requires now Qt >= 300.
+
+I haven't thought about it and I probably won't start thinking about
+it until Noteedit 2.8.1 has been released. Scripting and the printing
+dialog are the main features needed by NoteEdit in the near future IMO.
+I want to wait for that until my distribution officially includes QT4
+in some form (that will probably happen in late autumn, end of october
+or so). Basically I would drop Qt 3.x support completely as there is
+a QT3.x backward compatibility interface in Qt4 and because the 
+differences are to large for maintaining backward compatibility. I
+also don't think we will se an unstable release this year except we
+some developers having more time than me to work on it.
+
+> 3) I tried compiling NoteEdit with gcc-4.0, but had no luck. I fixed
+> the configure script and it works fine. The problem is that it cannot
+> compile TSE3 headers (MANY syntax errors like the wrong use of
+> type-def, friend classes, templates etc.!). I contacted Pete and I
+> hope he'll manage to release a gcc4-compatible version asap. I don't
+> think Debian is going to accept our program without being gcc4-compatible.
+
+gcc4.0 is in Cooker for Mandriva and I won't switch to it until the
+next version of Mandriva is released (maybe if I have time I'll test
+the release candidate for Mandriva somewhen in September/October).
+I think all other distribution will switch to gcc4 before Debian
+will officially start to use it (i.e. at least in testing).
+
+I hoped to manage more than the homepage update an the release
+itself but the Linux Info Tag here in Pforzheim where I'm doing
+the Linux audio booth alone took too much preparation time (and
+still will be incomplete, so I have to improvise a bit). I will
+present NoteEdit there as well though I don't think that we will
+get a new developer from that day. Maybe I can spend an hour on NoteEdit
+on sunday if there is no work left from saturday. The following
+week I'll have to prepare for the next concert, so again only
+very few time left.
+
+I'm very satisfied with the work and the plans you do and hope
+that end of july I be able start working on NoteEdit again on a
+more regular base.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 17 10:55:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 17 Jul 2005 10:55:39 +0200
+Subject: [Noteedit-devel] 2.8.0 Final released
+Message-ID: <42DA1D0B.9030009@web.de>
+
+Hi everybody!
+
+The NoteEdit team is glad to announce the first major-version since its
+new beginning!
+
+Release 2.8.0
+-------------
+New features:
+- Updated translations and fixed Makefile to include Slovenian translation.
+- RFE #573 - Soprano clef added.
+- Score info fields and staff names can now include double quotes ("),
+updated export filters.
+- RFE #730 - Direct MIDI import - one-click MIDI file import implemented.
+- RFE #729 - warning message before TSE3 -> Score added.
+- Automatic bar placement disabled if no time signature defined.
+- Allow bar placement in empty staffs with no clef/key/time signature.
+- Merged staff properties and voice dialog.
+- Staff properties can now change all staffs at once, not only the
+current one.
+- Menu point staff -> voices invokes the staff properties.
+- More improvements to the menu: Easier access via keys, some better
+menu names
+   (like Close / Quit, Select Multi Staff).
+- Main window title now includes score title and subtitle by default, if
+none defined yet, it the current uses file name.
+- Many score layout window improvements (bottom-up selection, resized
+buttons to  fit captions on buttons, added form caption).
+- Removed fuzzyness from german translation and updated all po(t) files
+   (others will have fuzzyness as well until translated).
+- Removed a thrilling MusiXTeX warning when exporting and replaced it
+with a nice notice dialog.
+- New icon.
+- Implemented splash screen.
+- New playback shortcut. Changed Edit Mode and Insert Rest default
+shortcuts.
+- Save main window position and size (default: available screen geometry).
+- Toolbar settings of every toolbar are saved and restored.
+- Integrated patch 403 - Better menu structure.
+- Removed "Report Bug" menu item from help menu.
+- The last selected key or time signature is now remembered and gets
+selected automatically when inserting it the second time.
+- configure now works on FreeBSD (thanks to Raphael Langerhorst)
+
+Bug fixes:
+- Fixed #3944 - polyphony importing wrong in MusicXML.
+- Fixed #3969 - Score layout: Text on buttons uncomplete.
+- Fixed #3595 - dbl quotes in some score info fields leads to invalid files.
+- Fixed #3935 - deleting element doesn't make document edited - also
+some rework                in delete element code.
+- Fixed #3934 - discard changes dialog ignored on exit.
+- Fixed #3914 - crash when a pasting to new staff.
+- Fixed #3504 - bad file save without clef.
+- Fixed #3861 - Multirests in non-4/4 measure broken.
+- Fixed #3862 - measures after multirests not numbered correctly.
+- Fixed #3183 - multistaff broken - warning message added.
+- Fixed #3403 - export lilypond 2.4 lyrics problem.
+- Fixed #3418 - Doesn't save icon settings
+- Fixed #3484 - crash on midi import.
+- Fixed #3503 - hard crash on midi export.
+- Fixed #3505 - ABC export when leading repeat open and other voices.
+- Fixed #3786 - midi export crashes noteedit.
+- Fixed #3791 - staff->delete / import recording warnings wrong.
+- Fixed typo in staff properties dialog ("Voice:" -> "Instrument:").
+- Fixed #2930 - noteedit stops playing still held notes in other voices.
+- Fixed #4119 - Stem directions in voice dialog don't get rememberd.
+- Fixed #4235 - noteedit-2.8.0-rc1 crashes on start
+- Fixed typo in insert Key signature dialog: D flat Major; b minor -> D flat
+   Major; b flat minor and updated translations
+- Enlarged Insert line and Line properties dialog to fit all the
+translations.
+
+
+Download the 2.8.0 release here:
+http://download.berlios.de/noteedit/noteedit-2.8.0.tar.gz
+
+Future plans: We are splitting up the NoteEdit development into a stable
+and unstable tree. The current development focus will be on the stable
+tree adding some interesting new features. The unstable tree will get
+a stronger focus after the next stable relese. The plans for this tree
+will be hopefully unleashed in the near future :-)
+
+As always: If you have any problems or find bugs, please post them in 
+the Bug tracker. or mail them to the developer mailing list.
+Known bugs can be found in the Bug tracker as well.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 17 17:17:28 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 17 Jul 2005 17:17:28 +0200
+Subject: [Noteedit-devel] Branches instruction
+Message-ID: <42DA7688.50706@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi all.
+
+I would like anyone, who makes changes to SVN version of NoteEdit from
+now on first make a change *to the trunk version* of NoteEdit and
+then, if the patch should go to the stable 2.8 branch as well,
+*backport* the patch to the stable branch. This could be done manually
+(by editing, copying, applying changes) or eg. for a single commit with:
+
+$ svn merge -r PREV:COMMITTED trunk branches/stable-2.8
+$ svn commit
+
+This looks for the differences between the previous and the current
+repository version of the left side directory (trunk in this case) and
+apply the differnces to the right side (stable-2.8).
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC2naHm1IQqmP8KVgRAk8uAJ9HG5J5ARdYJNfwo8pp8eNK+pMBagCdHBNg
+3fiA5+D7w7ZTUfeMSUuSIz8=
+=zqKC
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 17 19:00:56 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 17 Jul 2005 19:00:56 +0200
+Subject: [Noteedit-devel] Branches instruction
+In-Reply-To: <42DA7688.50706@guest.arnes.si>
+References: <42DA7688.50706@guest.arnes.si>
+Message-ID: <42DA8EC8.7080901@schwaben.de>
+
+Hi all,
+
+Matev?, thanks for your educational postings about svn with the new
+layout. It's defintely helpful for me, this is still my only project
+with svn. I'm glad that the new release is now out, and I'm looking
+forward to help improving NoteEdit again.
+
+Reinhard, to you many, many Thanks, too. Last to mention: I like our new
+homepage.
+
+Best Regards,
+Georg
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 17 21:03:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 17 Jul 2005 21:03:48 +0200
+Subject: [Noteedit-devel] Branches instruction
+In-Reply-To: <42DA8EC8.7080901@schwaben.de>
+References: <42DA7688.50706@guest.arnes.si> <42DA8EC8.7080901@schwaben.de>
+Message-ID: <42DAAB94.8040403@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+If you're not familiar with all the cookies SVN brings, I advice you
+to read the first four chapters of the official SVN book at:
+http://svnbook.red-bean.com/en/1.1/svn-book.html
+
+I used frontends like eSvn and RapidSVN before, when I wasn't familiar
+with all the commands mentioned in the book yet. These frontends are
+pretty straight-forward and easy to understand.
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi all,
+>
+> Matev?, thanks for your educational postings about svn with the new
+> layout. It's defintely helpful for me, this is still my only
+> project with svn. I'm glad that the new release is now out, and I'm
+> looking forward to help improving NoteEdit again.
+>
+> Reinhard, to you many, many Thanks, too. Last to mention: I like
+> our new homepage.
+>
+> Best Regards, Georg
+>
+>
+> _______________________________________________ Noteedit-devel
+> mailing list Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC2quUm1IQqmP8KVgRAkT5AJ9wRHZ4w3NpnIupdh3ew+8WYuVa0gCcD9Qp
+DqJcTxGTpcF9hcmEAk5Rfk8=
+=Ro7R
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 25 00:10:51 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Jul 2005 00:10:51 +0200 (CEST)
+Subject: [Noteedit-devel] Participating in the noteedit project
+Message-ID: <freemail.20050625001051.83783@fm9.freemail.hu>
+
+Hi!
+
+I'm a KDE developer and if it's possible, I'd like to join
+into the note edit project.
+
+I'm experienced in KDE, QT programming, as I have been
+developing the Krusader project (the twin panel file
+manager) for 2 years.
+
+The things I would like to do:
+
+- review the code to get more information about the project
+- export pages into OpenOffice.org draw (vector graphically)
+  for making much easier to insert the score into OOo documents.
+- eliminate limitations at editing the notes
+
+My first and biggest change would be the OOo export.
+
+If you think, that my work would be important, please enable
+me to participate in your project's life.
+
+Thanks, bye
+
+    Csaba Karai
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 25 20:04:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Jul 2005 20:04:07 +0200
+Subject: [Noteedit-devel] Participating in the noteedit project
+In-Reply-To: <freemail.20050625001051.83783@fm9.freemail.hu>
+References: <freemail.20050625001051.83783@fm9.freemail.hu>
+Message-ID: <42E52997.30505@schwaben.de>
+
+Hello Karai,
+
+>
+> Hi!
+>
+> I'm a KDE developer and if it's possible, I'd like to join
+> into the note edit project.
+
+Thank you for your interest in NoteEdit!
+
+> I'm experienced in KDE, QT programming, as I have been
+> developing the Krusader project (the twin panel file
+> manager) for 2 years.
+
+That really sounds great! We have recently published in
+SVN what we plan to do for the next release and who
+will probably do it. Still there are many thing left
+to do.
+
+> The things I would like to do:
+>
+> - review the code to get more information about the project
+> - export pages into OpenOffice.org draw (vector graphically)
+>   for making much easier to insert the score into OOo documents.
+> - eliminate limitations at editing the notes
+
+I don't know anything about OO internals, the only visual export
+capability I'm aware of is the possibility to integrate the
+note sheet into conqueror using KParts.
+
+> My first and biggest change would be the OOo export.
+>
+> If you think, that my work would be important, please enable
+> me to participate in your project's life.
+>
+
+It would be a nice add-on feature though we currently concentrate
+on two different things: Improving printing usability and integrating
+a scripting engine into NoteEdit. Most other things (except lilypond
+export enhancement for the 2.6 version) are bug fixes.
+
+To be able to add you as a developer I need your unix name
+of berlios.
+
+Best regards,
+
+Reinhard Katzmann
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 25 21:22:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Jul 2005 21:22:48 +0200
+Subject: [Noteedit-devel] Participating in the noteedit project
+In-Reply-To: <42E52997.30505@schwaben.de>
+References: <freemail.20050625001051.83783@fm9.freemail.hu> <42E52997.30505@schwaben.de>
+Message-ID: <42E53C08.4040306@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Karai!
+
+>> I'm experienced in KDE, QT programming, as I have been developing
+>> the Krusader project (the twin panel file manager) for 2 years.
+>
+> That really sounds great! We have recently published in SVN what we
+> plan to do for the next release and who will probably do it. Still
+> there are many thing left to do.
+
+Yes, this is certenly fine especially for the Qt4 migration in the
+future we have in mind.
+
+>> The things I would like to do:
+>>
+>> - review the code to get more information about the project -
+>> export pages into OpenOffice.org draw (vector graphically) for
+>> making much easier to insert the score into OOo documents. -
+>> eliminate limitations at editing the notes
+>
+> I don't know anything about OO internals, the only visual export
+> capability I'm aware of is the possibility to integrate the note
+> sheet into conqueror using KParts.
+
+Hm... You're thinking something about a OOo module for editing notes?
+I've been thinking about it myself a few months ago and I came to the
+conclusion that OOo is actually a publishing software (something more
+like LaTeX or LilyPond for notes). I think the nicest and the easiest
+way for now would be a cooperation with Lily, something like:
+1) export to .ly
+2) convert to the latest version of syntax (convert-ly filename.ly)
+3) compile the file to .svg vector format (lilypond --svg --no-ps
+- --no-pdf --no-png filename.ly)
+4) import the .svg to OOo
+
+Now, when you'd double click on the score graphics in OOo, it could
+run NoteEdit with the appropriate .not file. The idea is to have both
+.svg file for the real graphics and always a .not file for the ability
+to edit it. The downside is that you need LilyPond beside NoteEdit and
+that there could be slight differences from time to time, because
+LilyPond uses a much more sophisticated engine for rendering the score
+than NoteEdit.
+
+My 0.02 EUR:).
+
+>> My first and biggest change would be the OOo export.
+>>
+>> If you think, that my work would be important, please enable me
+>> to participate in your project's life.
+>
+>
+> It would be a nice add-on feature though we currently concentrate
+> on two different things: Improving printing usability and
+> integrating a scripting engine into NoteEdit. Most other things
+> (except lilypond export enhancement for the 2.6 version) are bug
+> fixes.
+
+And some minor feature implementations and updates to the
+documentation and examples from my point of view:)
+
+Anyway, welcome aboard!
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC5TwHm1IQqmP8KVgRAs61AJ0bNFKxuoe57PNFduzYIhJhmX9YwQCePdWu
+vZyq/z5zGvRp733J4y2qrLE=
+=6Eyk
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 25 21:47:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Jul 2005 21:47:39 +0200
+Subject: [Noteedit-devel] splash, icon and wiki svg graphics uploaded
+Message-ID: <42E541DB.7030506@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I uploaded the Splash, Icon and developer's Wiki logo graphics in
+source .svg format to /graphics directory in our SVN repository. So if
+I'm unable or don't have time to update the graphics when they're most
+needed, the others can jump in.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC5UHbm1IQqmP8KVgRAslZAJ9+khygLsE0Mx24W+cvm9B8EANA1ACfdkSR
+P6XIgoPnwJj/o/HvCFyge+o=
+=CgOB
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jul 25 22:04:17 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Jul 2005 22:04:17 +0200
+Subject: [Noteedit-devel] splash, icon and wiki svg graphics uploaded
+In-Reply-To: <42E541DB.7030506@guest.arnes.si>
+References: <42E541DB.7030506@guest.arnes.si>
+Message-ID: <42E545C1.4090604@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> I uploaded the Splash, Icon and developer's Wiki logo graphics in
+> source .svg format to /graphics directory in our SVN repository.
+>
+> Regards.
+> - Matev?
+
+
+Thanks, yes, and I still like the splash!
+
+But where is the wiki gone? I almost don't dare to tell that I can't
+reach it. I read in my browser:
+
+    Welcome to NoteEdit's public Wiki site! Currently, NoteEdit Wiki is
+still empty
+
+I must have missed something. I'm logged in, no English wiki?
+
+Regards,
+Georg
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 26 10:39:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Jul 2005 10:39:40 +0200
+Subject: [Noteedit-devel] splash, icon and wiki svg graphics uploaded
+In-Reply-To: <42E545C1.4090604@schwaben.de>
+References: <42E541DB.7030506@guest.arnes.si> <42E545C1.4090604@schwaben.de>
+Message-ID: <42E5F6CC.7070803@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+noteedit-devel-admin at berlios.de wrote:
+
+> noteedit-devel-admin at berlios.de wrote:
+>
+>> I uploaded the Splash, Icon and developer's Wiki logo graphics in
+>> source .svg format to /graphics directory in our SVN repository.
+>>
+>>
+>> Regards. - Matev?
+>
+> Thanks, yes, and I still like the splash!
+>
+> But where is the wiki gone? I almost don't dare to tell that I
+> can't reach it. I read in my browser:
+>
+> Welcome to NoteEdit's public Wiki site! Currently, NoteEdit Wiki is
+> still empty
+>
+> I must have missed something. I'm logged in, no English wiki?
+>
+> Regards, Georg
+
+We don't have a wiki on the Berlios page anymore (there was a Wiki for
+developers month ago, but we decided to move the it to
+http://193.95.242.3/NoteEditWiki on my ADSL server). The Wiki is
+non-public and is meant for the developers only. I made an account for
+you as well and I urge you to login asap and change your password
+(itsgeorg:itsgeorg), if not already. Berlios Wiki will include
+end-user information like tutorials, success stories, guides, the most
+recent FAQ etc., but isn't yet done.
+
+
+Regards!
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC5fbMm1IQqmP8KVgRAguzAJwNgoM+MeSgUCl76h7qMbclYhoTkwCeP4+A
+H347sfGhgdnLScHIKE62boM=
+=QJ8R
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 26 12:04:57 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Jul 2005 12:04:57 +0200 (CEST)
+Subject: [Noteedit-devel] Participating in the noteedit project
+Message-ID: <freemail.20050626120457.72254@fm1.freemail.hu>
+
+Thank you for your answers. 
+ 
+I registered a new username: ckarai. 
+Thanks for adding to the project. 
+ 
+> Hm... You're thinking something about a OOo module for editing notes? 
+> I've been thinking about it myself a few months ago and I came to the 
+> conclusion that OOo is actually a publishing software (something more 
+> like LaTeX or LilyPond for notes). I think the nicest and the easiest 
+> way for now would be a cooperation with Lily, something like: 
+> 1) export to .ly 
+> 2) convert to the latest version of syntax (convert-ly filename.ly) 
+> 3) compile the file to .svg vector format (lilypond --svg --no-ps 
+> - --no-pdf --no-png filename.ly) 
+> 4) import the .svg to OOo 
+ 
+Yes, I checked the homepage of LilyPond. The result of that program is 
+beautiful.  
+ 
+I think that this function worths a new menu item. 
+Exporting to png, or pdf with LilyPond also worths it. 
+ 
+I would have never thought that the export works such easily.  
+ 
+>  
+> Now, when you'd double click on the score graphics in OOo, it could 
+> run NoteEdit with the appropriate .not file. The idea is to have both 
+> .svg file for the real graphics and always a .not file for the ability 
+> to edit it. The downside is that you need LilyPond beside NoteEdit and 
+> that there could be slight differences from time to time, because 
+> LilyPond uses a much more sophisticated engine for rendering the score 
+> than NoteEdit. 
+>  
+> My 0.02 EUR:). 
+>  
+>  
+ 
+You are absolutely right. It would be very attractive if we could edit the 
+embedded scores from OOo. 
+ 
+The different rendering engines are not so problematic. A preview window 
+could solve it. Printing and editing are often separated in note editors. 
+ 
+Well, this program interests me more and more when I get deeper and 
+deeper... This project has future. 
+ 
+:-) 
+ 
+> Anyway, welcome aboard! 
+>  
+ 
+Thank you for the kind words. 
+ 
+Bye, 
+ 
+    Csaba 
+ 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 26 10:33:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Jul 2005 10:33:11 +0200
+Subject: [Noteedit-devel] Participating in the noteedit project
+In-Reply-To: <42E52997.30505@schwaben.de>
+References: <freemail.20050625001051.83783@fm9.freemail.hu> <42E52997.30505@schwaben.de>
+Message-ID: <42E5F547.3080005@nokia.com>
+
+ > It would be a nice add-on feature though we currently concentrate
+ > on two different things: Improving printing usability and integrating
+ > a scripting engine into NoteEdit. Most other things (except lilypond
+ > export enhancement for the 2.6 version) are bug fixes.
+
+Thank you for the answer. Yes, printing is really the most important 
+thing to do. To tell the truth, printing and exporting into OOo should 
+use the same code.
+
+The OpenOffice.org 2.0 Draw file format is a zip file containing XML files.
+
+These XML files contain lines, texts, bitmaps,...
+It's similar to the windows metafile (WMF).
+
+All I have to do is to create a new Paint Engine, which collects the
+drawing shapes from QPainter and stores it in odg (The OpenOffice 2.0
+Draw format). It's easier, than I expected.
+
+Drawbacks of my solution:
+- QPaintEngine is defined in QT 4.0, which requires at least KDE 4
+- The odg file format requires at least OpenOffice 2.0
+
+I don't suggest to keep the compatibility with KDE 3.x, and OOo 1.x, as 
+it makes the solution much harder. Conditional compilation can be used, 
+till everybody will use at least KDE 4.x.
+
+If it is possible, it would be nice if noteedit could print a page into 
+a bitmap, or png or anything else... That can also be inserted into OOo 1.x.
+
+> To be able to add you as a developer I need your unix name
+> of berlios.
+> 
+
+I registered a new username: ckarai.
+
+Thank you for adding to the project. I'm happy for participating.
+
+Best regards,
+
+     Karai Csaba
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 26 20:32:57 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Jul 2005 20:32:57 +0200
+Subject: [Noteedit-devel] Participating in the noteedit project
+In-Reply-To: <42E5F547.3080005@nokia.com>
+References: <freemail.20050625001051.83783@fm9.freemail.hu> <42E52997.30505@schwaben.de> <42E5F547.3080005@nokia.com>
+Message-ID: <42E681D9.60608@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+noteedit-devel-admin at berlios.de wrote:
+
+>> It would be a nice add-on feature though we currently concentrate
+>> on two different things: Improving printing usability and
+>> integrating a scripting engine into NoteEdit. Most other things
+>> (except lilypond export enhancement for the 2.6 version) are bug
+>> fixes.
+>
+> Thank you for the answer. Yes, printing is really the most
+> important thing to do. To tell the truth, printing and exporting
+> into OOo should use the same code.
+
+I think you should read more about the LilyPond project (or other free
+engraving software like ABC music). The project is mature, it's very
+complex and it has history (Lily was known as Gnutella a long time
+ago). Engraving and notation were in past very respectful jobs.
+LilyPond project studied the note engraving science and they tend to
+make an engraving engine that offers a unique look of the score as it
+would have been made by hand. LilyPond with its syntax is today the
+de-facto standard for music publishing as LaTeX is for publishing the
+technical literature and Docbook for application documentation.
+
+If we are to make OOo compatibility/plugin, I don't think we should
+make a new engraving engine from scratch by ourselves. I would rather
+automate the NoteEdit<->OOo via LilyPond process as possible.
+
+Also, our plan for 2.8.1 is to remake and automate the printing
+procedures. In short, we're going to automate the export to Lily/ABC,
+compilation of the exported file to pdf and calling a printing/viewing
+application for that document. In the future, LilyPond for example is
+taking some interesting new frontends (eg. Guile and LilyPad), which
+render the written syntax on-the-fly. They even allow you to grab
+certain elements and move them around freely, to fine-tune the look of
+the score. So in the even farther future when these projects get
+mature, NoteEdit is probably going to call them upon the current score.
+
+Note that these are my thoughts and visions only. I don't want you to
+lose any interest in your goal. I just don't want you to rush and
+double the work that has already been done up there.
+
+> The OpenOffice.org 2.0 Draw file format is a zip file containing
+> XML files.
+>
+> These XML files contain lines, texts, bitmaps,... It's similar to
+> the windows metafile (WMF).
+>
+> All I have to do is to create a new Paint Engine, which collects
+> the drawing shapes from QPainter and stores it in odg (The
+> OpenOffice 2.0 Draw format). It's easier, than I expected.
+
+Keep in mind that this way you won't get vector graphics out of it for
+note heads, clefs and other non-linear objects (look at
+noteedit/resources for the source images). Using an external engraver
+will produce any vector file you want. Also, OOo is written in GTK as
+far as I know. Or not?
+
+> Drawbacks of my solution: - QPaintEngine is defined in QT 4.0,
+> which requires at least KDE 4 - The odg file format requires at
+> least OpenOffice 2.0
+>
+> I don't suggest to keep the compatibility with KDE 3.x, and OOo
+> 1.x, as it makes the solution much harder. Conditional compilation
+> can be used, till everybody will use at least KDE 4.x.
+
+Our plan is not to sustain compatibility with KDE at all in the
+future. We are to migrate to Qt4-only. This way, we'll break the KDE
+dependency (easier to maintain Qt4 only) and achieve better
+portability. As for OOo, I think the 2.0 is going to become a standard
+soon and 1.1.5 will support odg file format as well afaik.
+
+I told before I was thinking about this idea a few months ago. I
+thought that OOo can do the texts, sheets, presentations, drawings and
+databases. What it lacks is a 3D modeller and a music score editor.
+Now LilyPond offers a tool called lily-book which works hand-to-hand
+with LaTeX. You actually write the whole book in TeX and only place
+blocks of code in Lily syntax where you wish a musical example to take
+place. When compiling the book then, LaTeX automatically calls
+LilyPond for compilation of the music elements where the Lily syntax
+block is found. For myself, that seemed to be too complex (not
+everyone is familiar with LaTeX?!?) and I was thinking about an easier
+way to write a document in eg. OOo and then to include some musical
+examples produced by LilyPond (but not by hand like exporting an
+example to .ly, importing the produced png/svg file and then update it
+every time when something changes etc.).
+
+I'm wondering, why do you wish to implement an OpenOffice.org
+in?eroperability with NoteEdit?
+
+
+Regards!
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC5oHYm1IQqmP8KVgRAkDZAJ9gQUbT8n0JRDYsLt97qFrhhN7UDACdFdG4
+sZcewr+NBGwGX4cBzg41n5Y=
+=fdQI
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jul 26 20:59:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Jul 2005 20:59:32 +0200 (CEST)
+Subject: [Noteedit-devel] Participating in the noteedit project
+In-Reply-To: <42E681D9.60608@guest.arnes.si>
+Message-ID: <freemail.20050626205932.36182@fm13.freemail.hu>
+
+Excuse me. The order of my two mails were changed. 
+When I wrote that mail, I didn't read your LilyPond related suggestion.
+
+Anyway, let's postpone this OpenOffice issue. 
+I should learn a lot about your code, before writing my first line into the 
+code. It may take some time. I didn't think, that noteedit is longer than 
+60000 lines...
+
+So instead of developing, I'll play with it, and collect the necessary 
+information.
+
+Best regards,
+
+    Csaba
+
+noteedit-devel-admin at berlios.de ?rta:
+
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> noteedit-devel-admin at berlios.de wrote:
+> 
+> >> It would be a nice add-on feature though we currently concentrate
+> >> on two different things: Improving printing usability and
+> >> integrating a scripting engine into NoteEdit. Most other things
+> >> (except lilypond export enhancement for the 2.6 version) are bug
+> >> fixes.
+> >
+> > Thank you for the answer. Yes, printing is really the most
+> > important thing to do. To tell the truth, printing and exporting
+> > into OOo should use the same code.
+> 
+> I think you should read more about the LilyPond project (or other free
+> engraving software like ABC music). The project is mature, it's very
+> complex and it has history (Lily was known as Gnutella a long time
+> ago). Engraving and notation were in past very respectful jobs.
+> LilyPond project studied the note engraving science and they tend to
+> make an engraving engine that offers a unique look of the score as it
+> would have been made by hand. LilyPond with its syntax is today the
+> de-facto standard for music publishing as LaTeX is for publishing the
+> technical literature and Docbook for application documentation.
+> 
+> If we are to make OOo compatibility/plugin, I don't think we should
+> make a new engraving engine from scratch by ourselves. I would 
+rather
+> automate the NoteEdit<->OOo via LilyPond process as possible.
+> 
+> Also, our plan for 2.8.1 is to remake and automate the printing
+> procedures. In short, we're going to automate the export to Lily/ABC,
+> compilation of the exported file to pdf and calling a printing/viewing
+> application for that document. In the future, LilyPond for example is
+> taking some interesting new frontends (eg. Guile and LilyPad), which
+> render the written syntax on-the-fly. They even allow you to grab
+> certain elements and move them around freely, to fine-tune the look 
+of
+> the score. So in the even farther future when these projects get
+> mature, NoteEdit is probably going to call them upon the current 
+score.
+> 
+> Note that these are my thoughts and visions only. I don't want you to
+> lose any interest in your goal. I just don't want you to rush and
+> double the work that has already been done up there.
+> 
+> > The OpenOffice.org 2.0 Draw file format is a zip file containing
+> > XML files.
+> >
+> > These XML files contain lines, texts, bitmaps,... It's similar to
+> > the windows metafile (WMF).
+> >
+> > All I have to do is to create a new Paint Engine, which collects
+> > the drawing shapes from QPainter and stores it in odg (The
+> > OpenOffice 2.0 Draw format). It's easier, than I expected.
+> 
+> Keep in mind that this way you won't get vector graphics out of it for
+> note heads, clefs and other non-linear objects (look at
+> noteedit/resources for the source images). Using an external 
+engraver
+> will produce any vector file you want. Also, OOo is written in GTK as
+> far as I know. Or not?
+> 
+> > Drawbacks of my solution: - QPaintEngine is defined in QT 4.0,
+> > which requires at least KDE 4 - The odg file format requires at
+> > least OpenOffice 2.0
+> >
+> > I don't suggest to keep the compatibility with KDE 3.x, and OOo
+> > 1.x, as it makes the solution much harder. Conditional compilation
+> > can be used, till everybody will use at least KDE 4.x.
+> 
+> Our plan is not to sustain compatibility with KDE at all in the
+> future. We are to migrate to Qt4-only. This way, we'll break the KDE
+> dependency (easier to maintain Qt4 only) and achieve better
+> portability. As for OOo, I think the 2.0 is going to become a standard
+> soon and 1.1.5 will support odg file format as well afaik.
+> 
+> I told before I was thinking about this idea a few months ago. I
+> thought that OOo can do the texts, sheets, presentations, drawings 
+and
+> databases. What it lacks is a 3D modeller and a music score editor.
+> Now LilyPond offers a tool called lily-book which works hand-to-hand
+> with LaTeX. You actually write the whole book in TeX and only place
+> blocks of code in Lily syntax where you wish a musical example to 
+take
+> place. When compiling the book then, LaTeX automatically calls
+> LilyPond for compilation of the music elements where the Lily syntax
+> block is found. For myself, that seemed to be too complex (not
+> everyone is familiar with LaTeX?!?) and I was thinking about an easier
+> way to write a document in eg. OOo and then to include some musical
+> examples produced by LilyPond (but not by hand like exporting an
+> example to .ly, importing the produced png/svg file and then update it
+> every time when something changes etc.).
+> 
+> I'm wondering, why do you wish to implement an OpenOffice.org
+> interoperability with NoteEdit?
+> 
+> 
+> Regards!
+> - - Matevz
+> -----BEGIN PGP SIGNATURE-----
+> Version: GnuPG v1.4.1 (GNU/Linux)
+> Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+> 
+> 
+iD8DBQFC5oHYm1IQqmP8KVgRAkDZAJ9gQUbT8n0JRDYsLt97qFrhhN7UDA
+CdFdG4
+> sZcewr+NBGwGX4cBzg41n5Y=
+> =fdQI
+> -----END PGP SIGNATURE-----
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jul 27 10:14:17 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Jul 2005 10:14:17 +0200
+Subject: [Noteedit-devel] Compile with gcc4
+Message-ID: <200507271014.17311.haavardw@ifi.uio.no>
+
+Hi, I just subscribed to this list, so my apologies if this issue has already 
+been discussed.
+
+I've successfully built and been running noteedit with gcc4, so I propose the 
+attached patch to allow gcc4.
+
+--
+hw
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: configure-gcc4.patch
+Type: text/x-diff
+Size: 1080 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050727/fe6cefcb/attachment.patch>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jul 27 14:19:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Jul 2005 14:19:23 +0200 (CEST)
+Subject: [Noteedit-devel] Usability questions
+Message-ID: <freemail.20050627141923.26347@fm11.freemail.hu>
+
+Hi! I've some questions... 
+ 
+1. What is the main reason that the user cannot edit the bar lines  
+   directly? 
+ 
+   I've found a short key '|', but it doesn't really work. Buggy. 
+ 
+   I have scores which has no specific time signature, it changes from  
+   bar to bar. 
+ 
+   As bar lines can be deleted, but one cannot create new one, this  
+   makes hard to correct it. 
+ 
+2. Does NoteEdit support software MIDI sequencers, such as timidity? 
+ 
+   I've installed linux onto 7-8 different computers, but the  
+   hardware MIDI sequencer only worked on 2 of them. 
+ 
+   Was it my fault, or just ALSA doesn't support most of the MIDI 
+   sequencers? 
+ 
+   If I start timidity as a background process, it works, but most 
+   of the users has no idea how to do it... 
+ 
+3. If I use 'keyboard mode' and press ENTER, nothing happens. 
+   The documentation says that a note should be inserted... 
+ 
+4. The page settings for export are not saved in the .not file. 
+   The user has to fill the dialog up every time, he/she restarts 
+   noteedit. 
+ 
+ 
+Thanks for your answers. 
+ 
+Bye, 
+ 
+    Csaba 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jul 27 22:10:05 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Jul 2005 22:10:05 +0200
+Subject: [Noteedit-devel] Compile with gcc4
+In-Reply-To: <200507271014.17311.haavardw@ifi.uio.no>
+References: <200507271014.17311.haavardw@ifi.uio.no>
+Message-ID: <42E7EA1D.2090700@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+The last time I checked, I wasn't able to compile TSE3 headers
+(neither 0.2.7 nor 0.3.0) with gcc4 (but it worked ok with gcc 3.4). I
+got syntax errors like wrong usage of type-defs and friend classes
+etc. (obviously some syntax changes in gcc4). Did it work for you?
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi, I just subscribed to this list, so my apologies if this issue
+> has already been discussed.
+>
+> I've successfully built and been running noteedit with gcc4, so I
+> propose the attached patch to allow gcc4.
+>
+> -- hw
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC5+odm1IQqmP8KVgRAkQjAJ4hsQXD3ZPWQoAuw1pAlnP54plUbgCfePLo
+xenmHZPTc+Ejfs6x84HigDM=
+=5V5W
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jul 27 22:33:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Jul 2005 22:33:39 +0200
+Subject: [Noteedit-devel] Usability questions
+In-Reply-To: <freemail.20050627141923.26347@fm11.freemail.hu>
+References: <freemail.20050627141923.26347@fm11.freemail.hu>
+Message-ID: <42E7EFA3.6070706@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi! I've some questions...
+>
+> 1. What is the main reason that the user cannot edit the bar lines
+> directly?
+>
+> I've found a short key '|', but it doesn't really work. Buggy.
+>
+> I have scores which has no specific time signature, it changes from
+> bar to bar.
+>
+> As bar lines can be deleted, but one cannot create new one, this
+> makes hard to correct it.
+
+For placing a barline, the TAB key is used. For repeat barlines, one
+of the three kinds in the toolbar has to be selected and then placed
+in the score. For the final barline, an option from menu has to be
+chosen. For setting a N-time repeat, you first have to place a repeat
+bar and then Edit->Set N-time repeat.
+
+Using a pipe (|) key is IMO not needed anymore and will be removed in
+future. About the non-metrum music, I commited a patch that doesn't do
+automatic placement of barlines and similar if no metrum is defined.
+It should work properly as I tested.
+
+> 2. Does NoteEdit support software MIDI sequencers, such as
+> timidity?
+>
+> I've installed linux onto 7-8 different computers, but the hardware
+> MIDI sequencer only worked on 2 of them.
+>
+> Was it my fault, or just ALSA doesn't support most of the MIDI
+> sequencers?
+>
+> If I start timidity as a background process, it works, but most of
+> the users has no idea how to do it...
+
+I myself run Timidity in background (I have a cheap integrated VIA
+sound chipset on my laptop). Under Debian, all I had to do is to
+install timidity and commented out ENABLE=1 line in
+/etc/init.d/timidity so it starts as a server on startup every time I
+turn the computer on. I think there's not much NoteEdit can do here.
+It could run the timidity server when NoteEdit starts automatically,
+but it couldn't run it in realtime high-priority mode as it's not run
+by root (the startup script is).
+
+> 3. If I use 'keyboard mode' and press ENTER, nothing happens. The
+> documentation says that a note should be inserted...
+
+Hm... it works for me. I simply activate the Insert from Keyboard mode
+(a big A letter on a button on the blue backroung without a glue) and
+then I use up/down arrows for selecting the pitch and ENTER to place
+the actual note.
+
+> 4. The page settings for export are not saved in the .not file. The
+> user has to fill the dialog up every time, he/she restarts
+> noteedit.
+
+True. That's one thing that needs to be included in the new NoteEdit
+file format. The problem at the moment is that NoteEdit actually
+cannot store any special values than most of the current ones as the
+.not file is MUP-compatible and doesn't offer all the features
+NoteEdit does.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC5++im1IQqmP8KVgRAgQCAJ0RDEPTg0Ae+4RzlD8lijpWeV7TdgCeO/Eh
+dvnED3j2jjtRhlrRLRRabyA=
+=pWki
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 11:24:13 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 11:24:13 +0200 (CEST)
+Subject: [Noteedit-devel] Usability questions
+In-Reply-To: <42E7EFA3.6070706@guest.arnes.si>
+Message-ID: <freemail.20050628112413.7066@fm10.freemail.hu>
+
+Thanks for the answers. 
+ 
+> For placing a barline, the TAB key is used. For repeat barlines, one 
+> of the three kinds in the toolbar has to be selected and then placed 
+> in the score. For the final barline, an option from menu has to be 
+> chosen. For setting a N-time repeat, you first have to place a repeat 
+> bar and then Edit->Set N-time repeat. 
+ 
+OK. That's working.  
+ 
+> I myself run Timidity in background (I have a cheap integrated VIA 
+> sound chipset on my laptop). Under Debian, all I had to do is to 
+> install timidity and commented out ENABLE=1 line in 
+> /etc/init.d/timidity so it starts as a server on startup every time I 
+> turn the computer on. I think there's not much NoteEdit can do here. 
+> It could run the timidity server when NoteEdit starts automatically, 
+> but it couldn't run it in realtime high-priority mode as it's not run 
+> by root (the startup script is). 
+ 
+Yes, it's OK, but it has some drawbacks. If timidity runs, you cannot 
+listen to music as it holds that resource.  
+ 
+The best would be to start timidity before playing and stop after the play 
+finished. 
+ 
+You mentioned that you are planning noteedit scriptable.  
+This start / stop scripts would be nice. 
+ 
+> Hm... it works for me. I simply activate the Insert from Keyboard mode 
+> (a big A letter on a button on the blue backroung without a glue) and 
+> then I use up/down arrows for selecting the pitch and ENTER to place 
+> the actual note. 
+ 
+Now it works for me also. I cannot reproduce, if I managed to, I'll  
+write more. 
+ 
+Regards, 
+ 
+    Csaba 
+ 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 12:50:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 12:50:40 +0200
+Subject: [Noteedit-devel] Compile with gcc4
+In-Reply-To: <42E7EA1D.2090700@guest.arnes.si>
+References: <200507271014.17311.haavardw@ifi.uio.no> <42E7EA1D.2090700@guest.arnes.si>
+Message-ID: <200507281250.41115.haavardw@ifi.uio.no>
+
+Good point. I couldn't get tse3 to compile with gcc 4 either, so I installed 
+tse3 using gcc 3.4. But once tse3 is installed, noteedit compiles fine with 
+gcc 4. 
+
+I should probably mention that I use gentoo linux, and that my tse3 
+installation contains whatever patches gentoo uses.
+
+--
+hw
+
+On Wednesday 27 July 2005 22:10, noteedit-devel-admin at berlios.de wrote:
+> The last time I checked, I wasn't able to compile TSE3 headers
+> (neither 0.2.7 nor 0.3.0) with gcc4 (but it worked ok with gcc 3.4). I
+> got syntax errors like wrong usage of type-defs and friend classes
+> etc. (obviously some syntax changes in gcc4). Did it work for you?
+>
+>
+> Regards.
+> - Matev?
+>
+> noteedit-devel-admin at berlios.de wrote:
+> > Hi, I just subscribed to this list, so my apologies if this issue
+> > has already been discussed.
+> >
+> > I've successfully built and been running noteedit with gcc4, so I
+> > propose the attached patch to allow gcc4.
+> >
+> > -- hw
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 13:18:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 13:18:03 +0200
+Subject: [Noteedit-devel] Compile with gcc4
+In-Reply-To: <200507281250.41115.haavardw@ifi.uio.no>
+References: <200507271014.17311.haavardw@ifi.uio.no> <42E7EA1D.2090700@guest.arnes.si> <200507281250.41115.haavardw@ifi.uio.no>
+Message-ID: <42E8BEEB.5030207@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Another problem it occured to me is, that I cannot compile the KDE
+3.3.2 headers (latest in Debian unstable) with gcc4 (again the wrong
+usage of type-def before the class name), if building without TSE3.
+KDE 3.4.1 is currently in experimental Debian distro though, but I
+wouldn't mess with it.
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Good point. I couldn't get tse3 to compile with gcc 4 either, so I
+> installed tse3 using gcc 3.4. But once tse3 is installed, noteedit
+> compiles fine with gcc 4.
+>
+> I should probably mention that I use gentoo linux, and that my tse3
+> installation contains whatever patches gentoo uses.
+>
+> -- hw
+>
+> On Wednesday 27 July 2005 22:10, noteedit-devel-admin at berlios.de
+> wrote:
+>
+>> The last time I checked, I wasn't able to compile TSE3 headers
+>> (neither 0.2.7 nor 0.3.0) with gcc4 (but it worked ok with gcc
+>> 3.4). I got syntax errors like wrong usage of type-defs and
+>> friend classes etc. (obviously some syntax changes in gcc4). Did
+>> it work for you?
+>>
+>>
+>> Regards. - Matev?
+>>
+>> noteedit-devel-admin at berlios.de wrote:
+>>
+>>> Hi, I just subscribed to this list, so my apologies if this
+>>> issue has already been discussed.
+>>>
+>>> I've successfully built and been running noteedit with gcc4, so
+>>> I propose the attached patch to allow gcc4.
+>>>
+>>> -- hw
+>>
+>> _______________________________________________ Noteedit-devel
+>> mailing list Noteedit-devel at lists.berlios.de
+>> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> _______________________________________________ Noteedit-devel
+> mailing list Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC6L7rm1IQqmP8KVgRAopQAJ46Du4KOqT9kGtnbog66rlNlYeqVwCfXWut
+10V40MeRyogdUuyymxan6W4=
+=hH2s
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 13:21:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 13:21:48 +0200
+Subject: [Noteedit-devel] Usability questions
+In-Reply-To: <freemail.20050628112413.7066@fm10.freemail.hu>
+References: <freemail.20050628112413.7066@fm10.freemail.hu>
+Message-ID: <42E8BFCC.6040307@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+> Now it works for me also. I cannot reproduce, if I managed to, I'll
+> write more.
+>
+There's a wierd bug that locks a keyboard on the menu from time to
+time (no keys got recognized and you can only move through the menus
+using left/right arrow keys). You have to go to Settings->Configure
+shortcuts and close the dialog. Then the keyboard works fine again.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC6L/Mm1IQqmP8KVgRArEkAJ436CnFp1qVuWUDA/XyypO0CzjDQQCghzuz
+Dj623y5DYR6LHpKVx8H16f0=
+=zExv
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 13:24:49 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 13:24:49 +0200
+Subject: [Noteedit-devel] Compile with gcc4
+In-Reply-To: <42E8BEEB.5030207@guest.arnes.si>
+References: <200507271014.17311.haavardw@ifi.uio.no> <200507281250.41115.haavardw@ifi.uio.no> <42E8BEEB.5030207@guest.arnes.si>
+Message-ID: <200507281324.50021.haavardw@ifi.uio.no>
+
+I've got (almost all of) KDE 3.4.1 installed and compiled from scratch with 
+gcc 4. But again I've used whatever patches gentoo provides, plus manually 
+added some myself. Anyway, this shouldn't affect which compilers noteedit 
+accept, should it? You're not required to have neither tse3 nor kde compiled 
+with the same compiler as long as they're binary compatible?
+
+--
+hw
+
+On Thursday 28 July 2005 13:18, noteedit-devel-admin at berlios.de wrote:
+> Another problem it occured to me is, that I cannot compile the KDE
+> 3.3.2 headers (latest in Debian unstable) with gcc4 (again the wrong
+> usage of type-def before the class name), if building without TSE3.
+> KDE 3.4.1 is currently in experimental Debian distro though, but I
+> wouldn't mess with it.
+>
+>
+> Regards.
+> - Matev?
+>
+> noteedit-devel-admin at berlios.de wrote:
+> > Good point. I couldn't get tse3 to compile with gcc 4 either, so I
+> > installed tse3 using gcc 3.4. But once tse3 is installed, noteedit
+> > compiles fine with gcc 4.
+> >
+> > I should probably mention that I use gentoo linux, and that my tse3
+> > installation contains whatever patches gentoo uses.
+> >
+> > -- hw
+> >
+> > On Wednesday 27 July 2005 22:10, noteedit-devel-admin at berlios.de
+> >
+> > wrote:
+> >> The last time I checked, I wasn't able to compile TSE3 headers
+> >> (neither 0.2.7 nor 0.3.0) with gcc4 (but it worked ok with gcc
+> >> 3.4). I got syntax errors like wrong usage of type-defs and
+> >> friend classes etc. (obviously some syntax changes in gcc4). Did
+> >> it work for you?
+> >>
+> >>
+> >> Regards. - Matev?
+> >>
+> >> noteedit-devel-admin at berlios.de wrote:
+> >>> Hi, I just subscribed to this list, so my apologies if this
+> >>> issue has already been discussed.
+> >>>
+> >>> I've successfully built and been running noteedit with gcc4, so
+> >>> I propose the attached patch to allow gcc4.
+> >>>
+> >>> -- hw
+> >>
+> >> _______________________________________________ Noteedit-devel
+> >> mailing list Noteedit-devel at lists.berlios.de
+> >> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> >
+> > _______________________________________________ Noteedit-devel
+> > mailing list Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 17:37:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 17:37:35 +0200 (CEST)
+Subject: [Noteedit-devel] Transpose bug and it's fix
+Message-ID: <freemail.20050628173735.86228@fm4.freemail.hu>
+
+Reproducing the bug: 
+ 
+1. treble(violin) clef + F major key sig (1 b) + B 
+2. transpose the score up by 1: B -> "natural" B 
+3. transpose the score down by 1: "natural" B -> A# 
+     
+    so transposing "natural" B down by 1 semitone 
+    results A# instead of B 
+ 
+The cause of the bug: 
+ 
+voice.cpp, NVoice::transpose ignores totally the actual key signature. 
+ 
+The fix attached. If you have some time, can you please check if my solution 
+is correct? 
+ 
+Thanks in advance, 
+ 
+    Csaba 
+ 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: voice.cpp.tar.gz
+Type: application/x-tgz
+Size: 37478 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050728/15683426/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 18:54:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 18:54:29 +0200
+Subject: [Noteedit-devel] Usability questions
+In-Reply-To: <freemail.20050628112413.7066@fm10.freemail.hu>
+References: <freemail.20050628112413.7066@fm10.freemail.hu>
+Message-ID: <42E90DC5.1060506@web.de>
+
+Hi,
+
+> 
+>  
+> Yes, it's OK, but it has some drawbacks. If timidity runs, you cannot 
+> listen to music as it holds that resource.  
+
+That's not true at all. Just run jack, and use jack server as timidity
+sound output.
+
+> The best would be to start timidity before playing and stop after the play 
+> finished. 
+>  
+> You mentioned that you are planning noteedit scriptable.  
+> This start / stop scripts would be nice. 
+>  
+
+I don't recommand this way. Using jack is much simpler and superior to 
+your "solution" to the problem. Also you can use other programs for
+timidity as well. Also there is one "real" alternative to timidity:
+fluidsynth, though you might want to have 1 Gig RAM for it using the
+Fluid R3 sound font. Also you could use an organ simulator like aleolus
+or a synthesizer like ZynAddSubFX for sound output. (frontends for
+jack and fluidsynth: qjackctl and qsynth).
+
+>>Hm... it works for me. I simply activate the Insert from Keyboard mode 
+>>(a big A letter on a button on the blue backroung without a glue) and 
+>>then I use up/down arrows for selecting the pitch and ENTER to place 
+>>the actual note. 
+> 
+>  
+> Now it works for me also. I cannot reproduce, if I managed to, I'll  
+> write more. 
+>  
+
+I had once problem with keyboard input making noteedit using 100% CPU
+when you press a key. I only found out that is must have something todo
+tse3, but haven't investigate further at that time. Now I don't have
+any problems at all anymore. All in all it's a bit suspicious.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 21:22:38 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 21:22:38 +0200
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <freemail.20050628173735.86228@fm4.freemail.hu>
+References: <freemail.20050628173735.86228@fm4.freemail.hu>
+Message-ID: <42E9307E.60606@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+It looks ok. Actually it justs searches if Key signature is present
+and if it is, call the midi2line with an additional parameter - the
+key signature. I'm testing the result at the moment. Do you have SVN
+write access or should I apply the patch for you?
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Reproducing the bug:
+>
+> 1. treble(violin) clef + F major key sig (1 b) + B 2. transpose the
+> score up by 1: B -> "natural" B 3. transpose the score down by 1:
+> "natural" B -> A#
+>
+> so transposing "natural" B down by 1 semitone results A# instead of
+> B
+>
+> The cause of the bug:
+>
+> voice.cpp, NVoice::transpose ignores totally the actual key
+> signature.
+>
+> The fix attached. If you have some time, can you please check if my
+> solution is correct?
+>
+> Thanks in advance,
+>
+> Csaba
+>
+>
+> _______________________________________________________________________
+> [freemail] extra 1GB-os postafi?kkal, ?nnek m?r van?
+> http://freemail.hu
+>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC6TB+m1IQqmP8KVgRAkZjAJ9lRKVJe2aM6y1+P/lfHgAyOzO4rACgg3Qk
+aWjMU27lfc9MVo8n0ZMuTHs=
+=Siwr
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 21:44:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 21:44:04 +0200 (CEST)
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <42E9307E.60606@guest.arnes.si>
+Message-ID: <freemail.20050628214404.45100@fm13.freemail.hu>
+
+> It looks ok. Actually it justs searches if Key signature is present 
+> and if it is, call the midi2line with an additional parameter - the 
+> key signature. I'm testing the result at the moment. Do you have SVN 
+> write access or should I apply the patch for you? 
+ 
+I don't really know whether I have SVN write access. 
+ 
+Currently I am at the office, behind a firewall. If berlios doesn't 
+support access through HTTP proxy, it won't work. 
+ 
+I have a notebook and with GSM modem I can access to the internet.  
+Unfortunately, I lent the notebook, so currently I have no internet 
+access, only through HTTP proxy. 
+ 
+Regards, 
+ 
+    Csaba 
+ 
+>  
+>  
+> Regards. 
+> - - Matev? 
+>  
+> noteedit-devel-admin at berlios.de wrote: 
+>  
+>  
+>>Reproducing the bug: 
+>> 
+>>1. treble(violin) clef + F major key sig (1 b) + B 2. transpose the 
+>>score up by 1: B -> "natural" B 3. transpose the score down by 1: 
+>>"natural" B -> A# 
+>> 
+>>so transposing "natural" B down by 1 semitone results A# instead of 
+>>B 
+>> 
+>>The cause of the bug: 
+>> 
+>>voice.cpp, NVoice::transpose ignores totally the actual key 
+>>signature. 
+>> 
+>>The fix attached. If you have some time, can you please check if my 
+>>solution is correct? 
+>> 
+>>Thanks in advance, 
+>> 
+>>Csaba 
+>> 
+>> 
+>>_______________________________________________________________________ 
+>>[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? 
+>>http://freemail.hu 
+>> 
+>  
+> -----BEGIN PGP SIGNATURE----- 
+> Version: GnuPG v1.4.1 (GNU/Linux) 
+> Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org 
+>  
+> 
+iD8DBQFC6TB+m1IQqmP8KVgRAkZjAJ9lRKVJe2aM6y1+P/lfHgAyOzO4rACgg3Qk 
+> aWjMU27lfc9MVo8n0ZMuTHs= 
+> =Siwr 
+> -----END PGP SIGNATURE----- 
+>  
+> _______________________________________________ 
+> Noteedit-devel mailing list 
+> Noteedit-devel at lists.berlios.de 
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel 
+ 
+ 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jul 28 23:03:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 23:03:41 +0200
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <freemail.20050628214404.45100@fm13.freemail.hu>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>
+Message-ID: <42E9482D.50003@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Ok, I commited the patch for you. Commited version 286.
+
+Otherwise, your user/pass for SVN is the same as the one at Berlios.
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>> It looks ok. Actually it justs searches if Key signature is
+>> present and if it is, call the midi2line with an additional
+>> parameter - the key signature. I'm testing the result at the
+>> moment. Do you have SVN write access or should I apply the patch
+>> for you?
+>
+>
+> I don't really know whether I have SVN write access.
+>
+> Currently I am at the office, behind a firewall. If berlios doesn't
+> support access through HTTP proxy, it won't work.
+>
+> I have a notebook and with GSM modem I can access to the internet.
+> Unfortunately, I lent the notebook, so currently I have no
+> internet access, only through HTTP proxy.
+>
+> Regards,
+>
+> Csaba
+>
+>
+>>
+>>
+>> Regards. - - Matev?
+>>
+>> noteedit-devel-admin at berlios.de wrote:
+>>
+>>
+>>
+>>> Reproducing the bug:
+>>>
+>>> 1. treble(violin) clef + F major key sig (1 b) + B 2. transpose
+>>> the score up by 1: B -> "natural" B 3. transpose the score down
+>>> by 1: "natural" B -> A#
+>>>
+>>> so transposing "natural" B down by 1 semitone results A#
+>>> instead of B
+>>>
+>>> The cause of the bug:
+>>>
+>>> voice.cpp, NVoice::transpose ignores totally the actual key
+>>> signature.
+>>>
+>>> The fix attached. If you have some time, can you please check
+>>> if my solution is correct?
+>>>
+>>> Thanks in advance,
+>>>
+>>> Csaba
+>>>
+>>>
+>>> _______________________________________________________________________
+>>> [freemail] extra 1GB-os postafi?kkal, ?nnek m?r van?
+>>> http://freemail.hu
+>>>
+>>
+>> -----BEGIN PGP SIGNATURE----- Version: GnuPG v1.4.1 (GNU/Linux)
+>> Comment: Using GnuPG with Thunderbird -
+>> http://enigmail.mozdev.org
+>>
+>>
+> iD8DBQFC6TB+m1IQqmP8KVgRAkZjAJ9lRKVJe2aM6y1+P/lfHgAyOzO4rACgg3Qk
+>
+>> aWjMU27lfc9MVo8n0ZMuTHs= =Siwr -----END PGP SIGNATURE-----
+>>
+>> _______________________________________________ Noteedit-devel
+>> mailing list Noteedit-devel at lists.berlios.de
+>> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>
+>
+> _______________________________________________________________________
+> [freemail] extra 1GB-os postafi?kkal, ?nnek m?r van?
+> http://freemail.hu
+>
+>
+> _______________________________________________ Noteedit-devel
+> mailing list Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC6Ugsm1IQqmP8KVgRAjolAJ9tcrI0rGn3XhTJvawBewwR/BnJOgCfeUAp
+gzpj7m4CiizxEPTpLq0RP+s=
+=SQqj
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 29 00:32:38 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Jul 2005 00:32:38 +0200 (CEST)
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <42E9482D.50003@guest.arnes.si>
+Message-ID: <freemail.20050629003238.28730@fm7.freemail.hu>
+
+> Ok, I commited the patch for you. Commited version 286. 
+>  
+ 
+Thank you for committing the patch. The biggest problem is 
+that this doesn't solve the transpose problem. 
+ 
+NClef::midi2Line is buggy 
+ 
+I've tried to correct midi2Line, but I wasn't succeeded. 
+A method is missing from NKeySig, which gives back whether 
+the specific line has b,# mark or not. 
+ 
+Excuse me to tell this, but the code of NKeySig is terrible with lots of bugs. 
+Rewrite is necessary.  
+ 
+It brokes totally the object oriented technique. 
+ 
+- methods with names that tells nothing 
+- methods which logically belongs to totally different objects 
+- no comments at all 
+- functions, local variables that does nothing 
+ 
+If nobody has objection, I would rewrite that code gradually, 
+trying to understand what the author originally meant. 
+ 
+The rewrite may cause new bugs, but if it become much more 
+understandable, the development later can be much more faster... 
+ 
+In which development phase are you in? 
+- developing, or bug hunting (code freeze),... 
+ 
+Do you have a CHANGELOG in which changes could be logged? 
+ 
+Thanks, 
+ 
+    Csaba 
+ 
+> Otherwise, your user/pass for SVN is the same as the one at Berlios. 
+>  
+>  
+> Regards. 
+> - - Matevz 
+>  
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 29 07:53:38 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Jul 2005 07:53:38 +0200
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <freemail.20050628214404.45100@fm13.freemail.hu>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>
+Message-ID: <42E9C462.2000901@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+>>It looks ok. Actually it justs searches if Key signature is present 
+>>and if it is, call the midi2line with an additional parameter - the 
+>>key signature. I'm testing the result at the moment. Do you have SVN 
+>>write access or should I apply the patch for you? 
+> 
+>  
+> I don't really know whether I have SVN write access. 
+>  
+> Currently I am at the office, behind a firewall. If berlios doesn't 
+> support access through HTTP proxy, it won't work. 
+>  
+> I have a notebook and with GSM modem I can access to the internet.  
+> Unfortunately, I lent the notebook, so currently I have no internet 
+> access, only through HTTP proxy. 
+>  
+> Regards, 
+>  
+>     Csaba 
+>  
+
+Well I had never problems accessing Berlios. You should have had
+SVN access already yesterday and now you have all the accesses
+like a normal developer (so you can work on the bug tracker and
+the different managers).
+
+Best regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 29 08:03:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Jul 2005 08:03:08 +0200
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <freemail.20050629003238.28730@fm7.freemail.hu>
+References: <freemail.20050629003238.28730@fm7.freemail.hu>
+Message-ID: <42E9C69C.7090101@web.de>
+
+Hi Csaba,
+
+> NClef::midi2Line is buggy 
+>  
+> I've tried to correct midi2Line, but I wasn't succeeded. 
+> A method is missing from NKeySig, which gives back whether 
+> the specific line has b,# mark or not. 
+>  
+> Excuse me to tell this, but the code of NKeySig is terrible with lots of bugs. 
+> Rewrite is necessary.  
+>  
+> It brokes totally the object oriented technique. 
+>  
+> - methods with names that tells nothing 
+> - methods which logically belongs to totally different objects 
+> - no comments at all 
+> - functions, local variables that does nothing 
+
+I think that is a one of the darks parts in NoteEdit history
+I really don't know anything about...
+
+> If nobody has objection, I would rewrite that code gradually, 
+> trying to understand what the author originally meant. 
+
+That really sound good to me! Myself I mainly work on the
+user interface avoiding touching the interior as far as
+as possible ;-)
+
+> The rewrite may cause new bugs, but if it become much more 
+> understandable, the development later can be much more faster... 
+>  
+> In which development phase are you in? 
+> - developing, or bug hunting (code freeze),... 
+
+We have two trees: A stable and a unstable tree. Currently
+we are doing all changes in both trees, i.e. we concentrate
+on bugfixing and still adding some useful features. We have
+planned to do major changed in late autumn.
+
+> Do you have a CHANGELOG in which changes could be logged? 
+>  
+
+Currently SVN and the berlios project page is our Changelog.
+But all changes we do are written into the NEWS file (one
+line for a bugfix or an enhancement).
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 29 08:51:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Jul 2005 23:51:14 -0700 (PDT)
+Subject: [Noteedit-devel] Compiling on OSX, FAQ
+Message-ID: <20050729065114.52314.qmail@web30610.mail.mud.yahoo.com>
+
+Hi,
+
+I've been trying to get noteedit 2.8.0 to compile on
+OSX, using gcc4 but --without-libs (I don't think TSE3
+has been ported to OSX). I managed to do this somehow
+with an older version of noteedit (2.7.3 or .4) some
+time ago, but I can't remember how.
+
+The problem I'm having is that configure can't find
+qt-mt >=3.0, even though it is installed at
+/sw/lib/libqt-mt.3.3.3.dylib (fink installs everything
+under /sw), with symlinks libqt-mt.3.3.dylib,
+libqt-mt.3.dylib, and libqt-mt.dylib. I have tried
+setting environment variables and configure options,
+but nothing seems to work; I've included a couple more
+details at the end of this email.
+
+I noticed that the FAQ says that I might get that
+error if Qt has been compiled with a different gcc
+version than what is installed. I don't think I have
+upgraded gcc since I installed KDE (fink compiles
+packages from source), and like I said I managed to
+compile and run and older version of noteedit. Short
+of recompiling, is there a way to find out what
+version of gcc Qt was compiled with? Any other insight
+into this problem would be greatly appreciated.
+
+I also noticed that the website is asking for a HTML
+version of the FAQ, so I made one; see the attached
+file.
+
+Cheers,
+
+Sam Hernandez
+
+--
+
+This is how I'm running configure:
+
+export DYLD_LIBRARY_PATH="/sw/lib/"
+export LD_LIBRARY_PATH="/sw/lib/"
+
+./configure     --prefix=/sw/                      \
+                --with-qt-includes=/sw/include/qt/ \
+                --with-extra-libs=/sw/lib/         \
+                --with-extra-includes=/sw/include/ \
+                --with-qt-dir=/sw/                 \
+                --without-libs
+
+
+
+Here is the relevant snippet from config.log:
+
+
+configure:28350: checking for Qt
+configure: 28418: /sw/include/qt/qstyle.h
+taking that
+configure:28533: rm -rf SunWS_cache; g++ -o conftest
+-Wnon-virtual-dtor -Wno-long-long -Wundef -Wall
+ -W -Wpointer-arith -Wwrite-strings -O2
+-fno-exceptions -fno-check-new -fno-common
+-I/sw/include/qt 
+-I/usr/X11R6/include  -DQT_THREAD_SUPPORT   -L/sw/lib
+-L/usr/X11R6/lib  -L/sw/lib/  conftest.cc  -lq
+t-mt -lpng -lz -lm -ljpeg -ldl  -lXext -lX11 -lSM
+-lICE  -lpthread 1>&5
+/usr/bin/ld: Undefined symbols:
+typeinfo for QPtrCollection
+collect2: ld returned 1 exit status
+configure:28536: $? = 1
+configure: failed program was:
+#include "confdefs.h"
+#include <qglobal.h>
+#include <qapplication.h>
+#include <qcursor.h>
+#include <qstylefactory.h>
+#include <private/qucomextra_p.h>
+#if ! (QT_VERSION >= 300)
+#error 1
+#endif
+
+int main() {
+    (void)QStyleFactory::create(QString::null);
+    QCursor c(Qt::WhatsThisCursor);
+    return 0;
+}
+configure:28576: error: Qt (>= Qt 3.0) (library qt-mt)
+not found. Please check your installation!
+For more details about this problem, look at the end
+of config.log.
+Make sure that you have compiled Qt with thread support!
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050728/118686bf/attachment.html>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 29 16:05:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Jul 2005 16:05:41 +0200
+Subject: [Noteedit-devel] Compile with gcc4
+In-Reply-To: <42E7EA1D.2090700@guest.arnes.si>
+References: <200507271014.17311.haavardw@ifi.uio.no> <42E7EA1D.2090700@guest.arnes.si>
+Message-ID: <200507291605.42106.haavardw@ifi.uio.no>
+
+Actually gcc4 compiles tse3-0.2.7 fine with this tiny patch:
+http://bugs.gentoo.org/attachment.cgi?id=64619
+
+--
+hw
+
+On Wednesday 27 July 2005 22:10, noteedit-devel-admin at berlios.de wrote:
+> The last time I checked, I wasn't able to compile TSE3 headers
+> (neither 0.2.7 nor 0.3.0) with gcc4 (but it worked ok with gcc 3.4). I
+> got syntax errors like wrong usage of type-defs and friend classes
+> etc. (obviously some syntax changes in gcc4). Did it work for you?
+>
+>
+> Regards.
+> - Matev?
+>
+> noteedit-devel-admin at berlios.de wrote:
+> > Hi, I just subscribed to this list, so my apologies if this issue
+> > has already been discussed.
+> >
+> > I've successfully built and been running noteedit with gcc4, so I
+> > propose the attached patch to allow gcc4.
+> >
+> > -- hw
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jul 29 22:17:31 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Jul 2005 22:17:31 +0200
+Subject: [Noteedit-devel] NoteEdit SVN update
+Message-ID: <42EA8EDB.8090707@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I made two tags in /tags directory, 2.8.0 and 2.7.4 respectively.
+These directories are now fixed and are not to be changed. They
+represent the state of 2.8.0 and 2.7.4 releases.
+
+I also reorganized NEWS and Changelogs in both trunk and stable
+branch. Here's what I had in mind:
+- - NEWS only describes the new features/bug fixes that impact end-user
+(and it describes them in the way that the end-user understands them).
+It also contains major announcments (like the new organization, new
+dependencies etc.).
+- - Changelog is meant for developers only. It describes every new
+feature/bugfix and its description, commit number in SVN and so on in
+the more precision and technical way.
+
+Changelog should preserve history of changes for *the whole current
+major version* (1.x.y, 2.x.y, 3.x.y), whereas the NEWS should contain
+only information that inpact *the latest release*. Currently, both
+NEWS and Changelog in trunk/ should contain changes to 2.8.0 version
+until 2.9.0 is released. Then, they will contain only changes to 2.9.0
+and so on. If 2.8.1 will be released before 2.9.0, it should still
+contain changes to 2.8.0 as it's the junction where the branches split.
+
+Now, an example of making a new feature or a bugfix first in trunk and
+then over time backport it to stable:
+1) You make certain changes to source in /trunk branch.
+2) You write the changes to Changelog (along with the revision number
+you're going to get) and appropriate announcment of the feature in NEWS.
+3) Feature is tested and in time, you backport the feature to 2.8.x
+branch:
+4) You look at the trunk's Changelog or SVN log to get the revision
+number, when you commited that feature.
+5) You merge the branches by svn -r
+<featureRevisionNumber-1>:<featureRevisionNumber> trunk
+branches/stable-2.8. This looks for the differences you made from the
+previous revision when you implemented the feature to the actual one
+for directory trunk and then apply the differences to
+branches/stable-2.8 directory.
+6) You appropriately edit the stable branch's Changelog (and write the
+new revision number that this feature is going to get) and NEWS file.
+7) You commit the changes.
+
+If the feature is to be implemented in 2.9.x only, you only need to
+stick to the first two steps.
+
+What do you think?
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC6o7bm1IQqmP8KVgRAtPGAJ0ej/CrO0v+j2WuIgHi2ojurfbq9ACgiRLx
+bC/6jzFCGNur9siVS/79Ch4=
+=6bG5
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 10:58:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 10:58:11 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+Message-ID: <42EB4123.2010500@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I would like to assign the following behaviours to the scroll wheel:
+- - Ordinary scroll wheel - Horizontal scrollbar
+- - SHIFT + scroll wheel - Vertical scrollbar
+- - CTRL + scroll wheel - Zoom in/out
+- - ALT + scroll wheel - Fast pan
+
+I think the current assignment for setting note's pitch is pretty
+useless IMO. What do you think?
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC60Eim1IQqmP8KVgRAmLrAJoDfCCc/OGHHe0SKtot9Ph/ErExqACZAU4U
+geqw4MhxTJ/llUASJLAab4o=
+=rQ8T
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 11:40:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 11:40:14 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EB4123.2010500@guest.arnes.si>
+References: <42EB4123.2010500@guest.arnes.si>
+Message-ID: <42EB4AFE.1060405@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> I would like to assign the following behaviours to the scroll wheel:
+> - - Ordinary scroll wheel - Horizontal scrollbar
+> - - SHIFT + scroll wheel - Vertical scrollbar
+> - - CTRL + scroll wheel - Zoom in/out
+> - - ALT + scroll wheel - Fast pan
+> 
+> I think the current assignment for setting note's pitch is pretty
+> useless IMO. What do you think?
+
+You haven't considered all the possibilities of wheel devices.
+You can buy mice with both vertical and horizontal scrolling and
+you can even buy devices with complete free scrolling (like my
+own mouse :-). You only need to change the XOrg.conf settings
+so that this kind of scrolling works.
+
+So I would at least add:
+- Ordinary scroll wheel(s) - Horizontal, Vertical and diagonal scrolling
+
+I've read this in the Wiki too, but I'm faster writing E-Mails ;-)
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 11:57:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 11:57:02 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EB4AFE.1060405@web.de>
+References: <42EB4123.2010500@guest.arnes.si> <42EB4AFE.1060405@web.de>
+Message-ID: <42EB4EEE.3080102@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hm... ok, but how do you define and use more than one scroll wheel in
+Qt? And if it's not present, what next etc.
+
+
+Regards.
+- - Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> noteedit-devel-admin at berlios.de schrieb:
+>
+>> -----BEGIN PGP SIGNED MESSAGE----- Hash: SHA1
+>>
+>> I would like to assign the following behaviours to the scroll
+>> wheel: - - Ordinary scroll wheel - Horizontal scrollbar - - SHIFT
+>> + scroll wheel - Vertical scrollbar - - CTRL + scroll wheel -
+>> Zoom in/out - - ALT + scroll wheel - Fast pan
+>>
+>> I think the current assignment for setting note's pitch is pretty
+>> useless IMO. What do you think?
+>
+>
+> You haven't considered all the possibilities of wheel devices. You
+> can buy mice with both vertical and horizontal scrolling and you
+> can even buy devices with complete free scrolling (like my own
+> mouse :-). You only need to change the XOrg.conf settings so that
+> this kind of scrolling works.
+>
+> So I would at least add: - Ordinary scroll wheel(s) - Horizontal,
+> Vertical and diagonal scrolling
+>
+> I've read this in the Wiki too, but I'm faster writing E-Mails ;-)
+>
+> Regards,
+>
+> Reinhard Katzmann
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC607tm1IQqmP8KVgRAlD4AJwO3NZipsoARK5t4/qYsH15T2OevwCfTb1B
++6ZfkS03YDEbjlmS6yhbEGM=
+=yYDs
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 13:05:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 13:05:59 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EB4EEE.3080102@guest.arnes.si>
+References: <42EB4123.2010500@guest.arnes.si> <42EB4AFE.1060405@web.de> <42EB4EEE.3080102@guest.arnes.si>
+Message-ID: <42EB5F17.1000203@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hm... ok, but how do you define and use more than one scroll wheel in
+> Qt? And if it's not present, what next etc.
+>
+Somehow I'ld like to keep all the possibilities, and get more. Is
+
+    Ctrl + Alt + Shift + Scroll
+
+also a possibility, at least, when you put it in the hot key table? One
+of those could be the modifier for faster, wider.
+
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 14:48:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 14:48:23 +0200
+Subject: [Noteedit-devel] lilypond export update
+Message-ID: <42EB7717.4060202@schwaben.de>
+
+Hi,
+
+I did a small lilypond export update: Header strings get the chosen
+encoding like lyrics. For lilypond 2.6 \tempo is again activated,
+because it works for me again. And more polish to come soon for the main
+properties, I guess.
+
+Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 18:04:00 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 18:04:00 +0200
+Subject: [Noteedit-devel] MusicXML question
+Message-ID: <42EBA4F0.1010605@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I'm digging through MusicXML import code and I don't understand why
+are there different mappings for NoteEdit's voice and the file's voice
+numbers. Now, there is this VoiceMapper class that organizes and sorts
+things out, but I don't really understand why.
+
+For example, if a second voice starts the melody and the first voice
+enters in the third measure, MusicXML import code grabs the first
+available voice in NoteEdit and assigns the first voice found in file
+(the second one) to it. I think things can get really messy, because
+in 3rd measure and on, you have the second voice with stems upwards
+and ?he first voice with stems downwards. In the latest commit 298, I
+arranged 1:1 NoteEdit and file's voice numbers. But I'm not sure if
+that was the smartest thing to do. There are quite a few lines of code
+for VoiceMapper. Can anyone help me?
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC66Twm1IQqmP8KVgRAnC2AJ0QNc4nTYAjnVC1VLIMwQhgOTgJzwCfZfMx
+8ZQiuKNr/a3Lt7FKAIZqB5A=
+=fm4i
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 19:06:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 19:06:08 +0200
+Subject: [Noteedit-devel] Transpose bug and it's fix
+In-Reply-To: <42E9C462.2000901@web.de>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>
+	 <42E9C462.2000901@web.de>
+Message-ID: <1122743168.7719.23.camel@localhost>
+
+> Well I had never problems accessing Berlios. You should have had
+> SVN access already yesterday and now you have all the accesses
+> like a normal developer (so you can work on the bug tracker and
+> the different managers).
+
+SVN works for me, thanks (managed to checkout with ssh & my username).
+Next week I'll go on holiday, after that I'll try commit as well.
+
+Bye,
+
+    Csaba
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jul 30 22:33:44 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Jul 2005 22:33:44 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <1122743168.7719.23.camel@localhost>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>
+	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost>
+Message-ID: <1122755624.8042.9.camel@localhost>
+
+Hi!
+
+On my notebook, when I start noteedit, the kernel immediately freezes.
+I've checked with TSE3 and LIBKMID, both resulted the same.
+
+Kernel version: SuSE 2.6.11.4
+
+Is there an option not to start the MIDI mapper by default?
+
+Unfortunately the 2.6.x kernels are more instable, than the old Windows
+95. At least 3 different hardware caused crash on my computer till now.
+The SuSE 9.3 distribution is based on this kernel, so kernel change to
+2.4.x would cause a lot of different errors.
+
+Do you know something about these freezes?
+
+Thanks,
+    Csaba
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 31 00:02:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 31 Jul 2005 00:02:37 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <1122755624.8042.9.camel@localhost>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost> <1122755624.8042.9.camel@localhost>
+Message-ID: <42EBF8FD.9020504@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>Hi!
+>
+>On my notebook, when I start noteedit, the kernel immediately freezes.
+>I've checked with TSE3 and LIBKMID, both resulted the same.
+>
+>Kernel version: SuSE 2.6.11.4
+>
+>Is there an option not to start the MIDI mapper by default?
+>
+>Unfortunately the 2.6.x kernels are more instable, than the old Windows
+>95. At least 3 different hardware caused crash on my computer till now.
+>The SuSE 9.3 distribution is based on this kernel, so kernel change to
+>2.4.x would cause a lot of different errors.
+>
+>Do you know something about these freezes?
+>
+>Thanks,
+>    Csaba
+>
+>
+>  
+Hi,
+
+for me SuSE 9.3 is very stable. On 9.2 I had occasionaly freezes, which
+was not connected to NoteEdit, and for which I blamed the ATI issues. Is
+it only X that freezes?
+
+Did you compile and install NoteEdit properly, so you don't have a mix
+of the original rpm and the self compiled?  You can play midi files with
+the tse3 scheduler:
+
+     tse3play -alsa -port <number>:0 <name>.mid
+
+I do the configuration like this:
+
+    ./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64
+--with-qt-libraries=/usr/lib/qt3/lib64 \
+                --disable-final --with-libtse3-libs=/usr/lib64
+
+When the rlimit/realtime issues are solved, very soon I think, there is
+now reason to look back to kernel 2.4.
+
+Let us know,
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 31 01:20:43 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 31 Jul 2005 01:20:43 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <1122755624.8042.9.camel@localhost>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost> <1122755624.8042.9.camel@localhost>
+Message-ID: <42EC0B4B.6030901@guest.arnes.si>
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+>
+> Is there an option not to start the MIDI mapper by default?
+>
+$ noteedit --noalsa --nooss
+
+Or a combination.
+
+
+Regards.
+- - Matev?
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
+
+iD8DBQFC7AtLm1IQqmP8KVgRAvQ0AJ9QM6o0d6VQuAf+kjl3hqIJpiEfBQCggmBR
+a7ShD68KinAXXCmszU4Ci+4=
+=xJ3o
+-----END PGP SIGNATURE-----
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 31 01:35:34 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 31 Jul 2005 01:35:34 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EB5F17.1000203@schwaben.de>
+References: <42EB4123.2010500@guest.arnes.si> <42EB4AFE.1060405@web.de> <42EB4EEE.3080102@guest.arnes.si> <42EB5F17.1000203@schwaben.de>
+Message-ID: <42EC0EC6.50707@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>noteedit-devel-admin at berlios.de wrote:
+>  
+>
+>>Hm... ok, but how do you define and use more than one scroll wheel in
+>>Qt? And if it's not present, what next etc.
+>>
+>>    
+>>
+>Somehow I'ld like to keep all the possibilities, and get more. Is
+>
+>    Ctrl + Alt + Shift + Scroll
+>
+>also a possibility, at least, when you put it in the hot key table? One
+>of those could be the modifier for faster, wider.
+>  
+>
+The first plan I had in mind was to use Alt key modifier for fast scrolling.
+
+I took a peak in different apps for mouse wheel behaviour. Here are
+actions for modifiers used with mouse scroll:
+OpenOffice.org2: 0-VScroll, CTRL-zoom
+Inkscape: 0-VScroll, SHIFT-HScroll, CTRL-zoom
+GIMP: 0-VScroll, SHIFT-zoom, CTRL-HScroll
+Blender: 0-zoom, SHIFT-VScroll, CTRL-HScroll
+
+There are probably different behaviours for the combination of them as
+well, but I didn't test it. IMO, combinations in NoteEdit shouldn't mean
+any special behaviours, but only combined actions.
+NoteEdit: 0-HScroll, SHIFT-VScroll, CTRL-zoom, ALT-fast HScroll,
+ALT+SHIFT-fast VScroll, ALT+CTRL-fast zoom(?), SHIFT+CTRL+ALT=crash;)
+
+It's pretty hot here in Slovenia. It was 35?C over day today. And it's 1
+o'clock in the morning and it's still 25?C outside!?!!  Phew... not a
+pleasent environment for coding:)
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050731/4e7fb83f/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050731/4e7fb83f/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 31 07:58:15 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 31 Jul 2005 07:58:15 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <42EC0B4B.6030901@guest.arnes.si>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>
+	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost>
+	 <1122755624.8042.9.camel@localhost>  <42EC0B4B.6030901@guest.arnes.si>
+Message-ID: <1122789496.7665.3.camel@localhost>
+
+> > Is there an option not to start the MIDI mapper by default?
+> >
+> $ noteedit --noalsa --nooss
+
+It also freezes.
+
+> You can play midi files with the tse3 scheduler:
+> 
+>      tse3play -alsa -port <number>:0 <name>.mid
+> 
+
+Freezes. I think, that the sequencer is buggy, and that's why
+the freeze occurs. 
+
+Thanks,
+
+    Csaba
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 31 14:06:27 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 31 Jul 2005 14:06:27 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <1122789496.7665.3.camel@localhost>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost>	 <1122755624.8042.9.camel@localhost>  <42EC0B4B.6030901@guest.arnes.si> <1122789496.7665.3.camel@localhost>
+Message-ID: <42ECBEC3.2090300@schwaben.de>
+
+>>
+>>     tse3play -alsa -port <number>:0 <name>.mid
+>>
+>>    
+>
+>Freezes. I think, that the sequencer is buggy, and that's why
+>the freeze occurs. 
+>
+>  
+
+And further down, without a synthesizer, I have:
+rud at nb64:~> pmidi -l
+ Port     Client name                       Port name
+ 62:0     Midi Through                      Midi Through Port-0
+128:0     KAMix                             qamix
+rud at nb64:~>
+
+And with timidity on top of jack, by:
+
+    timidity -iA -Oj -B4,8
+
+I get:
+
+rud at nb64:~> pmidi -l
+ Port     Client name                       Port name
+ 62:0     Midi Through                      Midi Through Port-0
+128:0     KAMix                             qamix
+129:0     Client-129                        qjackctl
+130:0     TiMidity                          TiMidity port 0
+130:1     TiMidity                          TiMidity port 1
+130:2     TiMidity                          TiMidity port 2
+130:3     TiMidity                          TiMidity port 3
+rud at nb64:~>
+
+and can play a song by pmidi -p 130:0 <name>.mid or with tse3play, as
+above. I use tse3 how Suse packaged it.
+
+Maybe this helps to check the base of  your midi setup.
+
+Regards,
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jul 31 15:56:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 31 Jul 2005 15:56:07 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <42ECBEC3.2090300@schwaben.de>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>
+	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost>
+	 <1122755624.8042.9.camel@localhost>  <42EC0B4B.6030901@guest.arnes.si>
+	 <1122789496.7665.3.camel@localhost>  <42ECBEC3.2090300@schwaben.de>
+Message-ID: <1122818167.7908.4.camel@localhost>
+
+Thank you for the help. I managed to solve the problem.
+I disabled the sequencer of my SiS 7018 card with YaST, and now noteedit
+starts properly. The hardware sequencer code is buggy.
+
+Regards,
+
+    Csaba
+
+2005-07-31, v keltez?ssel 14.06-kor noteedit-devel-admin at berlios.de ezt
+?rta:
+> >>
+> >>     tse3play -alsa -port <number>:0 <name>.mid
+> >>
+> >>    
+> >
+> >Freezes. I think, that the sequencer is buggy, and that's why
+> >the freeze occurs. 
+> >
+> >  
+> 
+> And further down, without a synthesizer, I have:
+> rud at nb64:~> pmidi -l
+>  Port     Client name                       Port name
+>  62:0     Midi Through                      Midi Through Port-0
+> 128:0     KAMix                             qamix
+> rud at nb64:~>
+> 
+> And with timidity on top of jack, by:
+> 
+>     timidity -iA -Oj -B4,8
+> 
+> I get:
+> 
+> rud at nb64:~> pmidi -l
+>  Port     Client name                       Port name
+>  62:0     Midi Through                      Midi Through Port-0
+> 128:0     KAMix                             qamix
+> 129:0     Client-129                        qjackctl
+> 130:0     TiMidity                          TiMidity port 0
+> 130:1     TiMidity                          TiMidity port 1
+> 130:2     TiMidity                          TiMidity port 2
+> 130:3     TiMidity                          TiMidity port 3
+> rud at nb64:~>
+> 
+> and can play a song by pmidi -p 130:0 <name>.mid or with tse3play, as
+> above. I use tse3 how Suse packaged it.
+> 
+> Maybe this helps to check the base of  your midi setup.
+> 
+> Regards,
+> Georg
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+

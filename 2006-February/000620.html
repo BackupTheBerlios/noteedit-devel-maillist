@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Canorus - a music score editor
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Canorus%20-%20a%20music%20score%20editor&In-Reply-To=%3C43FB7BEF.9080908%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000619.html">
+   <LINK REL="Next"  HREF="000621.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Canorus - a music score editor</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Canorus%20-%20a%20music%20score%20editor&In-Reply-To=%3C43FB7BEF.9080908%40web.de%3E"
+       TITLE="[Noteedit-devel] Canorus - a music score editor">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb 21 21:45:35 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000619.html">[Noteedit-devel] Canorus - a music score editor
+</A></li>
+        <LI>Next message: <A HREF="000621.html">[Noteedit-devel] Canorus - a music score editor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#620">[ date ]</a>
+              <a href="thread.html#620">[ thread ]</a>
+              <a href="subject.html#620">[ subject ]</a>
+              <a href="author.html#620">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello NoteEdit developers,
+
+I completely agree to the post Matevz has written and really
+hope you are not too much disappointed by our decision.
+
+Some aspects I see as well I want to tell you as well. One
+concern I have that NoteEdit should serve us as a base (from
+the user point of view) what features Canorus should have.
+So I'm aiming that we will port many things available now
+in NoteEdit to Canorus. Parts we don't like will then of
+course be replaced.
+
+Especially I'm interested in keeping/porting one of the strongest
+feature of NoteEdit and even enhance it: Import and Export.
+
+Everything else are details and I really would be happy if you
+decide to help us with our new project. As Matevz wrote I will
+also not completely abandon this project but will do minor bug
+fixes to the code as necessary.
+
+Probably you have noted that we are behind the schedule concerning
+the next NoteEdit release (mainy because of lack of time on my
+side due to other music projects and work and also a bit of
+motivation due to the current state ot the code). We will put
+out one major new version somewhen in march.
+
+Finally I like to thank all the people who have helped to made
+it possible that NoteEdit became a good score editor (which it really
+is, despite it's bugs). I will keep the project page,
+even when there is no longer development in this project.
+
+Best regards,
+
+Reinhard Katzmann
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hello to all.
+</I>&gt;<i> 
+</I>&gt;<i> We had a long-lasting conversations on IRC &amp; messanger with Reinhard
+</I>&gt;<i> about the current NoteEdit state and issues for the past few days.
+</I>&gt;<i> Myself, I've been thriving to fix a crescendo bug for 6 hours with no
+</I>&gt;<i> luck, while he was fixing and polishing the last additions to the
+</I>&gt;<i> printing code. During the talk we both agreed that the current structure
+</I>&gt;<i> and development done in NoteEdit needs major reorganization and
+</I>&gt;<i> restructuring, let it be transitions like Qt3-&gt;4 interface,
+</I>&gt;<i> Makefile-&gt;Scons, non-object-oriented-&gt;complete-object-oriented,
+</I>&gt;<i> manually-made-interface-&gt;qtDesigner-interface while on the other hand a
+</I>&gt;<i> major rewrite and rethinking on the most parts of the code, as no
+</I>&gt;<i> developer currently actually understands it due to a lack of code
+</I>&gt;<i> documentation (comments, Doxygen, illogical variable names). In the end,
+</I>&gt;<i> we came to a conclusion that we:
+</I>&gt;<i> 1) completely rewrite the current NoteEdit project or
+</I>&gt;<i> 2) begin a new project from scratch with no connection to NoteEdit
+</I>&gt;<i> whatsoever
+</I>&gt;<i> 
+</I>&gt;<i> We kind of agreed that a complete new project with a well-thought-out
+</I>&gt;<i> base classes and structures from the beginning would be more appropriate
+</I>&gt;<i> than a complete rewrite of NoteEdit having such a history. We decided to
+</I>&gt;<i> officially create a new project, Canorus - a music score editor (canorus
+</I>&gt;<i> - sweet, rich, full sounding in Latin). We also made some basic
+</I>&gt;<i> guidelines of the project:
+</I>&gt;<i> **
+</I>&gt;<i> 
+</I>&gt;<i>     * Source view of the score
+</I>&gt;<i>     * Command line &amp; Scripting language support (Ruby?)
+</I>&gt;<i>     * XML file format
+</I>&gt;<i>     * Qt4 and cross-platform ability
+</I>&gt;<i>     * New Doxygen documentation
+</I>&gt;<i>     * Primary library: Qt4.x
+</I>&gt;<i>     * Primary IDE: Eclipse with Scons, Qt, Subversion and VEX plugins
+</I>&gt;<i>     * Primary MIDI library: Midishare &lt;<A HREF="http://midishare.sf.net">http://midishare.sf.net</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Reinhard set up a project page at berlios (<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>).
+</I>&gt;<i> SVN and mailing lists should be up shortly, while the basic homepage
+</I>&gt;<i> (mostly copied from NoteEdit) is already there. Also, I'm going to make
+</I>&gt;<i> a Canorus' Wiki on Berlios. We decided that this time, development and
+</I>&gt;<i> user Wiki should be common, both public. Currently, me and Reinhard are
+</I>&gt;<i> the project admins and Georg is marked as a developer as well. Anyone
+</I>&gt;<i> interested in development should contact me or him, if he wants to join
+</I>&gt;<i> the team!
+</I>&gt;<i> 
+</I>&gt;<i> From my perspective, the main reason why Cantorus project was born is
+</I>&gt;<i> the time needed for NoteEdit's further development and bug fixing due to
+</I>&gt;<i> a bad structure and lack of code documentation (6 hours of unsuccessful
+</I>&gt;<i> bughunting could be much better replaced by a quality coding and
+</I>&gt;<i> thinking about the new project). Therefore I decided to alternate my
+</I>&gt;<i> strength into the new project than losing precious time on NoteEdit.
+</I>&gt;<i> I'll be there for any minor issues or fixes, but I'm not going to make
+</I>&gt;<i> any larger further development of NoteEdit anymore.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Best wishes and regards to all!
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i> 
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000619.html">[Noteedit-devel] Canorus - a music score editor
+</A></li>
+	<LI>Next message: <A HREF="000621.html">[Noteedit-devel] Canorus - a music score editor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#620">[ date ]</a>
+              <a href="thread.html#620">[ thread ]</a>
+              <a href="subject.html#620">[ subject ]</a>
+              <a href="author.html#620">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

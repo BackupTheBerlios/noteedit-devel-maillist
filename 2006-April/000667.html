@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Noteedit-devel%20digest%2C%20Vol%201%20%23235%20-%205%20msgs&In-Reply-To=%3C44342065.8070709%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000666.html">
+   <LINK REL="Next"  HREF="000668.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Noteedit-devel%20digest%2C%20Vol%201%20%23235%20-%205%20msgs&In-Reply-To=%3C44342065.8070709%40web.de%3E"
+       TITLE="[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Apr  5 21:54:13 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000666.html">[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs
+</A></li>
+        <LI>Next message: <A HREF="000668.html">[Noteedit-devel] [notice 2.8.0|1] does not compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#667">[ date ]</a>
+              <a href="thread.html#667">[ thread ]</a>
+              <a href="subject.html#667">[ subject ]</a>
+              <a href="author.html#667">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+This is really simple to answer: A old bug in the Qt designer.
+If you add custom widgets to an ui file using the designer he
+adds tons of include hints (for every widget based on the custom
+widget one extra) using the class name in lower case letters.
+NScaleEdit is part of a completely different file named scaleEd.ui
+so the correct include hint would be scaleEd.h. Unfortunately somewhen
+the Trolls did make a change in their include hint handling and now
+add somewhere an include command, if the ui file is compiled with the
+uic. If you still use Qt3.3.3 this does not happen.
+
+Regards,
+
+Reinhard
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;&gt;<i> I just logged in as root and created an empty file at
+</I>&gt;&gt;<i> /usr/include/nscaleedit.h.  Now noteedit-2.8.1-beta builds without
+</I>&gt;&gt;<i> complaint and so far appears to be running like a charm.
+</I>&gt;&gt;<i> Galen
+</I>&gt;<i> 
+</I>&gt;<i> Hehehe! This is what I call a hack! :-) I didn't have problems with
+</I>&gt;<i> staffProps.cc. When I applied the patches, all worked...
+</I>&gt;<i> Well, I think that your idea does the trick, but would be interesting
+</I>&gt;<i> to investigate this further. Google just show links related to
+</I>&gt;<i> Noteedit when i search for nscaleedit.h. The patch that inspired this
+</I>&gt;<i> mine sugested that nscaleedit was inserted by QT Designer, but I can't
+</I>&gt;<i> say anything about that, cause I'm too new to this project...
+</I>&gt;<i> 
+</I>
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000666.html">[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs
+</A></li>
+	<LI>Next message: <A HREF="000668.html">[Noteedit-devel] [notice 2.8.0|1] does not compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#667">[ date ]</a>
+              <a href="thread.html#667">[ thread ]</a>
+              <a href="subject.html#667">[ subject ]</a>
+              <a href="author.html#667">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

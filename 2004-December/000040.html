@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed%3A%20feedback%0A%20needed&In-Reply-To=%3C41C42091.3050106%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000039.html">
+   <LINK REL="Next"  HREF="000041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed%3A%20feedback%0A%20needed&In-Reply-To=%3C41C42091.3050106%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Dec 18 13:20:33 CET 2004</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000039.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+        <LI>Next message: <A HREF="000041.html">[Noteedit-devel] Bug 2528 fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Leon, hi all,
+
+I feel I could easily get mixed up with the input modes we have in 
+noteedit. To avoid that let me please try to clarify: We have three 
+distinct modes:
+e) edit mode, E icon is on
+s) select mode, arrow icon is on, or at least no note value on
+i) insert mode, a note value icon is on
+
+In mode e things are working okay, you come to this mode only later when 
+correcting.
+
+Mode s is for navigation, to choose where to start insertions, is 
+usefull at the beginning of input.
+
+Mode i is for hopefully fast input of music. In this mode I sit with the 
+left hand at the computer keyboard to preselect the time value, slur and 
+punktuation, and the right hand hits then the midi keyboard or left 
+mouse button for the note :-)  In this mode I enjoy the new working 
+triplet insertion! Leon, this differs from your description of triplet 
+handling.
+
+&gt;&gt;<i>
+</I>&gt;&gt;<i> The current behaviour for the similar actions make/break beam, slur 
+</I>&gt;&gt;<i> and triplet is:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> beam handling:
+</I>&gt;&gt;<i> make: mark block, press beam button
+</I>&gt;&gt;<i> break: select any of the beamed notes, depress beam button
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;<i> Currently, a way to break a beam is to insert any note or rest inside 
+</I>&gt;<i> an already made beam as well. That's a bigger problem I think. Making 
+</I>&gt;<i> beams should should stay the way it is now. But breaking should be 
+</I>&gt;<i> only available the way you wrote above, but not by inserting notes as 
+</I>&gt;<i> well.
+</I>&gt;<i>
+</I>&gt;&gt;<i> slur handling:
+</I>&gt;&gt;<i> make: mark block, press triplet button
+</I>&gt;&gt;<i> break: select the first slurred note, depress slur button
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;<i> Making a slur is ok. Breaking it is a bit wierd though. I think it's 
+</I>&gt;<i> nonsense to necesserily select the first note and then undo the slur. 
+</I>&gt;<i> You should be anywhere in the current slur and should be able to 
+</I>&gt;<i> delete the slur by simply pressing the slur button. Anyway, slurs are 
+</I>&gt;<i> never nested, so my option is the most feasible IMO.
+</I>&gt;<i>
+</I>&gt;&gt;<i> triplet handling:
+</I>&gt;&gt;<i> make: mark block, press triplet button
+</I>&gt;&gt;<i> break: select any of the triplet notes, depress triplet button
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;<i> Making triplets is cool. Breaking them is fine as well IMO. If you 
+</I>&gt;<i> insert a note into an already made triplet, the triplet breaks, which 
+</I>&gt;<i> is correct IMO.
+</I>&gt;<i>
+</I>&quot;mark block&quot; is something I don't want to do in the first place. It's 
+too slow. I want to insert notes, slurs and beams, and so on, fluently 
+without selecting a block. In mode i the left mouse will always make a 
+new note, errors are corrected with backspace, so watch it:). With slurs 
+that works, which I prefer as the model of completing triplet insertion. 
+I only see now, that beams always need mode s or e, which should be 
+fixed (I rarely used them). Leon, do you see things also like this, and 
+are your thoughts about the inner workings of the code and the 
+feasability still valid? At least for me the description should became 
+clear.
+
+
+
+&gt;&gt;<i> Possible solutions could be:
+</I>&gt;&gt;<i> - 1) don't change anything (keep the behaviour as is in CVS right now)
+</I>&gt;&gt;<i> - 2) break the triplet only when the first note is selected and the 
+</I>&gt;&gt;<i> button is depressed (thus being consistent with slur behaviour and 
+</I>&gt;&gt;<i> fixing your problem, same change should then also be made for beams)
+</I>&gt;&gt;<i> - 3) break the tuplet only when the whole group is selected (by 
+</I>&gt;&gt;<i> pressing left mouse button and dragging), which is consistent with 
+</I>&gt;&gt;<i> the way you create a triplet
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i>
+</I>&gt;<i> First of all, slur, triplet and beam buttons (which reflect the 
+</I>&gt;<i> current slur/triplet/beam status of the note) should be updated every 
+</I>&gt;<i> time you select a note. I think the option 1) is the most feasible for 
+</I>&gt;<i> triplets. I think fixing the slur and beam code is more useful.
+</I>&gt;<i>
+</I>I'm afraid different philosophies collide here. I would formulate like 
+this :)
+In mode e slur, triplet and beam buttons reflect the current state of 
+the selected note.
+In mode i slur, triplet and beam buttons reflect the current state of 
+the next to be inserted note.
+In mode s I don't know, maybe like mode e, better don't care.
+
+And slurs seem to work okay for me, beams need fixing in mode i, only 
+mode i needs fixing ...
+
+&gt;&gt;<i> I believe the third option is least preferable, as it requires too 
+</I>&gt;&gt;<i> much use of the mouse. We should probably do either 1) or 2).
+</I>&gt;<i>
+</I>1) is the best choice of the presented ones.
+
+As another topic: Maybe it helps, and I never saw music not following 
+this: We could state as restriction: 8-th triplets can only start at the 
+beginning of a quarter in an equally quarter-devided bar, and so on.
+
+And this: How can I make a local copy of the repository to take it with 
+my notebook and use svn diff offline to follow you better?
+
+Best Regards,
+Georg.
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000039.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+	<LI>Next message: <A HREF="000041.html">[Noteedit-devel] Bug 2528 fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

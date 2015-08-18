@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Compile with gcc4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Compile%20with%20gcc4&In-Reply-To=%3C200507281324.50021.haavardw%40ifi.uio.no%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000411.html">
+   <LINK REL="Next"  HREF="000423.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Compile with gcc4</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Compile%20with%20gcc4&In-Reply-To=%3C200507281324.50021.haavardw%40ifi.uio.no%3E"
+       TITLE="[Noteedit-devel] Compile with gcc4">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Jul 28 13:24:49 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000411.html">[Noteedit-devel] Compile with gcc4
+</A></li>
+        <LI>Next message: <A HREF="000423.html">[Noteedit-devel] Compile with gcc4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#413">[ date ]</a>
+              <a href="thread.html#413">[ thread ]</a>
+              <a href="subject.html#413">[ subject ]</a>
+              <a href="author.html#413">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've got (almost all of) KDE 3.4.1 installed and compiled from scratch with 
+gcc 4. But again I've used whatever patches gentoo provides, plus manually 
+added some myself. Anyway, this shouldn't affect which compilers noteedit 
+accept, should it? You're not required to have neither tse3 nor kde compiled 
+with the same compiler as long as they're binary compatible?
+
+--
+hw
+
+On Thursday 28 July 2005 13:18, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Another problem it occured to me is, that I cannot compile the KDE
+</I>&gt;<i> 3.3.2 headers (latest in Debian unstable) with gcc4 (again the wrong
+</I>&gt;<i> usage of type-def before the class name), if building without TSE3.
+</I>&gt;<i> KDE 3.4.1 is currently in experimental Debian distro though, but I
+</I>&gt;<i> wouldn't mess with it.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt; Good point. I couldn't get tse3 to compile with gcc 4 either, so I
+</I>&gt;<i> &gt; installed tse3 using gcc 3.4. But once tse3 is installed, noteedit
+</I>&gt;<i> &gt; compiles fine with gcc 4.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I should probably mention that I use gentoo linux, and that my tse3
+</I>&gt;<i> &gt; installation contains whatever patches gentoo uses.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; -- hw
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On Wednesday 27 July 2005 22:10, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; wrote:
+</I>&gt;<i> &gt;&gt; The last time I checked, I wasn't able to compile TSE3 headers
+</I>&gt;<i> &gt;&gt; (neither 0.2.7 nor 0.3.0) with gcc4 (but it worked ok with gcc
+</I>&gt;<i> &gt;&gt; 3.4). I got syntax errors like wrong usage of type-defs and
+</I>&gt;<i> &gt;&gt; friend classes etc. (obviously some syntax changes in gcc4). Did
+</I>&gt;<i> &gt;&gt; it work for you?
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Regards. - Matev&#382;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt;&gt;&gt; Hi, I just subscribed to this list, so my apologies if this
+</I>&gt;<i> &gt;&gt;&gt; issue has already been discussed.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; I've successfully built and been running noteedit with gcc4, so
+</I>&gt;<i> &gt;&gt;&gt; I propose the attached patch to allow gcc4.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; -- hw
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; _______________________________________________ Noteedit-devel
+</I>&gt;<i> &gt;&gt; mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________ Noteedit-devel
+</I>&gt;<i> &gt; mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000411.html">[Noteedit-devel] Compile with gcc4
+</A></li>
+	<LI>Next message: <A HREF="000423.html">[Noteedit-devel] Compile with gcc4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#413">[ date ]</a>
+              <a href="thread.html#413">[ thread ]</a>
+              <a href="subject.html#413">[ subject ]</a>
+              <a href="author.html#413">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

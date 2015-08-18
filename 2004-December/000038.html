@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed%3A%20feedback%20needed&In-Reply-To=%3CHNEXFE06YvSbN6OZj9m0000fc92%40hnexfe06.hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000037.html">
+   <LINK REL="Next"  HREF="000039.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Partial%20fix%20to%20bug%20%232528%20committed%3A%20feedback%20needed&In-Reply-To=%3CHNEXFE06YvSbN6OZj9m0000fc92%40hnexfe06.hetnet.nl%3E"
+       TITLE="[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Dec 17 09:51:05 CET 2004</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000037.html">[Noteedit-devel] Partial fix to bug #2528 committed.
+</A></li>
+        <LI>Next message: <A HREF="000039.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Georg,
+
+after looking at the triplet code for some time, I came to the conclusion 
+that simply not breaking the triplet when the triplet button is depressed 
+(after entering the third triplet note) will not be feasible.
+
+Currently there is only one way to break a triplet, and that is to select one 
+of the triplet notes and depress the triplet button. Simply disabling the 
+&quot;break triplet&quot; function in this way would leave us without any possibility 
+to break a triplet.
+
+The current behaviour for the similar actions make/break beam, slur and 
+triplet is:
+
+beam handling:
+make: mark block, press beam button
+break: select any of the beamed notes, depress beam button
+
+slur handling:
+make: mark block, press triplet button
+break: select the first slurred note, depress slur button
+
+triplet handling:
+make: mark block, press triplet button
+break: select any of the triplet notes, depress triplet button
+
+note: neither break is influenced by edit mode
+
+Possible solutions could be:
+
+- 1) don't change anything (keep the behaviour as is in CVS right now)
+- 2) break the triplet only when the first note is selected and the button is 
+depressed (thus being consistent with slur behaviour and fixing your problem, 
+same change should then also be made for beams)
+- 3) break the tuplet only when the whole group is selected (by pressing left 
+mouse button and dragging), which is consistent with the way you create a 
+triplet
+
+I believe the third option is least preferable, as it requires too much use 
+of the mouse. We should probably do either 1) or 2).
+
+Please let me know how you feel we should handle this. I would also like to 
+hear from the other readers of this list. Until I have received feedback 
+about this, I won't make any behavioural changes.
+
+Regards, Leon.
+
+On Tuesday 14 December 2004 11:13 pm, you wrote:
+&gt;<i> Hi Georg,
+</I>&gt;<i>
+</I>&gt;<i> thanks for your reply. I do agree with you on not breaking the tuplet when
+</I>&gt;<i> depressing the button. The current behaviour is strange anyway, as you have
+</I>&gt;<i> to select three notes to create a triplet, but select a single note to
+</I>&gt;<i> break it. I will change the button depress behaviour to leave the triplet
+</I>&gt;<i> intact.
+</I>&gt;<i>
+</I>&gt;<i> Please note that the fix is still incomplete, I would also want to build a
+</I>&gt;<i> triplet when entering two notes of values that can form a triplet (1/4 +
+</I>&gt;<i> 1/8 etc.), remove the debugging code and update the documentation (english
+</I>&gt;<i> version only, leaving the german translation to someone else !)
+</I>&gt;<i> accordingly.
+</I>&gt;<i>
+</I>&gt;<i> I'm not sure how to handle edit mode, will have a look at that.
+</I>&gt;<i>
+</I>&gt;<i> Best regards, Leon.
+</I>&gt;<i>
+</I>&gt;<i> On Tuesday 14 December 2004 02:46 am, you wrote:
+</I>&gt;<i> &gt; Hello Leon,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; thanks a lot for this fix. It works beautifully.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; A small issue I would like to mention: With time values and beams I'm
+</I>&gt;<i> &gt; used in insert mode to choose in advance. To match this behavior I felt
+</I>&gt;<i> &gt; that it would be better to leave the last triplet in place when
+</I>&gt;<i> &gt; depressing 3, even when the last note is still selected. In edit mode
+</I>&gt;<i> &gt; opening up the triplet I would expect. It might be a matter of habits, I
+</I>&gt;<i> &gt; will just use it and get used to it more.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards, Georg
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt; &gt;Hi all,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;see title. Please give it a test drive and report any issues to me.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;Triplets can now be inserted by pressing the triplet key and entering
+</I>&gt;<i> &gt; &gt; three notes of the same length. Note that this leaves the last of the
+</I>&gt;<i> &gt; &gt; three notes selected (red). Depressing the triplet key will break the
+</I>&gt;<i> &gt; &gt; triplet as long as this note is selected. Thus, first deselect the last
+</I>&gt;<i> &gt; &gt; note (e.g. by clicking anywhere outside of the staff) before depressing
+</I>&gt;<i> &gt; &gt; the triplet button.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;Regards, Leon.
+</I>&gt;<i> &gt; &gt;_______________________________________________
+</I>&gt;<i> &gt; &gt;Noteedit-devel mailing list
+</I>&gt;<i> &gt; &gt;<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt;<A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Noteedit-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000037.html">[Noteedit-devel] Partial fix to bug #2528 committed.
+</A></li>
+	<LI>Next message: <A HREF="000039.html">[Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

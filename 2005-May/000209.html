@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] NoteEdit splash
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20NoteEdit%20splash&In-Reply-To=%3C42767EA6.3030907%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000207.html">
+   <LINK REL="Next"  HREF="000212.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] NoteEdit splash</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20NoteEdit%20splash&In-Reply-To=%3C42767EA6.3030907%40web.de%3E"
+       TITLE="[Noteedit-devel] NoteEdit splash">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon May  2 21:25:26 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000207.html">[Noteedit-devel] NoteEdit splash
+</A></li>
+        <LI>Next message: <A HREF="000212.html">[Noteedit-devel] NoteEdit splash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#209">[ date ]</a>
+              <a href="thread.html#209">[ thread ]</a>
+              <a href="subject.html#209">[ subject ]</a>
+              <a href="author.html#209">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+
+I'd prefer to have the release ready one week earlier due to the
+Linuxtag event occuring on 22. - 25. June.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> - there are some critical bugs, but not so complex to resolve (at least 
+</I>&gt;<i> LilyPond multivoice export (Georg?) and MusicXML polyphony import bug 
+</I>&gt;<i> (I'll try to fix it), which mess up the score!).
+</I>
+Great, that would be really good.
+
+&gt;<i> - we have to update all the documentation (NE docbook) and make sure it 
+</I>&gt;<i> works. This includes updating the homepage as well.
+</I>
+Yes, I'll have to make screenshots for the new staff properties and 
+several changes concerning how it works now. As for the homepage, there
+was already some suggestion for a &quot;NEWS&quot; section including the current
+version of NoteEdit. Also the documentation should be included.
+
+&gt;<i> - remove ALL the links in source, debugging, error messages, 
+</I>&gt;<i> documentation pointing to the Joerg's web site or mail and replace them 
+</I>&gt;<i> with our team's one.
+</I>
+I didn't even know they exist :-). Maybe it's better to have some
+real context sensitive help in this case, but I don't know how much
+we have todo for it. Also I'd like to avoid double work on both
+the documentation and the context sensitive help.
+
+&gt;<i> - some lipstik would be nice - reinvestigate and rewrite any messages, 
+</I>&gt;<i> option menus and other signs which are wierdly written (the program 
+</I>&gt;<i> should look nice and tidy as possible, at least no lower/upper case 
+</I>&gt;<i> randomly placed. I'd also propose that we should name our project 
+</I>&gt;<i> NoteEdit and not Noteedit or Note edit or Note Edit and stick to the 
+</I>&gt;<i> name everywhere then. What do you think?).
+</I>
+That's a good idea, f.e. Georg pointed me to the &quot;Close all&quot; menu point.
+It should be just &quot;Close&quot; and replace &quot;Quit&quot;. &quot;Close all&quot; should then
+be renamed to &quot;Quit&quot;. That's much more logical and is quickly done.
+
+Have you looked at my QT-variant of the menus ? I've corrected all the
+menus and I would use this naming. Things like &quot;AutoBar&quot; is no proper
+english but sounds to me like a variable or function name. It really
+should be called &quot;Auto bar&quot;.
+
+&gt;<i> - contact all the translators to update their work (currently, I only 
+</I>&gt;<i> keep Slovenian translation up to date, other .po files get more and more 
+</I>&gt;<i> fuzzily translated)
+</I>&gt;<i> - new splash, new icon, makefile/svn building methods etc.
+</I>
+Agreed.
+
+&gt;<i> I'll try to contact the translators this evening and tell them our 
+</I>&gt;<i> situation.
+</I>
+Great!
+
+&gt;<i> Also, I'd prefer as much testing as possible and production work (I'm 
+</I>&gt;<i> going to write 2 compositions in NoteEdit this month and print them with 
+</I>&gt;<i> LilyPond, maybe an arrangment for the choir as well). When we got 2.8.0 
+</I>&gt;<i> released, I'll contact the official Debian maintainer.
+</I>
+Hmm, you just take a lot of work from me :-). As soon as the first beta
+is out I'll do some announcements as well.
+
+&gt;<i> Please have a look at the upcoming icon I'm about to post and check the 
+</I>&gt;<i> dev forum if you have time and tell a thing or two about yourselves:). I 
+</I>&gt;<i> hope I'm not too intruding... I just wanted to suggest the plan and hear 
+</I>&gt;<i> your thoughts, although I'm not a project coordinator.
+</I>
+One thing that might be helpful is to write down what everyone has 
+tested and the test results in the form:
+
+Test case         Expected Test result        Comment   Test Ok (Yes/No)
+
+The test case and the test result should be written in a way that
+it is easily reproducible and unambiguous.
+
+And the next time we want to test, we just need to do adjustments
+to the test document(s). As noteedit is a quite complex application
+this should make it easier to get an overview of what has been tested.
+If you don't know how to start on that, take the documentation as
+a base for tests.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000207.html">[Noteedit-devel] NoteEdit splash
+</A></li>
+	<LI>Next message: <A HREF="000212.html">[Noteedit-devel] NoteEdit splash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#209">[ date ]</a>
+              <a href="thread.html#209">[ thread ]</a>
+              <a href="subject.html#209">[ subject ]</a>
+              <a href="author.html#209">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,35 @@
+From noteedit-devel at lists.berlios.de  Wed Jan 10 22:06:34 2007
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Wed, 10 Jan 2007 22:06:34 +0100
+Subject: [Noteedit-devel] Access to homepage
+Message-ID: <45A5555A.5070701@web.de>
+
+IRC-Log from Canorus:
+
+<suamor> https not ? strange...
+<suamor> it's quite slow but works
+<thepianoguy> wow, https works
+<thepianoguy> but http not
+<suamor> yes
+<thepianoguy> weeeird :(
+<suamor> indeed
+<suamor> insider tip i guess ;)
+<suamor> BerliOS stands currently under a heavy DDoS attack (from >
+40.000 hosts). The only chance to block it is to setup an intelligent
+firewall which needs a couple of days to be implemented. M
+<suamor> Meantime use https://www.berlios.de instead of
+http://www.berlios.de to access BerliOS homepage as well as the
+homepages of projects (https://projectname.berlios.de).
+<suamor> helix - 2007-Jan-06 12:26   -   BerliOS
+
+Best,
+
+Reinhard Katzmann
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+

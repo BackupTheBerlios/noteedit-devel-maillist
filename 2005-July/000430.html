@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] MusicXML question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MusicXML%20question&In-Reply-To=%3C42EBA4F0.1010605%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000429.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] MusicXML question</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MusicXML%20question&In-Reply-To=%3C42EBA4F0.1010605%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] MusicXML question">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Jul 30 18:04:00 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000429.html">[Noteedit-devel] lilypond export update
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#430">[ date ]</a>
+              <a href="thread.html#430">[ thread ]</a>
+              <a href="subject.html#430">[ subject ]</a>
+              <a href="author.html#430">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I'm digging through MusicXML import code and I don't understand why
+are there different mappings for NoteEdit's voice and the file's voice
+numbers. Now, there is this VoiceMapper class that organizes and sorts
+things out, but I don't really understand why.
+
+For example, if a second voice starts the melody and the first voice
+enters in the third measure, MusicXML import code grabs the first
+available voice in NoteEdit and assigns the first voice found in file
+(the second one) to it. I think things can get really messy, because
+in 3rd measure and on, you have the second voice with stems upwards
+and &#359;he first voice with stems downwards. In the latest commit 298, I
+arranged 1:1 NoteEdit and file's voice numbers. But I'm not sure if
+that was the smartest thing to do. There are quite a few lines of code
+for VoiceMapper. Can anyone help me?
+
+
+Regards.
+- - Matev&#382;
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://enigmail.mozdev.org">http://enigmail.mozdev.org</A>
+
+iD8DBQFC66Twm1IQqmP8KVgRAnC2AJ0QNc4nTYAjnVC1VLIMwQhgOTgJzwCfZfMx
+8ZQiuKNr/a3Lt7FKAIZqB5A=
+=fm4i
+-----END PGP SIGNATURE-----
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000429.html">[Noteedit-devel] lilypond export update
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#430">[ date ]</a>
+              <a href="thread.html#430">[ thread ]</a>
+              <a href="subject.html#430">[ subject ]</a>
+              <a href="author.html#430">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

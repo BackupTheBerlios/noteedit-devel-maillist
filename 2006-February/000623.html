@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Some Music XML bugs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Some%20Music%20XML%20bugs&In-Reply-To=%3C200602261030.16187.leon.vinken%40hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000622.html">
+   <LINK REL="Next"  HREF="000618.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Some Music XML bugs</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Some%20Music%20XML%20bugs&In-Reply-To=%3C200602261030.16187.leon.vinken%40hetnet.nl%3E"
+       TITLE="[Noteedit-devel] Some Music XML bugs">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Feb 26 10:30:16 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000622.html">[Noteedit-devel] Some Music XML bugs
+</A></li>
+        <LI>Next message: <A HREF="000618.html">[Noteedit-devel] Printing fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+the 64th rests (actually 128th) are in the xml file, but as breve (double 
+whole) rests. These are not supported by NoteEdit, but the MusicXML importer 
+thinks they are and tries to create them anyway (let's call that an xml 
+import bug). This results in many &quot;Unknown rest 1290240&quot; messages, where 
+1290240 is the internal representation of &quot;double whole length&quot;. The rest 
+itself (see NRest::calculateDimensionsAndPixmaps()) displays unknown rests as 
+128th.
+
+Possible solutions:
+
+1) report an error when importing breve rests (easy)
+
+2) detect breve rests but insert these as two whole rests (also easy)
+
+3) support breve rests (more work, creating pixmaps and fixing NRest plus 
+changing the GUI for inserting breve rests)
+
+If you want, I could do 1) or 2) for you, but I don't have time to work on 3).
+
+Warnings when exporting to Lilypond are also caused by the unknown rests.
+
+Regards, Leon.
+
+On Thursday 23 February 2006 22:20, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hi Reinhard,
+</I>&gt;<i>
+</I>&gt;<i> your xml file behaves the same way on the NoteEdit versions I have (2.7.3
+</I>&gt;<i> and 2.8.0).
+</I>&gt;<i>
+</I>&gt;<i> The 2/2 I believe to be correct, as my music theory books state that alla
+</I>&gt;<i> breve is 2/2 and also the data in the xml file states 2/2 (&lt;beats&gt; and
+</I>&gt;<i> &lt;beat-type&gt; both are 2).
+</I>&gt;<i>
+</I>&gt;<i> The 64th rest is of course incorrect, I will have to look into that. Will
+</I>&gt;<i> take a few days.
+</I>&gt;<i>
+</I>&gt;<i> Regards, Leon.
+</I>&gt;<i>
+</I>&gt;<i> On Saturday 18 February 2006 22:26, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> &gt; Hi Leon,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; When importing a music xml file I got the following errors in the import
+</I>&gt;<i> &gt; filter:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; - Tempo alla breve was imported as 2/2 instead of 4/2
+</I>&gt;<i> &gt; - Multimeasure rests with 1 bar are interpreted as 64'th pause
+</I>&gt;<i> &gt; - I got 4 extra 64'th pause in the first bar containing a 4 bar
+</I>&gt;<i> &gt;   multimeasure rest
+</I>&gt;<i> &gt; - 2 bar multimeasure rest did result in 2 64'th pause bars
+</I>&gt;<i> &gt; - composer, title etc. is not read
+</I>&gt;<i> &gt; - some mup warnings not visible in the resulting lilypond file.
+</I>&gt;<i> &gt;   (after correcting the above bugs manually)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I've appended the music xml file to my mail.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Reinhard
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000622.html">[Noteedit-devel] Some Music XML bugs
+</A></li>
+	<LI>Next message: <A HREF="000618.html">[Noteedit-devel] Printing fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

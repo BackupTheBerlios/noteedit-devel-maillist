@@ -1,0 +1,299 @@
+From noteedit-devel-admin at lists.berlios.de  Fri Nov  5 10:54:59 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 05 Nov 2004 10:54:59 +0100
+Subject: [Noteedit-devel] Lyrics Export to Lilypond with Ties
+Message-ID: <418B4DF3.8010706@schwaben.de>
+
+Hello all,
+
+while looking around on lilypond-user I stumbled over
+http://lists.gnu.org/archive/html/lilypond-user/2004-01/msg00482.html
+which is exactly what I was looking to repair.  I tryed it to solve by 
+removing the " _ " for a tied note, but I don't oversee the source code 
+enough yet...
+Nevertheless, the attached patch allows me to export easily and 
+correctly lyrics to lilypond (2.0.3). The abc-export I never tried, if 
+it has a similar problem. Probably soon I'll look at that, also to 
+lilypond 2.4, to check, if this patch should be applied.
+
+Best Regards,
+Georg.
+
+
+
+
+ 
+
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: lyr2lily.patch
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20041105/ead78762/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov  5 14:08:20 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 05 Nov 2004 14:08:20 +0100
+Subject: [Noteedit-devel] how to build?
+Message-ID: <418B7B44.4000401@guest.arnes.si>
+
+Grabbing the latest svn version of NoteEdit, there are no configure,
+autogen or makefiles present. How do I build the application?
+
+
+- Matevz
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Nov 11 23:27:43 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 11 Nov 2004 23:27:43 +0100
+Subject: [Noteedit-devel] MusicXML bugs
+Message-ID: <HNEXFE11v8L5dBKlrWJ0000d469@hnexfe11.hetnet.nl>
+
+Hi all,
+
+tonight I accidently stumbled upon two NoteEdit MusicXML bugs, #2480 and 
+#2487. If anyone is working on these, please let me know. If not, I will fix 
+them, probably within a few weeks.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Nov 21 22:16:52 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 21 Nov 2004 22:16:52 +0100
+Subject: [Noteedit-devel] how to build?
+In-Reply-To: <418B7B44.4000401@guest.arnes.si>
+References: <418B7B44.4000401@guest.arnes.si>
+Message-ID: <HNEXFE11Lf2fPidcOHu000095ae@hnexfe11.hetnet.nl>
+
+On Friday 05 November 2004 02:08 pm, you wrote:
+> Grabbing the latest svn version of NoteEdit, there are no configure,
+> autogen or makefiles present. How do I build the application?
+
+This weekend I tried to build NoteEdit myself and experienced the same 
+problems. I have created bug #2814 with detailed info and a crude workaround 
+that results in a working NoteEdit.
+
+Regards, Leon.
+
+>
+>
+> - Matevz
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Nov 21 22:52:40 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 21 Nov 2004 22:52:40 +0100
+Subject: [Noteedit-devel] Version nr update
+Message-ID: <HNEXFE08evWWGxegIqu00009e03@hnexfe08.hetnet.nl>
+
+Dear Mr. Katzmann,
+
+tonight I have fixed and committed bug #2487. As far as I know this is the 
+first functional change compared to Joerg Anders' 2.7.3 source tree. 
+Therefore I propose to update the version number to 2.7.4.
+
+Furthermore, many svn files still refer to Joerg Anders' home page. I think 
+these references should be replaced by references to the new berliOS home 
+page. Of course, credit for creating NoteEdit should be given to Joerg Anders.
+
+Is it OK with you if I make these changes ?
+
+Best regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Nov 22 21:09:30 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 22 Nov 2004 21:09:30 +0100
+Subject: [Noteedit-devel] Version nr update
+In-Reply-To: <HNEXFE08evWWGxegIqu00009e03@hnexfe08.hetnet.nl>
+References: <HNEXFE08evWWGxegIqu00009e03@hnexfe08.hetnet.nl>
+Message-ID: <41A2477A.3070100@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Dear Mr. Katzmann,
+> 
+> tonight I have fixed and committed bug #2487. As far as I know this is the 
+> first functional change compared to Joerg Anders' 2.7.3 source tree. 
+> Therefore I propose to update the version number to 2.7.4.
+
+You are right, independently of changes being made in svn after a 
+release the version should be increased. For the next release I'd
+like to integrate an ia64 patch which is not yet on the patches list.
+
+> Furthermore, many svn files still refer to Joerg Anders' home page. I think 
+> these references should be replaced by references to the new berliOS home 
+> page. Of course, credit for creating NoteEdit should be given to Joerg Anders.
+
+Yes of course. I agree that these changes should be made some time.
+
+> Is it OK with you if I make these changes ?
+
+That would be a great help for us.
+
+Best regards,
+
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Nov 22 22:20:20 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 22 Nov 2004 22:20:20 +0100
+Subject: [Noteedit-devel] bug tracking
+Message-ID: <HNEXFE08M4fGIC7p9zY000184b4@hnexfe08.hetnet.nl>
+
+Hi all,
+
+I may have some spare time available for working on NoteEdit shortly. In 
+order to prevent wasting time, may I assume that all open bugs assigned to 
+"none" are not being worked on ? In that case, whenever I feel like working 
+on NoteEdit I will assign a bug to myself and fix it.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Nov 22 22:33:06 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 22 Nov 2004 22:33:06 +0100
+Subject: [Noteedit-devel] Version nr update
+In-Reply-To: <HNEXFE08evWWGxegIqu00009e03@hnexfe08.hetnet.nl>
+References: <HNEXFE08evWWGxegIqu00009e03@hnexfe08.hetnet.nl>
+Message-ID: <41A25B12.7010905@guest.arnes.si>
+
+>Furthermore, many svn files still refer to Joerg Anders' home page. I think 
+>these references should be replaced by references to the new berliOS home 
+>page. Of course, credit for creating NoteEdit should be given to Joerg Anders.
+>  
+>
+I wonder, does Joerg Anders read this thread? I mean, he is the original 
+author and I've been tracking his NoteEdit project since version 2.0. 
+Many things happened in past 4 years and I just can't believe he gave up 
+so suddenly. I wonder if he should join the new NoteEdit team in the future?
+
+
+*my 2 cents:)*
+- Matevz
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 26 16:01:28 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 26 Nov 2004 16:01:28 +0100
+Subject: [Noteedit-devel] a small LilyPond patch
+Message-ID: <41A74548.70708@guest.arnes.si>
+
+Could someone look and apply the patch I've just uploaded to the project 
+page. I fixed a few LilyPond issues:
+- added \version "2.0", so convert-ly now works out of the box (it knows 
+which version to upgrade from)
+- moved \voiceOne,\voiceTwo etc. to the separate lines (currently it was 
+in the same line with \notes\relative, but shouldn't)
+- fixed a small typo (LilyPoint -> LilyPond)
+
+
+- Matevz
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Nov 27 00:10:56 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 27 Nov 2004 00:10:56 +0100
+Subject: [Noteedit-devel] how to build?
+In-Reply-To: <HNEXFE11Lf2fPidcOHu000095ae@hnexfe11.hetnet.nl>
+References: <418B7B44.4000401@guest.arnes.si> <HNEXFE11Lf2fPidcOHu000095ae@hnexfe11.hetnet.nl>
+Message-ID: <41A7B800.5090105@web.de>
+
+Hi,
+
+I've uploaded the Makefile.cvs (Hmm, shouldn't we call it
+Makefile.svn ? ;-) to the repository.
+
+Usually make -f Makefile.cvs is enough to create the
+configure file. I had success in September by rebuilding
+the admin file using kdevelop 3.0.4. I've used exactly these
+file on my updated Mandrake system (but not completely moved
+to 10.1. official) but wasn't able to compile it. That's why
+I decided not to upload these admin files (Beside that there
+are just to many different automake version (1.4, 1.7,
+1.8, 1.9, I use 1.7)).
+
+You can use kdevelop for yourself to create a project and
+update the admin files so they match for your system.
+
+I suppose the compatibility problems never will get
+really solved. I currently cannot recommand a KDE version
+for trying it. I want to try it with kde 3.3.0 as soon as
+I've updated my system.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Nov 30 23:09:11 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 30 Nov 2004 23:09:11 +0100
+Subject: [Noteedit-devel] how to build?
+In-Reply-To: <41A7B800.5090105@web.de>
+References: <418B7B44.4000401@guest.arnes.si> <HNEXFE11Lf2fPidcOHu000095ae@hnexfe11.hetnet.nl> <41A7B800.5090105@web.de>
+Message-ID: <HNEXFE11iom6WQaV2uB00019fd2@hnexfe11.hetnet.nl>
+
+On Saturday 27 November 2004 12:10 am, you wrote:
+> Hi,
+>
+> I've uploaded the Makefile.cvs (Hmm, shouldn't we call it
+> Makefile.svn ? ;-) to the repository.
+
+Makefile.svn is definitely way to go, but as cvs projects are still more 
+common than svn project, Makefile.cvs is the expected name. Seems like a 
+remark in README is useful.
+
+>
+> Usually make -f Makefile.cvs is enough to create the
+> configure file. I had success in September by rebuilding
+> the admin file using kdevelop 3.0.4. I've used exactly these
+> file on my updated Mandrake system (but not completely moved
+> to 10.1. official) but wasn't able to compile it. That's why
+> I decided not to upload these admin files (Beside that there
+> are just to many different automake version (1.4, 1.7,
+> 1.8, 1.9, I use 1.7)).
+
+At my system (Fedora Core 3) it does create a configure file, but the build 
+still fails. The main issue here will probably be how to get NoteEdit 
+specific options (--with-libtse3, --with-libkmid, --with-oldlily, 
+--with-printing etc.) working correctly.
+
+>
+> You can use kdevelop for yourself to create a project and
+> update the admin files so they match for your system.
+
+As I am rather unfamiliar with kdevelop and autoconf/automake I am afraid I 
+won't be able to provide much help here, besides testing.
+
+Best regards, Leon.
+
+>
+> I suppose the compatibility problems never will get
+> really solved. I currently cannot recommand a KDE version
+> for trying it. I want to try it with kde 3.3.0 as soon as
+> I've updated my system.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+

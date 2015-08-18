@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] tse3 completely out-of-date
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20tse3%20completely%20out-of-date&In-Reply-To=%3C200503121333.13679.leon.vinken%40hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000119.html">
+   <LINK REL="Next"  HREF="000121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] tse3 completely out-of-date</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20tse3%20completely%20out-of-date&In-Reply-To=%3C200503121333.13679.leon.vinken%40hetnet.nl%3E"
+       TITLE="[Noteedit-devel] tse3 completely out-of-date">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Mar 12 13:33:13 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000119.html">[Noteedit-devel] tse3 completely out-of-date
+</A></li>
+        <LI>Next message: <A HREF="000121.html">[Noteedit-devel] tse3 completely out-of-date
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+please find attached two patches for TSE3 0.2.7. The first one allows TSE3's 
+configure to also recognize and support ALSA 1.0. The second one fixes the 
+compilation errors, which, I believe, were introduced with GCC 3.4.
+
+The build procedure
+
+- unzip tse3-0.2.7.tar.gz
+- cd tse3-0.2.7
+- patch -p1 &lt;tse3-0.2.7-patch-alsa1.0
+- patch -p1 &lt;tse3-0.2.7-patch-gcc3.4
+- ./configure
+- make
+
+now results in a clean build on Fedora Core 3.
+Note: configure will be regenerated at start of make, don't know why.
+
+Georg, could you store these patches somewhere on berliOS ?
+
+Best regards, Leon.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tse3-0.2.7-patch-alsa1.0
+Type: text/x-diff
+Size: 1298 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050312/6d1c2172/attachment.diff">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050312/6d1c2172/attachment.diff</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tse3-0.2.7-patch-gcc3.4
+Type: text/x-diff
+Size: 3155 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050312/6d1c2172/attachment-0001.diff">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050312/6d1c2172/attachment-0001.diff</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000119.html">[Noteedit-devel] tse3 completely out-of-date
+</A></li>
+	<LI>Next message: <A HREF="000121.html">[Noteedit-devel] tse3 completely out-of-date
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

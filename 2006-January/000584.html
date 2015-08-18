@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] status update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20status%20update&In-Reply-To=%3C43C0EEA4.2000000%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000580.html">
+   <LINK REL="Next"  HREF="000588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] status update</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20status%20update&In-Reply-To=%3C43C0EEA4.2000000%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] status update">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Jan  8 11:51:16 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000580.html">[Noteedit-devel] status update
+</A></li>
+        <LI>Next message: <A HREF="000588.html">[Noteedit-devel] status update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#584">[ date ]</a>
+              <a href="thread.html#584">[ thread ]</a>
+              <a href="subject.html#584">[ subject ]</a>
+              <a href="author.html#584">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i>Hi to all!
+</I>&gt;<i>
+</I>&gt;<i>I've been really busy for the last 2 months and my hands are still full
+</I>&gt;<i>of work for the next 3 weeks (school exams...). I hardly wait to dig
+</I>&gt;<i>into mainframewidget.cpp and voice.cpp again though :). Another thing
+</I>&gt;<i>that happened to me was that I didn't receive any mailing lists messages
+</I>&gt;<i>for the last 3 months (bad ISP mail at myplace??), so I made a new
+</I>&gt;<i>account at gmail and I'm using two accounts in Thunderbird now, one
+</I>&gt;<i>separated for NoteEdit.
+</I>&gt;<i>
+</I>&gt;<i>The other thing I wanted to mention was the last bug I was fixing
+</I>&gt;<i>(phew.. some months ago, my last submit?!). That's a showstopper bug IMO
+</I>&gt;<i>that NoteEdit doesn't treat right clef &amp; key signatures in non-first
+</I>&gt;<i>voice through time. An example: The 1st voice holds a whole, the 2nd
+</I>&gt;<i>voice plays 4 quarters. Now, you place a different clef after the whole.
+</I>&gt;<i>If you playback, the first quarter is played in the first clef, but the
+</I>&gt;<i>other three are in the second one already (although the quarters should
+</I>&gt;<i>wait the whole for the new clef!!). Now I already managed to fix this
+</I>&gt;<i>behaviour when editing notes (playback when you change pitch, automatic
+</I>&gt;<i>accidentals placement before notes etc.), but when hitting play button,
+</I>&gt;<i>the behaviour is still wrong. Something is messed up in playback code
+</I>&gt;<i>(in NVoice::getNextMidiEvent() I think).
+</I>&gt;<i>
+</I>&gt;<i>Any ideas? It's my top priority when I get back, but I'd be grateful if
+</I>&gt;<i>anyone could share any info about it or even solve this mistery. The
+</I>&gt;<i>MIDI code is still a tabu for me :).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Regards.
+</I>&gt;<i>- Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>Hi to all too!
+Matev&#382;, had to forward this and your next mail by approval. You sent it from your unsubscribed adress.
+
+The last few weeks I used NoteEdit a lot for preparing rehersal tracks for my singers group. The fast scroll feature Alt+mouse wheel I really enjoyed, as it's very usefull. And I was distracted by preparing feedback recordings for my group with ardour and my rme multiface, also messing with low latency kenrels, which was fun for me.
+
+Did some trial of debugging when copying a series of triads to another stuff, no success yet. Will try to dig more in the internals.
+So, Regards,
+Georg.
+
+
+And, I'm the right one in <A HREF="http://www.candiesdandies.de">http://www.candiesdandies.de</A> &lt;<A HREF="http://www.candiesdandies.de/">http://www.candiesdandies.de/</A>&gt; :)
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000580.html">[Noteedit-devel] status update
+</A></li>
+	<LI>Next message: <A HREF="000588.html">[Noteedit-devel] status update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#584">[ date ]</a>
+              <a href="thread.html#584">[ thread ]</a>
+              <a href="subject.html#584">[ subject ]</a>
+              <a href="author.html#584">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

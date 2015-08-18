@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Scons project administration
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Scons%20project%20administration&In-Reply-To=%3C43B3E416.8080702%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000565.html">
+   <LINK REL="Next"  HREF="000567.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Scons project administration</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Scons%20project%20administration&In-Reply-To=%3C43B3E416.8080702%40web.de%3E"
+       TITLE="[Noteedit-devel] Scons project administration">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Dec 29 14:26:46 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000565.html">[Noteedit-devel] Noteedit broken on KDE 3.5.0?
+</A></li>
+        <LI>Next message: <A HREF="000567.html">[Noteedit-devel] NoteEdit eclipse strikes again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#566">[ date ]</a>
+              <a href="thread.html#566">[ thread ]</a>
+              <a href="subject.html#566">[ subject ]</a>
+              <a href="author.html#566">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I hope you all had a nice christmas eve and holidays. A little bit late
+I have a present for you: NoteEdit scons project administration.
+
+I've created scons files for NoteEdit. I want to move away from automake
+tools (less dependency, less hassle with dependencies). scons supports
+QT, I used bksys kde.py (actually kde.py from KDE svn fixing several
+bugs like translation). I wrote a midi.py for TSE3 / kmid support and
+added printing options to general.py (see scons_admin directory).
+
+Building is simple: Just invoke scons without any parameters from
+the 'trunk' directory. If you want to manually configure just  call
+'scons configure' and the relevant options (Use scons -h to see the
+options like debug=full). If you only want to build something in a
+subdirectory do it this way: 'cd &lt;subdir&gt;; scons -u'.
+
+To build and install NoteEdit with scons simply use 'scons install'.
+You can also invoke 'scons' install as root after building it.
+
+scons creates a cache and retrieves files from the cache if you delete
+them manually. Manually this can be switched off with --no-cache.
+
+The SConstruct is the main scons file residing in the main directory.
+doc, kguitar_excerpt, noteedit have their own SConscript files being
+invoked by SConstruct (env.BuildDir, env.subdirs).
+
+On my system currently libnotedit.* is installed into the kde directory
+and no longer into the $KDEDIR/lib directory. (that could be
+/usr/lib/kde3 or /opt/kde/lib). This happends because I use kobject
+from kde.py for creating the shared / static library and not the
+official scons way (ToDo).
+
+I haven't tested everything. There could be a problem with a missing
+config.h file (either uncomment the corresponding line in the referenced
+file and send problems afterwards to the list or copy config.h from
+a different place). Also installation doesn't seem to install the
+icons (at least I haven't wrote anything for these extra files only
+needing to be installed but not to be build).
+
+I use scons 0.96.1. I've seen that newer versions of scons are
+available. I think it would be good to be able to reduce the cache
+size used by scons (i.e. implicit --cache-disable). I can't recommand
+the implicit cache as it seems to make the cache grow continuously.
+Here you are free to make your own experiments.
+
+Best regards
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000565.html">[Noteedit-devel] Noteedit broken on KDE 3.5.0?
+</A></li>
+	<LI>Next message: <A HREF="000567.html">[Noteedit-devel] NoteEdit eclipse strikes again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#566">[ date ]</a>
+              <a href="thread.html#566">[ thread ]</a>
+              <a href="subject.html#566">[ subject ]</a>
+              <a href="author.html#566">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

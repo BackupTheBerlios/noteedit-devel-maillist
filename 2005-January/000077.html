@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Re: Learning How to Modify Noteedit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Learning%20How%20to%20Modify%20Noteedit&In-Reply-To=%3C41FEB084.1000802%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Re: Learning How to Modify Noteedit</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Learning%20How%20to%20Modify%20Noteedit&In-Reply-To=%3C41FEB084.1000802%40web.de%3E"
+       TITLE="[Noteedit-devel] Re: Learning How to Modify Noteedit">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Jan 31 23:26:12 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Noteedit-devel] authors
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#77">[ date ]</a>
+              <a href="thread.html#77">[ thread ]</a>
+              <a href="subject.html#77">[ subject ]</a>
+              <a href="author.html#77">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Michael,
+
+Welcome to the club ;-) I've added you as a developer to the project.
+We're close to release 2.7.4 though I have not much time currently
+to help on that (no problem to create tarballs for me). The main
+problems I encountered are project management with KDE.
+
+When you have checked out the current SVN code you could either
+try to use the configure scripts inclued in the 2.7.3 archive or
+
+- Create a new &quot;noteedit&quot; project with kdevelop
+- Copy the SVN directory (I call it noteedit_work, a working copy)
+- Copy the admin files and the Makefile.cvs to the working copy.
+- Try to build it: make -f Makefile.cvs, ./configure.
+- Check if Makefiles were created for doc and noteedit directory.
+   if not add some line to configure.in:
+
+AC_CONFIG_FILES([ doc/Makefile ])
+AC_CONFIG_FILES([ doc/de/Makefile ])
+AC_CONFIG_FILES([ doc/noteedit/Makefile ])
+AC_CONFIG_FILES([ kguitar_excerpt/Makefile ])
+AC_CONFIG_FILES([ noteedit/Makefile ])
+AC_CONFIG_FILES([ noteedit/icons/Makefile ])
+AC_CONFIG_FILES([ noteedit/resources/Makefile ])
+AC_CONFIG_FILES([ po/Makefile ])
+
+These have to be added after the line
+AC_CONFIG_FILES([ Makefile ])
+
+Try to 'make' it.
+
+QT: The user interface is created from XML files
+uic take a .ui files and generated .cpp / .h files.
+
+KDE: Don't have much experience with KDE development myself.
+
+If you have a good idea for solving the build nightmare ;-)
+just drop us a note on the devel ML.
+
+You can also try to use kdevelop as integrated development
+environment. It has gdb support.
+
+Best regards,
+
+Reinhard Katzmann
+
+Michael Carroll schrieb:
+&gt;<i> Reinhard,
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for the warm welcome.  My belios username is
+</I>&gt;<i> mcarroll.
+</I>&gt;<i> 
+</I>&gt;<i> I look forward to working with you.
+</I>&gt;<i> 
+</I>&gt;<i> Thus far, I have learned how to set breakpoints at
+</I>&gt;<i> various points of interest (primarily function/method
+</I>&gt;<i> calls) and try to trigger these using the GUI.  I must
+</I>&gt;<i> admit that I am somewhat new to debugging event-driven
+</I>&gt;<i> GUIs.  I'm an oldtime programmer from the command-line
+</I>&gt;<i> days.  I've used gdb alot before with Linux c
+</I>&gt;<i> programs, but never with Qt or KDE, so I have plenty
+</I>&gt;<i> to learn.  But I'm determined to do so.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Noteedit-devel] authors
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#77">[ date ]</a>
+              <a href="thread.html#77">[ thread ]</a>
+              <a href="subject.html#77">[ subject ]</a>
+              <a href="author.html#77">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

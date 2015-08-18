@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Removing report_bug failure
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Removing%20report_bug%20failure&In-Reply-To=%3C428F4D9F.5070902%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000280.html">
+   <LINK REL="Next"  HREF="000281.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Removing report_bug failure</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Removing%20report_bug%20failure&In-Reply-To=%3C428F4D9F.5070902%40web.de%3E"
+       TITLE="[Noteedit-devel] Removing report_bug failure">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat May 21 17:02:55 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000280.html">[Noteedit-devel] keyboard shortcuts question?
+</A></li>
+        <LI>Next message: <A HREF="000281.html">[Noteedit-devel] small request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#279">[ date ]</a>
+              <a href="thread.html#279">[ thread ]</a>
+              <a href="subject.html#279">[ subject ]</a>
+              <a href="author.html#279">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've found know way to remove the std-menu item
+&quot;Report bug&quot;.
+
+I tried two ways to get rid of it (the first one is commented):
+
+	// Get report bug action to remove it from the help menu
+	//KAction *rbug = 
+actionCollection()-&gt;action(KStdAction::stdName(KStdAction::ReportBug));
+	KAction *rbug = KStdAction::reportBug( this, SLOT(fileSaveAs()), 
+actionCollection());
+	if( rbug )
+	{
+	  rbug-&gt;unplugAll();
+	  //actionCollection()-&gt;remove(rbug);
+	}
+	else
+	  printf(&quot;Could not remove ReportBug menu\n&quot;);
+
+When trying to access the menu using actionCollection() the rbug pointer
+is uninitialized. It seems it gets created after the constructor. This
+might be the reason why the second method fails as well.
+
+unplugall removes the action from all toolbars and menus according to
+the KDE documentation. remove does remove it from the action list.
+
+Any ideas are welcome how to solve the problem.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000280.html">[Noteedit-devel] keyboard shortcuts question?
+</A></li>
+	<LI>Next message: <A HREF="000281.html">[Noteedit-devel] small request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#279">[ date ]</a>
+              <a href="thread.html#279">[ thread ]</a>
+              <a href="subject.html#279">[ subject ]</a>
+              <a href="author.html#279">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

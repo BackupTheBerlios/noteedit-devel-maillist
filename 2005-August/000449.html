@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] MusicXML question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MusicXML%20question&In-Reply-To=%3C42F38BA1.80206%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000448.html">
+   <LINK REL="Next"  HREF="000450.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] MusicXML question</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MusicXML%20question&In-Reply-To=%3C42F38BA1.80206%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] MusicXML question">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Aug  5 17:54:09 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000448.html">[Noteedit-devel] MusicXML question
+</A></li>
+        <LI>Next message: <A HREF="000450.html">[Noteedit-devel] MusicXML question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Please examine the code at Revision 272 or prior, because later, I
+removed some code accessing to VoiceMapper and as already told, assigned
+1:1 NE and MusicXML voices.
+
+You can update to 272 by:
+$ svn update -r 272
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>On Saturday 30 July 2005 18:04, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>I'm digging through MusicXML import code and I don't understand why
+</I>&gt;&gt;<i>are there different mappings for NoteEdit's voice and the file's voice
+</I>&gt;&gt;<i>numbers. Now, there is this VoiceMapper class that organizes and sorts
+</I>&gt;&gt;<i>things out, but I don't really understand why.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>For example, if a second voice starts the melody and the first voice
+</I>&gt;&gt;<i>enters in the third measure, MusicXML import code grabs the first
+</I>&gt;&gt;<i>available voice in NoteEdit and assigns the first voice found in file
+</I>&gt;&gt;<i>(the second one) to it. I think things can get really messy, because
+</I>&gt;&gt;<i>in 3rd measure and on, you have the second voice with stems upwards
+</I>&gt;&gt;<i>and &#359;he first voice with stems downwards. In the latest commit 298, I
+</I>&gt;&gt;<i>arranged 1:1 NoteEdit and file's voice numbers. But I'm not sure if
+</I>&gt;&gt;<i>that was the smartest thing to do. There are quite a few lines of code
+</I>&gt;&gt;<i>for VoiceMapper. Can anyone help me?
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i>just returned from vacation today. As I wrote the XMl code I should be able to 
+</I>&gt;<i>help you. Will have a look at your questions and reply later.
+</I>&gt;<i>
+</I>&gt;<i>Regards, Leon.
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050805/f94f02a5/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050805/f94f02a5/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000448.html">[Noteedit-devel] MusicXML question
+</A></li>
+	<LI>Next message: <A HREF="000450.html">[Noteedit-devel] MusicXML question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

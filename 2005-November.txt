@@ -1,0 +1,763 @@
+From noteedit-devel-admin at lists.berlios.de  Tue Nov  1 19:21:13 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Nov 2005 19:21:13 +0100
+Subject: [Noteedit-devel] Printing probs
+Message-ID: <4367B219.3020105@guest.arnes.si>
+
+Hi Reinhard!
+
+When I hit File->Print preview, it does nothing. And when I hit
+File->Print... it freezes. I'm using ./configure --enable-debug
+--with-printing, otherwise, it doesn't even compile (printLayout not
+defined). Also, I'm unable to export to MusicXML file format. It
+freezes, when I hit start export button in export dialog.
+
+Known issues?
+
+
+Regards
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051101/4d99ddf5/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Nov  1 22:50:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Nov 2005 22:50:18 +0100
+Subject: [Noteedit-devel] Printing probs
+In-Reply-To: <4367B219.3020105@guest.arnes.si>
+References: <4367B219.3020105@guest.arnes.si>
+Message-ID: <4367E31A.2060707@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi Reinhard!
+> 
+> When I hit File->Print preview, it does nothing. And when I hit
+> File->Print... it freezes. I'm using ./configure --enable-debug
+> --with-printing, otherwise, it doesn't even compile (printLayout not
+> defined). Also, I'm unable to export to MusicXML file format. It
+> freezes, when I hit start export button in export dialog.
+
+Well for me for unknown reasons printing does not work correctly.
+I get an error message saying he could not print the postscript
+file (unknown file types). I haven't tested MusicXML, so I have
+to look into it. Strange it does not compile. printLayout is
+declared in configuredialog.h and defined in configuredialog.cpp
+and I checked that it is in SVN and also has all the
+WITH_DIRECT_PRINTING defines.
+
+Concerning printing (Still only implemented for ABC): As I got
+the error I tried to find out what went wrong. This morning
+I have tried to find out why it crashes for me after printing
+failed. Up to know I have no clue why it happens. Also I still
+search for an example using kprinter and the printFiles method
+properly. I changed line 3992 to
+IntPrinter *printer=new IntPrinter(tmpFile + ".ps");
+but it still does not work. Next I'll try something
+on the QStringList parameter of printFiles.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Nov  2 03:29:26 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Nov 2005 20:29:26 -0600
+Subject: [Noteedit-devel] Develop
+Message-ID: <BAY111-F88004F29DC52A74077967B86E0@phx.gbl>
+
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051101/69bb024f/attachment.html>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Nov  6 11:43:06 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Nov 2005 11:43:06 +0100
+Subject: [Noteedit-devel] Export to ABC-Music
+Message-ID: <200511061143.06964.bjoern.mahrt@gmx.de>
+
+Hello
+I think it's very complicated to print the *.not-files. I'd like to write a 
+script to export *.not to *.ps and print it. But I haven't the script to 
+export *.not to *.abc. Can you send it me or give me a address to get it, 
+please.
+Good bye
+Bj?rn Mahrt
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Nov  6 19:27:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 06 Nov 2005 19:27:30 +0100
+Subject: [Noteedit-devel] Export to ABC-Music
+In-Reply-To: <200511061143.06964.bjoern.mahrt@gmx.de>
+References: <200511061143.06964.bjoern.mahrt@gmx.de>
+Message-ID: <436E4B12.7030601@guest.arnes.si>
+
+Hi!
+
+Did you try using NoteEdit itself to export to ABC music, using
+"File->Export->ABC Music"?
+
+However, a new printing code is being worked on (you should be able to
+print directly using 3rd party typesetting program - Lily, ABC etc.,
+using a simple Print preview and Print buttons in NoteEdit) for the
+upcoming 2.8.1 release.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hello
+>I think it's very complicated to print the *.not-files. I'd like to write a 
+>script to export *.not to *.ps and print it. But I haven't the script to 
+>export *.not to *.abc. Can you send it me or give me a address to get it, 
+>please.
+>Good bye
+>Bj?rn Mahrt
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051106/0b6b595c/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Nov  6 23:15:28 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 06 Nov 2005 23:15:28 +0100
+Subject: [Noteedit-devel] Re: Printing probs
+Message-ID: <436E8080.7090800@web.de>
+
+Hi Matevz and all,
+
+I partially fixed the printing probs. There is no more crash when
+trying to print but on my system I still get the error that I have
+no access rights to print the postscript file created.
+
+I tested musicxml export on ballade no.1 with success, so there must
+be something special about your file leading to a crash.
+
+Can you provide a backtrace of your problem with musicxml export ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Nov  7 12:13:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 07 Nov 2005 12:13:09 +0100
+Subject: [Noteedit-devel] Re: Printing probs
+In-Reply-To: <436E8080.7090800@web.de>
+References: <436E8080.7090800@web.de>
+Message-ID: <436F36C5.8010207@guest.arnes.si>
+
+Yes, I traced the problem yesterday and it's something at my place. If I
+run NoteEdit separately, it works fine. But if I run it in KDevelop
+debugger, it crashes. Nothing important I believe.
+
+I'll test the new printing code asap. Do we have any release date for
+2.8.1 set?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Matevz and all,
+>
+>I partially fixed the printing probs. There is no more crash when
+>trying to print but on my system I still get the error that I have
+>no access rights to print the postscript file created.
+>
+>I tested musicxml export on ballade no.1 with success, so there must
+>be something special about your file leading to a crash.
+>
+>Can you provide a backtrace of your problem with musicxml export ?
+>
+>Regards,
+>
+>Reinhard
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051107/c59690d1/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 07:50:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 07:50:29 +0100
+Subject: [Noteedit-devel] LAC 2006
+Message-ID: <4386B435.2010006@web.de>
+
+Hi Matevz, Georg, Csaba and all,
+
+Did you read the announcement from the LAA list beginning of November ?
+Just in case I cite the most important information:
+
+--
+This mail is to announce the calls for papers/music/etc for the 4th
+International Linux Audio Conference (LAC2006).
+See http://lac.zkm.de/2006 for more information.
+
+LAC2006 will take place 27-30 April 2006, again at the ZKM | Institute for
+Music and Acoustics in Karlsruhe, Germany.
+--
+
+Personally I want to participate again as last year but don't want to
+spend my small free time for NoteEdit on writing a paper but continuing
+on the development (especially the scripting engine). But it would be
+in ideal possibility to do an inofficial NoteEdit developer meeting and
+do a workshop or a NoteEdit demo of the new features we have developed
+until then.
+
+I think the conference itself is worth a visit and this years conference
+already had a large inspiration on the development. What do you think ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 07:57:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 07:57:54 +0100
+Subject: [Noteedit-devel] State printing
+Message-ID: <4386B5F2.7080604@web.de>
+
+Current changes on the printing:
+
+Three new methods for print export, preview, print itself. Fixed some
+bugs and added lilypond support. The -o option does not seem to work on
+my system when adding a path.
+
+I'd really prefer to create all files in a temporary directory instead
+in the directory where NoteEdit was started. Yesterday again after
+previewing an abc file a postscript file was not deleted though it
+should have and was left behind on my desktop. It would be nice to
+know if older or more recent version than 2.6.3 of lilypond work for
+you with the -d option.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 08:05:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 08:05:54 +0100
+Subject: [Noteedit-devel] DE Eclipse 3
+Message-ID: <4386B7D2.3030605@web.de>
+
+Hi,
+
+Last weekend I have fought with Eclipse DE so I can use it as an better
+alternative than kdevelop. Everything seemed to work fine except the
+relative new KDE/Autotools Plugin for Eclipse (this project just started
+in August this year as it seems).
+
+I have two problems currently:
+- Everything is compiled in a build directory, so some include pathes
+are missing (probably need to be added to the main Makefile.am)
+- I have found no way to change the configure option. This is of course
+a must have when I want to continue on printing development and enable
+debugging :-)
+
+Here is the work you have to do to get it basically going (Eclipse 3.1):
+
+1) Install eclipse-platform, eclipse-cdt (including the sources/devel,
+   so you be able to update online!). You need to have a java client
+   installed (gcj, kaffeine should work)
+
+2) Grap kde-eclipse from
+   http://kde-eclipse.pwsp.net/index.php?filename=downloads.html
+   and follow the instruction on the page. (On my mandriva system
+   the eclipse directory is in /usr/share/eclipse, on ubuntu it should
+   be /usr/local/lib/eclipse
+
+3) Install subclipse (subversion support for eclipse) from
+   http://subclipse.tigris.org/ either manually as described
+   on the download page or via
+   Help => Software Updates => Find and install =>
+   Search for new features to install => Next
+   New Remote Site => Subclipse; http://subclipse.tigris.org/update; OK
+   Finish
+   Check Subclipse => Next => Accept => Next => Finish => Install
+
+4) If you haven't already a working (and perhabs modified) working
+   directory like me I recommand to setup a new subversion workspace:
+   Window => Open Perspective => SVN Repository Exploring.
+   On the SVN Repository perspective (tab) select the (rightmost)
+   "Add SVN repository" tool button.
+   Use the URL svn://svn.berlios.de/noteedit/trunk (root is
+   svn://svn.berlios.de/noteedit). Enter username / passwd if you
+   want to be able to commit your files.
+
+5) You should now have the trunk as a list of files (containing
+   directories like admin, doc, noteedit).
+   On the svn://svn.berlios.de/noteedit/trunk directory use the
+   right mouse button and select "Check Out As...". Select
+   "Standard KDE Project". On the project Dialog I have entered
+   "NoteEdit" as project Name, "See AUTHORS" as Author, my email
+   adress. After finishing you should see the checkout process.
+
+6) First we want to be able to build NoteEdit. Thanks to the
+   kde-eclipse automates the steps you usually do manually:
+   make -f Makefile.cvs; ./configure --enable-debug; make;
+   (make install). To build the project you can use the build
+   tool button (Create project) or the corresponding context
+   menu entry of "NoteEdit [trunk]" on the C/C++ Projects
+   perspective.
+
+At this point building failed for me. The bad thing is that
+the eclipse does somehow not recognize this fact and reports
+"Success". Also note that a src directory gets by the plugin
+which can be deleted (I don't know why this happens).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 08:30:43 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 08:30:43 +0100
+Subject: [Noteedit-devel] Hotkeys do not work
+Message-ID: <4386BDA3.7070706@web.de>
+
+Hi,
+
+This is from the help forum:
+
+Recently I have noticed a few bugs:
+
+1) noteedit won't compile with g++ > 3.x The current version of g++ in
+many distros is 4.x However, SuSE applies a patch for enabling
+compilation with 4.x
+
+2) when compiled under KDE 3.5 RC1, Qt 3.3.5 or if one compiles version
+2.8.0, the hotkeys cease to work. Compilation works, though.
+
+Any ideas ?
+
+My current system is a SuSE 10.0, KDE 3.4.2 and qt 3.3.4. I would like
+to upgrade to KDE 3.5.x and qt 3.3.5 but then -> noteedit loses a lot of
+functionality due to the lack of hotkey access.
+
+Any ideas ?
+
+Thanks
+Thomas
+
+      By: suamor ( Reinhard Katzmann )
+      RE: Hotkeys do not work [ reply ]
+      2005-Nov-25 07:21
+      1) We have a patch in SVN for gcc4 to work, actually you only need
+a new configure script. The patch 599 should help you though it was a
+bit improved in svn.
+
+      2) I have no qt 3.3.5 and no current KDE on my Mandriva 2006
+system. There was patch 679 to probably fix it but I cannot check it myself.
+
+      I won't upgrade to the latest qt/kde versions until they are
+stable in my distribution (i.e. about february/march 2006). I hope some
+of our developers has the possibility to test it with a more recent
+version. Is there a stable live CD/DVD (KUbuntu/Knoppix) with the latest
+KDE/QT ?
+
+      Regards,
+
+      Reinhard
+
+            By: suamor ( Reinhard Katzmann )
+            RE: Hotkeys do not work [ reply ]
+            2005-Nov-25 07:24
+            I just checked the patch and it does not resolve the hotkeys
+            problem. I'll write a mail on the development list.
+
+It might be the meanwhile deprecated hotkey usage in NoteEdit causing
+problems but I really don't know. It's not difficult to change but
+still quite some work to do it due to the large number of changes
+(mainframewidget.cpp).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 15:34:10 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 15:34:10 +0100
+Subject: [Noteedit-devel] Missing features
+Message-ID: <200511251534.10469.mail@schultzm.de>
+
+Hello list!
+
+I do like noteedit very much, although there are a number of features which 
+should be implemented:
+
+- it should be possible to move the notes horizontally, e.g. if an half note 
+and an eighth note with the same height are placed together (two parts in one 
+line)
+
+- it also should be possible to move a break vertically, if one sets two parts 
+in one line
+
+- the MusixTex-export would be more usable, if the code would be generated 
+using "\selectinstrument\xx" instead of "&" and just "\notes"... Then one 
+could print excerpts with some of the used instruments easily.
+
+- noteedit should support the commands "\caesura" and "\cbreath" (from 
+musixTex)
+
+I have a little (and just a little) experience with programming and would 
+enjoy to help with these features.
+
+Greetings
+Michael
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 16:25:49 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 16:25:49 +0100
+Subject: [Noteedit-devel] Missing features
+In-Reply-To: <200511251534.10469.mail@schultzm.de>
+References: <200511251534.10469.mail@schultzm.de>
+Message-ID: <43872CFD.8080107@guest.arnes.si>
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hello list!
+>
+>I do like noteedit very much, although there are a number of features which 
+>should be implemented:
+>
+>- it should be possible to move the notes horizontally, e.g. if an half note 
+>and an eighth note with the same height are placed together (two parts in one 
+>line)
+>  
+>
+I'm not sure what do you have in mind by 'moving notes horizontally'. Do
+you mean voices? If so, go to Format->Staff properties->Voices and
+create a new voice. You can cycle through voices by left/right clicking
+the rectangle showing the current voice number. Voices are independent
+one of another. For further information about handling multiple voices,
+look at
+http://noteedit.berlios.de/doc/mulvoices.html
+
+>- it also should be possible to move a break vertically, if one sets two parts 
+>in one line
+>  
+>
+Hm... what do you mean by break? NoteEdit writes the whole score into
+single line, without page or line breaks. If you mean rests, you can
+simply place them in individual voices independently one to another.
+
+>- the MusixTex-export would be more usable, if the code would be generated 
+>using "\selectinstrument\xx" instead of "&" and just "\notes"... Then one 
+>could print excerpts with some of the used instruments easily.
+>
+>- noteedit should support the commands "\caesura" and "\cbreath" (from 
+>musixTex)
+>  
+>
+Yes, features like caesura and breath signes are on the wishlist. I
+myself prefer Lilypond typesetting program for printing and publishing
+though (the export filter is also currently the best IMO), but when
+these features will be implemented, the export filters for all the
+supported formats are probably going to be updated as well.
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051125/b750aa08/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Nov 25 21:54:05 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Nov 2005 21:54:05 +0100
+Subject: [Noteedit-devel] State printing
+In-Reply-To: <4386B5F2.7080604@web.de>
+References: <4386B5F2.7080604@web.de>
+Message-ID: <438779ED.3050201@guest.arnes.si>
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Current changes on the printing:
+>
+>Three new methods for print export, preview, print itself. Fixed some
+>bugs and added lilypond support. The -o option does not seem to work on
+>my system when adding a path.
+>  
+>
+Yes, there's a bug in my lily-2.6.3 as well. The problem is that the .ps
+file is created fine, but when it's converted, it's placed in a folder
+where Lily was executed from. I already send a bug report to Lily list.
+
+>I'd really prefer to create all files in a temporary directory instead
+>in the directory where NoteEdit was started. Yesterday again after
+>  
+>
+Me too! I found out that this was the problem from the beginning, why
+NoteEdit crashed when running it in debugger inside KDevelop.
+
+>previewing an abc file a postscript file was not deleted though it
+>should have and was left behind on my desktop. It would be nice to
+>know if older or more recent version than 2.6.3 of lilypond work for
+>you with the -d option.
+>  
+>
+No. 2.6.x version of Lily brought -d option.
+
+Is there a way to print as .pdf as well somewhere (I could add an --pdf
+option beside, but the print command is still hardcoded to .ps right?)?
+If yes, we could place a shortcut to file menu "Export PDF" as well...
+
+
+Regards!
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051125/120b2007/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Nov 26 12:47:42 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 26 Nov 2005 12:47:42 +0100
+Subject: [Noteedit-devel] Re: Missing Features
+In-Reply-To: <20051126110011.31545.72583.Mailman@bat.berlios.de>
+References: <20051126110011.31545.72583.Mailman@bat.berlios.de>
+Message-ID: <200511261247.42855.mail@schultzm.de>
+
+| I'm not sure what do you have in mind by 'moving notes horizontally'. Do
+| you mean voices? If so, go to Format->Staff properties->Voices and
+| create a new voice. You can cycle through voices by left/right clicking
+| the rectangle showing the current voice number. Voices are independent
+| one of another. For further information about handling multiple voices,
+| look at
+| http://noteedit.berlios.de/doc/mulvoices.html
+
+Sorry for being to confusing. The problem I'm referring to is the following: 
+Imagine a line with two voices. Voice 1 has to play 1/2 note, let's say g'. 
+Voice 2 begins at the same time with 1/8 g' (of course there are a number of 
+notes following during the 1/2 note of voice 1, but this doesn't matter). 
+Noteedit sets both g' together, the one of voice 2 with a stem down (and a 
+flag), the one of voice 1 with a stem up. Because one of the notes is an 
+eigtht (could be a quarter too), the head of the note is filled.
+The problem: you can't see, that voice 1 plays an half note, it looks like a 
+quarter note (you have to count the notes to find it out). The usual solution 
+is to move the half note one width of a note to the left or the right, so 
+both g' are lying side by side.
+
+| Hm... what do you mean by break? NoteEdit writes the whole score into
+| single line, without page or line breaks. If you mean rests, you can
+| simply place them in individual voices independently one to another.
+
+Yes, I meant rest (sorry for my english). The problem is, that you can move 
+ALL notes of one voice up or down. But sometimes a voice containes notes in 
+an area, where the rest of the other voice would be placed usually. Then you 
+have to lower or raise the rest to avoid it be placed over the notes.
+
+Greetings
+Michael
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Nov 26 14:02:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 26 Nov 2005 14:02:07 +0100
+Subject: [Noteedit-devel] Re: Missing Features
+In-Reply-To: <200511261247.42855.mail@schultzm.de>
+References: <20051126110011.31545.72583.Mailman@bat.berlios.de> <200511261247.42855.mail@schultzm.de>
+Message-ID: <43885CCF.6000001@guest.arnes.si>
+
+Yes, you're refering to the score layout and rendering problems. I have
+lots of those in my TODO list as well, but unfortunately, there are many
+issues that have to be resolved before (like proper export to the
+current formats, complete migration to QT4 library, MIDI playback bugs
+and more!). Beautifying of notes, better layout and so on are a bit less
+important (although *very* annoying!), but I'm gonna look at them asap.
+
+
+Best wishes!
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>| I'm not sure what do you have in mind by 'moving notes horizontally'. Do
+>| you mean voices? If so, go to Format->Staff properties->Voices and
+>| create a new voice. You can cycle through voices by left/right clicking
+>| the rectangle showing the current voice number. Voices are independent
+>| one of another. For further information about handling multiple voices,
+>| look at
+>| http://noteedit.berlios.de/doc/mulvoices.html
+>
+>Sorry for being to confusing. The problem I'm referring to is the following: 
+>Imagine a line with two voices. Voice 1 has to play 1/2 note, let's say g'. 
+>Voice 2 begins at the same time with 1/8 g' (of course there are a number of 
+>notes following during the 1/2 note of voice 1, but this doesn't matter). 
+>Noteedit sets both g' together, the one of voice 2 with a stem down (and a 
+>flag), the one of voice 1 with a stem up. Because one of the notes is an 
+>eigtht (could be a quarter too), the head of the note is filled.
+>The problem: you can't see, that voice 1 plays an half note, it looks like a 
+>quarter note (you have to count the notes to find it out). The usual solution 
+>is to move the half note one width of a note to the left or the right, so 
+>both g' are lying side by side.
+>
+>| Hm... what do you mean by break? NoteEdit writes the whole score into
+>| single line, without page or line breaks. If you mean rests, you can
+>| simply place them in individual voices independently one to another.
+>
+>Yes, I meant rest (sorry for my english). The problem is, that you can move 
+>ALL notes of one voice up or down. But sometimes a voice containes notes in 
+>an area, where the rest of the other voice would be placed usually. Then you 
+>have to lower or raise the rest to avoid it be placed over the notes.
+>
+>Greetings
+>Michael
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051126/31b33361/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Nov 29 20:20:33 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 29 Nov 2005 20:20:33 +0100
+Subject: [Noteedit-devel] State printing
+In-Reply-To: <438779ED.3050201@guest.arnes.si>
+References: <4386B5F2.7080604@web.de> <438779ED.3050201@guest.arnes.si>
+Message-ID: <438CAA01.2060107@web.de>
+
+Hi Matevz,
+
+> 
+> Yes, there's a bug in my lily-2.6.3 as well. The problem is that the .ps
+> file is created fine, but when it's converted, it's placed in a folder
+> where Lily was executed from. I already send a bug report to Lily list.
+> 
+
+Great, thanks for the hint. Now I can continue implementing the next
+print export.
+
+>>I'd really prefer to create all files in a temporary directory instead
+>>in the directory where NoteEdit was started. Yesterday again after
+>> 
+>>
+> 
+> Me too! I found out that this was the problem from the beginning, why
+> NoteEdit crashed when running it in debugger inside KDevelop.
+> 
+
+Well I changed quite some things on the printing class so I did no
+longer encounter a crash even when this case should happen. Still
+sometimes the postscript files does not get deleted (Happened once
+with abc preview). Don't know really why.
+
+>>previewing an abc file a postscript file was not deleted though it
+>>should have and was left behind on my desktop. It would be nice to
+>>know if older or more recent version than 2.6.3 of lilypond work for
+>>you with the -d option.
+>> 
+>>
+> 
+> No. 2.6.x version of Lily brought -d option.
+
+:-( So for lilypond preview 2.6.x seems to be more or less a
+requirement. Alternatively I could try a one-line command sequence
+or a short temporary bash script cd'ing into the temp directory
+before export/print (preview).
+
+> Is there a way to print as .pdf as well somewhere (I could add an --pdf
+> option beside, but the print command is still hardcoded to .ps right?)?
+> If yes, we could place a shortcut to file menu "Export PDF" as well...
+
+Well currently abc is postscript only and for lilypond I use the pdf
+file. The print file format can currently defined by a file type
+as QString (".pdf", ".ps" ) for the print and print preview methods.
+Export pdf does not really make sense for me, it would be better to
+define the print format in the settings. You can already save the
+file as pdf or postscript by changing the "Name" of the printer
+from EpsonStylC86 (or whatever your printing queue name is) to
+Print To File (PDF / Postscript).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+

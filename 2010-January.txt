@@ -1,0 +1,94 @@
+From noteedit-devel at lists.berlios.de  Mon Jan 11 16:13:02 2010
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 11 Jan 2010 16:13:02 +0100 (CET)
+Subject: [Noteedit-devel] patch: concurrent uptext and downtext in lilypond
+	export
+Message-ID: <alpine.DEB.1.10.1001111612170.25713@dront.rosnix>
+
+Hi!
+
+Yes, I know development have moved on to Canorus, and hope it proceeds 
+smoothly. However, if anyone is interested I have a patched a small bug:
+
+Concurrent text sections or dynamics was not exported properly to 
+lilypond. For example, if you have both a piano and and forte between two 
+notes (perhaps useful when ending a crescendo) only the last "\f" would be 
+exported. In the same way, only the last text section would be exported 
+(for example, no "Allargando" above and "tutti" below possible).
+
+This patch fixes that (by using a list), and allows any number of 
+text/dynamics to be exported. It may be useful also if you, like me, are 
+embedding lilypond syntax in the noteedit source (to get many lilypond 
+features not directly supported by export) and post-processing the 
+exported .ly. (I can send my post-processor if anyone is interested).
+
+regards
+Per Eric Ros?n, Uppsala, Sweden
+--
+^): Per Eric Ros?n http://rosnix.net/~per/
+/   per at rosnix.net GPG 7A7A BD68 ADC0 01E1 F560 79FD 33D1 1EC3 1EBB 7311
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: noteedit-2.8.1-pending_texts.diff
+Type: text/x-diff
+Size: 9764 bytes
+Desc: 
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20100111/f24e4ff6/attachment.diff>
+
+From noteedit-devel at lists.berlios.de  Mon Jan 11 19:54:41 2010
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 11 Jan 2010 19:54:41 +0100
+Subject: [Noteedit-devel] patch: concurrent uptext and downtext in
+ lilypond export
+In-Reply-To: <alpine.DEB.1.10.1001111612170.25713@dront.rosnix>
+References: <alpine.DEB.1.10.1001111612170.25713@dront.rosnix>
+Message-ID: <4B4B73F1.1030602@gmail.com>
+
+Hi Per Eric,
+
+I committed your patch to SVN trunk, R499, thanks. I cannot promise any 
+new releases though, so you should use the current SVN version to check 
+it out (some other minor fixes and translation updates there as well, 
+which were fixed after 2.8.1).
+
+
+Regards.
+-Matev?
+
+On 11. 01. 2010 16:13, noteedit-devel at lists.berlios.de wrote:
+> Hi!
+>
+> Yes, I know development have moved on to Canorus, and hope it proceeds 
+> smoothly. However, if anyone is interested I have a patched a small bug:
+>
+> Concurrent text sections or dynamics was not exported properly to 
+> lilypond. For example, if you have both a piano and and forte between 
+> two notes (perhaps useful when ending a crescendo) only the last "\f" 
+> would be exported. In the same way, only the last text section would 
+> be exported (for example, no "Allargando" above and "tutti" below 
+> possible).
+>
+> This patch fixes that (by using a list), and allows any number of 
+> text/dynamics to be exported. It may be useful also if you, like me, 
+> are embedding lilypond syntax in the noteedit source (to get many 
+> lilypond features not directly supported by export) and 
+> post-processing the exported .ly. (I can send my post-processor if 
+> anyone is interested).
+>
+> regards
+> Per Eric Ros?n, Uppsala, Sweden
+> -- 
+> ^): Per Eric Ros?n http://rosnix.net/~per/
+> /   per at rosnix.net GPG 7A7A BD68 ADC0 01E1 F560 79FD 33D1 1EC3 1EBB 7311
+>
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/noteedit-devel
+>    
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20100111/ce292daf/attachment.html>
+

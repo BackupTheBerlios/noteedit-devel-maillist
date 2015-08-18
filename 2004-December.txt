@@ -1,0 +1,748 @@
+From noteedit-devel-admin at lists.berlios.de  Wed Dec  1 20:49:57 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 01 Dec 2004 20:49:57 +0100
+Subject: [Noteedit-devel] how to build?
+In-Reply-To: <HNEXFE11iom6WQaV2uB00019fd2@hnexfe11.hetnet.nl>
+References: <418B7B44.4000401@guest.arnes.si> <HNEXFE11Lf2fPidcOHu000095ae@hnexfe11.hetnet.nl> <41A7B800.5090105@web.de> <HNEXFE11iom6WQaV2uB00019fd2@hnexfe11.hetnet.nl>
+Message-ID: <41AE2065.2060103@web.de>
+
+Hi Leon,
+
+Thank you for the feedback.
+
+>>Usually make -f Makefile.cvs is enough to create the
+>>configure file. I had success in September by rebuilding
+>>the admin file using kdevelop 3.0.4. I've used exactly these
+>>file on my updated Mandrake system (but not completely moved
+>>to 10.1. official) but wasn't able to compile it. That's why
+>>I decided not to upload these admin files (Beside that there
+>>are just to many different automake version (1.4, 1.7,
+>>1.8, 1.9, I use 1.7)).
+> 
+> 
+> At my system (Fedora Core 3) it does create a configure file, but the build 
+> still fails. The main issue here will probably be how to get NoteEdit 
+> specific options (--with-libtse3, --with-libkmid, --with-oldlily, 
+> --with-printing etc.) working correctly.
+
+What exactly wents wrong when you try to build noteedit ?
+You don't need to specify any options. If you have installed
+the libtse3 devel files (oldlily option is only needed, if
+Fedora Core 3 does use a quite old version of lilypond) usually
+the build should work flawlessly. You could also try the configure
+files delivered with the current release.
+
+>>You can use kdevelop for yourself to create a project and
+>>update the admin files so they match for your system.
+> 
+> 
+> As I am rather unfamiliar with kdevelop and autoconf/automake I am afraid I 
+> won't be able to provide much help here, besides testing. 
+
+Concerning kdevelop: You only need to  import the noteedit files into a 
+new project (this can be even done with svn, though I haven't tried it).
+The project type has to be a "KDE C++ Application (automake based)."
+
+I have no deep insight in the automake process but I'd recommand to
+first try old version of automake (1.4) before trying a more recent version.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Dec  2 00:09:02 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 02 Dec 2004 00:09:02 +0100
+Subject: [Noteedit-devel] how to build?
+In-Reply-To: <HNEXFE11iom6WQaV2uB00019fd2@hnexfe11.hetnet.nl>
+References: <418B7B44.4000401@guest.arnes.si> <HNEXFE11Lf2fPidcOHu000095ae@hnexfe11.hetnet.nl> <41A7B800.5090105@web.de> <HNEXFE11iom6WQaV2uB00019fd2@hnexfe11.hetnet.nl>
+Message-ID: <41AE4F0E.6060900@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> <>At my system (Fedora Core 3) it does create a configure file, but 
+> the build
+> still fails. The main issue here will probably be how to get NoteEdit
+> specific options (--with-libtse3, --with-libkmid, --with-oldlily,
+> --with-printing etc.) working correctly.
+>
+>
+> Best regards, Leon.
+>
+>>I suppose the compatibility problems never will get
+>>really solved. I currently cannot recommand a KDE version
+>>for trying it. I want to try it with kde 3.3.0 as soon as
+>>I've updated my system.
+>>
+>>Best regards,
+>>
+>>Reinhard Katzmann
+>>    
+>>
+I would like to mention here that the Suse 9.2 noteedit.spec- and 
+-.diff-File might help here. I managed only per rpmbuild 
+../noteedit.spec to build it on my x86-64. Once on Suse 9.0 
+configuration worked out of the noteedit sources according to the docu 
+within, without using rpmbuild.
+
+(With this built noteedit I checked whiteangels submitted patch, which 
+looks ok. I like it. If I now only knew to install in parallel lilipond 
+2.0.3 for production purposes. convert-ly fails for me on quite a few 
+files. noteedit has to catch up with lilypond again ...)
+
+Regards,
+Georg.
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Dec  1 22:54:18 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 1 Dec 2004 22:54:18 +0100
+Subject: [Noteedit-devel] Bug #2528 Triplets unfunctional
+Message-ID: <HNEXFE09a27ynSGrnXc00012424@hnexfe09.hetnet.nl>
+
+Hi all,
+
+bug 2528 (Triplets unfunctional) seems like an interesting problem to solve, 
+so I am volunteering to (try to) fix it. In case anyone else is already 
+working on it, please let me know, to prevent duplicate effort. Note: from 
+working on the MusicXML interface I am already reasonably familiar with 
+NoteEdit's data structures.
+
+Before I start I'd like to check if I understand the requirement correctly: I 
+assume the idea is that if the triplet button is active while entering a 
+group of notes, triplets are formed automatically. The sequence of actions 
+would then be:
+enter notes
+press triplet button
+enter notes
+press (deactivate) triplet button
+enter notes
+
+The second group of notes would be turned into a triplet if possible. This 
+should automatically happen as soon as the last note of the group is entered. 
+The first and third group would not be triplets.
+
+Furthermore I assume that the current behaviour (enter notes, select group, 
+press triplet button) should also remain functional.
+
+Would the bug submitter please confirm, deny and/or clarify this ?
+
+Best regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Dec  1 23:44:07 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 1 Dec 2004 23:44:07 +0100
+Subject: [Noteedit-devel] how to build?
+In-Reply-To: <41AE2065.2060103@web.de>
+References: <418B7B44.4000401@guest.arnes.si> <HNEXFE11iom6WQaV2uB00019fd2@hnexfe11.hetnet.nl> <41AE2065.2060103@web.de>
+Message-ID: <HNEXFE119NmXyYmbssk0002a57a@hnexfe11.hetnet.nl>
+
+Hi Reinhard,
+
+summary of problems attached below, part(s) of your mail deleted for brevity. 
+Please note that I will not be able to work on NoteEdit for the next week, so 
+I won't be able to test things quickly.
+
+Regards, Leon.
+
+On Wednesday 01 December 2004 08:49 pm, you wrote:
+> Hi Leon,
+>
+> Thank you for the feedback.
+>
+> What exactly wents wrong when you try to build noteedit ?
+> You don't need to specify any options. If you have installed
+> the libtse3 devel files (oldlily option is only needed, if
+> Fedora Core 3 does use a quite old version of lilypond) usually
+> the build should work flawlessly. You could also try the configure
+> files delivered with the current release.
+
+What I do is simply take the source tree exactly as it is in svn and then run 
+"make -f Makefile.cvs", "./configure" and "make". Shortened (i.e. many lines 
+of similar errors deleted) transcript is attached below. If it helps, I could 
+send the whole transcript in a text file. Lines started with "..." and "->" 
+are my comments.
+
+[lvi at localhost noteedit]$ make -f Makefile.cvs
+This Makefile is only for the CVS repository
+This will be deleted before making the distribution
+
+*** Creating acinclude.m4
+!!! If you get recursion errors from autoconf, it is advisable to set the
+    environment variable M4 to something including "--nesting-limit=500"
+*** Creating list of subdirectories
+*** Creating configure.in
+*** Creating aclocal.m4
+configure.in:67: warning: underquoted definition of FIND_PACKAGE
+  run info '(automake)Extending aclocal'
+  or see http://sources.redhat.com/automake/automake.html#Extending-aclocal
+configure.in:94: warning: underquoted definition of AC_NEW_ARG
+... many similar warnings deleted
+acinclude.m4:4667: warning: underquoted definition of AC_PATH_QTOPIA
+*** Creating configure
+*** Creating config.h template
+*** Creating Makefile templates
+*** Postprocessing Makefile templates
+*** Creating date/time stamp
+*** Finished
+    Don't forget to run ./configure
+    If you haven't done so in a while, run ./configure --help
+
+[lvi at localhost noteedit]$ ./configure --with_printing
+configure: error: unrecognized option: --with_printing
+Try `./configure --help' for more information.
+-> please note that my favorite option is not available anymore
+
+[lvi at localhost noteedit]$ ./configure
+... seems to run OK, ends in:
+checking if po should be compiled... yes
+configure: creating ./config.status
+fast creating ./Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+
+[lvi at localhost noteedit]$ make
+-> runs aclocal (again, same "underquoted" errors)
+-> fails with:
+Making all in autom4te.cache
+make[2]: Entering directory 
+`/ext1/lvi/src/noteedit-build-fc3/noteedit/autom4te.cache'
+make[2]: *** No rule to make target `all'.  Stop.
+
+Finally one remark, in order to support our current users, who may be using 
+old software (such as "old lily"), I think we should try to keep existing 
+build-time configuration options intact for as much as reasonably possible. 
+Simply removing these options would force our users to upgrade, which may or 
+may not be feasible.
+
+>
+> >>You can use kdevelop for yourself to create a project and
+> >>update the admin files so they match for your system.
+> >
+> > As I am rather unfamiliar with kdevelop and autoconf/automake I am afraid
+> > I won't be able to provide much help here, besides testing.
+>
+> Concerning kdevelop: You only need to  import the noteedit files into a
+> new project (this can be even done with svn, though I haven't tried it).
+> The project type has to be a "KDE C++ Application (automake based)."
+
+That's simple enough, thank you for the clarification.
+
+>
+> I have no deep insight in the automake process but I'd recommand to
+> first try old version of automake (1.4) before trying a more recent
+> version.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Dec 13 08:09:58 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 13 Dec 2004 08:09:58 +0100
+Subject: [Noteedit-devel] Partial fix to bug #2528 committed.
+Message-ID: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl>
+
+Hi all,
+
+see title. Please give it a test drive and report any issues to me.
+
+Triplets can now be inserted by pressing the triplet key and entering three 
+notes of the same length. Note that this leaves the last of the three notes 
+selected (red). Depressing the triplet key will break the triplet as long as 
+this note is selected. Thus, first deselect the last note (e.g. by clicking 
+anywhere outside of the staff) before depressing the triplet button.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Dec 14 02:46:03 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 14 Dec 2004 02:46:03 +0100
+Subject: [Noteedit-devel] Partial fix to bug #2528 committed.
+In-Reply-To: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl>
+References: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl>
+Message-ID: <41BE45DB.7050908@schwaben.de>
+
+Hello Leon,
+
+thanks a lot for this fix. It works beautifully.
+
+A small issue I would like to mention: With time values and beams I'm 
+used in insert mode to choose in advance. To match this behavior I felt 
+that it would be better to leave the last triplet in place when 
+depressing 3, even when the last note is still selected. In edit mode 
+opening up the triplet I would expect. It might be a matter of habits, I 
+will just use it and get used to it more.
+
+Regards, Georg
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi all,
+>
+>see title. Please give it a test drive and report any issues to me.
+>
+>Triplets can now be inserted by pressing the triplet key and entering three 
+>notes of the same length. Note that this leaves the last of the three notes 
+>selected (red). Depressing the triplet key will break the triplet as long as 
+>this note is selected. Thus, first deselect the last note (e.g. by clicking 
+>anywhere outside of the staff) before depressing the triplet button.
+>
+>Regards, Leon.
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Dec 14 23:13:57 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 14 Dec 2004 23:13:57 +0100
+Subject: [Noteedit-devel] Partial fix to bug #2528 committed.
+In-Reply-To: <41BE45DB.7050908@schwaben.de>
+References: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl> <41BE45DB.7050908@schwaben.de>
+Message-ID: <HNEXFE10Z4kcltA05Bq00020ac4@hnexfe10.hetnet.nl>
+
+Hi Georg,
+
+thanks for your reply. I do agree with you on not breaking the tuplet when 
+depressing the button. The current behaviour is strange anyway, as you have 
+to select three notes to create a triplet, but select a single note to break 
+it. I will change the button depress behaviour to leave the triplet intact.
+
+Please note that the fix is still incomplete, I would also want to build a 
+triplet when entering two notes of values that can form a triplet (1/4 + 1/8 
+etc.), remove the debugging code and update the documentation (english 
+version only, leaving the german translation to someone else !) accordingly.
+
+I'm not sure how to handle edit mode, will have a look at that.
+
+Best regards, Leon.
+
+On Tuesday 14 December 2004 02:46 am, you wrote:
+> Hello Leon,
+>
+> thanks a lot for this fix. It works beautifully.
+>
+> A small issue I would like to mention: With time values and beams I'm
+> used in insert mode to choose in advance. To match this behavior I felt
+> that it would be better to leave the last triplet in place when
+> depressing 3, even when the last note is still selected. In edit mode
+> opening up the triplet I would expect. It might be a matter of habits, I
+> will just use it and get used to it more.
+>
+> Regards, Georg
+>
+> noteedit-devel-admin at berlios.de wrote:
+> >Hi all,
+> >
+> >see title. Please give it a test drive and report any issues to me.
+> >
+> >Triplets can now be inserted by pressing the triplet key and entering
+> > three notes of the same length. Note that this leaves the last of the
+> > three notes selected (red). Depressing the triplet key will break the
+> > triplet as long as this note is selected. Thus, first deselect the last
+> > note (e.g. by clicking anywhere outside of the staff) before depressing
+> > the triplet button.
+> >
+> >Regards, Leon.
+> >_______________________________________________
+> >Noteedit-devel mailing list
+> >Noteedit-devel at lists.berlios.de
+> >http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Dec 17 09:51:05 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 17 Dec 2004 09:51:05 +0100
+Subject: [Noteedit-devel] Partial fix to bug #2528 committed: feedback needed
+In-Reply-To: <HNEXFE10Z4kcltA05Bq00020ac4@hnexfe10.hetnet.nl>
+References: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl> <41BE45DB.7050908@schwaben.de> <HNEXFE10Z4kcltA05Bq00020ac4@hnexfe10.hetnet.nl>
+Message-ID: <HNEXFE06YvSbN6OZj9m0000fc92@hnexfe06.hetnet.nl>
+
+Georg,
+
+after looking at the triplet code for some time, I came to the conclusion 
+that simply not breaking the triplet when the triplet button is depressed 
+(after entering the third triplet note) will not be feasible.
+
+Currently there is only one way to break a triplet, and that is to select one 
+of the triplet notes and depress the triplet button. Simply disabling the 
+"break triplet" function in this way would leave us without any possibility 
+to break a triplet.
+
+The current behaviour for the similar actions make/break beam, slur and 
+triplet is:
+
+beam handling:
+make: mark block, press beam button
+break: select any of the beamed notes, depress beam button
+
+slur handling:
+make: mark block, press triplet button
+break: select the first slurred note, depress slur button
+
+triplet handling:
+make: mark block, press triplet button
+break: select any of the triplet notes, depress triplet button
+
+note: neither break is influenced by edit mode
+
+Possible solutions could be:
+
+- 1) don't change anything (keep the behaviour as is in CVS right now)
+- 2) break the triplet only when the first note is selected and the button is 
+depressed (thus being consistent with slur behaviour and fixing your problem, 
+same change should then also be made for beams)
+- 3) break the tuplet only when the whole group is selected (by pressing left 
+mouse button and dragging), which is consistent with the way you create a 
+triplet
+
+I believe the third option is least preferable, as it requires too much use 
+of the mouse. We should probably do either 1) or 2).
+
+Please let me know how you feel we should handle this. I would also like to 
+hear from the other readers of this list. Until I have received feedback 
+about this, I won't make any behavioural changes.
+
+Regards, Leon.
+
+On Tuesday 14 December 2004 11:13 pm, you wrote:
+> Hi Georg,
+>
+> thanks for your reply. I do agree with you on not breaking the tuplet when
+> depressing the button. The current behaviour is strange anyway, as you have
+> to select three notes to create a triplet, but select a single note to
+> break it. I will change the button depress behaviour to leave the triplet
+> intact.
+>
+> Please note that the fix is still incomplete, I would also want to build a
+> triplet when entering two notes of values that can form a triplet (1/4 +
+> 1/8 etc.), remove the debugging code and update the documentation (english
+> version only, leaving the german translation to someone else !)
+> accordingly.
+>
+> I'm not sure how to handle edit mode, will have a look at that.
+>
+> Best regards, Leon.
+>
+> On Tuesday 14 December 2004 02:46 am, you wrote:
+> > Hello Leon,
+> >
+> > thanks a lot for this fix. It works beautifully.
+> >
+> > A small issue I would like to mention: With time values and beams I'm
+> > used in insert mode to choose in advance. To match this behavior I felt
+> > that it would be better to leave the last triplet in place when
+> > depressing 3, even when the last note is still selected. In edit mode
+> > opening up the triplet I would expect. It might be a matter of habits, I
+> > will just use it and get used to it more.
+> >
+> > Regards, Georg
+> >
+> > noteedit-devel-admin at berlios.de wrote:
+> > >Hi all,
+> > >
+> > >see title. Please give it a test drive and report any issues to me.
+> > >
+> > >Triplets can now be inserted by pressing the triplet key and entering
+> > > three notes of the same length. Note that this leaves the last of the
+> > > three notes selected (red). Depressing the triplet key will break the
+> > > triplet as long as this note is selected. Thus, first deselect the last
+> > > note (e.g. by clicking anywhere outside of the staff) before depressing
+> > > the triplet button.
+> > >
+> > >Regards, Leon.
+> > >_______________________________________________
+> > >Noteedit-devel mailing list
+> > >Noteedit-devel at lists.berlios.de
+> > >http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> >
+> > _______________________________________________
+> > Noteedit-devel mailing list
+> > Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Dec 17 18:56:28 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 17 Dec 2004 18:56:28 +0100
+Subject: [Noteedit-devel] Partial fix to bug #2528 committed: feedback
+ needed
+In-Reply-To: <HNEXFE06YvSbN6OZj9m0000fc92@hnexfe06.hetnet.nl>
+References: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl> <41BE45DB.7050908@schwaben.de> <HNEXFE10Z4kcltA05Bq00020ac4@hnexfe10.hetnet.nl> <HNEXFE06YvSbN6OZj9m0000fc92@hnexfe06.hetnet.nl>
+Message-ID: <41C31DCC.1060504@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Georg,
+>
+>after looking at the triplet code for some time, I came to the conclusion 
+>that simply not breaking the triplet when the triplet button is depressed 
+>(after entering the third triplet note) will not be feasible.
+>
+>Currently there is only one way to break a triplet, and that is to select one 
+>of the triplet notes and depress the triplet button. Simply disabling the 
+>"break triplet" function in this way would leave us without any possibility 
+>to break a triplet.
+>
+>The current behaviour for the similar actions make/break beam, slur and 
+>triplet is:
+>
+>beam handling:
+>make: mark block, press beam button
+>break: select any of the beamed notes, depress beam button
+>  
+>
+Currently, a way to break a beam is to insert any note or rest inside an 
+already made beam as well. That's a bigger problem I think. Making beams 
+should should stay the way it is now. But breaking should be only 
+available the way you wrote above, but not by inserting notes as well.
+
+>slur handling:
+>make: mark block, press triplet button
+>break: select the first slurred note, depress slur button
+>  
+>
+Making a slur is ok. Breaking it is a bit wierd though. I think it's 
+nonsense to necesserily select the first note and then undo the slur. 
+You should be anywhere in the current slur and should be able to delete 
+the slur by simply pressing the slur button. Anyway, slurs are never 
+nested, so my option is the most feasible IMO.
+
+>triplet handling:
+>make: mark block, press triplet button
+>break: select any of the triplet notes, depress triplet button
+>  
+>
+Making triplets is cool. Breaking them is fine as well IMO. If you 
+insert a note into an already made triplet, the triplet breaks, which is 
+correct IMO.
+
+>Possible solutions could be:
+>- 1) don't change anything (keep the behaviour as is in CVS right now)
+>- 2) break the triplet only when the first note is selected and the button is 
+>depressed (thus being consistent with slur behaviour and fixing your problem, 
+>same change should then also be made for beams)
+>- 3) break the tuplet only when the whole group is selected (by pressing left 
+>mouse button and dragging), which is consistent with the way you create a 
+>triplet
+>
+>  
+>
+First of all, slur, triplet and beam buttons (which reflect the current 
+slur/triplet/beam status of the note) should be updated every time you 
+select a note. I think the option 1) is the most feasible for triplets. 
+I think fixing the slur and beam code is more useful.
+
+>I believe the third option is least preferable, as it requires too much use 
+>of the mouse. We should probably do either 1) or 2).
+>
+>Please let me know how you feel we should handle this. I would also like to 
+>hear from the other readers of this list. Until I have received feedback 
+>about this, I won't make any behavioural changes.
+>
+>Regards, Leon.
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Dec 18 13:20:33 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 18 Dec 2004 13:20:33 +0100
+Subject: [Noteedit-devel] Partial fix to bug #2528 committed: feedback
+ needed
+In-Reply-To: <41C31DCC.1060504@guest.arnes.si>
+References: <HNEXFE06DaCdhxJKocJ00003417@hnexfe06.hetnet.nl> <41BE45DB.7050908@schwaben.de> <HNEXFE10Z4kcltA05Bq00020ac4@hnexfe10.hetnet.nl> <HNEXFE06YvSbN6OZj9m0000fc92@hnexfe06.hetnet.nl> <41C31DCC.1060504@guest.arnes.si>
+Message-ID: <41C42091.3050106@schwaben.de>
+
+Hi Leon, hi all,
+
+I feel I could easily get mixed up with the input modes we have in 
+noteedit. To avoid that let me please try to clarify: We have three 
+distinct modes:
+e) edit mode, E icon is on
+s) select mode, arrow icon is on, or at least no note value on
+i) insert mode, a note value icon is on
+
+In mode e things are working okay, you come to this mode only later when 
+correcting.
+
+Mode s is for navigation, to choose where to start insertions, is 
+usefull at the beginning of input.
+
+Mode i is for hopefully fast input of music. In this mode I sit with the 
+left hand at the computer keyboard to preselect the time value, slur and 
+punktuation, and the right hand hits then the midi keyboard or left 
+mouse button for the note :-)  In this mode I enjoy the new working 
+triplet insertion! Leon, this differs from your description of triplet 
+handling.
+
+>>
+>> The current behaviour for the similar actions make/break beam, slur 
+>> and triplet is:
+>>
+>> beam handling:
+>> make: mark block, press beam button
+>> break: select any of the beamed notes, depress beam button
+>>  
+>>
+> Currently, a way to break a beam is to insert any note or rest inside 
+> an already made beam as well. That's a bigger problem I think. Making 
+> beams should should stay the way it is now. But breaking should be 
+> only available the way you wrote above, but not by inserting notes as 
+> well.
+>
+>> slur handling:
+>> make: mark block, press triplet button
+>> break: select the first slurred note, depress slur button
+>>  
+>>
+> Making a slur is ok. Breaking it is a bit wierd though. I think it's 
+> nonsense to necesserily select the first note and then undo the slur. 
+> You should be anywhere in the current slur and should be able to 
+> delete the slur by simply pressing the slur button. Anyway, slurs are 
+> never nested, so my option is the most feasible IMO.
+>
+>> triplet handling:
+>> make: mark block, press triplet button
+>> break: select any of the triplet notes, depress triplet button
+>>  
+>>
+> Making triplets is cool. Breaking them is fine as well IMO. If you 
+> insert a note into an already made triplet, the triplet breaks, which 
+> is correct IMO.
+>
+"mark block" is something I don't want to do in the first place. It's 
+too slow. I want to insert notes, slurs and beams, and so on, fluently 
+without selecting a block. In mode i the left mouse will always make a 
+new note, errors are corrected with backspace, so watch it:). With slurs 
+that works, which I prefer as the model of completing triplet insertion. 
+I only see now, that beams always need mode s or e, which should be 
+fixed (I rarely used them). Leon, do you see things also like this, and 
+are your thoughts about the inner workings of the code and the 
+feasability still valid? At least for me the description should became 
+clear.
+
+
+
+>> Possible solutions could be:
+>> - 1) don't change anything (keep the behaviour as is in CVS right now)
+>> - 2) break the triplet only when the first note is selected and the 
+>> button is depressed (thus being consistent with slur behaviour and 
+>> fixing your problem, same change should then also be made for beams)
+>> - 3) break the tuplet only when the whole group is selected (by 
+>> pressing left mouse button and dragging), which is consistent with 
+>> the way you create a triplet
+>>
+>>  
+>>
+> First of all, slur, triplet and beam buttons (which reflect the 
+> current slur/triplet/beam status of the note) should be updated every 
+> time you select a note. I think the option 1) is the most feasible for 
+> triplets. I think fixing the slur and beam code is more useful.
+>
+I'm afraid different philosophies collide here. I would formulate like 
+this :)
+In mode e slur, triplet and beam buttons reflect the current state of 
+the selected note.
+In mode i slur, triplet and beam buttons reflect the current state of 
+the next to be inserted note.
+In mode s I don't know, maybe like mode e, better don't care.
+
+And slurs seem to work okay for me, beams need fixing in mode i, only 
+mode i needs fixing ...
+
+>> I believe the third option is least preferable, as it requires too 
+>> much use of the mouse. We should probably do either 1) or 2).
+>
+1) is the best choice of the presented ones.
+
+As another topic: Maybe it helps, and I never saw music not following 
+this: We could state as restriction: 8-th triplets can only start at the 
+beginning of a quarter in an equally quarter-devided bar, and so on.
+
+And this: How can I make a local copy of the repository to take it with 
+my notebook and use svn diff offline to follow you better?
+
+Best Regards,
+Georg.
+
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Dec 29 10:02:48 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 29 Dec 2004 10:02:48 +0100
+Subject: [Noteedit-devel] Bug 2528 fixed
+Message-ID: <HNEXFE07p4XgWZGbRkp00051c46@hnexfe07.hetnet.nl>
+
+Hi all,
+
+After the mail discussion about the user interface changes for bug #2528, I 
+decided not to change it, simply because no workable solution was found.
+
+The triplet is still broken when the button is depressed while the last note 
+is selected. Sorry, Georg.
+
+I did remove my debug code, added the possibility to make two note triplets 
+(e.g. 1/4 + 1/8) the same way and updated the English manual. I now consider 
+bug 2528 closed.
+
+For other user interface changes, please file feature requests or bug reports 
+and I will see what can be done.
+
+Note: I will be on vacation for almost two weeks.
+
+Happy newyear.
+
+Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Dec 29 10:05:26 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 29 Dec 2004 10:05:26 +0100
+Subject: [Noteedit-devel] manual and readme updated
+Message-ID: <HNEXFE10toRaD689cMh0002b627@hnexfe10.hetnet.nl>
+
+Hi all,
+
+as promised I changed the manual, README etc. to reflect the fact that Joerg 
+Anders stopped maintaining NoteEdit and that the new home is on berliOS.
+
+Feel free to make changes, additions etc.
+
+Georg, Reinhard: could any of you please update the german manual as well ?
+
+Best regards, Leon.
+
+

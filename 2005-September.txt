@@ -1,0 +1,1808 @@
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 14:56:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 1 Sep 2005 14:56:40 +0200 (CEST)
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <431219F1.6060709@web.de>
+Message-ID: <freemail.20050801145640.80323@fm6.freemail.hu>
+
+Hi! 
+ 
+Now, it seems, that I'll have some time to continue the cleanup activity. 
+Till now, I was quite overloaded at the office.  
+ 
+I would like to do the following changes on sunday: 
+ 
+Playable::status_ and NPlayable::status2_ cleanup: 
+ 
+1. unify the status_ and status2_ into one variable, as they does 
+    logically the same thing. 
+ 
+2. setter and getter methods instead of public declaration 
+ 
+     The setter, getter methods are very important for the further 
+development, as we could emit a statusChanged(...) signal to inform 
+NChord or NRest about the change. 
+ 
+Setter method: 
+ 
+void setStatus( status_type value, int manner = NPlayable::Set ); 
+    NPlayable::Add - sets the 1-bits in 'value' to 1 in the status. 
+    NPlayable::Del - sets the 1-bits in 'value' to 0 in the status. 
+    NPlayable::Set - sets the status variable to 'value'  
+    NPlayable::Xor - is a logical XOR with the status value 
+ 
+ 
+Getter method: 
+ 
+     status_type status( status_type mask = (status_type)(-1) ); 
+ 
+ 
+PLEASE: 
+ 
+COMMIT EVERY CHANGES YOU MADE INTO THE SVN! 
+ 
+I'll modify the majority of the code again. If you have some code locally 
+stored on your computer, the next commit will be very problematic as the 
+merge won't be easy. 
+ 
+If the Sunday is too early, I could postpone the modifications. 
+ 
+Bye, 
+ 
+    Csaba 
+ 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 17:21:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Sep 2005 17:21:09 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <freemail.20050801145640.80323@fm6.freemail.hu>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>
+Message-ID: <43171C65.90805@guest.arnes.si>
+
+Hi Csaba and others!
+
+Sunday is ok with me. Although I have a few questions/issues I should
+ask about your opinion:
+1) What do you think about status_type type? Is it implemented ok? I
+ask, because I don't know what's the common practice when coming to this
+kind of problems. ie. We needed 64bit integer for the most commonly used
+status flags, so 1) "unsigned long long" was IMO too long to write in
+the code every time and 2) the 64bit integer isn't uniquely declared in
+all OSes/compilers (M$VC has __uint64 for this type I think). So I came
+up with #define status_type idea. Is it ok? Or is there another better way?
+2) The reason why status2 existed from the first place was IMO the upper
+limit of 32 bits for status. Pedal markings would exceed that limit, so
+a new status2 was introduced. Now that this limit was expanded to
+64bits, these two could be simply merged. My question is, what will we
+do, if we exceed 64bits for status type - what else will or won't we
+store in status? IMO, we should store musElement properties which are
+present in status, to separate variables as well. I would propose a
+rule, that status should only include the most commonly used - where
+speed/bitwise operations are critical. All other properties should only
+be stored in separate variable.
+3) Current status's flags positions in status are important. I tried to
+sort out most of the problems, when I migrated from 32bit to 64bit
+integer by using status_type instead of int, but I left some. eg. All
+the dotted/ddotted note methods still use status_type <-> plain integer
+or even char casting, as the dotted note flag is one of the first bits
+of the status, so the methods preserve some memory. I think we should
+force all the methods that do anything with status in any case, to use
+status_type in the future though (eg. int != uint troubles). However,
+what I don't know is again the common practice in this case - is it the
+right thing to do (speed/memory consuption/administration).
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi! 
+> 
+>Now, it seems, that I'll have some time to continue the cleanup activity. 
+>Till now, I was quite overloaded at the office.  
+> 
+>I would like to do the following changes on sunday: 
+> 
+>Playable::status_ and NPlayable::status2_ cleanup: 
+> 
+>1. unify the status_ and status2_ into one variable, as they does 
+>    logically the same thing. 
+> 
+>2. setter and getter methods instead of public declaration 
+> 
+>     The setter, getter methods are very important for the further 
+>development, as we could emit a statusChanged(...) signal to inform 
+>NChord or NRest about the change. 
+> 
+>Setter method: 
+> 
+>void setStatus( status_type value, int manner = NPlayable::Set ); 
+>    NPlayable::Add - sets the 1-bits in 'value' to 1 in the status. 
+>    NPlayable::Del - sets the 1-bits in 'value' to 0 in the status. 
+>    NPlayable::Set - sets the status variable to 'value'  
+>    NPlayable::Xor - is a logical XOR with the status value 
+> 
+> 
+>Getter method: 
+> 
+>     status_type status( status_type mask = (status_type)(-1) ); 
+> 
+> 
+>PLEASE: 
+> 
+>COMMIT EVERY CHANGES YOU MADE INTO THE SVN! 
+> 
+>I'll modify the majority of the code again. If you have some code locally 
+>stored on your computer, the next commit will be very problematic as the 
+>merge won't be easy. 
+> 
+>If the Sunday is too early, I could postpone the modifications. 
+> 
+>Bye, 
+> 
+>    Csaba 
+> 
+>
+>_______________________________________________________________________
+>[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+>
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050901/af5f91fd/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 19:53:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Sep 2005 19:53:53 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <freemail.20050801145640.80323@fm6.freemail.hu>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>
+Message-ID: <43174031.2090304@web.de>
+
+Hi Csiba,
+
+Thanks for the efforts you take into the cleanup.
+As I won't be able to start working on the printing
+dialog before sunday (and it does not directly concert
+your changes) you can go ahead and start modifying the
+code (if no other one disagrees).
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi! 
+>  
+> Now, it seems, that I'll have some time to continue the cleanup activity. 
+> Till now, I was quite overloaded at the office.  
+>  
+> I would like to do the following changes on sunday: 
+>  
+> Playable::status_ and NPlayable::status2_ cleanup: 
+>  
+> 1. unify the status_ and status2_ into one variable, as they does 
+>     logically the same thing. 
+>  
+> 2. setter and getter methods instead of public declaration 
+>  
+>      The setter, getter methods are very important for the further 
+> development, as we could emit a statusChanged(...) signal to inform 
+> NChord or NRest about the change. 
+>  
+> Setter method: 
+>  
+> void setStatus( status_type value, int manner = NPlayable::Set ); 
+>     NPlayable::Add - sets the 1-bits in 'value' to 1 in the status. 
+>     NPlayable::Del - sets the 1-bits in 'value' to 0 in the status. 
+>     NPlayable::Set - sets the status variable to 'value'  
+>     NPlayable::Xor - is a logical XOR with the status value 
+
+Isn't it possible to make the status more simple ? I admit I don't
+know the current interface but the Add/Del/Set/Xor method confuses
+me more than it helps me understanding the interface. I like the
+idea to emit statusChanged signal but that's probably cause I'm
+used to Qt manner of handling events :-).
+
+Can you elaborate how the setStatus method is used and should be
+used in the future ? Maybe I'll have a better interface suggestion
+for these methods after that. I usually prefer working with
+enums when having to use states. If the state handling is really
+so complex that there can be several states once at a time it might
+be useful to categorize these states and write an own method
+for each state category. I think even though this would mean to
+have more methods it would be easier to understand for someone
+who does not use the state code very often like me (probably).
+
+>  
+> Getter method: 
+>  
+>      status_type status( status_type mask = (status_type)(-1) ); 
+>  
+>  
+> PLEASE: 
+>  
+> COMMIT EVERY CHANGES YOU MADE INTO THE SVN! 
+>  
+> I'll modify the majority of the code again. If you have some code locally 
+> stored on your computer, the next commit will be very problematic as the 
+> merge won't be easy. 
+>  
+> If the Sunday is too early, I could postpone the modifications. 
+>  
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 21:13:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Sep 2005 21:13:54 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <43171C65.90805@guest.arnes.si>
+References: <freemail.20050801145640.80323@fm6.freemail.hu> <43171C65.90805@guest.arnes.si>
+Message-ID: <431752F2.9060400@web.de>
+
+Hi Matev?,
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi Csaba and others!
+> 
+> Sunday is ok with me. Although I have a few questions/issues I should
+> ask about your opinion:
+> 1) What do you think about status_type type? Is it implemented ok? I
+> ask, because I don't know what's the common practice when coming to this
+> kind of problems. ie. We needed 64bit integer for the most commonly used
+> status flags, so 1) "unsigned long long" was IMO too long to write in
+> the code every time and 2) the 64bit integer isn't uniquely declared in
+> all OSes/compilers (M$VC has __uint64 for this type I think). So I came
+> up with #define status_type idea. Is it ok? Or is there another better way?
+
+Hmm, still thinking about the Chord "states". We have these many "stats"
+(I wouldn't call them states but something like property). First I find
+the current solution quite horrible to read and to understand. But I 
+have no quick solution for the state "problem". 64bit types are not 
+really portable, the only one I know is "long long" (see how Qt defines
+64bit types). On the other hand I don't know really how deep these
+"states" are part of NoteEdit. I would even prefer a state structure
+to the current way states are handled, something like
+
+typedef struct NMusStatus
+{
+   int state_categ1,
+   int state_categ2
+} NMusStatus_T;
+
+and later we could try to find a better solution for these states
+while still keeping the set/get methods with this structure.
+
+> 2) The reason why status2 existed from the first place was IMO the upper
+> limit of 32 bits for status. Pedal markings would exceed that limit, so
+> a new status2 was introduced. Now that this limit was expanded to
+> 64bits, these two could be simply merged. My question is, what will we
+> do, if we exceed 64bits for status type - what else will or won't we
+> store in status? IMO, we should store musElement properties which are
+> present in status, to separate variables as well. I would propose a
+> rule, that status should only include the most commonly used - where
+> speed/bitwise operations are critical. All other properties should only
+> be stored in separate variable.
+
+After reading your statement I think a structure for storing this
+information is the best solution for the problem. So if NoteEdit has
+a need (like time-critical operations) for bitwise operations on states
+we could keep them as states like now and all other properties could
+be stored in another way.
+
+> 3) Current status's flags positions in status are important. I tried to
+> sort out most of the problems, when I migrated from 32bit to 64bit
+> integer by using status_type instead of int, but I left some. eg. All
+> the dotted/ddotted note methods still use status_type <-> plain integer
+> or even char casting, as the dotted note flag is one of the first bits
+> of the status, so the methods preserve some memory. I think we should
+> force all the methods that do anything with status in any case, to use
+> status_type in the future though (eg. int != uint troubles). However,
+> what I don't know is again the common practice in this case - is it the
+> right thing to do (speed/memory consuption/administration).
+
+On time critical operations I would tend to be able to change state
+operations directly but not on the global state but only local. When
+the time critical operation is over the state can be globally updated
+with one of the get/set methods. This way we gain more data 
+encapsulation while still keeping performance at a high level.
+Encapsulation is also important if we ever want to make NoteEdit more
+modular.
+
+Rule 20 of Effective C++ says: Avoid data members in the practice.
+Also very important for our design: Rule 34: Minimize compilation
+dependencies between files. Even better would be if we would be able
+avoid having all the same state handling throughout NoteEdit. That
+would mean if anyone make a larger change on the State structure
+we would have to change a large portion of the NoteEdit code again.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 21:20:55 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Sep 2005 21:20:55 +0200
+Subject: [Noteedit-devel] [Fwd: Noteedit disappears]
+Message-ID: <43175497.1070306@web.de>
+
+A problem with NoteEdit and Musix.
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: Marcos Guglielmetti <marcospcmusica at yahoo.com.ar>
+Subject: Noteedit disappears
+Date: Thu, 1 Sep 2005 02:44:01 +0200
+Size: 2676
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050901/7a954cd3/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 21:25:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Sep 2005 21:25:07 +0200
+Subject: [Noteedit-devel] Re: Noteedit disappears
+In-Reply-To: <200509010244.03930.marcospcmusica@yahoo.com.ar>
+References: <200509010244.03930.marcospcmusica@yahoo.com.ar>
+Message-ID: <43175593.3020309@web.de>
+
+Hi Marcos,
+
+Thanks for your feedback. Can you elaborate a bit about Musix GNU+Linux?
+Is this a music distribution ? If yes on what kind of Linux
+distribution is it based? If yes is it possible to download
+ISOs (or buy them) anywhere in Europe (Germany preferred for me) ?
+
+Can you describe the setup (Kernel version, sound card, sound
+system (probably alsa) and modules used ? Also did you have
+the tse3 patches (and the latest version) when you compiled
+tse3 ?
+
+Marcos Guglielmetti schrieb:
+> Hello, what could we do? I am the project leader behind Musix GNU+Linux, and I 
+> had included Musix 2.8.0
+> 
+>  Noteedit disappears
+> 
+> Because of a technical issue we had to install the latest versions of many 
+> programs, including Noteedit. We know that Noteedit 2.8.0 disappears (at 
+> least in Musix) if you play something that goes past the right side of the 
+> screen. 
+> 
+> 
+> 	Do you need gdb bt?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep  1 23:27:13 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Sep 2005 23:27:13 +0200
+Subject: [Noteedit-devel] [Fwd: Noteedit disappears]
+In-Reply-To: <43175497.1070306@web.de>
+References: <43175497.1070306@web.de>
+Message-ID: <43177231.2020206@guest.arnes.si>
+
+I think you're reffering to bug #4437 - NoteEdit crashes when playing
+and autoscroll. It was fixed in R349 in SVN. Could you try the latest
+SVN version and test if the crash still remains?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> A problem with NoteEdit and Musix.
+>
+>Hello, what could we do? I am the project leader behind Musix GNU+Linux, and I 
+>had included Musix 2.8.0
+>
+> Noteedit disappears
+>
+>Because of a technical issue we had to install the latest versions of many 
+>programs, including Noteedit. We know that Noteedit 2.8.0 disappears (at 
+>least in Musix) if you play something that goes past the right side of the 
+>screen. 
+>
+>
+>	Do you need gdb bt?
+>
+>thanks ;)
+>
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050901/d7a2aaf3/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Sep  2 11:33:24 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 2 Sep 2005 11:33:24 +0200 (CEST)
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <431752F2.9060400@web.de>
+Message-ID: <freemail.20050802113324.95980@fm14.freemail.hu>
+
+1. unifying the two status types 
+ 
+Q_UINT64 is a predefined QT type for that reason.  
+By the C standards, sizeof( long long ) >= sizeof( long ) 
+ 
+So the long long status variable is not very safe. I think  
+using the QT version is safer. 
+ 
+But on the most unix systems  
+INT64 and UINT64 are supported. I think, it's <sys/types.h> 
+ 
+2. faster access for the status variables 
+ 
+I think, that this can be solved easily by a simple inline declaration 
+ 
+inline status_type status() { return status_; } 
+ 
+I think, that the most compiler will make the inline optimization... 
+ 
+I think, that the speed is only important for the getter methods. 
+The setter method can be slow by emitting the change signal. 
+ 
+3. the status() <-> properties() change is acceptable for me 
+ 
+We cannot add the properties into getSubType() as the length of the note 
+is stored in it. The properties name is very informative. 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep  3 07:43:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 03 Sep 2005 07:43:29 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <freemail.20050801145640.80323@fm6.freemail.hu>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>
+Message-ID: <43193801.4050204@schwaben.de>
+
+Hi,
+
+from me also a thanks for cleaning up the code. For production I
+switched now to our stable branch.
+
+Copying notes will crash in the head revision, easy producable: In a new
+file insert a key, timesig and a few notes. Select a few notes and copy
+them (middle mouse button) to the end. Then I get:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00002aaaaad39a9a in NVoice::pasteAtPosition (this=0x987810,
+    xpos=13365136, clipboard=0x9879a8,
+    complete=true, part_in_current_measure=<value optimized out>,
+    dest_midi_time=<value optimized out>, countof128th=0x7fffffec22dc)
+at muselement.h:77
+/home/rud/svn2/noteedit/trunk/noteedit/muselement.h:77:3739:beg:0x2aaaaad39a9a
+(gdb)
+
+I post it only as it might be some help, as it might be easier to fix it
+immediately, like the lilypond export bug.
+
+A hello to all, especially Csaba this time,
+Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Sep  4 15:37:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 04 Sep 2005 15:37:29 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <43193801.4050204@schwaben.de>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>
+	 <43193801.4050204@schwaben.de>
+Message-ID: <1125841049.21795.1.camel@localhost>
+
+Thanks for the bug report.
+Fix committed into SVN.
+
+Bye,
+
+    Csaba
+
+
+2005-09-03, szo keltez?ssel 07.43-kor noteedit-devel-admin at berlios.de
+ezt ?rta:
+> Hi,
+> 
+> from me also a thanks for cleaning up the code. For production I
+> switched now to our stable branch.
+> 
+> Copying notes will crash in the head revision, easy producable: In a new
+> file insert a key, timesig and a few notes. Select a few notes and copy
+> them (middle mouse button) to the end. Then I get:
+> 
+> Program received signal SIGSEGV, Segmentation fault.
+> 0x00002aaaaad39a9a in NVoice::pasteAtPosition (this=0x987810,
+>     xpos=13365136, clipboard=0x9879a8,
+>     complete=true, part_in_current_measure=<value optimized out>,
+>     dest_midi_time=<value optimized out>, countof128th=0x7fffffec22dc)
+> at muselement.h:77
+> /home/rud/svn2/noteedit/trunk/noteedit/muselement.h:77:3739:beg:0x2aaaaad39a9a
+> (gdb)
+> 
+> I post it only as it might be some help, as it might be easier to fix it
+> immediately, like the lilypond export bug.
+> 
+> A hello to all, especially Csaba this time,
+> Regards,
+> Georg
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Sep  4 19:27:01 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 04 Sep 2005 19:27:01 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <1125841049.21795.1.camel@localhost>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>
+	 <43193801.4050204@schwaben.de>  <1125841049.21795.1.camel@localhost>
+Message-ID: <1125854822.8422.18.camel@localhost>
+
+I only unified the status_ and status2_ variables.
+
+The setter / getter methods were not made.
+
+I had the following problems:
+
+- the name 'status_' should be changed to 'property_' as
+  status_ was misleading
+- for better understandability in each local variable 'status' should
+  be changed to 'property'
+- the 'status' member of NNote should also be changed to 'property'
+- some structure names contain 'status' and this requires also change
+- constants beginning with STAT_ should be changed to PROP_
+
+This requires more than a single day to make, and may cause big
+instability. More than 1000 lines should be changed.
+
+What would be the best solution?
+- don't rename 'status' to 'property',even though 'status' is misleading
+- change 'status' to 'property' only in a small part of the code
+  which may cause naming incoherency
+- make the changes gradually
+- postpone and do it later with a cleaner code
+- don't make setter / getter methods
+...
+
+I think, that this kind of immense changes requires some discussion.
+
+Bye,
+
+    Csaba
+
+2005-09-04, v keltez?ssel 15.37-kor noteedit-devel-admin at berlios.de ezt
+?rta:
+> Thanks for the bug report.
+> Fix committed into SVN.
+> 
+> Bye,
+> 
+>     Csaba
+> 
+> 
+> 2005-09-03, szo keltez?ssel 07.43-kor noteedit-devel-admin at berlios.de
+> ezt ?rta:
+> > Hi,
+> > 
+> > from me also a thanks for cleaning up the code. For production I
+> > switched now to our stable branch.
+> > 
+> > Copying notes will crash in the head revision, easy producable: In a new
+> > file insert a key, timesig and a few notes. Select a few notes and copy
+> > them (middle mouse button) to the end. Then I get:
+> > 
+> > Program received signal SIGSEGV, Segmentation fault.
+> > 0x00002aaaaad39a9a in NVoice::pasteAtPosition (this=0x987810,
+> >     xpos=13365136, clipboard=0x9879a8,
+> >     complete=true, part_in_current_measure=<value optimized out>,
+> >     dest_midi_time=<value optimized out>, countof128th=0x7fffffec22dc)
+> > at muselement.h:77
+> > /home/rud/svn2/noteedit/trunk/noteedit/muselement.h:77:3739:beg:0x2aaaaad39a9a
+> > (gdb)
+> > 
+> > I post it only as it might be some help, as it might be easier to fix it
+> > immediately, like the lilypond export bug.
+> > 
+> > A hello to all, especially Csaba this time,
+> > Regards,
+> > Georg
+> > 
+> > _______________________________________________
+> > Noteedit-devel mailing list
+> > Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> > 
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Sep  4 22:21:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 04 Sep 2005 22:21:37 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <1125854822.8422.18.camel@localhost>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>	 <43193801.4050204@schwaben.de>  <1125841049.21795.1.camel@localhost> <1125854822.8422.18.camel@localhost>
+Message-ID: <431B5751.5070607@schwaben.de>
+
+Hi Csaba,
+
+without grepping yet I would vote for a change to the new name. As you
+mention 1000 lines, I guess you would want to create a script to do this
+change. Could we first create, run, test such a script before we do a
+svn change? This may give more base for a decision or give us the job
+done. What do you think?
+
+Regards,
+Georg
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+>I only unified the status_ and status2_ variables.
+>
+>The setter / getter methods were not made.
+>
+>I had the following problems:
+>
+>- the name 'status_' should be changed to 'property_' as
+>  status_ was misleading
+>- for better understandability in each local variable 'status' should
+>  be changed to 'property'
+>- the 'status' member of NNote should also be changed to 'property'
+>- some structure names contain 'status' and this requires also change
+>- constants beginning with STAT_ should be changed to PROP_
+>
+>This requires more than a single day to make, and may cause big
+>instability. More than 1000 lines should be changed.
+>
+>What would be the best solution?
+>- don't rename 'status' to 'property',even though 'status' is misleading
+>- change 'status' to 'property' only in a small part of the code
+>  which may cause naming incoherency
+>- make the changes gradually
+>- postpone and do it later with a cleaner code
+>- don't make setter / getter methods
+>...
+>
+>I think, that this kind of immense changes requires some discussion.
+>
+>Bye,
+>
+>    Csaba
+>  
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Sep  4 23:52:33 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 04 Sep 2005 23:52:33 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <1125854822.8422.18.camel@localhost>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>	 <43193801.4050204@schwaben.de>  <1125841049.21795.1.camel@localhost> <1125854822.8422.18.camel@localhost>
+Message-ID: <431B6CA1.1010103@guest.arnes.si>
+
+Hi Csaba!
+
+My vote gets the complete name changes throughout the code as well. I
+would advise you though, to copy the current /trunk branch to the
+separate one, eg. /branches/csaba-coderewrite2. This way, if any
+show-stopper bugs occur in your work, you won't influence on the trunk
+branch. But when your code is mature enough, you can simply merge your
+branch with the trunk one. I think there won't be any major changes and
+implementations in this and the following month around status and
+similar internal structures. However, if any minor features get
+implemented, which use status in any way, they can get quickly fixed on
+the merge.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>I only unified the status_ and status2_ variables.
+>
+>The setter / getter methods were not made.
+>
+>I had the following problems:
+>
+>- the name 'status_' should be changed to 'property_' as
+>  status_ was misleading
+>- for better understandability in each local variable 'status' should
+>  be changed to 'property'
+>- the 'status' member of NNote should also be changed to 'property'
+>- some structure names contain 'status' and this requires also change
+>- constants beginning with STAT_ should be changed to PROP_
+>
+>This requires more than a single day to make, and may cause big
+>instability. More than 1000 lines should be changed.
+>
+>What would be the best solution?
+>- don't rename 'status' to 'property',even though 'status' is misleading
+>- change 'status' to 'property' only in a small part of the code
+>  which may cause naming incoherency
+>- make the changes gradually
+>- postpone and do it later with a cleaner code
+>- don't make setter / getter methods
+>...
+>
+>I think, that this kind of immense changes requires some discussion.
+>
+>Bye,
+>
+>    Csaba
+>
+>2005-09-04, v keltez?ssel 15.37-kor noteedit-devel-admin at berlios.de ezt
+>?rta:
+>  
+>
+>>Thanks for the bug report.
+>>Fix committed into SVN.
+>>
+>>Bye,
+>>
+>>    Csaba
+>>
+>>
+>>2005-09-03, szo keltez?ssel 07.43-kor noteedit-devel-admin at berlios.de
+>>ezt ?rta:
+>>    
+>>
+>>>Hi,
+>>>
+>>>from me also a thanks for cleaning up the code. For production I
+>>>switched now to our stable branch.
+>>>
+>>>Copying notes will crash in the head revision, easy producable: In a new
+>>>file insert a key, timesig and a few notes. Select a few notes and copy
+>>>them (middle mouse button) to the end. Then I get:
+>>>
+>>>Program received signal SIGSEGV, Segmentation fault.
+>>>0x00002aaaaad39a9a in NVoice::pasteAtPosition (this=0x987810,
+>>>    xpos=13365136, clipboard=0x9879a8,
+>>>    complete=true, part_in_current_measure=<value optimized out>,
+>>>    dest_midi_time=<value optimized out>, countof128th=0x7fffffec22dc)
+>>>at muselement.h:77
+>>>/home/rud/svn2/noteedit/trunk/noteedit/muselement.h:77:3739:beg:0x2aaaaad39a9a
+>>>(gdb)
+>>>
+>>>I post it only as it might be some help, as it might be easier to fix it
+>>>immediately, like the lilypond export bug.
+>>>
+>>>A hello to all, especially Csaba this time,
+>>>Regards,
+>>>Georg
+>>>
+>>>_______________________________________________
+>>>Noteedit-devel mailing list
+>>>Noteedit-devel at lists.berlios.de
+>>>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>>>
+>>>      
+>>>
+>>_______________________________________________
+>>Noteedit-devel mailing list
+>>Noteedit-devel at lists.berlios.de
+>>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>>
+>>    
+>>
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050904/1b410786/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep  5 20:02:56 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 05 Sep 2005 20:02:56 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <431B5751.5070607@schwaben.de>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>	 <43193801.4050204@schwaben.de>  <1125841049.21795.1.camel@localhost> <1125854822.8422.18.camel@localhost> <431B5751.5070607@schwaben.de>
+Message-ID: <431C8850.1090805@web.de>
+
+Hi Georg,
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi Csaba,
+> 
+> without grepping yet I would vote for a change to the new name. As you
+> mention 1000 lines, I guess you would want to create a script to do this
+> change. Could we first create, run, test such a script before we do a
+> svn change? This may give more base for a decision or give us the job
+> done. What do you think?
+> 
+> Regards,
+> Georg
+> 
+> 
+> 
+
+A script doing the work is a great idea! As we have several nice
+programs (such as sed) doing such a work, it would simplify the
+process. We only have to pay attention for Similar names like
+statusBar and statusBarTender. First the long words need to be
+renamed and after that the short ones. Also I don't dare to judge
+if there are other status things inside NoteEdit except those
+belonging to the Notes itself.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep  5 19:55:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 05 Sep 2005 19:55:19 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <1125854822.8422.18.camel@localhost>
+References: <freemail.20050801145640.80323@fm6.freemail.hu>	 <43193801.4050204@schwaben.de>  <1125841049.21795.1.camel@localhost> <1125854822.8422.18.camel@localhost>
+Message-ID: <431C8687.1040209@web.de>
+
+Hi Csaba,
+
+I hope I'm not too late with my opinion to your status -> property
+changes. I was busy with practicing for an opera by Cherubini being
+performed in the course of the next three weeks.
+
+> This requires more than a single day to make, and may cause big
+> instability. More than 1000 lines should be changed.
+> 
+> What would be the best solution?
+> - don't rename 'status' to 'property',even though 'status' is misleading
+> - change 'status' to 'property' only in a small part of the code
+>   which may cause naming incoherency
+> - make the changes gradually
+> - postpone and do it later with a cleaner code
+> - don't make setter / getter methods
+> ...
+
+Usually I would prefer a gradual change but in this case I think the
+"Hauruck" method (doing the big change at once) would be the best
+thing in a manner like Matevz suggested. Gradual changed would only
+make sense if we could make a large step into better encapsulation
+in the same time. But I think such changes will take a much longer
+time than the code restructuring you are doing currently.
+
+And thanks for the fix of the bug Georg reported.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep  5 20:38:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 5 Sep 2005 20:38:14 +0200 (CEST)
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <431C8850.1090805@web.de>
+Message-ID: <freemail.20050805203814.95382@fm16.freemail.hu>
+
+I didn't start the change yet. 
+I've never created any branch on SVN, so I have to look after how to do it.  
+ 
+I won't use scripts as scripts can change undesired lines, and in a such 
+complex code, one could make big mistakes. 
+ 
+On a separate branch, renaming will not be too difficult task, but requires 
+some time. 
+ 
+Bye, 
+ 
+    Csaba 
+ 
+
+_______________________________________________________________________
+[freemail] extra 1GB-os postafi?kkal, ?nnek m?r van? http://freemail.hu
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep  5 21:26:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 05 Sep 2005 21:26:11 +0200
+Subject: [Noteedit-devel] Re: Noteedit disappears
+In-Reply-To: <200509012224.39462.marcospcmusica@yahoo.com.ar>
+References: <200509010244.03930.marcospcmusica@yahoo.com.ar> <43175593.3020309@web.de> <200509012224.39462.marcospcmusica@yahoo.com.ar>
+Message-ID: <431C9BD3.6060906@web.de>
+
+Hi Marcos,
+
+Thanks for your detailed answer to my questions. I also forwarded
+it to the NoteEdit Mailing lists in case other are interested in
+the Musix distribution as well.
+
+
+Marcos Guglielmetti schrieb:
+> Hola Reinhard:
+> 
+>>Hi Marcos,
+>>
+>>Thanks for your feedback. Can you elaborate a bit about Musix GNU+Linux?
+> 
+> 
+> 
+> 	Of course, we are transtaling docs, because we are all almos argetinian 
+> people.
+> 
+> 	But you could take a look into
+> 
+> https://www.musix.org.ar/wiki/index.php/Documentation
+> 
+> 	I know, this is too general for you, so, I will explain a bit more.
+> 
+> 
+>>Is this a music distribution ? 
+> 
+> 
+> 	Yes, for musicians
+> 
+> 
+>>If yes on what kind of Linux 
+>>distribution is it based?
+> 
+> 
+> 	Knoppix 3.8.2 spanish ver. We are doing a hard work translating documents and 
+> scripts to english, it is almost done, and we have a release candidate now. 
+> In a few ours it will be available by FTP and torrent: Musix 0.26 rc20
+> 	
+> 
+> 
+>>If yes is it possible to download 
+>>ISOs (or buy them) anywhere in Europe (Germany preferred for me) ?
+> 
+> 
+> 	Yes. The Musix 0.23 CD comes with noteedit  2.7.4-1.demudi1 or 2.7.1-2 0
+>  from debian, i dont remember.
+> 
+> 	But Musix 0.26 has Noteedit 2.8.0, from your tarball
+> 
+> 
+> 
+>>Can you describe the setup (Kernel version,
+> 
+> 
+> 	Musix 0.26:
+> 	The live CD comes with kernel 2.6.11 from knoppix, but if you install it on 
+> your HD I will install the kernel-multimedia 2.6.12-3 from DeMuDi too.
+> 
+> 
+>>sound card, sound 
+>>system (probably alsa) and modules used ? 
+> 
+> 
+> 	ALSA, just alsa, with a lot of apps using JACK: ardour, rosegarden, jamin, 
+> creox, jack-rack, a lot of synths, etc.
+> 
+> 
+>>Also did you have 
+>>the tse3 patches (and the latest version) when you compiled
+>>tse3 ?
+> 
+> 
+> I am looking for the changelog... here it is:
+> 
+> ^^^^^^^^^^^^^^^^^^^^
+> http://tse3.sourceforge.net/
+> http://sourceforge.net/project/showfiles.php?group_id=3700&package_id=3650
+> 
+> ./configure
+> 
+> make
+> 
+> error in make: violaci?n de segmento, tse3play did not get configured
+> 
+> make install
+> 
+> anyhow, it had been installed:
+> 
+> ls /usr/lib/libtse*
+> /usr/lib/libtse3  /usr/lib/libtse3.0  /usr/lib/libtse3.0.0.0  /usr/lib/libtse3.la
+> ^^^^^^^^^^^^^^^^^^^^
+> 
+> Maybe it could be this "tse3play did not get configured" subject?
+> 
+
+Concerning the patches for tse3: There are compile fixes for gcc 3.4 and 
+amd64 as well as a fix for alsa1.x and sustain. Also NoteEdit 2.8.0 will 
+not compile with gcc 4.0 (fixed in the SVN repository of NoteEdit).
+
+To really find out what went wrong with tse3play configuring you would
+need to either show us your config.log or check the output from
+configure (i.e. what was missing when tse3 was configured).
+
+Concerning the problem that 2.8.0 disappears: This is already fixed in 
+the SVN repository in case you did not read the corresponding mail on 
+the NoteEdit ML.
+
+Just one question is left: How does Musix compare to Demudi or better
+asked wherein do your goals differ from other audio distributions ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep  5 22:37:36 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 05 Sep 2005 22:37:36 +0200
+Subject: [Noteedit-devel] Code restructuring, step 2
+In-Reply-To: <freemail.20050805203814.95382@fm16.freemail.hu>
+References: <freemail.20050805203814.95382@fm16.freemail.hu>
+Message-ID: <431CAC90.90502@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+>I didn't start the change yet. 
+>I've never created any branch on SVN, so I have to look after how to do it.  
+>  
+>
+Something like:
+$ svn copy svn+ssh://ckarai at svn.berlios.de/svnroot/repos/noteedit/trunk
+svn+ssh://ckarai at svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2
+
+should directly do the trick. You will get a new revision number then
+and on the next svn update, local sources will get updated as well.
+
+Whenever you are going to apply your changes to the mainstream trunk,
+you should use:
+$svn merge -r <the_revision_number,when_your_branch_was_created>:HEAD
+svn+ssh://ckarai at svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2
+svn+ssh://ckarai at svn.berlios.de/svnroot/repos/noteedit/trunk
+
+This will make a diff from revision
+<the_revision_number,when_your_branch_was_created> to the latest one of
+/csaba_coderewrite2, and apply that diff to the /trunk.
+
+And if you want to delete your branch some day (when the merge is
+complete), use:
+$svn delete
+svn+ssh://ckarai at svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2
+
+
+Regards.
+- Matev?
+
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050905/6492bd48/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Sep  9 14:58:17 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 09 Sep 2005 14:58:17 +0200
+Subject: [Noteedit-devel] Concerning print support
+Message-ID: <432186E9.3000806@web.de>
+
+Hi,
+
+I looked at both the old print support and the goals I have
+with printing myself. As a first step I decided to use the
+KDE printing support already integrated into NoteEdit and
+only expand it so it shows the selected music system print
+options instead of only abcmusic options.
+
+Though there is a preview integrated into this dialog I
+decided to keep the direct print preview menu entry as
+it is more convenient for the user to use that dialog.
+Also I will keep the settings for the print preview as
+described on the NoteEdit wiki.
+
+Later if we migrate to Qt4 we need to replace the
+print dialog itself as well as several other KDE dialogs.
+
+Status:
+
+- You still have to enable printing with --with-printing
+to test the current printing and later the enhanced
+printing. As soon as a certain stability is reached I
+will try to enable printing by default.
+- Nothing in SVN yet (only tested the settings UI shortly)
+- Settings UI is finished excepts labels and some layout changes
+- menu entries done
+- saving settings done
+- default settings done
+- resources for printing options done
+- started expanding print class / methode
+
+ToDo:
+- finish print class / methods
+- finish Settings UI
+
+Also some other things I noted:
+- Options are only saved when the NResource obect is
+   destroyed (i.e. apply does not save the settings)
+- NResources are unstructered
+- direct access to NResource variables
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Sep  9 15:19:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 09 Sep 2005 15:19:14 +0200
+Subject: [Noteedit-devel] Saving of Wiki article fails
+Message-ID: <43218BD2.6040403@web.de>
+
+Hi Matevz,
+
+I cannot save my changed article:
+
+http://193.95.242.3/NoteEditWiki/index.php?title=RFE_-_New_printing_possibilities&action=submit
+
+This is the changed article:
+
+== Settings for printing (preview) ==
+The following settings have to be added to the settings for printing 
+(%s: Filename of the exported file)
+# The program used for print preview and possible options (default: gv %s)
+# The external typesetting program used for printing (chosen by a Combo Box)
+# The invokation of the external typesetting program  (Midi and MusicXML 
+can't be printed directly AFAIK)
+# If a custom program is used for printing, use the defined export format
+# The print program used for printing (default: lpr %s) (this setting is 
+not needed for KDE, it might be needed when we migrate to Qt4)
+# Save the options shown for every type of external typesetting program ?
+default options for every program (to be added)
+# ABC: abcm2ps %s
+# Lilypond: lilypond %s
+# MusiXTeX: musixtex %s ; musixflx %s; musixtex %s (don't know if this 
+is still current with the latest musixtex versions)
+# PMX: pmx %s (script to execute pmxab and musixtex developed by me)
+
+Any ideas what went wrong ? I don't get any error messages, I only get
+at the preview page all of the time. There's no difference pressing
+Save or preview for me.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 10 20:32:38 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 10 Sep 2005 20:32:38 +0200
+Subject: [Noteedit-devel] Saving of Wiki article fails
+In-Reply-To: <43218BD2.6040403@web.de>
+References: <43218BD2.6040403@web.de>
+Message-ID: <432326C6.5010203@guest.arnes.si>
+
+It worked fine here, your article was commited. I think there was a disk
+space problem (the disk was 100% full for the user for 2 days). I
+cleaned up some temporary stuff from the server, so there's ~1GB free again.
+
+Sorry for the inconvenience.
+
+
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi Matevz,
+>
+> I cannot save my changed article:
+>
+> http://193.95.242.3/NoteEditWiki/index.php?title=RFE_-_New_printing_possibilities&action=submit
+>
+>
+> This is the changed article:
+>
+> == Settings for printing (preview) ==
+> The following settings have to be added to the settings for printing
+> (%s: Filename of the exported file)
+> # The program used for print preview and possible options (default: gv
+> %s)
+> # The external typesetting program used for printing (chosen by a
+> Combo Box)
+> # The invokation of the external typesetting program  (Midi and
+> MusicXML can't be printed directly AFAIK)
+> # If a custom program is used for printing, use the defined export format
+> # The print program used for printing (default: lpr %s) (this setting
+> is not needed for KDE, it might be needed when we migrate to Qt4)
+> # Save the options shown for every type of external typesetting program ?
+> default options for every program (to be added)
+> # ABC: abcm2ps %s
+> # Lilypond: lilypond %s
+> # MusiXTeX: musixtex %s ; musixflx %s; musixtex %s (don't know if this
+> is still current with the latest musixtex versions)
+> # PMX: pmx %s (script to execute pmxab and musixtex developed by me)
+>
+> Any ideas what went wrong ? I don't get any error messages, I only get
+> at the preview page all of the time. There's no difference pressing
+> Save or preview for me.
+>
+> Regards,
+>
+> Reinhard
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050910/5d71c8cc/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Sep 20 17:01:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 20 Sep 2005 17:01:29 +0200
+Subject: [Noteedit-devel] Debian just got 2.8.0
+Message-ID: <43302449.9010408@guest.arnes.si>
+
+Hi all.
+
+Debian just got NoteEdit version 2.8.0 into their unstable repository.
+Hurray, it was about time:).
+
+
+Regards!
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050920/b8abeb95/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Sep 20 20:17:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 20 Sep 2005 20:17:52 +0200
+Subject: [Noteedit-devel] Debian just got 2.8.0
+In-Reply-To: <43302449.9010408@guest.arnes.si>
+References: <43302449.9010408@guest.arnes.si>
+Message-ID: <43305250.8010207@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>Hi all.
+>
+>Debian just got NoteEdit version 2.8.0 into their unstable repository.
+>Hurray, it was about time:).
+>
+>
+>Regards!
+>- Matev?
+>
+>  
+Gratulations!
+
+On OpenSuse RC1 they're still on 2.7.3, pity. At least they have
+lilypond 2.6.2, and I had to load the module snd-seq for the midi system
+by hand.
+
+Maybe I'll look in that some more.
+Best Regards,
+Georg.
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Sep 20 20:24:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 20 Sep 2005 20:24:45 +0200
+Subject: [Noteedit-devel] Debian just got 2.8.0
+In-Reply-To: <43302449.9010408@guest.arnes.si>
+References: <43302449.9010408@guest.arnes.si>
+Message-ID: <433053ED.2090600@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi all.
+> 
+> Debian just got NoteEdit version 2.8.0 into their unstable repository.
+> Hurray, it was about time:).
+> 
+> 
+> Regards!
+> - Matev?
+> 
+
+Great to hear! My Mandriva distribution was updated end of August.
+It includes the gcc4 patch, so it will get widely tested ;-)
+Now the only question is shell I spend my time upgrading my distribution
+or for developing on NoteEdit ? ;-)
+
+Oh and btw (and completely offtopic): Printing development has
+continued (working on the print function itself). But still not
+finished, getting closer every day. On Friday I hope to have
+some extra hours time to finish it.
+
+Regards
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Sep 21 14:54:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 21 Sep 2005 14:54:19 +0200
+Subject: [Noteedit-devel] Debian just got 2.8.0
+In-Reply-To: <433053ED.2090600@web.de>
+References: <43302449.9010408@guest.arnes.si> <433053ED.2090600@web.de>
+Message-ID: <433157FB.5050603@guest.arnes.si>
+
+
+> Oh and btw (and completely offtopic): Printing development has
+> continued (working on the print function itself). But still not
+> finished, getting closer every day. On Friday I hope to have
+> some extra hours time to finish it.
+
+Great.
+
+I'm currently not developing NoteEdit much, but composing a bit (this
+time a more romantic piece... I'll see, if it's public-worth :)).
+However I'm memorizing tons of bugs (you can't imagine how much
+small-medium bugs hunting we still have), so I'll have something to do,
+when I come to coding.
+
+About printing, I thought we're just going to implement a shortcut for
+"lilypond exported_file.ly --pdf exported_file.pdf" and "kprinter
+exported_file.pdf"? I hope you didn't join the Lily-devel team and
+developing a frontend;)!
+
+
+Regards,
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050921/27c60a38/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Sep 23 02:23:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 22 Sep 2005 19:23:32 -0500
+Subject: [Noteedit-devel] Option to use abcm2ps when printing?
+Message-ID: <43334B04.2080800@charter.net>
+
+I hope that you include the option to print using abcm2ps.  Lilypond 
+does produces great output with lyrics.
+Galen
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Sep 23 13:11:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 23 Sep 2005 06:11:32 -0500
+Subject: [Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #172 - 1 msg
+In-Reply-To: <20050923100032.615.81991.Mailman@bat.berlios.de>
+References: <20050923100032.615.81991.Mailman@bat.berlios.de>
+Message-ID: <4333E2E4.2060308@charter.net>
+
+>
+>I hope that you include the option to print using abcm2ps.  Lilypond 
+>does
+>
+not
+
+> produces great output with lyrics.
+>Galen
+>  
+>
+Correction:  Lilypond does not produce great output with lyrics.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 26 19:51:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Sep 2005 19:51:52 +0200
+Subject: [Noteedit-devel] Re: Upgrading noteedit to from Qt2 to Qt3
+In-Reply-To: <200509261129.j8QBTP0G028891@unicorn.berlios.de>
+References: <200509261129.j8QBTP0G028891@unicorn.berlios.de>
+Message-ID: <43383538.1050402@web.de>
+
+Hi Henri,
+
+Henri Manson schrieb:
+> Hi there,
+> 
+> I just checked out noteedit from svn. I have a Qt3
+> development set that no longer contains the legacy Qt2
+> Collection Classes (QArray, QList etc.). I now have upgraded
+> the source to use the new Collection Classes (QMemArray,
+> QPtrList etc.). I also have tweaked lilytest.cpp a bit. Can
+> you check in my modifications?
+> 
+
+We would be glad to integrate your changes. Either post
+them on the NoteEdit ML or as a patch on the developer page
+of NoteEdit.
+
+Best Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 26 19:57:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Sep 2005 19:57:46 +0200
+Subject: [Noteedit-devel] [Fwd: revision of pmx-export]
+Message-ID: <4338369A.6000007@web.de>
+
+Thanks for your patch, forwarded to the NoteEdit ML for discussion.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: olagunde at start.no
+Subject: revision of pmx-export
+Date: Fri, 23 Sep 2005 12:43:57 +0200
+Size: 49622
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050926/66267c2c/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 26 20:00:44 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Sep 2005 20:00:44 +0200
+Subject: [Noteedit-devel] Option to use abcm2ps when printing?
+In-Reply-To: <43334B04.2080800@charter.net>
+References: <43334B04.2080800@charter.net>
+Message-ID: <4338374C.5090300@web.de>
+
+Hi Galen,
+
+noteedit-devel-admin at berlios.de schrieb:
+> I hope that you include the option to print using abcm2ps.  Lilypond 
+> does produces great output with lyrics.
+> Galen
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+I cannot say much about Lilypond lyrics -> Georg ?
+Which version of lilypond did you use for comparison ?
+
+Back to the subect: Actually printing using abcm2ps is the
+first print thing I've nearly fully implemented up to now.
+The last thing left to do here is to replace %s by the filename
+to print.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 26 20:00:44 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Sep 2005 20:00:44 +0200
+Subject: [Noteedit-devel] Option to use abcm2ps when printing?
+In-Reply-To: <43334B04.2080800@charter.net>
+References: <43334B04.2080800@charter.net>
+Message-ID: <4338374C.5090300@web.de>
+
+Hi Galen,
+
+noteedit-devel-admin at berlios.de schrieb:
+> I hope that you include the option to print using abcm2ps.  Lilypond 
+> does produces great output with lyrics.
+> Galen
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+I cannot say much about Lilypond lyrics -> Georg ?
+Which version of lilypond did you use for comparison ?
+
+Back to the subect: Actually printing using abcm2ps is the
+first print thing I've nearly fully implemented up to now.
+The last thing left to do here is to replace %s by the filename
+to print.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 26 22:08:55 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Sep 2005 22:08:55 +0200
+Subject: [Noteedit-devel] [ Patch #627 ] Update Qt Collection Class names and #include's
+Message-ID: <43385557.2040302@web.de>
+
+Hi,
+
+This patch was uploaded by Henri Manson this evening. I haven't
+looked into it up to now, I just wanted to inform you in case
+anyone wants to inspect it.
+
+Regards,
+
+Reinhar
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Sep 28 02:54:17 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 28 Sep 2005 02:54:17 +0200
+Subject: [Noteedit-devel] [ Patch #627 ] Update Qt Collection Class names
+ and #include's
+In-Reply-To: <43385557.2040302@web.de>
+References: <43385557.2040302@web.de>
+Message-ID: <4339E9B9.1050700@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> This patch was uploaded by Henri Manson this evening. I haven't
+> looked into it up to now, I just wanted to inform you in case
+> anyone wants to inspect it.
+>
+This patch of Henri Manson is a good one. Everything works still as
+before. I no one else is doing it, I could check it in tomorrow night.
+It's good to have the lift to a clean qt3.
+
+Thanks,
+Best Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Sep 28 16:21:44 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 28 Sep 2005 16:21:44 +0200 (CEST)
+Subject: [Noteedit-devel] Merging the status->property changes into the main branch
+Message-ID: <freemail.20050828162144.89941@fm12.freemail.hu>
+
+Hi! 
+ 
+I've nearly finished the status->property change on the cleanup branch. 
+Please check, if you are interested, and decide the time of the merge. 
+ 
+Bye, 
+ 
+    Csaba 
+
+____________________________________________________________________________
+Dj Tiesto exkluz?v albuma a T-Online Zene?ruh?zban! T?ltsd le te is!
+http://zenearuhaz.t-online.hu/
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep 29 03:18:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 29 Sep 2005 03:18:30 +0200
+Subject: [Noteedit-devel] Merging the status->property changes into the
+ main branch
+In-Reply-To: <freemail.20050828162144.89941@fm12.freemail.hu>
+References: <freemail.20050828162144.89941@fm12.freemail.hu>
+Message-ID: <433B40E6.5000003@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>Hi! 
+> 
+>I've nearly finished the status->property change on the cleanup branch. 
+>Please check, if you are interested, and decide the time of the merge. 
+> 
+>Bye, 
+> 
+>    Csaba 
+>
+Hi Csaba, and everybody,
+
+I checked code_cleanup 363, and it seems to work. Had once a KDE-crash
+at lilypond export, but this might not be related, because I'm running
+on a patched up realtime kernel.
+I would merge code_cleanup and only then put Henri's patch on top of
+yours, the sooner the better. On revision 363 we get only about a dozen
+fails, which should be doable. I can't execute Matevz' merge
+instructions in his 05.09.2005 mail, because I can't find out the
+revision of the branch, and, if you would like, go ahead with it.
+
+Hopefully this will not interfer with Reinhards printing too much.
+
+Regards,
+Georg.
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep 29 00:13:49 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 29 Sep 2005 00:13:49 +0200
+Subject: [Noteedit-devel] Merging the status->property changes into the main branch
+Message-ID: <20050928_221349_062990.matevz.jekovec@guest.arnes.si>
+
+> Hi! 
+>  
+> I've nearly finished the status->property change on the cleanup branch. 
+> Please check, if you are interested, and decide the time of the merge. 
+>  
+> Bye, 
+>  
+>     Csaba 
+
+Hi Csaba!
+
+Unfortunately I won't be able to check and test your work until Monday
+(We've got 4 day trip to Italy with the choir). The other bad (could
+it be worse?) thing that happened to me was, that I didn't have my
+portable computer for a week (motherboard and battery went out.), so I
+wasn't able to test any progress so far at all... However, when I
+return, I'll test it thoroughly and report any anomalies:). 
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep 29 10:04:31 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 29 Sep 2005 10:04:31 +0200 (CEST)
+Subject: [Noteedit-devel] Merging the status->property changes into the main branch
+In-Reply-To: <20050928_221349_062990.matevz.jekovec@guest.arnes.si>
+Message-ID: <freemail.20050829100431.44236@fm17.freemail.hu>
+
+Hi! 
+ 
+We are not in hurry, so we could wait Matev? before merging the changes. 
+I also think, that Henri's patch could wait, as this may make the merge 
+much difficult. 
+ 
+> I would merge code_cleanup and only then put Henri's patch on top of 
+> yours, the sooner the better. On revision 363 we get only about a dozen 
+> fails, which should be doable. I can't execute Matevz' merge 
+> instructions in his 05.09.2005 mail, because I can't find out the 
+> revision of the branch, and, if you would like, go ahead with it. 
+ 
+I think, that "dozen fails" is not too much and can easily be repaired.  
+ 
+ 
+The original revision number was 353 from which the branch was created. 
+The branch creation increased the revision number of each file to 354. 
+ 
+I think that 353 is the correct number. 
+ 
+Bye, 
+ 
+    Csaba 
+ 
+
+____________________________________________________________________________
+Dj Tiesto exkluz?v albuma a T-Online Zene?ruh?zban! T?ltsd le te is!
+http://zenearuhaz.t-online.hu/
+
+

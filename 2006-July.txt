@@ -1,0 +1,189 @@
+From noteedit-devel-admin at lists.berlios.de  Thu Jul  6 05:12:19 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 6 Jul 2006 00:12:19 -0300
+Subject: [noteedit-devel] Export to lilypond with special endings
+Message-ID: <ab955ef30607052012s7739dcd8l7d3fcfcb6ab19533@mail.gmail.com>
+
+Hi all!
+
+   I am doing some scores* for my father and some of them need the
+special ending feature. When I export it to lilypond, it gives an
+incorrect second ending. You can see by the attached file. The
+lilypond output has the second ending stopping in the first measure,
+in spite the first ending is correct. Maybe I am just using Noteedit
+in the wrong way, so you can give help me.
+
+   I submited a bug (id 007990) for this, but also tryed to solve it
+myself. And I think I did it! :-) I would like to put it here for you
+analyse it and see if it doesn't break other parts of the export code.
+The exportation treats the end bar and the normal bar in the same
+piece of code. This makes the second ending stop just by reaching a
+normal bar. So, I changed it to just stop the special ending if it is
+really an end bar. I think my changes  will not break any other part,
+because they don't change any variables, just the order of execution
+in one of the possibilities. My tests show it is working as I want.
+
+  If it is not clear, I am ready to discuss it.
+
+  My best regards.
+
+* In case you wonder why it is in italian, I am descendent of italians
+that came to Brazil around 1890 (my last name should be Falchetto, but
+the registers here changed to match the portuguese pronounce). They
+retained many traditional folk songs, passing them from father to son,
+in oral form. And now we are trying to preserve this wonderfull
+treasure by making a book, in which the scores are being made with the
+help of Noteedit and Lilypond. Noteedit is saving me many hours of
+manual typing. I can't say enough: thank you for this great project!!
+
+-- 
+-------------------------------------------
+Denis A. Altoe Falqueto
+-------------------------------------------
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: 09-Vorei.not
+Type: application/octet-stream
+Size: 1741 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060706/d024fa39/attachment.obj>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: lilyexport.cpp.diff
+Type: application/octet-stream
+Size: 662 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060706/d024fa39/attachment-0001.obj>
+
+From noteedit-devel at lists.berlios.de  Sun Jul 30 11:52:17 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Sun, 30 Jul 2006 11:52:17 +0200
+Subject: [Noteedit-devel] [Fwd: Verschiedene Anmerkungen zu Noteedit]
+Message-ID: <44CC8151.20301@web.de>
+
+Hi Matevz & Co.,
+
+I'll try to translate the feedback of a german user of NoteEdit
+
+Dear Mr Katzmann,
+
+Since some yeare I use NoteEdit to create MusiXTeX Code in easy manner.
+NoteEdit was always a great help to accomplish it especially easen the
+input .
+
+I'd like to make some remarks to the program especially as you have
+called upon it.
+
+The user interface is notedly good. The input is in my opinion much
+easier as with many commercial programs on Windows (like Finale or
+Capella). Unfortunately
+the display on the screen is complex (crowded). I don't expect WISYWIG
+but still
+the screen display could be a little bit more polished.
+
+What I really find annoying is the input of slurs (ties?). On a
+polyphonic movement 
+only one slur can be set. Also the arrangement of the slurs above or
+below the
+staff does not work correctly. Here the program is in the need for an
+important improvement.
+
+At the moment I can't switch off the fermatas at the beta 2.8.1 version.
+If I activate
+the fermata function every following note has an fermata sign on it.
+
+The generated TeX-Code does not always correspond the music typographic
+rules.
+On eigth notes f.e. larger distances are created especially in
+conjunction with Text
+than it is typically  seen in the music typography.
+
+Also I wouldn't disagree to enhance NoteEdit to a extensive tool
+handling the export and import of all the freely available music
+notation languages (ABC, MusixTeX, Lilypond, MusicXML etc.) to allow a 
+versatile  exchange especially in the face of
+the commercial programs.
+
+I was very happy to hear that a development team was founded to continue the
+development of NoteEdit. Despite all the critics I'm very thankful for
+all the
+work already achieved and looking forward to the coming versions.
+
+With best regards yours Martin Trautner
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+-------------- next part --------------
+An embedded message was scrubbed...
+From: unknown sender
+Subject: no subject
+Date: no date
+Size: 38
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060730/7f5e4c6d/attachment.mht>
+
+From m.trautner at gmx.de  Fri Jul 28 17:10:54 2006
+From: m.trautner at gmx.de (Martin Trautner)
+Date: Fri, 28 Jul 2006 17:10:54 +0200
+Subject: Verschiedene Anmerkungen zu Noteedit
+Message-ID: <200607281710.54186.m.trautner@gmx.de>
+
+Lieber Herr Katzmann,
+
+seit einigen Jahren benutze ich Noteedit, um auf einfache Weise MusixTeX-Code 
+zu erzeugen. Noteedit hat sich dabei immer als gro?e Hilfe erwiesen, die die 
+Eingabe sehr erleichtert hat.
+
+Gerne w?rde ich einige Anmerkungen zum Programm machen, zumal Sie auf der 
+Homepage von Noteedit dazu aufgerufen haben.
+
+Die Bedienoberfl?che ist ausgesprochen gut. Die Noteneingabe ist meines 
+Erachtens wesentlicher leichter als bei vielen kommerziellen Programmen unter 
+Windows (zum Beispiele Finale oder Capella). Leider ist die Darstellung auf 
+dem Bildschirm un?bersichtlich. Ich erwarte kein WYSIWG, aber etwas 
+aufger?umter k?nnte die Bildschirmdarstellung schon sein.
+
+Was ich als besonders l?stig empfinde, ist die Eingabe von Bindeb?gen. Bei 
+einem mehrstimmigen Satz l?sst sich nur ein Bindebogen eingeben. Auch die 
+Anordnung des Bindebogens ober- und unterhalb der Notenzeilen funktioniert 
+nicht richtig. Hier liegt entschieden Verbesserungsbedarf vor. 
+
+Im Moment lassen sich bei der Beta-Version 2.8.1die Fermaten nicht abstellen. 
+Aktiviere ich f?r eine Note die Fermaten-Funktion, wird jede weitere Noten 
+ebenfalls mit einer Fermate bei der Eingabe versehen. 
+
+Der erzeugte TeX-Code entspricht nicht immer den musiktypographischen Regeln. 
+Bei Achtelnoten werden beispielsweise besonders in Verbindung mit Text gr??ere 
+Abst?nde erzeugt als in der Musiktypographie ?blich.
+
+Ich f?nde es im ?brigen nicht schlecht, Noteedit zu einem umfassenden Werkzeug 
+auszubauen, das sowohl den Export als auch den Import aller g?ngigen freien 
+Musiknotationssprachen (ABC, MusixTeX, Lilypond, MusicXML usw.) beherrscht, 
+um einen vielseitigen Austausch auch in Hinblick auf kommerzielle Programme 
+zu erm?glichen.
+
+Ich habe mich sehr gefreut, dass sich ein Entwickler-Team nach dem Ausscheiden 
+von J?rg Anders gefunden hat, um die Arbeit an Noteedit fortzuf?hren. Ich bin 
+bei aller Kritik dankbar f?r die geleistete Arbeit und freue mich auf 
+kommende Versionen.
+
+Mit besten Gr??en, Ihr Martin Trautner
+
+
+
+-- 
+
+
+Martin Trautner
+Ahornweg 2
+D-50189 Elsdorf
+Telefon +49 2274 6760
+EMail martin.trautner at gmx.de
+
+
+--------------090004010503090400080002--
+
+

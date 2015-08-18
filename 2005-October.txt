@@ -1,0 +1,786 @@
+From noteedit-devel-admin at lists.berlios.de  Sat Oct  1 20:28:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 01 Oct 2005 20:28:04 +0200
+Subject: [Noteedit-devel] [Fwd: Noteedit: Bug in Clef.cpp]
+Message-ID: <433ED534.5050202@web.de>
+
+Thanks for the patch!
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: Olav Gundersen <olagunde at start.no>
+Subject: Noteedit: Bug in Clef.cpp
+Date: Sat, 1 Oct 2005 11:03:46 +0200 (CEST)
+Size: 2085
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051001/0f89e27e/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Oct  4 21:36:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 04 Oct 2005 21:36:53 +0200
+Subject: [Noteedit-devel] Printing partially checked into SVB
+Message-ID: <4342D9D5.9080304@web.de>
+
+Hi,
+
+Some parts of my printing code are now in SVN. The printing settings
+are available and can be changed. The printing menu points are available
+but do still execute the old code until I can check in my prininting code.
+
+I have fought with one issue: reparenting. This really doesn't work
+and is also discouraged according to the Qt documentation. It concerns
+the printing dialog page adding the selected export tab to the dialog.
+I will change it in a way so I can simply create a new "tab" for the
+printing dialog.
+
+This requires to do changes I already wanted to do
+with the export dialog:
+- Create export forms for each export format (done)
+- Expand uiconnect.h / uiconnect.cpp so it integrates the new export 
+forms (done)
+- New methods in uiconnect to access the options from the export form
+   (set and get options, set is currently not needed but a nice 
+enhancement for the future, maybe saving the current options in the 
+noteedit file itself replacing the "Output params" (Save params tab)).
+(work in progress)
+- Change all export classes to use the new get options (work in progress)
+- Change printing code to use the new export forms and adapt the
+Printing Dialog page class to integrate the forms instead of
+reparenting them
+- Fininsh printing code for other print formats (abc printing
+is nearly finished by now).
+
+When everything works I plan to do the following:
+- Remove printing code from mainframewidget.cpp and create an own
+class for it
+- Make ExportFrm as a separate file (currently in uiconnect)
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 10 00:56:42 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 10 Oct 2005 00:56:42 +0200
+Subject: [Noteedit-devel] Merging the status->property changes into the
+ main branch
+In-Reply-To: <freemail.20050829100431.44236@fm17.freemail.hu>
+References: <freemail.20050829100431.44236@fm17.freemail.hu>
+Message-ID: <4349A02A.4050609@schwaben.de>
+
+>I think that 353 is the correct number.
+>  
+Hi,
+
+
+yes, this was the number. I merged branches/code_cleanup to trunk, and
+put on it Patch #627 (Update Qt Collection Class names and #include's)
+from Henri Manson. To work more on code_cleanup needs probably syncing.
+
+Best Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 10 01:13:50 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 10 Oct 2005 01:13:50 +0200
+Subject: [Noteedit-devel] Printing partially checked into SVB
+In-Reply-To: <4342D9D5.9080304@web.de>
+References: <4342D9D5.9080304@web.de>
+Message-ID: <4349A42E.7070204@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi,
+>
+> Some parts of my printing code are now in SVN. The printing settings
+> are available and can be changed. The printing menu points are available
+> but do still execute the old code until I can check in my prininting
+> code.
+a remark: Without enabling it won't compile, so you need
+
+    --with-printing
+
+at configure time. Probably when finished it will be enabled
+automatically, I guess.
+
+Regards,
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 10 07:09:36 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 10 Oct 2005 07:09:36 +0200
+Subject: [Noteedit-devel] Merging the status->property changes into the
+ main branch
+In-Reply-To: <4349A02A.4050609@schwaben.de>
+References: <freemail.20050829100431.44236@fm17.freemail.hu> <4349A02A.4050609@schwaben.de>
+Message-ID: <4349F790.2060207@nokia.com>
+
+ > I merged branches/code_cleanup to trunk
+
+Thank you VERY VERY MUCH.
+
+Unfortunately I have only few time and I wanted to do the merge today.
+It's so good to hear that you've done it.
+
+Thank you again!
+
+Bye,
+
+     Csaba
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 10 18:23:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 10 Oct 2005 18:23:03 +0200
+Subject: [Noteedit-devel] Qt UI spacing
+Message-ID: <434A9567.5020308@guest.arnes.si>
+
+Hi!
+
+I have a question about widgets spacing in Qt:
+We have many translations in NoteEdit and some are shorter, the others
+are longer etc. Is it possible, to define a dynamic width of a widget
+(label, button, text box), to fit the context of that widget. I'm
+looking at "MIDI information line:" sign at MIDI export dialog. I'd like
+to change it to "Additional MIDI export parameters:", but in Slovenian,
+there is something like "Dodatne MIDI nastavitve:" and I would like the
+label itself being long as the sign is and that the QLineEdit widget
+right next to it fits closely to the label's right border. Is it
+possible & does anybody has any experience with this kind of
+problems/solutions?
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051010/e89216d4/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 10 23:36:22 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 10 Oct 2005 23:36:22 +0200
+Subject: [Noteedit-devel] Qt UI spacing
+In-Reply-To: <434A9567.5020308@guest.arnes.si>
+References: <434A9567.5020308@guest.arnes.si>
+Message-ID: <434ADED6.9000605@web.de>
+
+Hi Matevz,
+
+I already have worked on the export layout and solved the
+problem you had. It's relatively simple: The export layout currently
+does not use any layouts. I changed them in a way so all forms
+now have it's layout. You still have to be patient for the
+change though as there are quite some things to change. I have
+finished implementing of ABC and Lilypond. So "only" 4 left to do.
+(every format requires me to investigate the parameters read from
+within the export module and to create a structure for them as
+well as implement the set and get methods).
+
+Layouts are easily created: Load the form in the designed, click
+on one of the tabs and press (f.e.) "Layout in a group".
+
+Regards,
+
+Reinhard
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi!
+> 
+> I have a question about widgets spacing in Qt:
+> We have many translations in NoteEdit and some are shorter, the others
+> are longer etc. Is it possible, to define a dynamic width of a widget
+> (label, button, text box), to fit the context of that widget. I'm
+> looking at "MIDI information line:" sign at MIDI export dialog. I'd like
+> to change it to "Additional MIDI export parameters:", but in Slovenian,
+> there is something like "Dodatne MIDI nastavitve:" and I would like the
+> label itself being long as the sign is and that the QLineEdit widget
+> right next to it fits closely to the label's right border. Is it
+> possible & does anybody has any experience with this kind of
+> problems/solutions?
+> 
+> 
+> Regards.
+> - Matev?
+> 
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Oct 11 10:26:01 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 11 Oct 2005 10:26:01 +0200
+Subject: [Noteedit-devel] Qt UI spacing
+In-Reply-To: <434ADED6.9000605@web.de>
+References: <434A9567.5020308@guest.arnes.si> <434ADED6.9000605@web.de>
+Message-ID: <434B7719.8070902@guest.arnes.si>
+
+Thanks.
+
+I knew there's something with Layouts stuff for this kind of UIs (it's
+the same as Java's Swing), but wasn't sure how Qt is doing this exactly.
+It works like a charm now on the example I tried:).
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi Matevz,
+>
+> I already have worked on the export layout and solved the
+> problem you had. It's relatively simple: The export layout currently
+> does not use any layouts. I changed them in a way so all forms
+> now have it's layout. You still have to be patient for the
+> change though as there are quite some things to change. I have
+> finished implementing of ABC and Lilypond. So "only" 4 left to do.
+> (every format requires me to investigate the parameters read from
+> within the export module and to create a structure for them as
+> well as implement the set and get methods).
+>
+> Layouts are easily created: Load the form in the designed, click
+> on one of the tabs and press (f.e.) "Layout in a group".
+>
+> Regards,
+>
+> Reinhard
+>
+> noteedit-devel-admin at berlios.de schrieb:
+>
+>> Hi!
+>>
+>> I have a question about widgets spacing in Qt:
+>> We have many translations in NoteEdit and some are shorter, the others
+>> are longer etc. Is it possible, to define a dynamic width of a widget
+>> (label, button, text box), to fit the context of that widget. I'm
+>> looking at "MIDI information line:" sign at MIDI export dialog. I'd like
+>> to change it to "Additional MIDI export parameters:", but in Slovenian,
+>> there is something like "Dodatne MIDI nastavitve:" and I would like the
+>> label itself being long as the sign is and that the QLineEdit widget
+>> right next to it fits closely to the label's right border. Is it
+>> possible & does anybody has any experience with this kind of
+>> problems/solutions?
+>>
+>>
+>> Regards.
+>> - Matev?
+>>
+>
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051011/cc03ec2e/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Oct 11 21:48:28 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 11 Oct 2005 21:48:28 +0200
+Subject: [Noteedit-devel] [Fwd: Noteedit: Bug in Clef.cpp]
+In-Reply-To: <433ED534.5050202@web.de>
+References: <433ED534.5050202@web.de>
+Message-ID: <434C170C.1060506@schwaben.de>
+
+This PMX export bug is now in SVN. Thanks. Also in is now the fix for
+bug Bug #4444 (japanese midi file name). The gcc4 recognize bug I closed.
+
+Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 24 23:34:58 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 24 Oct 2005 23:34:58 +0200
+Subject: [Noteedit-devel] State printing / export
+Message-ID: <435D5382.6040908@web.de>
+
+Hi,
+
+I just checked into svn my current state of the art changes.
+There were a lot of changes I already talked about.
+Note that I haven't tested any of the exports with my
+changed (removed also some warnings). I have tested that
+the export form works.
+
+I have since over a week now a Mandriva 2006.0 based system
+with gcc4.0 and other fine things. I still have to install
+all those music systems to be able to further test the
+export, printing and print preview. Still only abc is
+completely implemented though I have neither tested with
+my changes to export. I also bumped the library version
+to 1.0.1.
+
+As soon as I have done more tests and finished the rest
+of the printing stuff I think I'm ready for release.
+
+I don't think it is useful to start on scripting for the
+current release as it will cost as too much time or it will
+have only basic quality to start with.
+
+So I'd release 8.0.1 with printing and as soon as we have
+finished scripting and hopefully macro recording we can
+release 8.1.0.
+
+What do you think ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Oct 25 22:18:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 25 Oct 2005 22:18:52 +0200
+Subject: [Noteedit-devel] State printing / export
+In-Reply-To: <435D5382.6040908@web.de>
+References: <435D5382.6040908@web.de>
+Message-ID: <435E932C.9090009@schwaben.de>
+
+Hi Reinhard,
+
+things seem still to work! Thanks! I'm here on gcc 3.3.5 and whatever
+glibc, so I needed the attatched patch. I'm not shure if I should cast
+to double. Could you decide?
+
+Nevertheless, I'm looking forward to the new release with the new
+printing feature, gcc4 support and all the other goodies.
+Regards,
+Georg.
+
+
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+>Hi,
+>
+>I just checked into svn my current state of the art changes.
+>There were a lot of changes I already talked about.
+>Note that I haven't tested any of the exports with my
+>changed (removed also some warnings). I have tested that
+>the export form works.
+>
+>I have since over a week now a Mandriva 2006.0 based system
+>with gcc4.0 and other fine things. I still have to install
+>all those music systems to be able to further test the
+>export, printing and print preview. Still only abc is
+>completely implemented though I have neither tested with
+>my changes to export. I also bumped the library version
+>to 1.0.1.
+>
+>As soon as I have done more tests and finished the rest
+>of the printing stuff I think I'm ready for release.
+>
+>I don't think it is useful to start on scripting for the
+>current release as it will cost as too much time or it will
+>have only basic quality to start with.
+>
+>So I'd release 8.0.1 with printing and as soon as we have
+>finished scripting and hopefully macro recording we can
+>release 8.1.0.
+>
+>What do you think ?
+>
+>Regards,
+>
+>Reinhard
+>  
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: compile_3.3.5.patch
+Type: text/x-patch
+Size: 546 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051025/73a8c188/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Oct 26 09:54:10 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Oct 2005 09:54:10 +0200
+Subject: [Noteedit-devel] disabling TSE3 dependency
+Message-ID: <200510260954.10582.raphael-langerhorst@gmx.at>
+
+Hi there,
+
+I have a question regardint TSE3 dependency. In the documentation it says 
+somewhere that TSE3 dependency can be turned off but it doesn't say how. If I 
+just want to use noteedit really for editing (no playback or whatever) then I 
+don't need TSE3, right?
+
+Thanks,
+-- 
+Raphael Langerhorst
+http://raphael.g-system.at/blog
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Oct 26 15:44:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Oct 2005 15:44:08 +0200
+Subject: [Noteedit-devel] disabling TSE3 dependency
+In-Reply-To: <200510260954.10582.raphael-langerhorst@gmx.at>
+References: <200510260954.10582.raphael-langerhorst@gmx.at>
+Message-ID: <435F8828.2060503@guest.arnes.si>
+
+Yes, check ./configure --help for more information. I think ./configure
+--without-libtse3 should do the trick.
+
+ps. Why do you want to turn off TSE3? If you have playback troubles (no
+working MIDI controller), try --nooss and --noalsa parameters first,
+because NoteEdit losses many import/export capabilities without libtse3.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi there,
+>
+>I have a question regardint TSE3 dependency. In the documentation it says 
+>somewhere that TSE3 dependency can be turned off but it doesn't say how. If I 
+>just want to use noteedit really for editing (no playback or whatever) then I 
+>don't need TSE3, right?
+>
+>Thanks,
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051026/a820a737/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Oct 26 15:53:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Oct 2005 15:53:30 +0200
+Subject: [Noteedit-devel] State printing / export
+In-Reply-To: <435E932C.9090009@schwaben.de>
+References: <435D5382.6040908@web.de> <435E932C.9090009@schwaben.de>
+Message-ID: <435F8A5A.5070803@guest.arnes.si>
+
+Hi Reinhard!
+
+I'd like to fix some more beaming issues till the release (2 bugs -
+Another beaming of already beamed notes result sometimes in crash,
+Autobeam in non-first voice doesn't work) and maybe improve our MusicXML
+import (import of tuplets) and export (rythm in non-first-two voices is
+completely messed up). But then, I'd go for the release!
+
+What did you mean by 8.0.1??!? You mean NoteEdit 2.8.1? (or did we
+change the versioning policy)
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Reinhard,
+>
+>things seem still to work! Thanks! I'm here on gcc 3.3.5 and whatever
+>glibc, so I needed the attatched patch. I'm not shure if I should cast
+>to double. Could you decide?
+>
+>Nevertheless, I'm looking forward to the new release with the new
+>printing feature, gcc4 support and all the other goodies.
+>Regards,
+>Georg.
+>
+>
+>
+>
+>
+>noteedit-devel-admin at berlios.de wrote:
+>  
+>
+>>Hi,
+>>
+>>I just checked into svn my current state of the art changes.
+>>There were a lot of changes I already talked about.
+>>Note that I haven't tested any of the exports with my
+>>changed (removed also some warnings). I have tested that
+>>the export form works.
+>>
+>>I have since over a week now a Mandriva 2006.0 based system
+>>with gcc4.0 and other fine things. I still have to install
+>>all those music systems to be able to further test the
+>>export, printing and print preview. Still only abc is
+>>completely implemented though I have neither tested with
+>>my changes to export. I also bumped the library version
+>>to 1.0.1.
+>>
+>>As soon as I have done more tests and finished the rest
+>>of the printing stuff I think I'm ready for release.
+>>
+>>I don't think it is useful to start on scripting for the
+>>current release as it will cost as too much time or it will
+>>have only basic quality to start with.
+>>
+>>So I'd release 8.0.1 with printing and as soon as we have
+>>finished scripting and hopefully macro recording we can
+>>release 8.1.0.
+>>
+>>What do you think ?
+>>
+>>Regards,
+>>
+>>Reinhard
+>> 
+>>    
+>>
+>
+>  
+>
+>------------------------------------------------------------------------
+>
+>Index: miditimescale.cpp
+>===================================================================
+>--- miditimescale.cpp	(Revision 379)
+>+++ miditimescale.cpp	(Arbeitskopie)
+>@@ -621,7 +621,7 @@
+> 		}
+> 		else if ((ptr1->eventType & EVT_CLASS_NOTE) && (ptr->eventType & EVT_CLASS_NOTE)){
+> 			ptr->decision_tree[j].costs = (int) (PITCH_DIST_COST_FAC * fabs(ptr->ave_pitch - ptr1->ave_pitch) +
+>-								START_DIST_FAC * fabs(ptr1->start_time -  ptr->stop_time));
+>+								START_DIST_FAC * fabs((float)(ptr1->start_time -  ptr->stop_time)));
+> 		}
+> 		j++;
+> 	}
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051026/de0e6757/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Oct 26 20:05:49 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Oct 2005 20:05:49 +0200
+Subject: [Noteedit-devel] State printing / export
+In-Reply-To: <435F8A5A.5070803@guest.arnes.si>
+References: <435D5382.6040908@web.de> <435E932C.9090009@schwaben.de> <435F8A5A.5070803@guest.arnes.si>
+Message-ID: <435FC57D.3080903@web.de>
+
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi Reinhard!
+> 
+> I'd like to fix some more beaming issues till the release (2 bugs -
+> Another beaming of already beamed notes result sometimes in crash,
+> Autobeam in non-first voice doesn't work) and maybe improve our MusicXML
+> import (import of tuplets) and export (rythm in non-first-two voices is
+> completely messed up). But then, I'd go for the release!
+> 
+> What did you mean by 8.0.1??!? You mean NoteEdit 2.8.1? (or did we
+> change the versioning policy)
+> 
+
+Ups, I guess I was too tired when I wrote this mail. Of course I mean
+2.8.1, well I guess a 2.8.0.1 does not make any sense ;-). So 2.8.2
+will hopefully be the first release including scripting support.
+Of course some fixes should be included to the release, especially
+the bug concerning abc export having worked on 2.7.x.
+
+Regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Oct 26 20:32:25 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 26 Oct 2005 20:32:25 +0200
+Subject: [Noteedit-devel] State printing / export
+In-Reply-To: <435E932C.9090009@schwaben.de>
+References: <435D5382.6040908@web.de> <435E932C.9090009@schwaben.de>
+Message-ID: <435FCBB9.3050206@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi Reinhard,
+> 
+> things seem still to work! Thanks! I'm here on gcc 3.3.5 and whatever
+> glibc, so I needed the attatched patch. I'm not shure if I should cast
+> to double. Could you decide?
+> 
+> Nevertheless, I'm looking forward to the new release with the new
+> printing feature, gcc4 support and all the other goodies.
+> Regards,
+> Georg.
+> 
+
+Hmm thanks for the patch but I haven't changed the file you
+mentioned. Maybe it was due to some other changes ?
+Concerning your questions: As fabs takes double as parameter
+you have to convert it to double.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Oct 30 12:12:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Oct 2005 12:12:04 +0100
+Subject: [Noteedit-devel] release-critical bug
+Message-ID: <4364AA84.2040403@guest.arnes.si>
+
+Hi Karai and others!
+
+If I open a new document, place two different key signatures one by
+another and delete the first one, I get a crash. There is a segmentation
+fault in Keysig.cpp @ line 435.
+
+The crash appeared in R317 (ckarai):
+FIXED: problem with natural keys before the KeySig
+
+The problem is that if I place a simple if (previousKeySig_) return;
+sentence before the loop, there's no crash, but the second key signature
+isn't correctly updated (the naturals that eliminate the previous keysig
+accidentals aren't cleared).
+
+Could any of you (Karai?) properly resolve this issue? I'm currently
+digging in the beaming code and found this bug accidently;).
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051030/10c890dd/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Oct 30 12:18:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 30 Oct 2005 12:18:47 +0100
+Subject: [Noteedit-devel] release-critical bug
+In-Reply-To: <4364AA84.2040403@guest.arnes.si>
+References: <4364AA84.2040403@guest.arnes.si>
+Message-ID: <4364AC17.5030707@guest.arnes.si>
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>The problem is that if I place a simple if (previousKeySig_) return;
+>
+I meant if (!previousKeySig_) return;
+
+
+- M
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051030/87b8cef3/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Oct 31 21:16:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 31 Oct 2005 21:16:53 +0100
+Subject: [Noteedit-devel] User interface and viewport cleanups
+Message-ID: <43667BB5.90502@guest.arnes.si>
+
+Hello all.
+
+I've been polishing and implementing some stuff I've been thinking about
+them for some time. Revisions 381 and 382 bring some interesting stuff like:
+- ALT + mouse scroll - fast scroll (10 times)
+- SHIFT + mouse scroll - vertical scroll
+- ALT + SHIFT + mouse scroll - fast vertical scroll (5 times)
+- CTRL + mouse scroll - zoom in/out
+- when using right/left keys for cycling through elements, the viewport
+is panned left/right/up/down in order to properly display the currently
+selected element
+- zooming keeps the top-left coordinate of the viewport
+- vertical scroll range is now properly aligned from the most
+top-element to the most-bottom one.
+- some internal changes and cleanups
+
+For more info, check the ChangeLog.
+
+Some issues for the next revisions:
+- insert from keyboard mode should correctly align mouse pointer to the
+right/left side of the note. 2 bugs:
+  - it isn't aware of brace/bracket at the beginning of the score, so
+everything is shifted for some pixels to the left
+  - when cycling through elements in this mode, you should first change
+the direction and then move to the next/prev element
+
+Some interesting RFEs I'm thinking about:
+- Non-hardcoded zoom
+- Fit to height
+- Fit to width
+- Rewrite the playback code, so you'd be able to look freely around the
+score, while NE is playing.
+
+Please tell me what you think!
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051031/1ae06db1/attachment.pgp>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] midi keyboard and triplets (bug #3088)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20midi%20keyboard%20and%20triplets%20%28bug%20%233088%29&In-Reply-To=%3C41FEB48C.2060109%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000076.html">
+   <LINK REL="Next"  HREF="000066.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] midi keyboard and triplets (bug #3088)</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20midi%20keyboard%20and%20triplets%20%28bug%20%233088%29&In-Reply-To=%3C41FEB48C.2060109%40web.de%3E"
+       TITLE="[Noteedit-devel] midi keyboard and triplets (bug #3088)">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Jan 31 23:43:24 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000076.html">[Noteedit-devel] midi keyboard and triplets (bug #3088)
+</A></li>
+        <LI>Next message: <A HREF="000066.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Leon,
+
+&gt;<i> Georg,
+</I>&gt;<i> 
+</I>&gt;<i> yesterday I compiled both vkeybd and kaconnect without problems. Apparently 
+</I>&gt;<i> there is an issue with my ALSA setup, because both fail with the message 
+</I>&gt;<i> &quot;ALSA lib seq_hw.c:446:(snd_seq_hw_open) open /dev/snd/seq failed: No such 
+</I>&gt;<i> file or directory&quot;. For the time being I don't know how to solve that.
+</I>&gt;<i> 
+</I>&gt;<i> Won't be able to make much progress on bug #3088 ...
+</I>
+This can be easily solved. You need to modprobe snd-seq drivers like
+snd-seq
+snd-seq-dummy
+snd-seq-midi-emul
+snd-seq-virmidi      --&gt; Virtual Midi in case you don't have &quot;real&quot; Midi
+snd-seq-instr
+snd-seq-midi-event
+snd-seq-device
+snd-seq-midi
+
+vkeybd works fine with that.
+
+You might want to add some of these to /etc/modules (2.4.x) or 
+/etc/modprobe.preload (2.6.x).
+
+&gt;<i> In case you are familiar with ALSA: my setup is Fedora Core 3, on-board AC97 
+</I>&gt;<i> audio. /dev/snd only contains control, pcm and timer devices.
+</I>
+I've installed Fedora Core 3 today and want to test the KDE installation 
+as well as my external USB sound card (24 Bit 96 Khz) with Noteedit.
+
+You can also try the sound server jack(it) as alternative to arts or 
+esd. Take a look at qjackctl.sf.net. You might want to have the 
+realtime-lsm module installed, see www.joq,us &quot;Linux Audio kernel modules&quot;.
+
+&gt;<i> Regards, Leon.
+</I>&gt;<i> 
+</I>
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000076.html">[Noteedit-devel] midi keyboard and triplets (bug #3088)
+</A></li>
+	<LI>Next message: <A HREF="000066.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#78">[ date ]</a>
+              <a href="thread.html#78">[ thread ]</a>
+              <a href="subject.html#78">[ subject ]</a>
+              <a href="author.html#78">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

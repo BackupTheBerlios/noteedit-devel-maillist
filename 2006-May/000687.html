@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Bug lilypond export with many voices in one staff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Bug%20lilypond%20export%20with%20many%20voices%20in%20one%20staff&In-Reply-To=%3C200605060125.42724.Stefan-Hackl%40gmx.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000686.html">
+   <LINK REL="Next"  HREF="000689.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Bug lilypond export with many voices in one staff</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Bug%20lilypond%20export%20with%20many%20voices%20in%20one%20staff&In-Reply-To=%3C200605060125.42724.Stefan-Hackl%40gmx.de%3E"
+       TITLE="[Noteedit-devel] Bug lilypond export with many voices in one staff">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat May  6 01:25:42 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000686.html">[Noteedit-devel] Japanese message catalog for NoteEdit 2.8.1
+</A></li>
+        <LI>Next message: <A HREF="000689.html">[Noteedit-devel] Bug lilypond export with many voices in one staff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#687">[ date ]</a>
+              <a href="thread.html#687">[ thread ]</a>
+              <a href="subject.html#687">[ subject ]</a>
+              <a href="author.html#687">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+First of all I would like to thank all developers! Noteedit is a fantastic 
+program! Especially the latest beta with the direct print option. 
+
+I would like to contribute but I don't know much about programming, so I 
+thought I could help with bug reports. 
+
+I spent a lot of time getting known to lilypond and detected three bugs in the 
+lilypond export of noteedit. I think it won't be a big thing fixing them:
+
+1. Two staves can be joined in different ways:
+a) with a brace on the left and connected bar-lines (export works perfectly)
+b) with a bracket on the left and connected bar-lines (BUG: bar-lines not 
+connected!)  --&gt; &quot;StaffGroup&quot; is the correct identifier for this, while 
+Noteedit creates a &quot;ChoirStaff&quot;
+c) with a bracket on the left and seperate bar-lines (export works perfectly)
+d) without bracket on the left and seperate bar-lines (export works perfectly)
+
+See Lilypond-Documentation:
+<A HREF="http://lilypond.org/doc/v2.8/Documentation/user/lilypond/System-start-delimiters.html#System-start-delimiters">http://lilypond.org/doc/v2.8/Documentation/user/lilypond/System-start-delimiters.html#System-start-delimiters</A>
+
+2. Instrument names are exported incorrectly for polyphonic staves. 
+A simple Example:
+This is a fragment of the Lilypond export file
+
+GitarreXBAVoiceA = \relative c' {
+	\voiceOne 
+	\clef G
+	\time 4/4 
+	                   
+	e'4 e d f 
+	\bar &quot;|.&quot;
+}
+GitarreXBAVoiceB = \relative c' {
+	\voiceTwo 
+	\partial 1
+	                   
+	e2 d 
+}
+GitarreXBA = \simultaneous {
+	\set Staff.instrument = #&quot;Gitarre 1 &quot;
+	\context Voice=&quot;GitarreXBAVoiceA&quot; \GitarreXBAVoiceA
+	\context Voice=&quot;GitarreXBAVoiceB&quot; \GitarreXBAVoiceB
+}
+
+In order to make the instrument name visible in the lilypond output file the 
+command  \set Staff.instrument = #&quot;Gitarre 1 &quot; should be added in the first 
+voice part:
+
+GitarreXBAVoiceA = \relative c' {
+	\voiceOne 
+	\clef G
+	\time 4/4 
+	\set Staff.instrument = #&quot;Gitarre 1 &quot;
+	                   
+	e'4 e d f 
+	\bar &quot;|.&quot;
+}
+GitarreXBAVoiceB = \relative c' {
+	\voiceTwo 
+	\partial 1
+	                   
+	e2 d 
+}
+GitarreXBA = \simultaneous {
+	\context Voice=&quot;GitarreXBAVoiceA&quot; \GitarreXBAVoiceA
+	\context Voice=&quot;GitarreXBAVoiceB&quot; \GitarreXBAVoiceB
+}
+
+
+3. For vocal music with two or more stanzas the  \set stanza = &quot;1.&quot;  ,  \set 
+stanza = &quot;2.&quot; , ... line should be added within the  \lyricmode { ... } part. 
+Otherwise the stanza number will not be visible.
+
+Example:
+
+StimmeATextA = \lyricmode { \set stanza = &quot;1.&quot; 
+		
+		
+		
+		
+		So troll'n wir uns ganz 
+		fromm und sacht von Wein- ge- lag und 
+		Freu- den- schmaus, wenn uns der Tod sagt: 
+		''Gu- te Nacht, dein Stun- den-  _ glas rinnt 
+		aus!'' Wer heut noch frech den 
+		Schna- bel wetzt und glaubt ein gro- &#223;er 
+		Herr zu sein, pa&#223; auf der Schrei- ner 
+		ho- belt jetzt schon grad an  _ dei- nem 
+		Schrein. Scheint das Grab dir tief und 
+		dumpf sein Druck, A- la- vott, so nimm noch 
+		ei- nen Schluck und noch ei- nen hin- ter- her und noch 
+		zwei, drei mehr, dann stirbst  _ du  _ nicht  _ so  _ 
+		schwer. 
+		
+		
+		}
+StimmeATextB = \lyricmode { \set stanza = &quot;2.&quot; 
+		
+		
+		
+		
+		Der nach des an- dern 
+		Lieb- ster schielt und doch sich f&#252;hlt als 
+		No- bel- mann. Pa&#223; auf! Dem Spiel- mann 
+		der dir spielt springst du ins  _ Grab vo- 
+		ran. Und du, der toll vor 
+		Ei- fer- sucht zer- schmi&#223; einst je- des 
+		Glas im Saal. Wenn dich der Tod im 
+		Bett be- sucht, hoch le- be  _ dein Ri- 
+		val. Scheint das Grab dir tief und 
+		dumpf sein Druck, A- la- vott, so nimm noch 
+		ei- nen Schluck! Und noch ei- nen gleich da- bei und noch 
+		zwei oder drei, dann stirbst  _ du  _ sor-  _ gen-  _ 
+		frei. 
+		
+		
+		}
+
+
+I am using Lilypond 2.8.1. may be some of this problems were not present with 
+Lily 2.6.x, but running convert-ly doesn't fix them.
+
+If you cannot understand anythind in this mail, I can write in german, it 
+seems there are xome german developers.
+
+Greetings 
+
+Stefan Hackl
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000686.html">[Noteedit-devel] Japanese message catalog for NoteEdit 2.8.1
+</A></li>
+	<LI>Next message: <A HREF="000689.html">[Noteedit-devel] Bug lilypond export with many voices in one staff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#687">[ date ]</a>
+              <a href="thread.html#687">[ thread ]</a>
+              <a href="subject.html#687">[ subject ]</a>
+              <a href="author.html#687">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

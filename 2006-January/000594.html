@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] hotkey issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20hotkey%20issue&In-Reply-To=%3C43DD4184.4090303%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000593.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] hotkey issue</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20hotkey%20issue&In-Reply-To=%3C43DD4184.4090303%40web.de%3E"
+       TITLE="[Noteedit-devel] hotkey issue">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Jan 29 23:28:20 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000593.html">[Noteedit-devel] hotkey issue
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#594">[ date ]</a>
+              <a href="thread.html#594">[ thread ]</a>
+              <a href="subject.html#594">[ subject ]</a>
+              <a href="author.html#594">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hi folks,
+</I>&gt;<i> 
+</I>&gt;<i> I had an issue with hotkeys with KDE 3.5. Being not even able to delete notes 
+</I>&gt;<i> I started investigating this issue and found out that it can be fixed by 
+</I>&gt;<i> changing a line in mainframewidget.cpp:
+</I>&gt;<i> 
+</I>&gt;<i> keys_ = new KAccel(this);
+</I>&gt;<i> to
+</I>&gt;<i> keys_ = new KAccel((QWidget*)this-&gt;parent());
+</I>&gt;<i> 
+</I>&gt;<i> Dunno whether this was a KDE bug but with this change the svn version seems to 
+</I>&gt;<i> work in KDE 3.5 on an x86_64. The configure script should be adapted to find 
+</I>&gt;<i> libtse3 in /usr/lib64.
+</I>&gt;<i> Please CC me for answers.
+</I>&gt;<i> 
+</I>
+Thanks for the hint and for the way to fix the problem. I myself can not
+confirm if it works as I don't have KDE 3.5 ( and probably won't have it
+until april). Probably we won't make much changes to the configure
+scripts as you can still specify the directory where to search for lib
+files. We have at least one developer working on a 64bit platform. Maybe
+he can share his experiences
+Also we're on the way moving the project management from autoconf to scons.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000593.html">[Noteedit-devel] hotkey issue
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#594">[ date ]</a>
+              <a href="thread.html#594">[ thread ]</a>
+              <a href="subject.html#594">[ subject ]</a>
+              <a href="author.html#594">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

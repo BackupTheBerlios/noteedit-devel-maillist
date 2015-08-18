@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Problems installing noteedit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problems%20installing%20noteedit&In-Reply-To=%3C200507112321.08399.andre.hinrichs%40gmx.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000383.html">
+   <LINK REL="Next"  HREF="000385.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Problems installing noteedit</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problems%20installing%20noteedit&In-Reply-To=%3C200507112321.08399.andre.hinrichs%40gmx.de%3E"
+       TITLE="[Noteedit-devel] Problems installing noteedit">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Jul 11 23:21:08 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000383.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+        <LI>Next message: <A HREF="000385.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've now tried with latest SVN version, 2.6.2, 2.7.4 and 2.8.0-rc1
+All with the same result.
+
+Some more info: Here are the contents of the appropriate directories.
+
+# ls -l /usr/lib/libtse3*
+lrwxrwxrwx  1 root root     13 Jul 11 09:57 /usr/lib/libtse3 -&gt; libtse3.0.0.0
+lrwxrwxrwx  1 root root     13 Jul 11 09:57 /usr/lib/libtse3.0 -&gt; libtse3.0.0.0
+-rwxr-xr-x  1 root root 997660 Jul 11 09:57 /usr/lib/libtse3.0.0.0
+-rwxr-xr-x  1 root root   1462 Jul 11 09:57 /usr/lib/libtse3.la
+
+# ls -l /usr/include/tse3/
+total 448
+-rw-r--r--  1 root root 11111 Jul 11 09:57 DisplayParams.h
+-rw-r--r--  1 root root  7014 Jul 11 09:57 Error.h
+-rw-r--r--  1 root root  7337 Jul 11 09:57 EventTrack.h
+-rw-r--r--  1 root root 12051 Jul 11 09:57 FileBlockParser.h
+-rw-r--r--  1 root root  1812 Jul 11 09:57 Filter.h
+-rw-r--r--  1 root root  3327 Jul 11 09:57 FlagTrack.h
+-rw-r--r--  1 root root  7326 Jul 11 09:57 KeySigTrack.h
+-rw-r--r--  1 root root  9384 Jul 11 09:57 Metronome.h
+-rw-r--r--  1 root root 27079 Jul 11 09:57 Midi.h
+-rw-r--r--  1 root root  2566 Jul 11 09:57 MidiCommandFilter.h
+-rw-r--r--  1 root root  3548 Jul 11 09:57 MidiData.h
+-rw-r--r--  1 root root  4592 Jul 11 09:57 MidiEcho.h
+-rw-r--r--  1 root root 12587 Jul 11 09:57 MidiFile.h
+-rw-r--r--  1 root root 11501 Jul 11 09:57 MidiFilter.h
+-rw-r--r--  1 root root  3312 Jul 11 09:57 MidiMapper.h
+-rw-r--r--  1 root root  5983 Jul 11 09:57 MidiParams.h
+-rw-r--r--  1 root root 34038 Jul 11 09:57 MidiScheduler.h
+-rw-r--r--  1 root root 11975 Jul 11 09:57 Mixer.h
+-rw-r--r--  1 root root 11054 Jul 11 09:57 Mutex.h
+-rw-r--r--  1 root root 25588 Jul 11 09:57 Notifier.h
+-rw-r--r--  1 root root  9898 Jul 11 09:57 Panic.h
+-rw-r--r--  1 root root 11203 Jul 11 09:57 Part.h
+-rw-r--r--  1 root root  5931 Jul 11 09:57 Phrase.h
+-rw-r--r--  1 root root 18914 Jul 11 09:57 PhraseEdit.h
+-rw-r--r--  1 root root  8575 Jul 11 09:57 PhraseList.h
+-rw-r--r--  1 root root  5771 Jul 11 09:57 Playable.h
+-rw-r--r--  1 root root  2157 Jul 11 09:57 Progress.h
+-rw-r--r--  1 root root  4082 Jul 11 09:57 RepeatTrack.h
+-rw-r--r--  1 root root  9281 Jul 11 09:57 Serializable.h
+-rw-r--r--  1 root root 12352 Jul 11 09:57 Song.h
+-rw-r--r--  1 root root  4243 Jul 11 09:57 TSE2MDL.h
+-rw-r--r--  1 root root  4351 Jul 11 09:57 TSE3.h
+-rw-r--r--  1 root root  6881 Jul 11 09:57 TSE3MDL.h
+-rw-r--r--  1 root root  3719 Jul 11 09:57 TempoTrack.h
+-rw-r--r--  1 root root  4715 Jul 11 09:57 TimeSigTrack.h
+-rw-r--r--  1 root root 10655 Jul 11 09:57 Track.h
+-rw-r--r--  1 root root 22659 Jul 11 09:57 Transport.h
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 app
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 cmd
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 file
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 ins
+drwxr-xr-x  5 root root  4096 Jul 11 09:57 listen
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 plt
+drwxr-xr-x  2 root root  4096 Jul 11 09:57 util
+
+
+
+
+On Monday 11 July 2005 20:53, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Are you using the latest SVN version?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hi List!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm just trying to install NoteEdit on my Gentoo System.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I did all the configurations:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; export KDEDIR=/usr/kde/3.4/ export QTDIR=/usr/qt/3/
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Then started configure as follows:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ./configure --prefix=/usr/kde/3.4/ --with-libtse3
+</I>&gt;<i> &gt; --with-libtse3-include=/usr/include/tse3/
+</I>&gt;<i> &gt; --with-libtse3-libs=/usr/lib/
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; But this fails with the following error message:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; checking libtse3... libs in ; includes in /usr/include
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; libtse3 not found! Please install! If you have installed libtse3 in
+</I>&gt;<i> &gt; an unusual directory use &quot;--with-libtse3-include=&quot; and/or
+</I>&gt;<i> &gt; &quot;--with-libtse3-libs=&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; There are options to bypass libtse3! But this causes some
+</I>&gt;<i> &gt; restrictions; see README
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Can anybody please give me a hint?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanx Andre _______________________________________________
+</I>&gt;<i> &gt; Noteedit-devel mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000383.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+	<LI>Next message: <A HREF="000385.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] build from svn question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20build%20from%20svn%20question&In-Reply-To=%3C426DD576.8070904%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000175.html">
+   <LINK REL="Next"  HREF="000153.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] build from svn question</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20build%20from%20svn%20question&In-Reply-To=%3C426DD576.8070904%40web.de%3E"
+       TITLE="[Noteedit-devel] build from svn question">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Apr 26 07:45:26 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000175.html">[Noteedit-devel] build from svn question
+</A></li>
+        <LI>Next message: <A HREF="000153.html">[Noteedit-devel] Soprano clef
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg,
+
+Thanks for the feedback! Yesterday I added a workaround in the
+filehandler.cpp to solve the problem for me and when I this
+morning thought about it I finally found out the reason:
+I had removed a critical dependency to filehandler.lo in the
+Makefile.am! So again I append the corrected Makefile.am to
+this mail. If nothing goes wrong anymore I upload this to svn.
+
+Thanks for all the help!
+
+Best regards,
+
+Reinhard Katzmann
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> so I also tried a clean svn build with an copied-over admin-tarball, and
+</I>&gt;<i> had to come down the same road: The first block of building
+</I>&gt;<i> midimapper.cpp could be removed with Reinhard's patch patch_Makefile.am,
+</I>&gt;<i> but now it fails also with
+</I>&gt;<i> 
+</I>&gt;<i> /bin/sh ../libtool --silent --tag=CXX --mode=link g++ 
+</I>&gt;<i> -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall
+</I>&gt;<i>  -W -Wpointer-arith -Wwrite-strings -ansi -D_XOPEN_SOURCE=500
+</I>&gt;<i> -D_BSD_SOURCE -Wcast-align -Wconversion
+</I>&gt;<i> -Wchar-subscripts -O2 -Wformat-security -Wmissing-format-attribute
+</I>&gt;<i> -fno-exceptions -fno-check-new -fno
+</I>&gt;<i> -common    -o noteedit -R /opt/kde3/lib64 -R /usr/lib/qt3/lib64 -R
+</I>&gt;<i> /usr/X11R6/lib64 main.o libnoteedit
+</I>&gt;<i> .la 
+</I>&gt;<i> 
+</I>&gt;<i> *** Warning: Linking the executable noteedit against the loadable module
+</I>&gt;<i> *** libnoteedit.so is not portable!
+</I>&gt;<i> ./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+</I>&gt;<i> ./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+</I>&gt;<i> ./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+</I>&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;<i> make[4]: *** [noteedit] Fehler 1
+</I>&gt;<i> make[4]: Leaving directory `/home/rud/ne_admin/noteedit/noteedit'
+</I>&gt;<i> make[3]: *** [all-recursive] Fehler 1
+</I>&gt;<i> make[3]: Leaving directory `/home/rud/ne_admin/noteedit/noteedit'
+</I>&gt;<i> make[2]: *** [all-recursive] Fehler 1
+</I>&gt;<i> make[2]: Leaving directory `/home/rud/ne_admin/noteedit'
+</I>&gt;<i> make[1]: *** [all] Fehler 2
+</I>&gt;<i> make[1]: Leaving directory `/home/rud/ne_admin/noteedit'
+</I>&gt;<i> make: *** [prep] Fehler 2
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">rud at nb64</A>:~/ne_admin&gt;
+</I>&gt;<i> 
+</I>&gt;<i> When someone generates a patch I could run this further. I'm here on
+</I>&gt;<i> Suse 9.3 x86-64, seems to be no special case.
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i> 
+</I>
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: Makefile.am
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050426/86d06d51/attachment.ksh">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050426/86d06d51/attachment.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000175.html">[Noteedit-devel] build from svn question
+</A></li>
+	<LI>Next message: <A HREF="000153.html">[Noteedit-devel] Soprano clef
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Introduce myself
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Introduce%20myself&In-Reply-To=%3C43C011AF.7070209%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000575.html">
+   <LINK REL="Next"  HREF="000578.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Introduce myself</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Introduce%20myself&In-Reply-To=%3C43C011AF.7070209%40gmail.com%3E"
+       TITLE="[Noteedit-devel] Introduce myself">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sat Jan  7 20:08:31 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000575.html">[Noteedit-devel] Introduce myself
+</A></li>
+        <LI>Next message: <A HREF="000578.html">[Noteedit-devel] Introduce myself
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#577">[ date ]</a>
+              <a href="thread.html#577">[ thread ]</a>
+              <a href="subject.html#577">[ subject ]</a>
+              <a href="author.html#577">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+Well, I will need some time to get used to the source. and I will thank
+if you could gide me. Meanwhile, if you agree, I will start the Spanish
+docs.
+
+I'm having some trouble compiling the svn version. The error is the
+following:
+
+In file included from configuredialog.cpp:821:
+configuredialog.moc: In member function `virtual bool
+   ConfigureDialog::qt_invoke(int, QUObject*)':
+configuredialog.moc:88: error: `printLayout' undeclared (first use this
+   function)
+configuredialog.moc:88: error: (Each undeclared identifier is reported only
+   once for each function it appears in.)
+make[3]: *** [configuredialog.lo] Error 1
+make[3]: Leaving directory `/home/dex/src/noteedit/trunk/noteedit'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/home/dex/src/noteedit/trunk/noteedit'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/dex/src/noteedit/trunk'
+make: *** [all] Error 2
+
+
+I suspect it must have something to do with qt-3.3.4-r8 or with kde 3.5.
+I've been inspecting the source but I couldn't solve the problem. It
+seems as that was a function on earlier versions of QT or on newer and
+my QT headers don't have it so it doesn't find it.
+
+Well, I'll keep working on this issue, and if you wish I will start the
+spanish docs.
+By the way, my berlios name is &quot;rafadev&quot;.
+
+Best Regards,
+                         Rafael.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Hi Rafael,
+</I>&gt;<i>
+</I>&gt;<i>Welcome to the developer Mailing list. It seems you have
+</I>&gt;<i>succesfully subscribed yourself. I'm one the project
+</I>&gt;<i>leaders of the NoteEdit project.
+</I>&gt;<i>
+</I>&gt;<i>Thank you very much for your kind contribution offer. I
+</I>&gt;<i>need your berlios account name to be able to add you
+</I>&gt;<i>to the developer crew, else you won't be able to check
+</I>&gt;<i>in your work into SVN.
+</I>&gt;<i>
+</I>&gt;<i>We are currently heading to the next release (2.8.1 ?)
+</I>&gt;<i>and some translation updates are needed. Also I hope
+</I>&gt;<i>we find some time for documentation improvements. Up
+</I>&gt;<i>to now we &quot;only&quot; have a german and english documentation.
+</I>&gt;<i>
+</I>&gt;<i>I suppose Matevz or Georg will tell you some more details what's
+</I>&gt;<i>going on the development process. We log all changes (bug fixes or
+</I>&gt;<i>new features / improvement) in the ChangeLog file.
+</I>&gt;<i>
+</I>&gt;<i>Best Regards,
+</I>&gt;<i>
+</I>&gt;<i>Reinhard
+</I>&gt;<i>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Hello, my name is Rafael Ponieman and I am an amateur musician and
+</I>&gt;&gt;<i>programmer from Argentina. I've been using Linux for a while now but I
+</I>&gt;&gt;<i>find that I could replace almost every program with an open source
+</I>&gt;&gt;<i>alternative exept sibelius (I used that one on windows, I'm nowadays
+</I>&gt;&gt;<i>using finale under wine and learning NoteEdit). I find NoteEdit  excelent.
+</I>&gt;&gt;<i>I want to start participating in the developement of NoteEdit. I can
+</I>&gt;&gt;<i>help with programming, music related stuff and translating to Spanish.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I asume that I'm automatically subscripted to the mailing list. If not
+</I>&gt;&gt;<i>please tell me. Thanks.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Best regards,
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>                        Rafael.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000575.html">[Noteedit-devel] Introduce myself
+</A></li>
+	<LI>Next message: <A HREF="000578.html">[Noteedit-devel] Introduce myself
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#577">[ date ]</a>
+              <a href="thread.html#577">[ thread ]</a>
+              <a href="subject.html#577">[ subject ]</a>
+              <a href="author.html#577">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

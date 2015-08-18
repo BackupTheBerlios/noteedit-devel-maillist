@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] New internals
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20New%20internals&In-Reply-To=%3C43043261.2010004%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000465.html">
+   <LINK REL="Next"  HREF="000469.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] New internals</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20New%20internals&In-Reply-To=%3C43043261.2010004%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] New internals">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Aug 18 09:01:53 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000465.html">[Noteedit-devel] New internals
+</A></li>
+        <LI>Next message: <A HREF="000469.html">[Noteedit-devel] NMusElement class description
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#466">[ date ]</a>
+              <a href="thread.html#466">[ thread ]</a>
+              <a href="subject.html#466">[ subject ]</a>
+              <a href="author.html#466">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That's exactly the problem I had in mind too!
+
+It would resolve much troubles, like better export filters (every voice
+could have special elements - bars, clefs etc. in .ly file) and you
+should have the ability to place barlines in non-1st voice (which is a
+clumsy problem for myself). Actually, we'd achieved that 1st voice isn't
+the main alpha and omega one, but is equal to any other like it should
+be from the first place. Also, copying from any voice to any voice and
+other voice operations would become possible.
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Thanks for the kind words. I was a bit afraid, that my work will cause 
+</I>&gt;<i>lots of troubles, because of the very big changes.
+</I>&gt;<i>
+</I>&gt;<i>Some words about my plan:
+</I>&gt;<i>
+</I>&gt;<i>The music elements should be placed into a linked list, which have
+</I>&gt;<i>'next' and 'prev' methods and inherits from QObject. This would be the
+</I>&gt;<i>base of the new architecture. 
+</I>&gt;<i>
+</I>&gt;<i>If an element requires the clef for example, just walks through the
+</I>&gt;<i>'prev' methods, till finds it. 
+</I>&gt;<i>
+</I>&gt;<i>If a new Clef is inserted, clefChanged(NClef *) signal will be emitted
+</I>&gt;<i>for all affected items in the linked list (the clefs are cached).
+</I>&gt;<i>
+</I>&gt;<i>With an architecture like that, quite high code separation could be
+</I>&gt;<i>reached.
+</I>&gt;<i>
+</I>&gt;<i>The current architecture is very very far from it. That's why I wrote,
+</I>&gt;<i>that it requires half year or more to finish.
+</I>&gt;<i>
+</I>&gt;<i>Bye,
+</I>&gt;<i>
+</I>&gt;<i>    Csaba
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050818/b650c545/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050818/b650c545/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000465.html">[Noteedit-devel] New internals
+</A></li>
+	<LI>Next message: <A HREF="000469.html">[Noteedit-devel] NMusElement class description
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#466">[ date ]</a>
+              <a href="thread.html#466">[ thread ]</a>
+              <a href="subject.html#466">[ subject ]</a>
+              <a href="author.html#466">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

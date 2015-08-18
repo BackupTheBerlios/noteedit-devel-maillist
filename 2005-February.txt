@@ -1,0 +1,1427 @@
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 17:45:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 1 Feb 2005 17:45:32 +0100
+Subject: [Noteedit-devel] how to upload 2.7.4 tarball to berliOS
+Message-ID: <200502011745.32876.leon.vinken@hetnet.nl>
+
+Hi guys,
+
+title says it all: how do I upload a tarball to berliOS ? I can find a 
+"download" but no "upload" button. If I can't do it myself, who do I send it 
+to ?
+
+I intend to create a 2.7.4 beta tarball today or tomorrow.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 20:10:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Feb 2005 20:10:04 +0100
+Subject: [Noteedit-devel] how to upload 2.7.4 tarball to berliOS
+In-Reply-To: <200502011745.32876.leon.vinken@hetnet.nl>
+References: <200502011745.32876.leon.vinken@hetnet.nl>
+Message-ID: <41FFD40C.30801@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi guys,
+> 
+> title says it all: how do I upload a tarball to berliOS ? I can find a 
+> "download" but no "upload" button. If I can't do it myself, who do I send it 
+> to ?
+> 
+> I intend to create a 2.7.4 beta tarball today or tomorrow.
+> 
+> Regards, Leon.
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+Currently only me and Georg can do this.
+I go to Admin -> Edit/Release files
+I upload the tarball to ftp.berlios.de
+
+After that I can start to create a new release.
+You either have to be admin or release technician to do the job.
+I had planned to do it myself.
+
+I'd used the current source from SVN, create a release TAG to it
+and add the old configure / admin files to the files and remove
+the CVS specific files.
+
+If you want to be a release technician, Leon, just tell me and
+I change your user data.
+
+Also I wanted to compile it on Mandrake 10.2 beta and Fedora
+Core 3 for myself (tarball and rpms).
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 21:36:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Feb 2005 21:36:35 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+Message-ID: <41FFE853.7050300@web.de>
+
+Hi!
+
+I have created a 2.7.4 tarball but not yet tested it. Differences to 2.7.3:
+
+- 31 files were changed ;-)
+
+Someone needs to update the Changelog file before we can make the 
+release. This file should be used for the release changes we post
+in the release manager as well.
+
+I have found 8 missing Makefile.am files and checked them into svn.
+This should solve most of the compile problems we have currently!
+I really can't reproduce why they were lost from my noteedit archive
+I checked into svn last autumn.
+
+Also I changed de.po from the doc/de directory (Version 2.7.4).
+
+Thanks to kdiff3 the great tool to not only compare files but
+also directories (2.7.3 <-> 2.7.4).
+
+Here is the tarball:
+
+-rw-rw-r--  1 suamor suamor 1901324 Feb  1 21:36 noteedit-2.7.4.tar.gz
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 21:56:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Feb 2005 21:56:47 +0100
+Subject: [Noteedit-devel] Future releases
+Message-ID: <41FFED0F.2020004@web.de>
+
+Hi!
+
+I just wanted to know your opinion on future release.
+I would prefere to introduce the following:
+
+2.7.4.x Critical bugfixes for 2.7.4 release
+
+2.7.5 New stable release
+
+2.8.x Development releases with larger changes if
+       we are in need for it:
+- Changing the printing (system) of noteedit
+- Replacing tse3 by something better ?
+- Removing KDE depedency from noteedit ?
+
+Therefore we would need to create a stable branch and
+a development branch in svn.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 22:34:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 1 Feb 2005 22:34:35 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <41FFE853.7050300@web.de>
+References: <41FFE853.7050300@web.de>
+Message-ID: <200502012234.35230.leon.vinken@hetnet.nl>
+
+Reinhard,
+
+answers in message below ...
+
+Regards, Leon.
+
+On Tuesday 01 February 2005 21:36, noteedit-devel-admin at berlios.de wrote:
+> Hi!
+>
+> I have created a 2.7.4 tarball but not yet tested it. Differences to 2.7.3:
+>
+> - 31 files were changed ;-)
+>
+> Someone needs to update the Changelog file before we can make the
+> release. This file should be used for the release changes we post
+> in the release manager as well.
+
+This is what should be reported as user-visible changes, as far as I am 
+concerned. Feel free to add these to a changelog or use them as the basis for 
+your release notes.
+
+New features:
+- improved LilyPond support : added export in lilypond-2.4.2 format
+- added Slovenian translation, thanks to Matevz Jekovec
+
+Patches included (Matevz Jekovec):
+- 000255 added \version "2.0", so convert-ly now works out of the box
+         moved \voiceOne,\voiceTwo etc. to the separate lines
+  fixed a small typo (LilyPoint -> LilyPond)
+
+Bugs fixed:
+- 002487 noteedit doesn't consider ties on MusicXML import
+- 002528 triplets unfunctional
+- 002532 multirests with one bar
+- 002580 small type in INSTALL.de
+- 002581 rest symbol printed twice
+- 002807 rests should have fermatas as well
+- 002809 measure numbers for other voices not printed in .ly file
+
+>
+> I have found 8 missing Makefile.am files and checked them into svn.
+> This should solve most of the compile problems we have currently!
+> I really can't reproduce why they were lost from my noteedit archive
+> I checked into svn last autumn.
+>
+> Also I changed de.po from the doc/de directory (Version 2.7.4).
+>
+> Thanks to kdiff3 the great tool to not only compare files but
+> also directories (2.7.3 <-> 2.7.4).
+>
+> Here is the tarball:
+>
+> -rw-rw-r--  1 suamor suamor 1901324 Feb  1 21:36 noteedit-2.7.4.tar.gz
+
+Is this one available so I download and test it ?
+
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 22:42:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 1 Feb 2005 22:42:53 +0100
+Subject: [Noteedit-devel] how to upload 2.7.4 tarball to berliOS
+In-Reply-To: <41FFD40C.30801@web.de>
+References: <200502011745.32876.leon.vinken@hetnet.nl> <41FFD40C.30801@web.de>
+Message-ID: <200502012242.53676.leon.vinken@hetnet.nl>
+
+Hi Reinhard,
+
+I am not especially looking forward to the job of release technician, just 
+trying to push 2.7.4 out of the door. I am perfectly happy with you making 
+the release (even happier then when I would have to do it :-)).
+
+Apparently, I was not clear enough about my intentions: I also made a tarball 
+tonight. Doesn't matter, but let's try to avoid wasting time like this. Once 
+again, I am perfectly happy with your version. Feel free to test and release 
+it. In case you run into problems, I also have a version available that at 
+least builds and works OK on Fedora Core 3. Let me know if you need it.
+
+This is what I did:
+unzip/untar noteedit-2.7.3.tgz
+- note: be careful to check the five links in admin !
+mv noteedit-2.7.3 noteedit-2.7.4-beta1
+replace following files by svn versions:
+- AUTHORS
+- FAQ
+- FAQ.de
+- INSTALL
+- INSTALL.de
+- README
+- VERSION
+- doc/de/index.docbook
+- doc/noteedit/index.docbook
+- noteedit/* (all updated files)
+- noteedit/po/Makefile.in
+- noteedit/po/sl.po
+note: don't copy:
+- Makefile.cvs
+- entire admin directory
+edit 2.7.3 into 2.7.4 in:
+- configure.in.in
+- configure.in
+- configure
+
+If you need help in testing your tarball, I would be happy to do that too. 
+Available platforms are Core 3 and RedHat 7.2 (old, but 2.7.3 still works on 
+it). Just tell me where to download it from.
+
+Regards, Leon.
+
+On Tuesday 01 February 2005 20:10, noteedit-devel-admin at berlios.de wrote:
+> noteedit-devel-admin at berlios.de schrieb:
+> > Hi guys,
+> >
+> > title says it all: how do I upload a tarball to berliOS ? I can find a
+> > "download" but no "upload" button. If I can't do it myself, who do I send
+> > it to ?
+> >
+> > I intend to create a 2.7.4 beta tarball today or tomorrow.
+> >
+> > Regards, Leon.
+> > _______________________________________________
+> > Noteedit-devel mailing list
+> > Noteedit-devel at lists.berlios.de
+> > http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+> Currently only me and Georg can do this.
+> I go to Admin -> Edit/Release files
+> I upload the tarball to ftp.berlios.de
+>
+> After that I can start to create a new release.
+> You either have to be admin or release technician to do the job.
+> I had planned to do it myself.
+>
+> I'd used the current source from SVN, create a release TAG to it
+> and add the old configure / admin files to the files and remove
+> the CVS specific files.
+>
+> If you want to be a release technician, Leon, just tell me and
+> I change your user data.
+>
+> Also I wanted to compile it on Mandrake 10.2 beta and Fedora
+> Core 3 for myself (tarball and rpms).
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 22:50:16 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 1 Feb 2005 22:50:16 +0100
+Subject: [Noteedit-devel] Future releases
+In-Reply-To: <41FFED0F.2020004@web.de>
+References: <41FFED0F.2020004@web.de>
+Message-ID: <200502012250.16576.leon.vinken@hetnet.nl>
+
+A slightly different proposal, based on the Linux kernel versions:
+use x.y.z with odd y's for development and with even y's for stable.
+
+I believe this is a common numbering scheme, e.g. LilyPond also uses it. This 
+would imply we need to copy 2.7.4 to a stable 2.8 release (with bug fixes in 
+releases 2.8.1, 2.8.2 etc.).
+
+New development would go into 2.9 (and, when stable, become 3.0).
+
+Regards, Leon.
+
+On Tuesday 01 February 2005 21:56, noteedit-devel-admin at berlios.de wrote:
+> Hi!
+>
+> I just wanted to know your opinion on future release.
+> I would prefere to introduce the following:
+>
+> 2.7.4.x Critical bugfixes for 2.7.4 release
+>
+> 2.7.5 New stable release
+>
+> 2.8.x Development releases with larger changes if
+>        we are in need for it:
+> - Changing the printing (system) of noteedit
+> - Replacing tse3 by something better ?
+> - Removing KDE depedency from noteedit ?
+>
+> Therefore we would need to create a stable branch and
+> a development branch in svn.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 23:15:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Feb 2005 23:15:02 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <41FFE853.7050300@web.de>
+References: <41FFE853.7050300@web.de>
+Message-ID: <41FFFF66.6090901@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi!
+> 
+> Here is the tarball:
+> 
+> -rw-rw-r--  1 suamor suamor 1901324 Feb  1 21:36 noteedit-2.7.4.tar.gz
+> 
+
+I just tested the tarball on my broken Mandrake system ;-) and it builds
+and runs just fine! Also I tested on Fedora Core 3 (libtse3 from ccrma)
+and it seemed to work there as well.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 23:33:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Feb 2005 23:33:23 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <200502012234.35230.leon.vinken@hetnet.nl>
+References: <41FFE853.7050300@web.de> <200502012234.35230.leon.vinken@hetnet.nl>
+Message-ID: <420003B3.9080606@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Reinhard,
+> 
+> answers in message below ...
+> 
+> Regards, Leon.
+> 
+> On Tuesday 01 February 2005 21:36, noteedit-devel-admin at berlios.de wrote:
+> 
+>>Hi!
+>>
+>>I have created a 2.7.4 tarball but not yet tested it. Differences to 2.7.3:
+>>
+>>- 31 files were changed ;-)
+>>
+>>Someone needs to update the Changelog file before we can make the
+>>release. This file should be used for the release changes we post
+>>in the release manager as well.
+> 
+> 
+> This is what should be reported as user-visible changes, as far as I am 
+> concerned. Feel free to add these to a changelog or use them as the basis for 
+> your release notes.
+> 
+> New features:
+> - improved LilyPond support : added export in lilypond-2.4.2 format
+> - added Slovenian translation, thanks to Matevz Jekovec
+> 
+> Patches included (Matevz Jekovec):
+> - 000255 added \version "2.0", so convert-ly now works out of the box
+>          moved \voiceOne,\voiceTwo etc. to the separate lines
+>   fixed a small typo (LilyPoint -> LilyPond)
+> 
+> Bugs fixed:
+> - 002487 noteedit doesn't consider ties on MusicXML import
+> - 002528 triplets unfunctional
+> - 002532 multirests with one bar
+> - 002580 small type in INSTALL.de
+> - 002581 rest symbol printed twice
+> - 002807 rests should have fermatas as well
+> - 002809 measure numbers for other voices not printed in .ly file
+> 
+> 
+>>I have found 8 missing Makefile.am files and checked them into svn.
+>>This should solve most of the compile problems we have currently!
+>>I really can't reproduce why they were lost from my noteedit archive
+>>I checked into svn last autumn.
+>>
+>>Also I changed de.po from the doc/de directory (Version 2.7.4).
+>>
+>>Thanks to kdiff3 the great tool to not only compare files but
+>>also directories (2.7.3 <-> 2.7.4).
+>>
+>>Here is the tarball:
+>>
+>>-rw-rw-r--  1 suamor suamor 1901324 Feb  1 21:36 noteedit-2.7.4.tar.gz
+> 
+> 
+> Is this one available so I download and test it ?
+> 
+> 
+>>Best regards,
+>>
+>>Reinhard Katzmann
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Feb  1 23:36:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 01 Feb 2005 23:36:39 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <200502012234.35230.leon.vinken@hetnet.nl>
+References: <41FFE853.7050300@web.de> <200502012234.35230.leon.vinken@hetnet.nl>
+Message-ID: <42000477.4050603@web.de>
+
+Hi Leon,
+
+>>Someone needs to update the Changelog file before we can make the
+>>release. This file should be used for the release changes we post
+>>in the release manager as well.
+> 
+> 
+> This is what should be reported as user-visible changes, as far as I am 
+> concerned. Feel free to add these to a changelog or use them as the basis for 
+> your release notes.
+> 
+> New features:
+> - improved LilyPond support : added export in lilypond-2.4.2 format
+> - added Slovenian translation, thanks to Matevz Jekovec
+> 
+> Patches included (Matevz Jekovec):
+> - 000255 added \version "2.0", so convert-ly now works out of the box
+>          moved \voiceOne,\voiceTwo etc. to the separate lines
+>   fixed a small typo (LilyPoint -> LilyPond)
+> 
+> Bugs fixed:
+> - 002487 noteedit doesn't consider ties on MusicXML import
+> - 002528 triplets unfunctional
+> - 002532 multirests with one bar
+> - 002580 small type in INSTALL.de
+> - 002581 rest symbol printed twice
+> - 002807 rests should have fermatas as well
+> - 002809 measure numbers for other voices not printed in .ly file
+> 
+
+I decided to add it to the "NEWS" file instead to the Changelog. The
+Changelog should contain Changes we make during development. It might
+be sufficient to have SVN as a base for the Changelog, so we might
+not need this file.
+
+>>I have found 8 missing Makefile.am files and checked them into svn.
+>>This should solve most of the compile problems we have currently!
+>>I really can't reproduce why they were lost from my noteedit archive
+>>I checked into svn last autumn.
+>>
+>>Also I changed de.po from the doc/de directory (Version 2.7.4).
+>>
+>>Thanks to kdiff3 the great tool to not only compare files but
+>>also directories (2.7.3 <-> 2.7.4).
+>>
+>>Here is the tarball:
+>>
+>>-rw-rw-r--  1 suamor suamor 1901324 Feb  1 21:36 noteedit-2.7.4.tar.gz
+> 
+> 
+> Is this one available so I download and test it ?
+
+I have sent this to you and Georg.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Feb  2 23:13:34 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 02 Feb 2005 23:13:34 +0100
+Subject: [Noteedit-devel] Documentation / Help menu
+Message-ID: <4201508E.5080809@web.de>
+
+Hi!
+
+I just tested the help menu on the build created yesterday.
+I found out that
+- The handbook cannot be loaded if KDE is in /usr and the
+   doc file in /usr/local/kde (default directory for MDK 10.x)
+- Problems with the program are still reported to Joerg Anders
+   (maybe the first author from AUTHORS ?)
+- Context sensitive help does not work.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Feb  3 09:59:13 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 03 Feb 2005 09:59:13 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <41FFFF66.6090901@web.de>
+References: <41FFE853.7050300@web.de> <41FFFF66.6090901@web.de>
+Message-ID: <4201E7E1.2050900@schwaben.de>
+
+Hi all,
+
+The tarball looks good: It builds on a Suse 9.0 (kernel 2.4.21, kde 3.1) 
+with just
+
+      tar xvfz <tarball>
+      cd noteedit-2-7-4
+      configure --prefix=/opt/kde3
+      make
+
+as described in INSTALL.
+
+On my Suse 9.2 x86-64 (kernel 2.6.8, kde 3.3) things look also okay: The 
+Suse spec-skript/-patch is still needed. Thus to make a Suse rpm someone 
+needs just replace 2.7.3-tarball with the new one.
+
+Best Regards,
+Georg.
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Feb  3 21:28:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 3 Feb 2005 21:28:04 +0100
+Subject: [Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed
+In-Reply-To: <200502031852.j13IqHaL005496@unicorn.berlios.de>
+References: <200502031852.j13IqHaL005496@unicorn.berlios.de>
+Message-ID: <200502032128.04982.leon.vinken@hetnet.nl>
+
+Hi guys,
+
+apparently I was too tired to think clearly yesterday, after a good night of 
+sleep I had a "Eureka-moment" (would that be "aha-erlebnis" in german ?) and 
+realized fixing yesterday's crash was trivial. The loop termination condition 
+was incorrect. On my Core 3 system the bug did also occur, but not as a 
+crash. Instead the listbox in "edit / cleanup rests" contained way too many 
+strings.
+
+Fix was committed to svn a few minutes ago. Hope nobody spent too much time on 
+this.
+
+Regards, Leon.
+
+On Thursday 03 February 2005 19:52, you wrote:
+> Bug #3249, was updated on 2005-Feb-03 19:52
+> Here is a current snapshot of the bug.
+>
+> Project: Noteedit - A Score Editor
+> Category: None
+> Status: Open
+> Resolution: None
+> Bug Group: New
+> Priority: 5
+> Submitted by: lvinken
+> Assigned to : none
+> Summary: 2.7.4 beta crash on RH7.2
+>
+> Details: Crashes when initializing on RedHat 7.2, apparently in
+> smallestRestFrm's constructor. It seems the loop in smallestRestFrm's
+> constructor (there is only one) does not terminate, which finally results
+> in a sig 11. Note: the relevant piece of code is unchanged since 2.7.3 or
+> older.
+>
+> For detailed info, follow this link:
+> http://developer.berlios.de/bugs/?func=detailbug&bug_id=3249&group_id=2232
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Feb  4 01:59:51 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 04 Feb 2005 01:59:51 +0100
+Subject: [Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed
+In-Reply-To: <200502032128.04982.leon.vinken@hetnet.nl>
+References: <200502031852.j13IqHaL005496@unicorn.berlios.de> <200502032128.04982.leon.vinken@hetnet.nl>
+Message-ID: <4202C907.3080200@schwaben.de>
+
+Hi,
+
+>Fix was committed to svn a few minutes ago. Hope nobody spent too much time on 
+>this.
+>
+>Regards, Leon.
+>
+>  
+>
+Me not. Thanks for the fix!
+
+And I added a small update in lilyexport that for lily  2.4  drum notes 
+go without warnings.
+
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Feb  4 01:03:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 04 Feb 2005 01:03:12 +0100
+Subject: [Noteedit-devel] a small typo
+Message-ID: <4202BBC0.4030109@guest.arnes.si>
+
+Looking at the homepage/index.html file, there is a small typo in 
+Timidity server section. In the paragraph before the last one, sould --> 
+should.
+
+
+:)
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Feb  4 09:53:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 04 Feb 2005 09:53:18 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <41FFFF66.6090901@web.de>
+References: <41FFE853.7050300@web.de> <41FFFF66.6090901@web.de>
+Message-ID: <420337FE.6070605@schwaben.de>
+
+Hi,
+
+
+because lily 2.4.2 chockes on the metronome assignment (\tempo) I 
+disabelt export of it in lilyexport for lily > 2.4. I'll try to find a 
+solution with \markup. For the tarball it might be better to go save now.
+
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  5 09:34:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 05 Feb 2005 09:34:11 +0100
+Subject: [Noteedit-devel] a small typo
+In-Reply-To: <4202BBC0.4030109@guest.arnes.si>
+References: <4202BBC0.4030109@guest.arnes.si>
+Message-ID: <42048503.9000400@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Looking at the homepage/index.html file, there is a small typo in 
+> Timidity server section. In the paragraph before the last one, sould 
+> --> should.
+>
+>
+> :)
+> - Matev?
+
+Fixed in a few files, thanks,
+Georg.
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  5 08:43:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 5 Feb 2005 08:43:08 +0100
+Subject: [Noteedit-devel] Release 2.7.4 tarball
+In-Reply-To: <4201E7E1.2050900@schwaben.de>
+References: <41FFE853.7050300@web.de> <41FFFF66.6090901@web.de> <4201E7E1.2050900@schwaben.de>
+Message-ID: <200502050843.08796.leon.vinken@hetnet.nl>
+
+Georg and/or Reinhard,
+
+isn't it about time one of you uploads 2.7.4 ? I have not heard about any real 
+issues for a few days anymore.
+
+Regards, Leon.
+
+On Thursday 03 February 2005 09:59, noteedit-devel-admin at berlios.de wrote:
+> Hi all,
+>
+> The tarball looks good: It builds on a Suse 9.0 (kernel 2.4.21, kde 3.1)
+> with just
+>
+>       tar xvfz <tarball>
+>       cd noteedit-2-7-4
+>       configure --prefix=/opt/kde3
+>       make
+>
+> as described in INSTALL.
+>
+> On my Suse 9.2 x86-64 (kernel 2.6.8, kde 3.3) things look also okay: The
+> Suse spec-skript/-patch is still needed. Thus to make a Suse rpm someone
+> needs just replace 2.7.3-tarball with the new one.
+>
+> Best Regards,
+> Georg.
+>
+>
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  5 13:29:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 05 Feb 2005 13:29:59 +0100
+Subject: [Noteedit-devel] asdftempo?!
+Message-ID: <4204BC47.4090402@guest.arnes.si>
+
+Could someone explain what does \asdftempo do in LilyPond syntax using 
+Export Lilypond function?
+
+
+- Matevz
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb  5 23:31:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 05 Feb 2005 23:31:53 +0100
+Subject: [Noteedit-devel] 2.7.4 Beta 1 released
+Message-ID: <42054959.10907@web.de>
+
+Hi,
+
+The first beta (and probably the last and also the first and last 
+release candidate ;-) for version 2.7.4 of noteedit has been released. 
+Please test this hard and report any build problems to the developer 
+mailing lists. You can also post bugs to the bug tracker.
+
+You can download it from here:
+http://developer.berlios.de/project/filelist.php?group_id=2232
+
+I only know of one issue: The problem reports are still send
+to Joerg Anders.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 00:00:28 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 06 Feb 2005 00:00:28 +0100
+Subject: [Noteedit-devel] New Homepage for Noteedit
+Message-ID: <4205500C.5080000@web.de>
+
+Hi!
+
+I've uploaded a first version of the new noteedit homepage. It
+can be visited here: http://noteedit.berlios.de
+Currently it is very simple and only based on the README.
+
+It is also checked in into SVN. So you can send in your
+patches or add your comments. We should have a designer
+improving the homepage. Some ideas have already been
+posted to the list beginning on 22. September (see ML Archives).
+
+Also the homepage of Mr. Anders seems to be lost in the
+happy hunting ground of some memory chips... I got some of
+the original files (without screenshots) in case someone
+wants to copy some of the original content.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 10:10:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Feb 2005 10:10:11 +0100
+Subject: [Noteedit-devel] Re: [Bug #3249] 2.7.4 beta crash on RH7.2
+In-Reply-To: <200502060509.j1659ZLk015337@unicorn.berlios.de>
+References: <200502060509.j1659ZLk015337@unicorn.berlios.de>
+Message-ID: <200502061010.11186.leon.vinken@hetnet.nl>
+
+On Sunday 06 February 2005 06:09, you wrote:
+> Date: 2005-Feb-06 05:09
+> By: suamor
+>
+> Comment:
+> Just ignore my comment. I was really to tired yesterday.
+>
+> -------------------------------------------------------
+>
+> Date: 2005-Feb-05 22:36
+> By: suamor
+>
+> Comment:
+> What I don't like about the fix:
+> - It uses the absolute value "12" to check for the end of the loop
+> (according to resource.h the variable is not constant, only static) - It
+> uses integer instead of char (see resource.h) for assigning
+> - noteVal[] is type char, but i is of type integer -> potential bug
+> smallestRestFrm seems now to be similar to filterFrm where I see the same
+> problem
+>
+> Regards,
+>
+> Reinhard Katzmann
+
+Hi Reinhard,
+
+no offense taken :-).
+
+Your remark about the value 12 is correct, a better solution would be to end 
+the string table with a null. The way it is coded now has implicit knowledge 
+about the table length in resource.cpp encoded in uiconnect.cpp which, of 
+course, is a maintenance problem.
+
+However, the same construction is used in more places and for a "last minute" 
+fix I did not want to deviate from the existing coding style or rework it 
+completely. Improving the coding style is something I prefer to do only 
+during development, not in beta. For 2.7.4 we should aim for safety and fix 
+only killing bugs using the smallest possible code change.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 10:12:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Feb 2005 10:12:47 +0100
+Subject: [Noteedit-devel] New Homepage for Noteedit
+In-Reply-To: <4205500C.5080000@web.de>
+References: <4205500C.5080000@web.de>
+Message-ID: <200502061012.47861.leon.vinken@hetnet.nl>
+
+On Sunday 06 February 2005 00:00, noteedit-devel-admin at berlios.de wrote:
+> Hi!
+>
+> I've uploaded a first version of the new noteedit homepage. It
+> can be visited here: http://noteedit.berlios.de
+> Currently it is very simple and only based on the README.
+>
+> It is also checked in into SVN. So you can send in your
+> patches or add your comments. We should have a designer
+> improving the homepage. Some ideas have already been
+> posted to the list beginning on 22. September (see ML Archives).
+>
+> Also the homepage of Mr. Anders seems to be lost in the
+> happy hunting ground of some memory chips... I got some of
+> the original files (without screenshots) in case someone
+> wants to copy some of the original content.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+Looks good !
+Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 10:21:42 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Feb 2005 10:21:42 +0100
+Subject: [Noteedit-devel] 2.7.4 Beta 1 released
+In-Reply-To: <42054959.10907@web.de>
+References: <42054959.10907@web.de>
+Message-ID: <200502061021.42571.leon.vinken@hetnet.nl>
+
+On Saturday 05 February 2005 23:31, noteedit-devel-admin at berlios.de wrote:
+> Hi,
+>
+> The first beta (and probably the last and also the first and last
+> release candidate ;-) for version 2.7.4 of noteedit has been released.
+> Please test this hard and report any build problems to the developer
+> mailing lists. You can also post bugs to the bug tracker.
+>
+> You can download it from here:
+> http://developer.berlios.de/project/filelist.php?group_id=2232
+>
+> I only know of one issue: The problem reports are still send
+> to Joerg Anders.
+
+Hi Reinhard,
+
+thanks for making the release. I filed bug #3293 for your issue, which (IMHO) 
+should be fixed before the final 2.7.4 release. It would not be polite to 
+keep bothering Joerg Anders with bug reports.
+
+Is there a specific address we can send bug reports to ? If not, then we 
+should probably use something like "noteedit-devel at lists.berlios.de".
+
+Regards, Leon.
+
+>
+> Regards,
+>
+> Reinhard Katzmann
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 12:30:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Feb 2005 12:30:11 +0100
+Subject: Crash w/o synth (was: Re: [Noteedit-devel] lily-2.4 export added)
+In-Reply-To: <41F77029.1040705@schwaben.de>
+References: <41F77029.1040705@schwaben.de>
+Message-ID: <200502061230.11208.leon.vinken@hetnet.nl>
+
+On Wednesday 26 January 2005 11:25, noteedit-devel-admin at berlios.de wrote:
+
+> What might be annoying: If there is no alsa-midi synthesizer up and
+> running, noteedit is crashing without comment. This might scare people
+> away. A printf somewhere is minimum, better a window in case you start
+> through a desktop icon. Who might do that? If I'm more familiar with
+> noteedit I will consider to work more with bug-assignment on berlios ...
+>
+> Anyway, enjoy,
+> and Best Regards.
+> Georg Rudolph.
+
+Hi Georg,
+
+created bug #3296 "Crash when ALSA synth not running" for this. Intend to fix 
+it before 2.7.4, as I don't want crashes in production version software.
+
+Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 19:18:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 06 Feb 2005 19:18:18 +0100
+Subject: [Noteedit-devel] 2.7.4 Beta 1 released
+In-Reply-To: <200502061021.42571.leon.vinken@hetnet.nl>
+References: <42054959.10907@web.de> <200502061021.42571.leon.vinken@hetnet.nl>
+Message-ID: <42065F6A.5000403@web.de>
+
+Hi Leon,
+
+>>I only know of one issue: The problem reports are still send
+>>to Joerg Anders.
+> 
+> 
+> Hi Reinhard,
+> 
+> thanks for making the release. I filed bug #3293 for your issue, which (IMHO) 
+> should be fixed before the final 2.7.4 release. It would not be polite to 
+> keep bothering Joerg Anders with bug reports.
+> 
+> Is there a specific address we can send bug reports to ? If not, then we 
+> should probably use something like "noteedit-devel at lists.berlios.de".
+> 
+> Regards, Leon.
+> 
+> 
+
+Usually I would not disagree, but in this case we have a small problem:
+I have spam-protected the Mailing Lists of noteedit. So any mail sent to
+to the list by someone not on the list will have no success (except I
+explicitely agree to it). So maybe it's better to use my or Georg's
+address (the berlios one) some developer who wants to be the bug admin.
+Also I ask myself if we really should add the real E-Mail adresses to
+the AUTHORS list. I think everyone has to decide for himself which 
+address he wants to use. Maybe it's possible to hide the E-Mails in the
+problem reports dialog.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 19:37:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Feb 2005 19:37:12 +0100
+Subject: [Noteedit-devel] 2.7.4 Beta 1 released
+In-Reply-To: <42065F6A.5000403@web.de>
+References: <42054959.10907@web.de> <200502061021.42571.leon.vinken@hetnet.nl> <42065F6A.5000403@web.de>
+Message-ID: <200502061937.12414.leon.vinken@hetnet.nl>
+
+On Sunday 06 February 2005 19:18, noteedit-devel-admin at berlios.de wrote:
+> Hi Leon,
+>
+> >>I only know of one issue: The problem reports are still send
+> >>to Joerg Anders.
+> >
+> > Hi Reinhard,
+> >
+> > thanks for making the release. I filed bug #3293 for your issue, which
+> > (IMHO) should be fixed before the final 2.7.4 release. It would not be
+> > polite to keep bothering Joerg Anders with bug reports.
+> >
+> > Is there a specific address we can send bug reports to ? If not, then we
+> > should probably use something like "noteedit-devel at lists.berlios.de".
+> >
+> > Regards, Leon.
+>
+> Usually I would not disagree, but in this case we have a small problem:
+> I have spam-protected the Mailing Lists of noteedit. So any mail sent to
+> to the list by someone not on the list will have no success (except I
+> explicitely agree to it). So maybe it's better to use my or Georg's
+> address (the berlios one) some developer who wants to be the bug admin.
+> Also I ask myself if we really should add the real E-Mail adresses to
+> the AUTHORS list. I think everyone has to decide for himself which
+> address he wants to use. Maybe it's possible to hide the E-Mails in the
+> problem reports dialog.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+Reinhard,
+
+you are quite right. Whatever you do, it is allright with me (except sending 
+all problem reports to me :-)).
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb  6 19:39:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 6 Feb 2005 19:39:23 +0100
+Subject: Crash w/o synth (was: Re: [Noteedit-devel] lily-2.4 export added)
+In-Reply-To: <200502061230.11208.leon.vinken@hetnet.nl>
+References: <41F77029.1040705@schwaben.de> <200502061230.11208.leon.vinken@hetnet.nl>
+Message-ID: <200502061939.23509.leon.vinken@hetnet.nl>
+
+On Sunday 06 February 2005 12:30, noteedit-devel-admin at berlios.de wrote:
+> On Wednesday 26 January 2005 11:25, noteedit-devel-admin at berlios.de wrote:
+> > What might be annoying: If there is no alsa-midi synthesizer up and
+> > running, noteedit is crashing without comment. This might scare people
+> > away. A printf somewhere is minimum, better a window in case you start
+> > through a desktop icon. Who might do that? If I'm more familiar with
+> > noteedit I will consider to work more with bug-assignment on berlios ...
+> >
+> > Anyway, enjoy,
+> > and Best Regards.
+> > Georg Rudolph.
+>
+> Hi Georg,
+>
+> created bug #3296 "Crash when ALSA synth not running" for this. Intend to
+> fix it before 2.7.4, as I don't want crashes in production version
+> software.
+>
+> Leon.
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+Been debugging this afternoon, fix committed.
+Note: (just to be clear about it) I have no intention to fix 3293 myself.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb 12 22:46:51 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 12 Feb 2005 22:46:51 +0100
+Subject: [Noteedit-devel] asdftempo?!
+In-Reply-To: <4204BC47.4090402@guest.arnes.si>
+References: <4204BC47.4090402@guest.arnes.si>
+Message-ID: <420E794B.9010909@schwaben.de>
+
+Ok, I removed now this helper text of mine. Thanks of catching this!
+Georg.
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Could someone explain what does \asdftempo do in LilyPond syntax using 
+> Export Lilypond function?
+>
+>
+> - Matevz
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Feb 13 16:01:34 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 13 Feb 2005 16:01:34 +0100
+Subject: [Noteedit-devel] Re: Crash w/o synth
+In-Reply-To: <200502061230.11208.leon.vinken@hetnet.nl>
+References: <41F77029.1040705@schwaben.de> <200502061230.11208.leon.vinken@hetnet.nl>
+Message-ID: <420F6BCE.3040600@schwaben.de>
+
+>
+>
+>created bug #3296 "Crash when ALSA synth not running" for this. Intend to fix 
+>it before 2.7.4, as I don't want crashes in production version software.
+>
+>Leon.
+>  
+>
+Seems not to crash anymore now, thanks!
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Feb 14 01:23:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 14 Feb 2005 01:23:47 +0100
+Subject: [Noteedit-devel] 2.7.4 Beta 1 released
+In-Reply-To: <200502061937.12414.leon.vinken@hetnet.nl>
+References: <42054959.10907@web.de> <200502061021.42571.leon.vinken@hetnet.nl> <42065F6A.5000403@web.de> <200502061937.12414.leon.vinken@hetnet.nl>
+Message-ID: <420FEF93.2010807@schwaben.de>
+
+Hi all,
+
+I tested the tarball as a drop-in for the my suse 9.2 x86 src-rpm. It 
+worked as expected. I think, with the contact issues fixed, the svn HEAD 
+could be a 2.7.4 release. HEAD passed also a test.
+
+Regards, Georg.
+
+
+
+
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>On Sunday 06 February 2005 19:18, noteedit-devel-admin at berlios.de wrote:
+>  
+>
+>>Hi Leon,
+>>
+>>    
+>>
+>>>>I only know of one issue: The problem reports are still send
+>>>>to Joerg Anders.
+>>>>        
+>>>>
+>>>Hi Reinhard,
+>>>
+>>>thanks for making the release. I filed bug #3293 for your issue, which
+>>>(IMHO) should be fixed before the final 2.7.4 release. It would not be
+>>>polite to keep bothering Joerg Anders with bug reports.
+>>>
+>>>Is there a specific address we can send bug reports to ? If not, then we
+>>>should probably use something like "noteedit-devel at lists.berlios.de".
+>>>
+>>>Regards, Leon.
+>>>      
+>>>
+>>Usually I would not disagree, but in this case we have a small problem:
+>>I have spam-protected the Mailing Lists of noteedit. So any mail sent to
+>>to the list by someone not on the list will have no success (except I
+>>explicitely agree to it). So maybe it's better to use my or Georg's
+>>address (the berlios one) some developer who wants to be the bug admin.
+>>Also I ask myself if we really should add the real E-Mail adresses to
+>>the AUTHORS list. I think everyone has to decide for himself which
+>>address he wants to use. Maybe it's possible to hide the E-Mails in the
+>>problem reports dialog.
+>>
+>>Best regards,
+>>
+>>Reinhard Katzmann
+>>    
+>>
+>
+>Reinhard,
+>
+>you are quite right. Whatever you do, it is allright with me (except sending 
+>all problem reports to me :-)).
+>
+>Regards, Leon.
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>  
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Feb 14 10:43:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 14 Feb 2005 10:43:40 +0100
+Subject: [Noteedit-devel] New Homepage for Noteedit
+In-Reply-To: <4205500C.5080000@web.de>
+References: <4205500C.5080000@web.de>
+Message-ID: <421072CC.6040304@schwaben.de>
+
+Hello,
+
+thanks for the new homepage.
+
+A few questions: From time to time someone has to upload the checked in 
+version of index.html? I would also propose to put the english and 
+german manual in html format there with a link, but this time without 
+checkin in. Not too much traffic, I guess, and some seem to have 
+troubles with kde-help. The manual itself is the best doc we have, and 
+it's even good. And I could do it.
+
+Best regards,
+Georg.
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi!
+>
+> I've uploaded a first version of the new noteedit homepage. It
+> can be visited here: http://noteedit.berlios.de
+> Currently it is very simple and only based on the README.
+>
+> It is also checked in into SVN. So you can send in your
+> patches or add your comments. We should have a designer
+> improving the homepage. Some ideas have already been
+> posted to the list beginning on 22. September (see ML Archives).
+>
+> Also the homepage of Mr. Anders seems to be lost in the
+> happy hunting ground of some memory chips... I got some of
+> the original files (without screenshots) in case someone
+> wants to copy some of the original content.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Feb 25 17:11:05 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 25 Feb 2005 17:11:05 +0100
+Subject: [Noteedit-devel] noteedit-2.7.4 released
+Message-ID: <421F4E19.4050506@schwaben.de>
+
+Hi all,
+
+the noteedit release 2.7.4 is now online. Please check it out and enjoy. 
+Thanks everybody who contributed and made it possible! Svn is now widely 
+open for improvements again.
+
+Okay, I messed a bit around 'till I got the tarball up, even had to take 
+my first one down again, so here is shown what's finally inside, also 
+for future reference (it's a makefile extract):
+
+B = noteedit-2.7.4
+A = noteedit-2.7.4_beta1
+
+build_tar_ball:
+    rm -rf $B
+    svn export svn+ssh://svn.berlios.de/svnroot/repos/noteedit $B
+    cp $A/configure.in         $B
+    cp $A/Makefile.in          $B
+    cp $A/acinclude.m4       $B
+    cp $A/aclocal.m4            $B
+    cp $A/configure              $B
+    rm -f $B/Makefile.cvs
+    tar cvf $B.tar $B
+    gzip $B.tar
+
+You see, I had a beta tarball around. I wonder only where the beta got 
+these files from :)
+For changes see the NEWS file and the website. Don't know how to tag svn 
+version 60 with this release event.
+
+Best Regards,
+Georg Rudolph
+
+
+
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Feb 26 03:01:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 26 Feb 2005 03:01:52 +0100
+Subject: [Noteedit-devel] noteedit-2.7.4 released
+In-Reply-To: <421F4E19.4050506@schwaben.de>
+References: <421F4E19.4050506@schwaben.de>
+Message-ID: <421FD890.7080806@schwaben.de>
+
+Hi all,
+
+from Stephan Binner I got this ./configure report:
+
+checking for strip... (cached) strip
+checking for Cygwin environment... (cached) no
+checking for mingw32 environment... (cached) no
+/bin/sh: admin/ltconfig: No such file or directory
+configure: error: libtool configure failed
+make: *** [configure-work/noteedit-2.7.4/configure] Error 1
+
+I found out that in the admin directory some soft links where missing. Okay, I substituted already the tarball on the website with what I made now with this recipie:
+
+
+B = noteedit-2.7.4
+A = noteedit-2.7.4_beta1
+
+build_tar_ball:
+    rm -rf $B
+    svn export svn+ssh://svn.berlios.de/svnroot/repos/noteedit $B
+    cp $A/configure.in    $B
+    cp $A/Makefile.in     $B
+    cp $A/acinclude.m4    $B
+    cp $A/aclocal.m4      $B
+    cp $A/configure       $B
+    rm -f $B/Makefile.cvs
+    cd $B/admin ; ln -s old-libtool.m4.in libtool.m4.in ; \
+                ln -s old-ltcf-c.sh ltcf-c.sh  ; \
+                ln -s old-ltcf-cxx.sh ltcf-cxx.sh  ; \
+                ln -s old-ltconfig ltconfig  ; \
+                ln -s old-ltmain.sh ltmain.sh
+    tar cvf $B.tar $B
+    gzip $B.tar
+
+
+I hope not too many people got stucked with this. In the Suse 9.2 rpmbuild/spec build process these links seem not to be needed.
+
+Best Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Feb 28 17:17:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 28 Feb 2005 17:17:54 +0100
+Subject: [Noteedit-devel] crash on midi import
+Message-ID: <42234432.70803@schwaben.de>
+
+Hi all,
+
+midi import on my x68-64 box crashed. After a hunt, the attached patch 
+will do the job for me again, so a real fix won't be too far :)
+
+lastPlayableIdx seems to be a flag if lastPlayable->getMidiLength() is 
+initialized or not. This bug might also have hit 32-bit builds, I guess. 
+I created bug #3483.
+
+Importing midi files from the internet or other programs is very 
+valuable. We should increase the number of accepted tracks, find out how 
+to quantize and document that more obvious.
+
+In case you want to try it, here's how I do midi import:
+    file -> new
+    tse3 -> create tse3 song
+    tse3 -> import midi, select a midi file
+    tse3 -> tse3 to score
+   
+Or is there an easier way? Anyway, now it's even more fun.
+
+Regards,
+Georg
+   
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: midi_imp.patch
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050228/a55a6bb7/attachment.ksh>
+

@@ -1,0 +1,791 @@
+From suamor at web.de  Tue Sep 14 20:46:58 2004
+From: suamor at web.de (Reinhard Katzmann)
+Date: Tue, 14 Sep 2004 20:46:58 +0200
+Subject: [Noteedit-devel] Continued Development of Noteedit
+Message-ID: <41473CA2.9060000@web.de>
+
+Hi,
+
+Noteedit is a great tool for note editing. I'm using it since years
+and have experienced many improvements in the course of the
+development. I had occasional contact with the creator of noteedit,
+Joerg Anders and had the pleasure to meet him himself at the
+Linuxtag 2003 in Karlsruhe. I'm regretting that Joerg Anders has
+decided to quit the development of noteedit.
+
+I'm planning to become one of the project leaders for noteedit. I have
+made some plans for the project management and have several ideas
+how to continue development:
+
+- create project page on developer.berlios.de    - Done
+- create two mailing lists: Developer and User   - Done for Developer
+- create bugtracking system                      - Done
+- create patch system (integrate with bugtracking ?)
+   (including version to be patched)              - Done (separately)
+- upload current version                         - Done
+- create and configure subversion
+- import source files into subversion directory
+- contact authors of noteedit about these plans  - Done by this mail
+- develop overview of source code
+- subversion daily changes ?
+- changelog of old versions ?
+- todo list
+- development environment: kdevelop
+- developer documentation for noteedit
+- Improve FAQs and HOWTOs further
+
+Aside from the main development I also plan to compare noteedit with
+similar programs available for Linux like rosegarden, denemo (a
+frontend for lilypond). I think it is important for noteedit to
+be able to exchange data with these programs not only using midi
+but also formats like musixml.
+
+I want to make it easier for users to print from noteedit. Currently
+you have to export to a format like lilypond or pmx and must call
+the program manually before you are able to print the result to the
+printer. I think it is better to do it similar to lyx: You have
+several print options (lilypond as default) and preview options like
+dvi, ps, pdf. Also it could be useful to have mup (the noteedit
+interpreter for the noteedit format) as external program to automate
+"building" of pdf or ps files to print them.
+
+Everyone being interested in the continued development of noteedit
+should not hesitate to comment on this mail or to contact me directly.
+The goals should be to improve the ease of use of the program while
+keeping the spirit of the current version intact (i.e. no redesign
+of the user interface or similar). This way it noteedit will continue
+to be the most useful free musicial notation program for Linux.
+
+The project page is http://developer.berlios.de/projects/noteedit
+To join the project you currently have to mail me your berlios
+account login so I can add you to the lists of developers.
+
+Best regards,
+
+Reinhard Katzmann
+
+P.S.
+If this mail arrived twice it is because I could not reach the
+mail address of Matt Gerassimoff.
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Sep 15 22:04:55 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Sep 2004 22:04:55 +0200
+Subject: [Noteedit-devel] SVN trunk imported
+Message-ID: <4148A067.2000605@web.de>
+
+Hi!
+
+I've imported the current version of noteedit into SVN.
+You can browse the repository via the webpage and
+checkout a local copy. To checkin you have to use your
+username and password (see SVN page for more information).
+
+I recommand to use the svn client eSvn (http://esvn.umputun.com/)
+The only thing I haven't found out if it is possible to specify
+the password on the user interface instead in the console.
+
+If you encounter DB errors while browsing or when trying to commit
+you have to ssh to svn.berlios.de with your username and password
+and do a svnadmin recover /svnroot/repos/noteedit.
+
+Have fun while developing!
+
+Reinhard
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep 16 16:31:55 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 16 Sep 2004 16:31:55 +0200 (MEST)
+Subject: [Noteedit-devel] Re: Continued Development of Noteedit
+In-Reply-To: <41473CA2.9060000@web.de>
+References: <41473CA2.9060000@web.de>
+Message-ID: <Pine.LNX.4.60.0409161630400.1924@wicht.informatik.tu-chemnitz.de>
+
+>From flaska at moje.cz Thu Sep 16 16:16:28 2004
+Date: Thu, 16 Sep 2004 15:44:14 +0200 (CEST)
+From: Vit Hrachovy <flaska at moje.cz>
+To: j.anders at informatik.tu-chemnitz.de
+Subject: NoteEdit discontinued?
+
++ Hi,
++ 
++ are you finished with NoteEdit? Are you willing to release the code to GNU
++ community? We can continue coding, if you accept that. Until CODAmusic
++ releases Finale for Unix, there can be some portable solution - at least
++ as an option for people who don't need to be professionals and buy SW.
++ 
++ If you're happy with that, we can branch new NoteEdit version on
++ SourceForge and begin coding.
++ 
++ Best regards
++ Vit Hrachovy
+
+On Tue, 14 Sep 2004, Reinhard Katzmann wrote:
+
+> Hi,
+>
+> Noteedit is a great tool for note editing. I'm using it since years
+> and have experienced many improvements in the course of the
+> development. I had occasional contact with the creator of noteedit,
+> Joerg Anders and had the pleasure to meet him himself at the
+> Linuxtag 2003 in Karlsruhe. I'm regretting that Joerg Anders has
+> decided to quit the development of noteedit.
+>
+> I'm planning to become one of the project leaders for noteedit. I have
+> made some plans for the project management and have several ideas
+> how to continue development:
+>
+> - create project page on developer.berlios.de    - Done
+> - create two mailing lists: Developer and User   - Done for Developer
+> - create bugtracking system                      - Done
+> - create patch system (integrate with bugtracking ?)
+>  (including version to be patched)              - Done (separately)
+> - upload current version                         - Done
+> - create and configure subversion
+> - import source files into subversion directory
+> - contact authors of noteedit about these plans  - Done by this mail
+> - develop overview of source code
+> - subversion daily changes ?
+> - changelog of old versions ?
+> - todo list
+> - development environment: kdevelop
+> - developer documentation for noteedit
+> - Improve FAQs and HOWTOs further
+>
+> Aside from the main development I also plan to compare noteedit with
+> similar programs available for Linux like rosegarden, denemo (a
+> frontend for lilypond). I think it is important for noteedit to
+> be able to exchange data with these programs not only using midi
+> but also formats like musixml.
+>
+> I want to make it easier for users to print from noteedit. Currently
+> you have to export to a format like lilypond or pmx and must call
+> the program manually before you are able to print the result to the
+> printer. I think it is better to do it similar to lyx: You have
+> several print options (lilypond as default) and preview options like
+> dvi, ps, pdf. Also it could be useful to have mup (the noteedit
+> interpreter for the noteedit format) as external program to automate
+> "building" of pdf or ps files to print them.
+>
+> Everyone being interested in the continued development of noteedit
+> should not hesitate to comment on this mail or to contact me directly.
+> The goals should be to improve the ease of use of the program while
+> keeping the spirit of the current version intact (i.e. no redesign
+> of the user interface or similar). This way it noteedit will continue
+> to be the most useful free musicial notation program for Linux.
+>
+> The project page is http://developer.berlios.de/projects/noteedit
+> To join the project you currently have to mail me your berlios
+> account login so I can add you to the lists of developers.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+>
+> P.S.
+> If this mail arrived twice it is because I could not reach the
+> mail address of Matt Gerassimoff.
+> -- 
+> Software-Engineer, Developer for Embedded Devices
+> Project: Pertergrin - a RPG system - http://www.pertergrin.de
+> GnuPG Public Key available on request
+>
+
+-- 
+J.Anders, Chemnitz, GERMANY (ja at informatik.tu-chemnitz.de)
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep 16 20:40:40 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 16 Sep 2004 20:40:40 +0200
+Subject: [Noteedit-devel] Re: NoteEdit alive ;)
+In-Reply-To: <Pine.LNX.4.44.0409161641060.21315-100000@prisera.moje.cz>
+References: <Pine.LNX.4.44.0409161641060.21315-100000@prisera.moje.cz>
+Message-ID: <4149DE28.5030702@web.de>
+
+Hello Vit,
+
+Vit Hrachovy wrote:
+> Hi,
+> 
+> I've contacted Joerg Anders with an offer to continue NoteEdit
+> development. As I've received his response (your offer) I've seen that you
+> don't have todolist already completed.
+
+Actually I have a small todo list but these are more administrative
+task for a project manager and for developer who wish to start coding
+on noteedit. I want to use the berlios "feature request" manager
+( http://developer.berlios.de/feature/?group_id=2232 ) to manage the
+todo list. We can always put the current status of it on the "TODO"
+file which is in SVN.
+
+> We'd like to have NoteEdit capable of:
+> 
+> wxWidgets (portability to Windows) / QT (compile-time option)
+> OSS/SDL MIDI support
+
+I don't think this is necessary as there already is a QT port for
+Cygwin available as well as kde (kdiff3 f.e. is a kde application
+ported to native windows, i.e. doesn't need X11).
+
+I agree that MIDI improvement could be done. I don't know enough
+about TSE3 to decide if it is platform independent. SDL seems to
+be the better option here. OTOH tse3 play features would have to
+be ported to SDL.
+
+> Mostly we'd be happy to use NoteEdit on both platforms and without being
+> forced to use KDE (but with KDE as an option).
+
+Currently I can't tell you how deep KDE and QT are integrated into
+noteedit. The user interface itself is only one aspect. QT offers
+itself many additional features (Strings, Dynamic Arrays, Pointer Lists
+etc.) which might make it much more complicated to port it to wxWidgets
+or GTK.
+
+> If You think it's compatible with Your roadmap (at least in parallel
+> branch), we'd like to join your team (3 coders, linux, cygwin platform).
+
+Of course that it is! My main roadmap currently is to fix bugs and make
+some smaller improvements to printing. Everything else will require a
+deeper dive for me into noteedit internals.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Sep 17 15:33:27 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 17 Sep 2004 15:33:27 +0200 (CEST)
+Subject: [Noteedit-devel] Re: NoteEdit alive ;)
+In-Reply-To: <4149DE28.5030702@web.de>
+Message-ID: <Pine.LNX.4.44.0409171524560.791-100000@prisera.moje.cz>
+
+OK, we'll do some code inspection this weekend and continue with
+proposals.
+
+I agree that code stabilisation/bug fixing and printing support should go
+first. SDL port can follow afterwards on dedicated svn branch.
+
+Best regards
+Vit Hrachovy
+
+
+
+
+On Thu, 16 Sep 2004, Reinhard Katzmann wrote:
+
+> Hello Vit,
+>
+> Vit Hrachovy wrote:
+> > Hi,
+> >
+> > I've contacted Joerg Anders with an offer to continue NoteEdit
+> > development. As I've received his response (your offer) I've seen that you
+> > don't have todolist already completed.
+>
+> Actually I have a small todo list but these are more administrative
+> task for a project manager and for developer who wish to start coding
+> on noteedit. I want to use the berlios "feature request" manager
+> ( http://developer.berlios.de/feature/?group_id=2232 ) to manage the
+> todo list. We can always put the current status of it on the "TODO"
+> file which is in SVN.
+>
+> > We'd like to have NoteEdit capable of:
+> >
+> > wxWidgets (portability to Windows) / QT (compile-time option)
+> > OSS/SDL MIDI support
+>
+> I don't think this is necessary as there already is a QT port for
+> Cygwin available as well as kde (kdiff3 f.e. is a kde application
+> ported to native windows, i.e. doesn't need X11).
+>
+> I agree that MIDI improvement could be done. I don't know enough
+> about TSE3 to decide if it is platform independent. SDL seems to
+> be the better option here. OTOH tse3 play features would have to
+> be ported to SDL.
+>
+> > Mostly we'd be happy to use NoteEdit on both platforms and without being
+> > forced to use KDE (but with KDE as an option).
+>
+> Currently I can't tell you how deep KDE and QT are integrated into
+> noteedit. The user interface itself is only one aspect. QT offers
+> itself many additional features (Strings, Dynamic Arrays, Pointer Lists
+> etc.) which might make it much more complicated to port it to wxWidgets
+> or GTK.
+>
+> > If You think it's compatible with Your roadmap (at least in parallel
+> > branch), we'd like to join your team (3 coders, linux, cygwin platform).
+>
+> Of course that it is! My main roadmap currently is to fix bugs and make
+> some smaller improvements to printing. Everything else will require a
+> deeper dive for me into noteedit internals.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+> --
+> Software-Engineer, Developer for Embedded Devices
+> Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+> GnuPG Public Key available on request
+>
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 20 18:40:06 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 20 Sep 2004 18:40:06 +0200
+Subject: [Noteedit-devel] lyrics and ties at lilypond export
+Message-ID: <414F07E6.7060806@schwaben.de>
+
+Hi all,
+
+there is a problem with lyrics when exported to lilypond I would like to 
+fix.
+
+I looked around, and I think the problem is that noteedit, when 
+exporting lyrics under a note with a tie, is putting an extra underscore 
+after the syllable under the tied note. But lilypond obviously takes 
+already care of the syllable extension. Currently the lyrics get 
+shifted, incrementally after each note with a tie.
+
+I think in file noteedit/lilyexport.cpp at the places processing the 
+underscores
+
+   out_ << " _ ";
+
+the property hasATie() should be taken in consideration. I attached a 
+two small files for testing:
+tie_problem.not:        2 staffs with lyrics
+tie_problem.ly:           exported file for lilypond, but removed "_" 
+befor "to- day" in the second staff by hand.
+
+You can compare the lyrics in both staffs when you run the .ly file 
+through lilypond. Hopefully soon I will come to it to make a patch.
+Best Regards,
+Georg
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tie_problem.not
+Type: application/octet-stream
+Size: 922 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040920/3bf9b2a5/attachment.obj>
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: tie_problem.ly
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040920/3bf9b2a5/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Sep 20 07:05:19 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 20 Sep 2004 07:05:19 +0200
+Subject: [Noteedit-devel] lyrics and ties at lilypond export
+Message-ID: <414E650F.1020102@schwaben.de>
+
+Hi all,
+
+there is a problem with lyrics when exported to lilypond I would like to 
+fix.
+
+I looked around, and I think the problem is that noteedit, when 
+exporting lyrics under a note with a tie, is putting an extra underscore 
+after the syllable under the tied note. But lilypond obviously takes 
+already care of the syllable extension. Currently the lyrics get 
+shifted, incrementally after each note with a tie.
+
+I think in file noteedit/lilyexport.cpp at the places processing the 
+underscores
+
+    out_ << " _ ";
+
+the property hasATie() should be taken in consideration. I attached a 
+few small files for testing:
+tie_problem.not:        2 staffs with lyrics
+tie_problem.ly:           exported file for lilypond, but removed "_" 
+befor "to- day" by hand.
+tie_problem.pdf:        pdf File that shows in the first staff the 
+shifted text, second staff is okay.
+
+Hopefully soon I will come to it.
+Best Regards,
+Georg
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tie_problem.not
+Type: application/octet-stream
+Size: 922 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040920/9997924b/attachment.obj>
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: tie_problem.ly
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040920/9997924b/attachment.ksh>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tie_problem.pdf
+Type: application/pdf
+Size: 14381 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040920/9997924b/attachment.pdf>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Sep 22 20:00:39 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 22 Sep 2004 20:00:39 +0200
+Subject: [Noteedit-devel] Noteedit Homepage
+Message-ID: <4151BDC7.30009@web.de>
+
+Hi,
+
+As Mr. Anders has deleted the homepage of noteedit we currently
+lack a proper homepage. I found the homepage very good from the
+content point of view, the layout and design was quit good as far
+as I remember, but in way that I sometimes forgot to download the 
+documentation or to look for some important hints.
+
+I hope that Mr Anders grants us access to his original homepage,
+or that someone on the list here has a quite recent copy of the
+page. Particulary the screenshots and several hints for the normal
+user were on this page and might not be in the archive (I'm not
+sure about it, I have never compared the archive content to the
+homepage content).
+
+The alternative option would be to create a complete new homepage
+(which means basically to develop a new layout, design and content).
+
+What are your opinions ?
+I would only choose the last option if we don't get access to the
+original homepage.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Sep 22 20:59:14 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 22 Sep 2004 15:59:14 -0300
+Subject: [Noteedit-devel] Noteedit Homepage
+In-Reply-To: <4151BDC7.30009@web.de>
+References: <4151BDC7.30009@web.de>
+Message-ID: <200409221559.14657.knight_rs@yahoo.com.br>
+
+Em Qua 22 Set 2004 15:00, noteedit-devel-admin at berlios.de escreveu:
+> The alternative option would be to create a complete new homepage
+> (which means basically to develop a new layout, design and content).
+
+I like this option.
+Create a new homepage from scratch. The original homepage was very poluted, 
+and all in a unique file.
+
+A good option (in my opinion) is drupal.org , very useful for menage projects 
+pages with colaboration for write, and costumizable look. Else has a module 
+for create hyerarchical menus.
+
+
+
+[]s
+Huberto
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Sep 23 10:09:55 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 23 Sep 2004 10:09:55 +0200 (MEST)
+Subject: [Noteedit-devel] Re: Noteedit Homepage
+In-Reply-To: <4151BDC7.30009@web.de>
+References: <4151BDC7.30009@web.de>
+Message-ID: <Pine.LNX.4.60.0409230952350.1942@wicht.informatik.tu-chemnitz.de>
+
+On Wed, 22 Sep 2004, Reinhard Katzmann wrote:
+
+> 
+> I hope that Mr Anders grants us access to his original homepage,
+> or that someone on the list here has a quite recent copy of the
+> page.
+
+I have no copy. But perhaps I can find the page in our backup
+system.
+
+It is my serious opinion NoteEdit should die if it is so
+consequently ignored by the LAU list (see below).
+
+I'll search in backup system. But don't misunderstand me:
+I placed a link to the berlios page at the old noteedit URL.
+But do not expect too much help from me. If I find the pages
+I'll send them to you. If you don't hear from me till monday,
+you should assume I haven't found it.
+
+I append the discontinuation FAQ, which contains still more
+aspects and at the end a statement which could eventually
+influence your development.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Discontinuation FAQ
+===================
+
+
+Q: I read about the "unclear statements". How did those LAU
+    posts lead to stopping development?
+
+A: Note! The mails are form LAU list. The leading list for
+    opinions concerning audio on Linux which has great influence on
+    all Linux users and distributers.
+
+    I do not really believe, there will be a Finale port on Linux.
+    But there is a small probability especially if so many LAU members
+    have the fondest wish to overcome tools like NoteEdit as that LAU
+    thread suggests and if they send appropriate requests to Codamusic.
+    And that would certainly stop NoteEdit usage.
+
+  ----------------------------------------------------------
+
+Q: But Finale will never be free!
+
+A: Please remember the history of StarOffice, the predecessor of
+    OpenOffice. Despite of the situation on MS-Windows, the Linux
+    version was always free of charge. Because Finale-NotePad is free
+    on MS-Windows, too, there is certain probability for a free
+    variant of Finale(-NotePad) on Linux.
+
+  -----------------------------------------------------------
+
+Q: I don't read that thread like you do. In all, perhaps three
+    people were seriously interested in Finale for Linux!
+
+A: Ok, this is an aspect. But you cannot disavow the LAU list
+    consequently ignores NoteEdit. Read a very typical thread starting
+    here:
+
+       http://eca.cx/lau/2004/01/0119.html
+
+    A user asks for "music editing software". In my ears it sounds
+    like "NoteEdit". But trace the thread of 28 mails! NoteEdit is
+    neither mentioned nor recommended. But I thought somebody would at
+    least mention the word "NoteEdit". Ok, I could post the word. But,
+    if I, the author, am the one and only person who has this
+    association, why continue NoteEdit?
+
+    And do not answer this is a bad example! If you wish I can search
+    for more threads.
+
+    And it has practical consequences. NoteEdit was never part of the
+    official Red Hat or Fedora distribution. And it is quite clear
+    why: I assume the Fedora packers are not musicians. So they cannot
+    estimate the different musical score software packages. Indeed,
+    SuSE was the one and only distributer who packed NoteEdit in a
+    very early stage. And again I can tell you why: The person
+    responsible for the SuSE sound packages is a musician. He does not
+    depend on the LAU opinion. And he posted the one and only clear
+    NoteEdit statement:
+
+       http://eca.cx/lau/2002/07/0455.html
+
+    Another consequence: I presented NoteEdit at some exhibitions.
+    The audience was always enthusiastic and exciting. But, nobody knew
+    NoteEdit: "Ok, but this is a commercial product, because Linux
+    has only Rosegarden.", was the first impression.
+    "No", I answered, "it is even part of the SuSE Linux
+    distribution!". Big surprise! I had the greatest difficulties to
+    explain it is GPL. It was necessary to prepare a plate stating:
+    "This software is GPL."
+
+  ----------------------------------------------
+
+Q: Do you really refuse any support ?
+
+A: Assume the following situation:
+
+       - SuSE wants to release SuSE-Linux 12 (or so )
+       - KDE4 is the current KDE version
+       - NoteEdit is un-compilable on KDE4
+       - the LilyPond changes syntax such, that the NoteEdit LilyPond
+         output is wrong
+       - The SuSE packers phone me and ask for a KDE4/LilyPond-x.y.z
+         compatible NoteEdit
+
+    Because it is relatively easy for me I'd release the appropiate
+    NoteEdit version. I'd honor the fact that SuSE places emphasis on
+    NoteEdit in a very early stage.
+
+-- 
+J.Anders, Chemnitz, GERMANY (ja at informatik.tu-chemnitz.de)
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 09:54:55 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 09:54:55 +0200
+Subject: [Noteedit-devel] [Fwd: [Bug #2528] Triplets unfunctional]
+Message-ID: <4155244F.3080407@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Bug #2528] Triplets unfunctional
+Date: Sat, 25 Sep 2004 07:10:24 GMT
+Size: 1815
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/3b0f595d/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 09:55:25 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 09:55:25 +0200
+Subject: [Noteedit-devel] [Fwd: [Bug #2529] Triplets inserting at the end of a bar]
+Message-ID: <4155246D.4050603@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Bug #2529] Triplets inserting at the end of a bar
+Date: Sat, 25 Sep 2004 07:12:43 GMT
+Size: 1959
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/d538f9b2/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 09:55:51 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 09:55:51 +0200
+Subject: [Noteedit-devel] [Fwd: [Bug #2529] Triplets inserting at the end of a bar]
+Message-ID: <41552487.6040906@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Bug #2529] Triplets inserting at the end of a bar
+Date: Sat, 25 Sep 2004 07:13:45 GMT
+Size: 2271
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/6dc9dd4f/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 09:56:10 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 09:56:10 +0200
+Subject: [Noteedit-devel] [Fwd: [Bug #2530] Automatic Beam]
+Message-ID: <4155249A.1090203@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Bug #2530] Automatic Beam
+Date: Sat, 25 Sep 2004 07:15:32 GMT
+Size: 1803
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/cde346ea/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 09:56:33 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 09:56:33 +0200
+Subject: [Noteedit-devel] [Fwd: [Bug #2531] Sharps reappearing on the next bar]
+Message-ID: <415524B1.1070303@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Bug #2531] Sharps reappearing on the next bar
+Date: Sat, 25 Sep 2004 07:16:43 GMT
+Size: 1917
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/8fa1905d/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 10:00:11 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 10:00:11 +0200
+Subject: [Noteedit-devel] [Fwd: [Bug #2532] Multirests with one bar]
+Message-ID: <4155258B.4070008@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Bug #2532] Multirests with one bar
+Date: Sat, 25 Sep 2004 07:19:02 GMT
+Size: 1816
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/e03bc587/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Sep 25 10:00:42 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 25 Sep 2004 10:00:42 +0200
+Subject: [Noteedit-devel] [Fwd: [Feature #252] Beautifying of notes]
+Message-ID: <415525AA.5060007@web.de>
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded message was scrubbed...
+From: noreply at berlios.de
+Subject: [Feature #252] Beautifying of notes
+Date: Sat, 25 Sep 2004 07:21:42 GMT
+Size: 2485
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20040925/26c59a24/attachment.mht>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Sep 26 07:08:09 2004
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 26 Sep 2004 07:08:09 +0200
+Subject: [Noteedit-devel] Compilation Fixes for gcc 3.4.1
+Message-ID: <41564EB9.9090800@web.de>
+
+Hi,
+
+I fixed three files which contains syntax errors
+for gcc-3.4.1:
+mainframewidget.cpp, noteedit_part.cpp, voicedialog.cpp
+
+You can download the patch them from SVN.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://pertergrin.berlios.de
+GnuPG Public Key available on request
+
+

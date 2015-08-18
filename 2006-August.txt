@@ -1,0 +1,710 @@
+From noteedit-devel at lists.berlios.de  Sat Aug 12 18:38:05 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Sat, 12 Aug 2006 18:38:05 +0200
+Subject: [Noteedit-devel] [ANN] NoteEdit 2.8.1 released
+Message-ID: <44DE03ED.50206@web.de>
+
+Hi,
+
+The NoteEdit team is happy to announce the long awaited new release
+of the score editor NoteEdit.
+
+You can directly fetch the sources from here:
+http://download.berlios.de/noteedit/noteedit-2.8.1.tar.gz
+
+Please note:
+This is the last major release on NoteEdit. Since some month the core team
+concentrates it's development on the NoteEdit successor called Canorus.
+More information can be found here:
+http://canorus.berlios.de/wiki/index.php/Main_Page
+
+The new version 2.8.1 contains the following major changes since the
+last release:
+
+- New direct printing and print preview support using different backends:
+  - Implemented custom print dialog.
+  - New settings in Configure dialog for printing.
+  - Custom preview application (eg. kpdf, gpdf, xpdf, gv).
+  - Custom typesetting application (LilyPond, ABC, PMX/MusiXTeX).
+- Enhanced UI:
+  - mouse wheel behaviour improvements (zoom in/out, quick scroll, vertical
+  scroll),
+  - added keyboard shortcuts (select n-th voice directly, start/stop
+playback,
+  insert special barline, goto measure),
+  - few dialog improvements (insert clef or barline, page layout),
+  - new dialog: Insert special barline.
+  - remember the last position of action (useful when deleting the whole
+block
+  of the score),
+  - rewritten scroll behaviour (especially when the selected element is
+  out-of-scope),
+  - red border when Edit mode is active.
+  - added vertical line which connects all staves
+- MusicXML improvements:
+  - import arbitrary text.
+  - export arbitrary text.
+  - export all strings in UTF-8 encoding.
+- LilyPond export filter improvements:
+  - arranger is now exported.
+  - document page size is exported.
+  - rit./accel. signs are printed in italic.
+  - export all strings in UTF-8 encoding, if Lily >2.6 is found.
+  - official Lilypond font sizes are now supported
+- gcc4 complete compiler support. Many warning fixes and internal cleanups.
+- Many documentation additions and fixes.
+- New translations and translation updates
+
+More details (including bug fixes and detailed changes) can be found
+in the NEWS file and the ChangeLog file of the archive.
+
+The reasons for stopping major development on NoteEdit were discussed
+on the NoteEdit development mailing list some time ago. You can read
+the thread here:
+
+http://lists.berlios.de/pipermail/noteedit-devel/2006-February/000619.html
+
+Best regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+
+From noteedit-devel at lists.berlios.de  Sun Aug 13 22:38:36 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Sun, 13 Aug 2006 22:38:36 +0200
+Subject: [Noteedit-devel] Canorus Clef changes and Note length changes
+Message-ID: <44DF8DCC.1040902@web.de>
+
+Hi,
+
+Just some minutes ago I checked in my last changes to
+the toolbar code. It should be relatively flexible now for
+many applications of toolbar requirements. It supports
+
+- Button menus
+- Normal menus
+- Combo Box (easier to code than for normal toolbar)
+- Normal tool buttons (dito)
+
+With additional changes to the main window Canorus
+can now change it's clef and it's note length. Matevz
+so far has implemented breve, whole, half and quarter,
+more to follow soon.
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel at lists.berlios.de  Sun Aug 13 23:52:17 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Sun, 13 Aug 2006 18:52:17 -0300 (ART)
+Subject: [Noteedit-devel] Canorus Clef changes and Note length changes
+In-Reply-To: <44DF8DCC.1040902@web.de>
+Message-ID: <20060813215217.57298.qmail@web31010.mail.mud.yahoo.com>
+
+Hi there, Reinhard,
+
+I'd like to know which language Note-Edit is written
+in, since I'm managing to learn C++ programming, and,
+following my musician career, I'm looking forward in
+building a free and open source musical score editing
+software. If Note-Edit is in the same language, I'd
+like to contribute to it, because I don't believe we
+have a perfectly functional program of the same kind.
+By the way, the ones I know (Sibelius and Finale, the
+big ones and most used) are too buggy, expensive and
+do not offer great compatibility with file types.
+
+Now, sorry to express myself in these words, by I'm
+really annoyed at the lack of great programs of this
+kind for the musicians, so I'd like to do my part in
+giving the musicians something they can rely on to
+write musical scores, as a universal language between
+us.
+
+Well, hope to hear from you, and take care,
+
+Diogo Baeder - bass player
+http://www.diogobaeder.com.br
+
+
+
+
+--- noteedit-devel at lists.berlios.de escreveu:
+
+> Hi,
+> 
+> Just some minutes ago I checked in my last changes
+> to
+> the toolbar code. It should be relatively flexible
+> now for
+> many applications of toolbar requirements. It
+> supports
+> 
+> - Button menus
+> - Normal menus
+> - Combo Box (easier to code than for normal toolbar)
+> - Normal tool buttons (dito)
+> 
+> With additional changes to the main window Canorus
+> can now change it's clef and it's note length.
+> Matevz
+> so far has implemented breve, whole, half and
+> quarter,
+> more to follow soon.
+> 
+> Best,
+> 
+> Reinhard
+> 
+> -- 
+> Software-Engineer, Developer of User Interfaces
+> Project: Canorus - the next generation music score
+> editor - http://canorus.berlios.de
+> GnuPG Public Key available on request
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+>
+http://bat.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+Diogo Baeder - baixista
+http://www.diogobaeder.com.br
+
+
+		
+_______________________________________________________ 
+O Yahoo! est? de cara nova. Venha conferir! 
+http://br.yahoo.com
+
+
+From noteedit-devel at lists.berlios.de  Mon Aug 14 06:57:17 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 14 Aug 2006 06:57:17 +0200
+Subject: [Noteedit-devel] Configure 'deadlock' in 2.8.1 Suse AMD 64
+Message-ID: <44E002AD.7050208@schwaben.de>
+
+this mail had to be processed manually by the list administrator to
+reach the list
+--
+
+Hi,
+
+When doing configure on 2.8.1 final, without options, configure cannot
+find the qt-mt library. When I give it the right location
+
+--with-qt-libraries=/usr/lib/qt3/lib64/
+
+it does find qt-mt allright, but now it complaints that
+
+checking for KDE... configure: error:
+in the prefix, you've chosen, are no KDE libraries installed. This will
+fail.
+So, check this please and use another prefix!
+
+Indeed the KDE-libs are not in the same place, (they are in
+/opt/kde3/lib64/kde3) but why is that a problem? There seems to be no
+way - at least, I don't see it - to explicitly give the location of the
+KDE-libs to configure.
+
+My system is Suse 10.1 AMD-64 on a dual-proc Opteron.
+
+Thanks for an answer (and, of course, for the software, which I use
+frequently on a 32-bits Suse 10.0 box!).
+
+regards, Jogchum Reitsma
+
+
+
+From noteedit-devel at lists.berlios.de  Mon Aug 14 07:07:01 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 14 Aug 2006 07:07:01 +0200
+Subject: [Noteedit-devel] Configure 'deadlock' in 2.8.1 Suse AMD 64
+In-Reply-To: <44E002AD.7050208@schwaben.de>
+References: <44E002AD.7050208@schwaben.de>
+Message-ID: <44E004F5.5040100@schwaben.de>
+
+Hi Jogchum,
+
+on Suse 10.1 x86_64 I configure with
+
+./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64
+--with-qt-libraries=/usr/lib/qt3/lib64 \
+--disable-final --with-libtse3-libs=/usr/lib64
+
+successfully. Hope this helps,
+
+Georg
+
+
+
+
+From noteedit-devel at lists.berlios.de  Mon Aug 14 20:49:29 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 14 Aug 2006 20:49:29 +0200
+Subject: [Noteedit-devel] Configure 'deadlock' in 2.8.1 Suse AMD 64
+In-Reply-To: <44E004F5.5040100@schwaben.de>
+References: <44E002AD.7050208@schwaben.de> <44E004F5.5040100@schwaben.de>
+Message-ID: <44E0C5B9.8020107@hccnet.nl>
+
+noteedit-devel at lists.berlios.de schreef:
+
+>Hi Jogchum,
+>
+>on Suse 10.1 x86_64 I configure with
+>
+>./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64
+>--with-qt-libraries=/usr/lib/qt3/lib64 \
+>--disable-final --with-libtse3-libs=/usr/lib64
+>
+>successfully. Hope this helps,
+>
+>Georg
+>
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://bat.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+Thanks Georg, works great!
+
+regards, Jogchum
+
+
+From noteedit-devel at lists.berlios.de  Mon Aug 14 20:59:42 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Mon, 14 Aug 2006 20:59:42 +0200
+Subject: [Noteedit-devel] Canorus Clef changes and Note length changes
+In-Reply-To: <20060813215217.57298.qmail@web31010.mail.mud.yahoo.com>
+References: <20060813215217.57298.qmail@web31010.mail.mud.yahoo.com>
+Message-ID: <44E0C81E.80204@web.de>
+
+Hi Diogo,
+
+> Hi there, Reinhard,
+>
+> I'd like to know which language Note-Edit is written
+> in, since I'm managing to learn C++ programming, and,
+> following my musician career, I'm looking forward in
+> building a free and open source musical score editing
+>   
+NoteEdit itself is written in C++. The same answer
+for it's successor Canorus. Contrary to NoteEdit some
+parts of Canorus will rely on scripts (macros). These are
+preferably also written in an object-oriented scripting
+language like Ruby.
+> software. If Note-Edit is in the same language, I'd
+> like to contribute to it, because I don't believe we
+> have a perfectly functional program of the same kind.
+> By the way, the ones I know (Sibelius and Finale, the
+> big ones and most used) are too buggy, expensive and
+> do not offer great compatibility with file types.
+>   
+Wow, that would be great. I just yesterday asked on Berlios for new
+developers:
+http://devcounter.berlios.de/req_show.php?reqid=79
+
+You see that there is quite a bit work to do on Canorus.
+If you want to join the team, you need to send me your unix name
+on berlios so I can add you to the developer list.
+We are quite a bit concerned about file types. One main goal is to
+have as many importers and exporters as possible (like lilypond,
+abc(plus), musicxml, musixtex, midi).
+> Now, sorry to express myself in these words, by I'm
+> really annoyed at the lack of great programs of this
+> kind for the musicians, so I'd like to do my part in
+> giving the musicians something they can rely on to
+> write musical scores, as a universal language between
+> us.
+>   
+As an introduction what we planned so far in detail for Canorus
+you can read it's wiki:
+http://canorus.berlios.de/wiki/index.php/Main_Page
+
+> Well, hope to hear from you, and take care,
+>
+> Diogo Baeder - bass player
+> http://www.diogobaeder.com.br
+>
+>   
+Same for your :-). I read you!
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel at lists.berlios.de  Wed Aug 16 20:33:23 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Wed, 16 Aug 2006 20:33:23 +0200
+Subject: [Noteedit-devel] [Canorus-devel] For Reinhard and Matevz
+In-Reply-To: <20060815220057.68197.qmail@web31015.mail.mud.yahoo.com>
+References: <20060815220057.68197.qmail@web31015.mail.mud.yahoo.com>
+Message-ID: <44E364F3.4040004@web.de>
+
+Hi Diogo,
+
+> - PROGRAMMING LANGUAGES AND SCRIPTS: great to know
+> that we have all of these capabilities, C++, Ruby,
+> Python, without restrictions. Would it be helpfull if
+> I make a research about tools which could be included
+> in Canorus, including time relevancy? Or has anyone
+> done it already?
+>   
+My research wasn't directly connected to timing, I know it from
+general experience and from my study. I looked for the script
+languages and found ruby to be advanced over python in terms
+of language concepts. About an hour ago I discussed with
+Matevz about package delivery (i.e. on Win we need to include
+ruby or python as well). Generally I've done some research in
+tools (see the wiki, btw. you have an account there as well, the
+default password is the same as your username but the first and
+last latter are large. Please change it ASAP.
+> - MY USERNAME IN BERLIOS: sorry, I must have thought I
+> registered, but now you can check again - my name is
+> there, now;
+>   
+Welcome as developer from Canorus :-) The Wiki contains several
+informations about concepts and goals, a roadmap and what we
+plan to have (at least) ready for the 1.0 version. I have to update
+somewhen soon what we have already (or partially) implemented.
+
+> - ABOUT FILE TYPES: well, you convinced me that it's
+> not possible at all to get Finale and Sybelius file
+> structures through legal ways, so I agree with you.
+> Yeah, and I also agree that MusicXML is far more
+> interesting than other file formats, since it's much
+> closer to a universal format than the others! My
+> question: is MusicXML extensible? Can it support
+> integration of new musical score elements? I doubt it
+> doesn't, but if does not, let me know...
+>   
+I'm not a real MusicXML expert, but XML generally
+is expandable of course. But we have to be aware of
+the fact that any extensions might be only useful in
+Canorus itself if it won't get included into a new version
+of the MusicXML standard.
+> - FIREFOX PLUGIN: great to have support by Qt. Would
+> it be used by implementation of vectorial shapes or
+> mapped images? Or even fonts?
+>   
+Yes, both Canorus and Muse score use it the way that
+they render vector fonts. Matevz knows more details
+about it (you can take a look at the source of course too :)
+> - WEBSITE: well, I think it would be helpfull to have
+> nice layout site, but only if desired by the
+> administrators. It?s not that hard to work out just a
+> little bit the menus, for example... we could use a
+> nice color combination, like the ones proposed by
+> professor Hideaki Chijiiwa of Musashino College of
+> Art, at "Color Harmony - A Guide to Creative Color
+> Combinations", which is a nice book I've been reading
+> for site development purposes. If you give me an aval,
+> I can send you some suggestion by Thursday, when I get
+> home and have access to my design stuff. And what are
+> the content parts that need update?;
+>   
+Oh that remembers me on my first journal articles
+about user interface development in a computer magazine
+(quite good one from my actual experience point of view).
+It pointed out the importance of color, shades and contrast.
+As we are heading for music art this would really be a nice
+touch. So be creative and show some examples. I have to
+upload the homepages to svn but you should be able to
+access it from your berlios shell account.
+
+Thanks for the feedback!
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel at lists.berlios.de  Wed Aug 16 21:06:48 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Wed, 16 Aug 2006 16:06:48 -0300 (ART)
+Subject: [Noteedit-devel] [Canorus-devel] For Reinhard and Matevz
+In-Reply-To: <44E364F3.4040004@web.de>
+Message-ID: <20060816190648.7445.qmail@web31012.mail.mud.yahoo.com>
+
+Hi, guys,
+
+Sorry for the hurry, I've got a harmony class now, but
+here goes some draft idea, just for a start, without
+specifical touches, for the site. It's sent through
+attachment.
+
+I'll write more soon, maybe today by the evening (from
+here, in Brazil). By the way, where are you guys from?
+
+Diogo
+
+
+--- canorus-devel at lists.berlios.de escreveu:
+
+> Hi Diogo,
+> 
+> > - PROGRAMMING LANGUAGES AND SCRIPTS: great to know
+> > that we have all of these capabilities, C++, Ruby,
+> > Python, without restrictions. Would it be helpfull
+> if
+> > I make a research about tools which could be
+> included
+> > in Canorus, including time relevancy? Or has
+> anyone
+> > done it already?
+> >   
+> My research wasn't directly connected to timing, I
+> know it from
+> general experience and from my study. I looked for
+> the script
+> languages and found ruby to be advanced over python
+> in terms
+> of language concepts. About an hour ago I discussed
+> with
+> Matevz about package delivery (i.e. on Win we need
+> to include
+> ruby or python as well). Generally I've done some
+> research in
+> tools (see the wiki, btw. you have an account there
+> as well, the
+> default password is the same as your username but
+> the first and
+> last latter are large. Please change it ASAP.
+> > - MY USERNAME IN BERLIOS: sorry, I must have
+> thought I
+> > registered, but now you can check again - my name
+> is
+> > there, now;
+> >   
+> Welcome as developer from Canorus :-) The Wiki
+> contains several
+> informations about concepts and goals, a roadmap and
+> what we
+> plan to have (at least) ready for the 1.0 version. I
+> have to update
+> somewhen soon what we have already (or partially)
+> implemented.
+> 
+> > - ABOUT FILE TYPES: well, you convinced me that
+> it's
+> > not possible at all to get Finale and Sybelius
+> file
+> > structures through legal ways, so I agree with
+> you.
+> > Yeah, and I also agree that MusicXML is far more
+> > interesting than other file formats, since it's
+> much
+> > closer to a universal format than the others! My
+> > question: is MusicXML extensible? Can it support
+> > integration of new musical score elements? I doubt
+> it
+> > doesn't, but if does not, let me know...
+> >   
+> I'm not a real MusicXML expert, but XML generally
+> is expandable of course. But we have to be aware of
+> the fact that any extensions might be only useful in
+> Canorus itself if it won't get included into a new
+> version
+> of the MusicXML standard.
+> > - FIREFOX PLUGIN: great to have support by Qt.
+> Would
+> > it be used by implementation of vectorial shapes
+> or
+> > mapped images? Or even fonts?
+> >   
+> Yes, both Canorus and Muse score use it the way that
+> they render vector fonts. Matevz knows more details
+> about it (you can take a look at the source of
+> course too :)
+> > - WEBSITE: well, I think it would be helpfull to
+> have
+> > nice layout site, but only if desired by the
+> > administrators. It?s not that hard to work out
+> just a
+> > little bit the menus, for example... we could use
+> a
+> > nice color combination, like the ones proposed by
+> > professor Hideaki Chijiiwa of Musashino College of
+> > Art, at "Color Harmony - A Guide to Creative Color
+> > Combinations", which is a nice book I've been
+> reading
+> > for site development purposes. If you give me an
+> aval,
+> > I can send you some suggestion by Thursday, when I
+> get
+> > home and have access to my design stuff. And what
+> are
+> > the content parts that need update?;
+> >   
+> Oh that remembers me on my first journal articles
+> about user interface development in a computer
+> magazine
+> (quite good one from my actual experience point of
+> view).
+> It pointed out the importance of color, shades and
+> contrast.
+> As we are heading for music art this would really be
+> a nice
+> touch. So be creative and show some examples. I have
+> to
+> upload the homepages to svn but you should be able
+> to
+> access it from your berlios shell account.
+> 
+> Thanks for the feedback!
+> 
+> Best,
+> 
+> Reinhard
+> 
+> -- 
+> Software-Engineer, Developer of User Interfaces
+> Project: Canorus - the next generation music score
+> editor - http://canorus.berlios.de
+> GnuPG Public Key available on request
+> 
+> _______________________________________________
+> Canorus-devel mailing list
+> Canorus-devel at lists.berlios.de
+>
+https://lists.berlios.de/mailman/listinfo/canorus-devel
+> 
+
+Diogo Baeder - baixista
+http://www.diogobaeder.com.br
+
+
+		
+_______________________________________________________ 
+O Yahoo! est? de cara nova. Venha conferir! 
+http://br.yahoo.com
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060816/4861ab64/attachment.html>
+
+From noteedit-devel at lists.berlios.de  Thu Aug 17 21:45:44 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Thu, 17 Aug 2006 21:45:44 +0200
+Subject: [Noteedit-devel] [Canorus-devel] For Reinhard and Matevz
+In-Reply-To: <20060816190648.7445.qmail@web31012.mail.mud.yahoo.com>
+References: <20060816190648.7445.qmail@web31012.mail.mud.yahoo.com>
+Message-ID: <44E4C768.6050205@web.de>
+
+canorus-devel at lists.berlios.de wrote:
+> Hi, guys,
+>
+> Sorry for the hurry, I've got a harmony class now, but
+> here goes some draft idea, just for a start, without
+> specifical touches, for the site. It's sent through
+> attachment.
+>
+> I'll write more soon, maybe today by the evening (from
+> here, in Brazil). By the way, where are you guys from?
+>
+> Diogo
+>
+>   
+
+Thanks for the design proposal, I like it! Only one small problem:
+There is a limit on the font size I can choose, else the section
+titles become larger than the border.
+
+Matevz also finds it ok and said that the content update
+possibilities (like simplifying the addition of news or new
+downloads) are more important at the moment. I also think
+we should update the pages themselves quite soon. Thanks
+for the effort!
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel at lists.berlios.de  Fri Aug 18 18:13:52 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 18 Aug 2006 18:13:52 +0200
+Subject: [Noteedit-devel] [Canorus-devel] Instrumentation
+In-Reply-To: <000e01c6c28d$9c0d6a60$8334e551@eolinc1>
+References: <000e01c6c28d$9c0d6a60$8334e551@eolinc1>
+Message-ID: <44E5E740.1020609@web.de>
+
+canorus-devel at lists.berlios.de wrote:
+> Hey Reinhard!
+>  
+> Did you receive the instrumentation list I sent you? Can it be of any
+> use in Canorus?
+>  
+Yes, I received it, but up to know I haven't discussed with
+Matevz about a possible use in Canorus. Thanks anyway.
+I don't remember at the moment what we exactly discussed
+concerning midi instruments but it certainly will be different
+to that what NoteEdit offers now. There is a very good sound
+font editor named swami and there are other things to consider
+like alternatives to midi output (like osc / open sound control)
+and of course alternatives to GM (General Midi). This topic was
+discussed on the LAC conference this year as well but at the
+moment no such thing like f.e. a container or something similar
+exists. I guess in the short run the componist should be able to
+select from some known instrument list (like GM) and be somehow
+able to include his own custom lists (created by a tool like swami).
+
+This is of course open to discussion :-).
+The LAC proceedings (swami and ) can be found here:
+http://lac.zkm.de/2006/proceedings.shtml#josh_green
+http://lac.zkm.de/2006/proceedings.shtml#juergen_reuter
+
+If anyone has some informations about existing (open source)
+solutions in development or ready feel free to inform us. Thanks!
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+

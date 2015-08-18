@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Code restructuring, step 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C43171C65.90805%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000490.html">
+   <LINK REL="Next"  HREF="000493.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Code restructuring, step 2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C43171C65.90805%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Code restructuring, step 2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Sep  1 17:21:09 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000490.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+        <LI>Next message: <A HREF="000493.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#491">[ date ]</a>
+              <a href="thread.html#491">[ thread ]</a>
+              <a href="subject.html#491">[ subject ]</a>
+              <a href="author.html#491">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Csaba and others!
+
+Sunday is ok with me. Although I have a few questions/issues I should
+ask about your opinion:
+1) What do you think about status_type type? Is it implemented ok? I
+ask, because I don't know what's the common practice when coming to this
+kind of problems. ie. We needed 64bit integer for the most commonly used
+status flags, so 1) &quot;unsigned long long&quot; was IMO too long to write in
+the code every time and 2) the 64bit integer isn't uniquely declared in
+all OSes/compilers (M$VC has __uint64 for this type I think). So I came
+up with #define status_type idea. Is it ok? Or is there another better way?
+2) The reason why status2 existed from the first place was IMO the upper
+limit of 32 bits for status. Pedal markings would exceed that limit, so
+a new status2 was introduced. Now that this limit was expanded to
+64bits, these two could be simply merged. My question is, what will we
+do, if we exceed 64bits for status type - what else will or won't we
+store in status? IMO, we should store musElement properties which are
+present in status, to separate variables as well. I would propose a
+rule, that status should only include the most commonly used - where
+speed/bitwise operations are critical. All other properties should only
+be stored in separate variable.
+3) Current status's flags positions in status are important. I tried to
+sort out most of the problems, when I migrated from 32bit to 64bit
+integer by using status_type instead of int, but I left some. eg. All
+the dotted/ddotted note methods still use status_type &lt;-&gt; plain integer
+or even char casting, as the dotted note flag is one of the first bits
+of the status, so the methods preserve some memory. I think we should
+force all the methods that do anything with status in any case, to use
+status_type in the future though (eg. int != uint troubles). However,
+what I don't know is again the common practice in this case - is it the
+right thing to do (speed/memory consuption/administration).
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Hi! 
+</I>&gt;<i> 
+</I>&gt;<i>Now, it seems, that I'll have some time to continue the cleanup activity. 
+</I>&gt;<i>Till now, I was quite overloaded at the office.  
+</I>&gt;<i> 
+</I>&gt;<i>I would like to do the following changes on sunday: 
+</I>&gt;<i> 
+</I>&gt;<i>Playable::status_ and NPlayable::status2_ cleanup: 
+</I>&gt;<i> 
+</I>&gt;<i>1. unify the status_ and status2_ into one variable, as they does 
+</I>&gt;<i>    logically the same thing. 
+</I>&gt;<i> 
+</I>&gt;<i>2. setter and getter methods instead of public declaration 
+</I>&gt;<i> 
+</I>&gt;<i>     The setter, getter methods are very important for the further 
+</I>&gt;<i>development, as we could emit a statusChanged(...) signal to inform 
+</I>&gt;<i>NChord or NRest about the change. 
+</I>&gt;<i> 
+</I>&gt;<i>Setter method: 
+</I>&gt;<i> 
+</I>&gt;<i>void setStatus( status_type value, int manner = NPlayable::Set ); 
+</I>&gt;<i>    NPlayable::Add - sets the 1-bits in 'value' to 1 in the status. 
+</I>&gt;<i>    NPlayable::Del - sets the 1-bits in 'value' to 0 in the status. 
+</I>&gt;<i>    NPlayable::Set - sets the status variable to 'value'  
+</I>&gt;<i>    NPlayable::Xor - is a logical XOR with the status value 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>Getter method: 
+</I>&gt;<i> 
+</I>&gt;<i>     status_type status( status_type mask = (status_type)(-1) ); 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>PLEASE: 
+</I>&gt;<i> 
+</I>&gt;<i>COMMIT EVERY CHANGES YOU MADE INTO THE SVN! 
+</I>&gt;<i> 
+</I>&gt;<i>I'll modify the majority of the code again. If you have some code locally 
+</I>&gt;<i>stored on your computer, the next commit will be very problematic as the 
+</I>&gt;<i>merge won't be easy. 
+</I>&gt;<i> 
+</I>&gt;<i>If the Sunday is too early, I could postpone the modifications. 
+</I>&gt;<i> 
+</I>&gt;<i>Bye, 
+</I>&gt;<i> 
+</I>&gt;<i>    Csaba 
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________________________________
+</I>&gt;<i>[freemail] extra 1GB-os postafi&#243;kkal, &#214;nnek m&#225;r van? <A HREF="http://freemail.hu">http://freemail.hu</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Noteedit-devel mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050901/af5f91fd/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050901/af5f91fd/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000490.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+	<LI>Next message: <A HREF="000493.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#491">[ date ]</a>
+              <a href="thread.html#491">[ thread ]</a>
+              <a href="subject.html#491">[ subject ]</a>
+              <a href="author.html#491">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

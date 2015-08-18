@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] University of Alicante in Spain
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20University%20of%20Alicante%20in%20Spain&In-Reply-To=%3C1191572595.5882.19.camel%40tomas%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] University of Alicante in Spain</H1>
+    <B>noteedit-devel at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20University%20of%20Alicante%20in%20Spain&In-Reply-To=%3C1191572595.5882.19.camel%40tomas%3E"
+       TITLE="[Noteedit-devel] University of Alicante in Spain">noteedit-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Oct  5 10:23:15 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#752">[ date ]</a>
+              <a href="thread.html#752">[ thread ]</a>
+              <a href="subject.html#752">[ subject ]</a>
+              <a href="author.html#752">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>First of all, I'm sorry if this is the no correct place to ask about
+TSE3 library.
+
+In the university of Alicante are working to build an interface of midi
+songs, with play, stop and pause buttons.
+
+The play and stop functions are clear, but the problems is the pause
+function.
+
+TSE3 don't have a pause method in the transport object, so I'm trying to
+develop the pause function doing transport.stop() and save the last
+clock of the MidiScheduler class, after than I do play() with the last
+clock saved.
+
+The problem is that the song loose the tempo and the musical
+instruments, it assume the piano as melody instument, and 120 pulses of
+tempo. It seems that the song begin at middle and don't read the tempo
+and instrument.
+
+They is some way of inject the instrument and tempo in a song?
+
+
+I have very been thankful if you can help me. 
+
+Best regards.
+
+Tomas Perez Garcia
+Technician of Prosemus project.
+<A HREF="http://grfia.dlsi.ua.es/cm/projects/prosemus/index.php">http://grfia.dlsi.ua.es/cm/projects/prosemus/index.php</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#752">[ date ]</a>
+              <a href="thread.html#752">[ thread ]</a>
+              <a href="subject.html#752">[ subject ]</a>
+              <a href="author.html#752">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

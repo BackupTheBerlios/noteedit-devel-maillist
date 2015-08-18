@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Release 2.7.4 tarball
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Release%202.7.4%20tarball&In-Reply-To=%3C42000477.4050603%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000087.html">
+   <LINK REL="Next"  HREF="000086.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Release 2.7.4 tarball</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Release%202.7.4%20tarball&In-Reply-To=%3C42000477.4050603%40web.de%3E"
+       TITLE="[Noteedit-devel] Release 2.7.4 tarball">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Feb  1 23:36:39 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000087.html">[Noteedit-devel] Release 2.7.4 tarball
+</A></li>
+        <LI>Next message: <A HREF="000086.html">[Noteedit-devel] Release 2.7.4 tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Leon,
+
+&gt;&gt;<i>Someone needs to update the Changelog file before we can make the
+</I>&gt;&gt;<i>release. This file should be used for the release changes we post
+</I>&gt;&gt;<i>in the release manager as well.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> This is what should be reported as user-visible changes, as far as I am 
+</I>&gt;<i> concerned. Feel free to add these to a changelog or use them as the basis for 
+</I>&gt;<i> your release notes.
+</I>&gt;<i> 
+</I>&gt;<i> New features:
+</I>&gt;<i> - improved LilyPond support : added export in lilypond-2.4.2 format
+</I>&gt;<i> - added Slovenian translation, thanks to Matevz Jekovec
+</I>&gt;<i> 
+</I>&gt;<i> Patches included (Matevz Jekovec):
+</I>&gt;<i> - 000255 added \version &quot;2.0&quot;, so convert-ly now works out of the box
+</I>&gt;<i>          moved \voiceOne,\voiceTwo etc. to the separate lines
+</I>&gt;<i>   fixed a small typo (LilyPoint -&gt; LilyPond)
+</I>&gt;<i> 
+</I>&gt;<i> Bugs fixed:
+</I>&gt;<i> - 002487 noteedit doesn't consider ties on MusicXML import
+</I>&gt;<i> - 002528 triplets unfunctional
+</I>&gt;<i> - 002532 multirests with one bar
+</I>&gt;<i> - 002580 small type in INSTALL.de
+</I>&gt;<i> - 002581 rest symbol printed twice
+</I>&gt;<i> - 002807 rests should have fermatas as well
+</I>&gt;<i> - 002809 measure numbers for other voices not printed in .ly file
+</I>&gt;<i> 
+</I>
+I decided to add it to the &quot;NEWS&quot; file instead to the Changelog. The
+Changelog should contain Changes we make during development. It might
+be sufficient to have SVN as a base for the Changelog, so we might
+not need this file.
+
+&gt;&gt;<i>I have found 8 missing Makefile.am files and checked them into svn.
+</I>&gt;&gt;<i>This should solve most of the compile problems we have currently!
+</I>&gt;&gt;<i>I really can't reproduce why they were lost from my noteedit archive
+</I>&gt;&gt;<i>I checked into svn last autumn.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Also I changed de.po from the doc/de directory (Version 2.7.4).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Thanks to kdiff3 the great tool to not only compare files but
+</I>&gt;&gt;<i>also directories (2.7.3 &lt;-&gt; 2.7.4).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Here is the tarball:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>-rw-rw-r--  1 suamor suamor 1901324 Feb  1 21:36 noteedit-2.7.4.tar.gz
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Is this one available so I download and test it ?
+</I>
+I have sent this to you and Georg.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000087.html">[Noteedit-devel] Release 2.7.4 tarball
+</A></li>
+	<LI>Next message: <A HREF="000086.html">[Noteedit-devel] Release 2.7.4 tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

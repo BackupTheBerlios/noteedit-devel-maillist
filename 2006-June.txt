@@ -1,0 +1,477 @@
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  1 21:05:26 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 01 Jun 2006 21:05:26 +0200
+Subject: [Noteedit-devel] Release Candidate 2.8.1 of NoteEdit published
+In-Reply-To: <4478B240.3090801@web.de>
+References: <4478B240.3090801@web.de>
+Message-ID: <447F3A76.1030303@schwaben.de>
+
+Hi Reinhard,
+
+thanks a lot for this release candidate. It works as expected.
+
+Best Regards,
+Georg
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jun  2 03:27:27 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 1 Jun 2006 22:27:27 -0300
+Subject: [Noteedit-devel] Release Candidate 2.8.1 of NoteEdit published
+In-Reply-To: <447F3A76.1030303@schwaben.de>
+References: <4478B240.3090801@web.de> <447F3A76.1030303@schwaben.de>
+Message-ID: <200606012227.27515.rafadev@gmail.com>
+
+Hey, I just wanted to congratulate you for an excelent release. I had several 
+sound problems and couldn't get sound to work, it just crashed and crashed. I 
+compiled the new version and it ran smoothly with perfect sound and all (I 
+guess this was because of the new release if it was not, then, please tell me 
+because I'm guessing wrong then =P). 
+
+I have several things to typeset so I'll be doing some hardcore testing xD... 
+Could you tell me if there is something that needs particularly more testing?
+
+Thanks a lot..
+
+I'll be updating the spanish translation in a few days.
+
+
+Rafael.
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jun  2 17:05:42 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 2 Jun 2006 15:05:42 GMT
+Subject: [Noteedit-devel] ja.po for 2.8.1-rc1 & tips to open new window
+In-Reply-To: Your message of "Sat, 27 May 2006 22:10:40 +0200".
+	<4478B240.3090801@web.de>
+Message-ID: <060603000542.M0107518@mix.syd.odn.ne.jp>
+
+Hi,
+
+I updated some of Japanese translations.
+Now it gives the statistics: 
+    844 translated messages, 65 fuzzy translations, 54 untranslated messages.
+
+The ja.po is placed at:
+http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1-rc1.ja.po
+
+
+And I found a old description in tips to open new window.
+I don't know old style but now we have "New Window" menuitem in File menu.
+
+Now it is,
+#: tips.cpp:146
+msgid ""
+"<b>...that you can create as many views as you want\n"
+"(<code><u>W</u>indow --&gt; <u>N</u>ew Window</code>)?</b><br/><br/>\n"
+"This allows you to copy between different scores.\n"
+
+Regards,
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Jun  2 22:03:56 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 02 Jun 2006 22:03:56 +0200
+Subject: [Noteedit-devel] ja.po for 2.8.1-rc1 & tips to open new window
+In-Reply-To: <060603000542.M0107518@mix.syd.odn.ne.jp>
+References: <060603000542.M0107518@mix.syd.odn.ne.jp>
+Message-ID: <448099AC.9090506@schwaben.de>
+
+Hi,
+
+your update is checked in, thanks. The help string is a good thing, I
+think maybe we should also have it for midi import. Still contemplating ...
+
+Regards,
+Georg
+
+
+
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi,
+>
+> I updated some of Japanese translations.
+> Now it gives the statistics: 
+>     844 translated messages, 65 fuzzy translations, 54 untranslated messages.
+>
+> The ja.po is placed at:
+> http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1-rc1.ja.po
+>
+>
+> And I found a old description in tips to open new window.
+> I don't know old style but now we have "New Window" menuitem in File menu.
+>
+> Now it is,
+> #: tips.cpp:146
+> msgid ""
+> "<b>...that you can create as many views as you want\n"
+> "(<code><u>W</u>indow --&gt; <u>N</u>ew Window</code>)?</b><br/><br/>\n"
+> "This allows you to copy between different scores.\n"
+>
+> Regards,
+> --------------------------------------------------
+>     Takeshi Hamasaki
+>     E-mail: hma at syd.odn.ne.jp
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>   
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  6 14:58:40 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 6 Jun 2006 09:58:40 -0300
+Subject: [noteedit-devel] Brazilian portuguese updated translation
+Message-ID: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com>
+
+Hi all!
+
+I am sending the translation for brazilian portuguese, updated for the
+2.8.1 beta.
+
+Thanks for this great project and my best reagards!
+
+-- 
+Denis A. Altoe Falqueto
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pt.po
+Type: application/octet-stream
+Size: 103561 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060606/adc6a2d9/attachment.obj>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Jun  6 16:58:40 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 6 Jun 2006 11:58:40 -0300
+Subject: [noteedit-devel] Brazilian portuguese updated translation
+In-Reply-To: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com>
+References: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com>
+Message-ID: <ab955ef30606060758p98b178ew191b3f17a3f22523@mail.gmail.com>
+
+On 6/6/06, Denis Alessandro Altoe Falqueto <denisfalqueto at gmail.com> wrote:
+> Hi all!
+>
+> I am sending the translation for brazilian portuguese, updated for the
+> 2.8.1 beta.
+>
+> Thanks for this great project and my best reagards!
+>
+> --
+> Denis A. Altoe Falqueto
+>
+>
+>
+
+Err... I corrected some mistranslations I did... Please put this one
+in place of the other.
+
+Thanks!
+
+-- 
+Denis A. Altoe Falqueto
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pt.po
+Type: application/octet-stream
+Size: 103548 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060606/516debbb/attachment.obj>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  7 19:17:15 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 07 Jun 2006 19:17:15 +0200
+Subject: [noteedit-devel] Brazilian portuguese updated translation
+In-Reply-To: <ab955ef30606060758p98b178ew191b3f17a3f22523@mail.gmail.com>
+References: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com> <ab955ef30606060758p98b178ew191b3f17a3f22523@mail.gmail.com>
+Message-ID: <44870A1B.7070906@schwaben.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> On 6/6/06, Denis Alessandro Altoe Falqueto <denisfalqueto at gmail.com>
+> wrote:
+
+> ... Please put this one
+> in place of the other.
+>
+>
+Hi Denis,
+
+I took your translation, compiled it, and because of
+
+./pt.po:4428:16: invalid multibyte sequence
+/usr/bin/msgfmt: found 1 fatal error
+make[2]: *** [pt.gmo] Fehler 1
+make[2]: Leaving directory `/home/rud/svn2/noteedit/trunk/po'
+make[1]: *** [all-recursive] Fehler 1
+
+I changed line 4428 with vi the accented u in num by an accented u out
+of the word musica. Afterwards, after save, quit and load, it looked in
+vi again the same, but it compiled. Somehow strange. So please check if
+its correct in svn.
+
+Thanks,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun  7 20:55:06 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 7 Jun 2006 15:55:06 -0300
+Subject: [noteedit-devel] Brazilian portuguese updated translation
+In-Reply-To: <44870A1B.7070906@schwaben.de>
+References: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com>
+	 <ab955ef30606060758p98b178ew191b3f17a3f22523@mail.gmail.com>
+	 <44870A1B.7070906@schwaben.de>
+Message-ID: <ab955ef30606071155k3552e919q30b3c1bd144df6dd@mail.gmail.com>
+
+On 6/7/06, noteedit-devel-admin at berlios.de
+<noteedit-devel-admin at berlios.de> wrote:
+> I changed line 4428 with vi the accented u in num by an accented u out
+> of the word musica. Afterwards, after save, quit and load, it looked in
+> vi again the same, but it compiled. Somehow strange. So please check if
+> its correct in svn.
+>
+
+Hi Georg!
+
+I apologize for this. I first edited it in my home with KBabel. But
+later, at my job, in a windows box, I did that last update with
+ConText and I think it screwed up the file... I thought it was able to
+handle UTF-8, but I the foruns show the contrary :-). I will check the
+file as soon as I get home and repost it if needed.
+
+Best regards!
+
+-- 
+-------------------------------------------
+Denis A. Altoe Falqueto
+-------------------------------------------
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  8 15:23:17 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 8 Jun 2006 10:23:17 -0300
+Subject: [noteedit-devel] Brazilian portuguese updated translation
+In-Reply-To: <44870A1B.7070906@schwaben.de>
+References: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com>
+	 <ab955ef30606060758p98b178ew191b3f17a3f22523@mail.gmail.com>
+	 <44870A1B.7070906@schwaben.de>
+Message-ID: <ab955ef30606080623r2b7857a3q67b1f10203480399@mail.gmail.com>
+
+On 6/7/06, noteedit-devel-admin at berlios.de
+<noteedit-devel-admin at berlios.de> wrote:
+> Hi Denis,
+
+Hi Georg!
+
+>
+> I took your translation, compiled it, and because of
+>
+> ./pt.po:4428:16: invalid multibyte sequence
+> /usr/bin/msgfmt: found 1 fatal error
+> make[2]: *** [pt.gmo] Fehler 1
+> make[2]: Leaving directory `/home/rud/svn2/noteedit/trunk/po'
+> make[1]: *** [all-recursive] Fehler 1
+>
+> I changed line 4428 with vi the accented u in num by an accented u out
+> of the word musica. Afterwards, after save, quit and load, it looked in
+> vi again the same, but it compiled. Somehow strange. So please check if
+> its correct in svn.
+>
+> Thanks,
+> Georg
+
+I checked the file tha is in svn and it was still wrong. Still had
+problems with make. So I took my original file, remade my last
+translations in KBabel, tested it :-) and now it is working again.
+Please, ignore the other versions and accept this one. I apologize
+again for all this trouble.
+
+Thanks!
+
+-- 
+Denis A. Altoe Falqueto
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pt.po
+Type: application/octet-stream
+Size: 103555 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060608/d8d7c89d/attachment.obj>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Jun  8 21:01:24 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 08 Jun 2006 21:01:24 +0200
+Subject: [noteedit-devel] Brazilian portuguese updated translation
+In-Reply-To: <ab955ef30606080623r2b7857a3q67b1f10203480399@mail.gmail.com>
+References: <ab955ef30606060558q1c08d8dbqc1113088ef8c567d@mail.gmail.com>	 <ab955ef30606060758p98b178ew191b3f17a3f22523@mail.gmail.com>	 <44870A1B.7070906@schwaben.de> <ab955ef30606080623r2b7857a3q67b1f10203480399@mail.gmail.com>
+Message-ID: <44887404.90105@schwaben.de>
+
+Hi Denis,
+
+now it went in without a scratch. R494.
+
+Thanks,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Jun 10 23:40:15 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 10 Jun 2006 23:40:15 +0200
+Subject: [Noteedit-devel] BUG? - Problem with slurs
+Message-ID: <448B3C3F.3020104@gmx.de>
+
+Hello,
+
+I detected a problem in the newest SVN Version: legato slurs are not 
+saved properly It seems to happen especially with notes shorter than 
+1/8.  See the attached screenshots. The first was made during editing 
+the example file. The second one after saving, restarting noteedit and 
+loading the file.
+If you need more information /examples I will try my best to contribute.
+
+Best regards
+
+Stefan Hackl
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: noteedit-slurs1.png
+Type: image/png
+Size: 4647 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060610/738467be/attachment.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: noteedit-slurs2.png
+Type: image/png
+Size: 4411 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060610/738467be/attachment-0001.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: notedit-slurs-bugexample.not
+Type: text/x-mup
+Size: 589 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060610/738467be/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Jun 21 18:18:21 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 21 Jun 2006 16:18:21 GMT
+Subject: [Noteedit-devel] Release Candidate 2.8.1 is noticed on the web?
+Message-ID: <060622011821.M0612403@mix.syd.odn.ne.jp>
+
+Hi,
+
+On download page:
+http://noteedit.berlios.de/download.html
+there is only the notice of 2.8.l-beta1.
+How about 2.8.1-rc1?
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Jun 25 21:54:04 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 25 Jun 2006 21:54:04 +0200
+Subject: [Noteedit-devel] Getting closer
+Message-ID: <449EE9DC.5020005@web.de>
+
+Hi,
+
+I want to release the new version of NoteEdit really soon now, best
+would be still this month but I can live with start of next month as
+well. So if you still need some time for translation work please tell
+us ASAP.
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 26 18:51:20 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Jun 2006 16:51:20 GMT
+Subject: ja.po was updated on June 2nd.  Re: [Noteedit-devel] Getting closer
+In-Reply-To: Your message of "Sun, 25 Jun 2006 21:54:04 +0200".
+	<449EE9DC.5020005@web.de>
+Message-ID: <060627015120.M0109998@mix.syd.odn.ne.jp>
+
+Hi,
+
+I had ja.po updated.
+http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1-rc1.ja.po
+
+Now all tips of the day is translated.
+
+In article <449EE9DC.5020005 at web.de>
+noteedit-devel-admin at berlios.de writes:
+
+>>     So if you still need some time for translation work please tell
+>> us ASAP.
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Jun 26 20:22:20 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 26 Jun 2006 20:22:20 +0200
+Subject: ja.po was updated on June 2nd.  Re: [Noteedit-devel] Getting
+ closer
+In-Reply-To: <060627015120.M0109998@mix.syd.odn.ne.jp>
+References: <060627015120.M0109998@mix.syd.odn.ne.jp>
+Message-ID: <44A025DC.1020405@gmail.com>
+
+Thanks, updated.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de pravi:
+> Hi,
+>
+> I had ja.po updated.
+> http://hp.vector.co.jp/authors/VA014481/team-ja/noteedit-2.8.1-rc1.ja.po
+>
+> Now all tips of the day is translated.
+>
+> In article <449EE9DC.5020005 at web.de>
+> noteedit-devel-admin at berlios.de writes:
+>
+>   
+>>>     So if you still need some time for translation work please tell
+>>> us ASAP.
+>>>       
+> --------------------------------------------------
+>     Takeshi Hamasaki
+>     E-mail: hma at syd.odn.ne.jp
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>   
+
+
+
+

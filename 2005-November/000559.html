@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] State printing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20State%20printing&In-Reply-To=%3C438779ED.3050201%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000554.html">
+   <LINK REL="Next"  HREF="000562.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] State printing</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20State%20printing&In-Reply-To=%3C438779ED.3050201%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] State printing">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Nov 25 21:54:05 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000554.html">[Noteedit-devel] State printing
+</A></li>
+        <LI>Next message: <A HREF="000562.html">[Noteedit-devel] State printing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Current changes on the printing:
+</I>&gt;<i>
+</I>&gt;<i>Three new methods for print export, preview, print itself. Fixed some
+</I>&gt;<i>bugs and added lilypond support. The -o option does not seem to work on
+</I>&gt;<i>my system when adding a path.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Yes, there's a bug in my lily-2.6.3 as well. The problem is that the .ps
+file is created fine, but when it's converted, it's placed in a folder
+where Lily was executed from. I already send a bug report to Lily list.
+
+&gt;<i>I'd really prefer to create all files in a temporary directory instead
+</I>&gt;<i>in the directory where NoteEdit was started. Yesterday again after
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Me too! I found out that this was the problem from the beginning, why
+NoteEdit crashed when running it in debugger inside KDevelop.
+
+&gt;<i>previewing an abc file a postscript file was not deleted though it
+</I>&gt;<i>should have and was left behind on my desktop. It would be nice to
+</I>&gt;<i>know if older or more recent version than 2.6.3 of lilypond work for
+</I>&gt;<i>you with the -d option.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>No. 2.6.x version of Lily brought -d option.
+
+Is there a way to print as .pdf as well somewhere (I could add an --pdf
+option beside, but the print command is still hardcoded to .ps right?)?
+If yes, we could place a shortcut to file menu &quot;Export PDF&quot; as well...
+
+
+Regards!
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051125/120b2007/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051125/120b2007/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000554.html">[Noteedit-devel] State printing
+</A></li>
+	<LI>Next message: <A HREF="000562.html">[Noteedit-devel] State printing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

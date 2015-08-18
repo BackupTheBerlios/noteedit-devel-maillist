@@ -1,0 +1,2326 @@
+From noteedit-devel-admin at lists.berlios.de  Mon Aug  1 01:23:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 Aug 2005 01:23:39 +0200
+Subject: [Noteedit-devel] New keyboard shortcuts
+Message-ID: <42ED5D7B.7090304@guest.arnes.si>
+
+Greetings to all!
+
+I changed some default most commonly used keys in order to reunite the
+UI with other apps as close as possible and make them more logically
+placed. The following changes are:
+End -> E: Edit mode
+Alt-Right, Alt-Left -> Home, End: Move at the beginning of the document,
+move at the end of document
+Insert -> SHIFT+Return: Insert rest
+CTRL+Backspace -> CTRL+Delete: Delete a note in chord
+E -> SHIFT+E: Pitch E (a simple E key is now used for Edit mode and
+Shift+E is the best suitable option for this IMO)
+
+I also added a new ESC key, which immediately leaves the current mode
+you're in. In the future, the second hit should unselect the current
+selection as well and go to A voice.
+
+Tell me what you think!
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050801/b69623c4/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Aug  1 12:03:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 Aug 2005 12:03:46 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EB4EEE.3080102@guest.arnes.si>
+References: <42EB4123.2010500@guest.arnes.si> <42EB4AFE.1060405@web.de> <42EB4EEE.3080102@guest.arnes.si>
+Message-ID: <42EDF382.4090507@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> Hm... ok, but how do you define and use more than one scroll wheel in
+> Qt? And if it's not present, what next etc.
+> 
+
+http://64.233.183.104/search?q=cache:30nwGlNWeMAJ:doc.trolltech.com/4.0/qwheelevent.html+&hl=de
+
+(Main difference to the qt3 wheel event are supported extra mouse
+buttons), with delta and orientation that should be no problem. Also we
+could later combine with left mouse button or so to make it real
+complicated to use ;-). Diagonal movements are probably sent as several
+horizontal and vertical movements.
+
+That said you don't have to care which wheel was pressed and how but
+only on the Qt flags. Everything else is up to the user how he has
+assigned the wheel buttons to certain wheel events in his xorg.conf
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Aug  1 12:04:00 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 Aug 2005 12:04:00 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <1122789496.7665.3.camel@localhost>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost>	 <1122755624.8042.9.camel@localhost>  <42EC0B4B.6030901@guest.arnes.si> <1122789496.7665.3.camel@localhost>
+Message-ID: <42EDF390.8060808@web.de>
+
+Hi Csabe,
+
+I had success with Midi all the time with the
+following kernel versions on Mandrake/Mandriva:
+2.6.8.1, 2.6.11, 2.6.12 (and also with the
+alsa cvs snapshort I downloaded on 30. Juli).
+
+You have to load the following midi modules:
+snd-seq
+snd-seq-virmidi
+snd-seq-dummy ports=3
+snd-seq-instr
+snd-seq-midi
+snd-seq-midi-emul
+
+You should remove all midi modules (like snd-rawmidi)
+activating your sound card midi hardware which might
+be to root source for the freeze. I could imagine that
+there are similar sound card types, one supporting
+midi and the other one not. Also you should try the
+latest stable alsa driver.
+
+realtime issues only concern the audio output (using
+jack) but not Midi itself.
+
+Regards,
+
+Reinhard
+
+noteedit-devel-admin at berlios.de schrieb:
+>>>Is there an option not to start the MIDI mapper by default?
+>>>
+>>
+>>$ noteedit --noalsa --nooss
+> 
+> 
+> It also freezes.
+> 
+> 
+>>You can play midi files with the tse3 scheduler:
+>>
+>>     tse3play -alsa -port <number>:0 <name>.mid
+>>
+> 
+> 
+> Freezes. I think, that the sequencer is buggy, and that's why
+> the freeze occurs. 
+> 
+> Thanks,
+> 
+>     Csaba
+> 
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Aug  1 12:04:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 Aug 2005 12:04:08 +0200
+Subject: [Noteedit-devel] Kernel freeze after starting noteedit
+In-Reply-To: <1122818167.7908.4.camel@localhost>
+References: <freemail.20050628214404.45100@fm13.freemail.hu>	 <42E9C462.2000901@web.de>  <1122743168.7719.23.camel@localhost>	 <1122755624.8042.9.camel@localhost>  <42EC0B4B.6030901@guest.arnes.si>	 <1122789496.7665.3.camel@localhost>  <42ECBEC3.2090300@schwaben.de> <1122818167.7908.4.camel@localhost>
+Message-ID: <42EDF398.70207@web.de>
+
+Hi Csaba,
+
+noteedit-devel-admin at berlios.de schrieb:
+> Thank you for the help. I managed to solve the problem.
+> I disabled the sequencer of my SiS 7018 card with YaST, and now noteedit
+> starts properly. The hardware sequencer code is buggy.
+> 
+> Regards,
+> 
+>     Csaba
+> 
+
+I guess I was not completely wrong with my supposements ;-)
+Can you try the latest alsa driver as well ? Maybe you find
+some hints on the alsa mailing lists (archive) as well concerning
+your sound card. I also have a SiS soundcard but I guess it's
+a different chipset. At least I never tried to activate the
+hardware sequencer (if the card sis7012 has one).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Aug  1 20:30:50 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 01 Aug 2005 20:30:50 +0200
+Subject: [Noteedit-devel] Placing notes on hidden rests?
+Message-ID: <42EE6A5A.9010106@guest.arnes.si>
+
+I was thinking about the new feature - if you place a note on exactly
+the hidden rest, the note shouldn't be inserted like now, but the hidden
+rest should be replaced with the new note. If the length of the note is
+smaller, a new hidden rest should be placed after it, so the whole
+length should still satisfy the original hidden rest's length.
+
+What do you think? Is it a useful feature?
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050801/4e71abc3/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Aug  2 02:43:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 02 Aug 2005 02:43:30 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EDF382.4090507@web.de>
+References: <42EB4123.2010500@guest.arnes.si> <42EB4AFE.1060405@web.de> <42EB4EEE.3080102@guest.arnes.si> <42EDF382.4090507@web.de>
+Message-ID: <42EEC1B2.8010005@guest.arnes.si>
+
+But still, we need the ALT modifier key for fast-scrolling and CTRL for
+zoom. And I also think that SHIFT modifier key for vertical movement
+should be implemented as most of ordinary users don't and won't have 2D
+mice (eg. laptops).
+
+My question was, should I go right ahead and implement them?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> noteedit-devel-admin at berlios.de schrieb:
+>
+>> -----BEGIN PGP SIGNED MESSAGE-----
+>> Hash: SHA1
+>>
+>> Hm... ok, but how do you define and use more than one scroll wheel in
+>> Qt? And if it's not present, what next etc.
+>>
+>
+> http://64.233.183.104/search?q=cache:30nwGlNWeMAJ:doc.trolltech.com/4.0/qwheelevent.html+&hl=de
+>
+>
+> (Main difference to the qt3 wheel event are supported extra mouse
+> buttons), with delta and orientation that should be no problem. Also we
+> could later combine with left mouse button or so to make it real
+> complicated to use ;-). Diagonal movements are probably sent as several
+> horizontal and vertical movements.
+>
+> That said you don't have to care which wheel was pressed and how but
+> only on the Qt flags. Everything else is up to the user how he has
+> assigned the wheel buttons to certain wheel events in his xorg.conf
+>
+> Regards,
+>
+> Reinhard
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050802/0cc2b403/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug  3 12:05:34 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 03 Aug 2005 12:05:34 +0200
+Subject: [Noteedit-devel] Musical Trip
+Message-ID: <42F096EE.1040208@web.de>
+
+Hi,
+
+I'm on a musical trip to cesky and won't be able to read email beginning
+tomorrow in the evening. I'll be back at the 14. August in the evening.
+If you have some important administrative task todo, you should write
+me soon. Else you should ask Georg who has the same possibilities as I.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug  3 12:10:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 03 Aug 2005 12:10:18 +0200
+Subject: [Noteedit-devel] Mouse scroll wheel behaviour
+In-Reply-To: <42EEC1B2.8010005@guest.arnes.si>
+References: <42EB4123.2010500@guest.arnes.si> <42EB4AFE.1060405@web.de> <42EB4EEE.3080102@guest.arnes.si> <42EDF382.4090507@web.de> <42EEC1B2.8010005@guest.arnes.si>
+Message-ID: <42F0980A.1040605@web.de>
+
+Hi Matev?,
+
+Yes, maybe you misunderstood me, but may suggestion was
+thought as an add-on to your list. Of course the users
+need to have a possibility for both vertical and
+horizontal scrolling even if they don't have an the
+option to use two wheels.
+
+Also it might be a good idea to change the behaviour
+of the wheels if the user wishes it to using one
+of the configuratiion dialogs. I'd suggested the
+keyboard dialog (and thus rename it to something like
+mouse and keyboard configuration).
+
+Regards,
+
+Reinhard
+
+noteedit-devel-admin at berlios.de schrieb:
+> But still, we need the ALT modifier key for fast-scrolling and CTRL for
+> zoom. And I also think that SHIFT modifier key for vertical movement
+> should be implemented as most of ordinary users don't and won't have 2D
+> mice (eg. laptops).
+> 
+> My question was, should I go right ahead and implement them?
+> 
+> 
+> Regards.
+> - Matev?
+> 
+> noteedit-devel-admin at berlios.de wrote:
+> 
+> 
+>>noteedit-devel-admin at berlios.de schrieb:
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug  4 13:13:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 04 Aug 2005 13:13:23 +0200
+Subject: [Noteedit-devel] Notes up/down new interface
+Message-ID: <42F1F853.1040802@guest.arnes.si>
+
+I've been thinking about hitting up/down cursor key in selection mode to
+cycle through notes at the same MIDI time in the current voice (or
+through all the voices and staffs when in A mode). Hitting up/down
+cursor in the edit mode would change their pitch. More details are at
+our developer's wiki.
+
+What do you think?
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050804/9e6cc644/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug  5 17:45:56 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 5 Aug 2005 17:45:56 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42EBA4F0.1010605@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si>
+Message-ID: <200508051745.56341.leon.vinken@hetnet.nl>
+
+On Saturday 30 July 2005 18:04, noteedit-devel-admin at berlios.de wrote:
+> I'm digging through MusicXML import code and I don't understand why
+> are there different mappings for NoteEdit's voice and the file's voice
+> numbers. Now, there is this VoiceMapper class that organizes and sorts
+> things out, but I don't really understand why.
+>
+> For example, if a second voice starts the melody and the first voice
+> enters in the third measure, MusicXML import code grabs the first
+> available voice in NoteEdit and assigns the first voice found in file
+> (the second one) to it. I think things can get really messy, because
+> in 3rd measure and on, you have the second voice with stems upwards
+> and ?he first voice with stems downwards. In the latest commit 298, I
+> arranged 1:1 NoteEdit and file's voice numbers. But I'm not sure if
+> that was the smartest thing to do. There are quite a few lines of code
+> for VoiceMapper. Can anyone help me?
+
+Hi Matev?,
+
+just returned from vacation today. As I wrote the XMl code I should be able to 
+help you. Will have a look at your questions and reply later.
+
+Regards, Leon.
+>
+>
+> Regards.
+> - Matev?
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug  5 17:54:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 05 Aug 2005 17:54:09 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <200508051745.56341.leon.vinken@hetnet.nl>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl>
+Message-ID: <42F38BA1.80206@guest.arnes.si>
+
+Please examine the code at Revision 272 or prior, because later, I
+removed some code accessing to VoiceMapper and as already told, assigned
+1:1 NE and MusicXML voices.
+
+You can update to 272 by:
+$ svn update -r 272
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>On Saturday 30 July 2005 18:04, noteedit-devel-admin at berlios.de wrote:
+>  
+>
+>>I'm digging through MusicXML import code and I don't understand why
+>>are there different mappings for NoteEdit's voice and the file's voice
+>>numbers. Now, there is this VoiceMapper class that organizes and sorts
+>>things out, but I don't really understand why.
+>>
+>>For example, if a second voice starts the melody and the first voice
+>>enters in the third measure, MusicXML import code grabs the first
+>>available voice in NoteEdit and assigns the first voice found in file
+>>(the second one) to it. I think things can get really messy, because
+>>in 3rd measure and on, you have the second voice with stems upwards
+>>and ?he first voice with stems downwards. In the latest commit 298, I
+>>arranged 1:1 NoteEdit and file's voice numbers. But I'm not sure if
+>>that was the smartest thing to do. There are quite a few lines of code
+>>for VoiceMapper. Can anyone help me?
+>>    
+>>
+>
+>Hi Matev?,
+>
+>just returned from vacation today. As I wrote the XMl code I should be able to 
+>help you. Will have a look at your questions and reply later.
+>
+>Regards, Leon.
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050805/f94f02a5/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Aug  8 10:20:15 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 8 Aug 2005 10:20:15 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F38BA1.80206@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si>
+Message-ID: <200508081020.15366.leon.vinken@hetnet.nl>
+
+Hi Matev?,
+
+the reason for having the voice mapper is to be able to easily assign the 
+minimum number of voices necessary. As you probably know, a MusicXML part may 
+contain more than one staff (typical example: piano music, two staves). The 
+voice numbers are, however, unique for the part, not for the staff. This 
+means that for a piano part with two voices in both treble and bass staff, 
+the voices will be numbered 1 up through 4 (1 and 2 on the treble staff, 3 
+and 4 on the bass staff).
+
+The voicemapper implementation makes it easy to assign only two voices to both 
+NoteEdit staves created. This is the behaviour as it is in the 2.8.0 release, 
+which I would consider correct. Your implementation correctly assigns two 
+voices to the treble staff, but (incorrectly, IMHO) assigns four voices to 
+the bass staff. Two of the four voices are completely empty.
+
+Normally stem direction should not be an issue on importing, as well-behaving 
+MusicXML implementations should write explicit stem directions. Importing 
+MusicXML files without explicit stem direction should be the exception, not 
+the rule.
+
+Summarizing, I think the removal of the voicemapper usage and the 1:1 NE and 
+MusicXML voice assignment is not a good idea. It doesn't solve any real 
+problem but creates unnecessary empty voices. Please revert to the original 
+impementation.
+
+In case of further questions don't hesitate to contact me, either on 
+noteedit-devel or via private email (address is in the source files).
+
+Best regards, Leon.
+
+On Friday 05 August 2005 17:54, noteedit-devel-admin at berlios.de wrote:
+> Please examine the code at Revision 272 or prior, because later, I
+> removed some code accessing to VoiceMapper and as already told, assigned
+> 1:1 NE and MusicXML voices.
+>
+> You can update to 272 by:
+> $ svn update -r 272
+>
+>
+> Regards.
+> - Matev?
+>
+> noteedit-devel-admin at berlios.de wrote:
+> >On Saturday 30 July 2005 18:04, noteedit-devel-admin at berlios.de wrote:
+> >>I'm digging through MusicXML import code and I don't understand why
+> >>are there different mappings for NoteEdit's voice and the file's voice
+> >>numbers. Now, there is this VoiceMapper class that organizes and sorts
+> >>things out, but I don't really understand why.
+> >>
+> >>For example, if a second voice starts the melody and the first voice
+> >>enters in the third measure, MusicXML import code grabs the first
+> >>available voice in NoteEdit and assigns the first voice found in file
+> >>(the second one) to it. I think things can get really messy, because
+> >>in 3rd measure and on, you have the second voice with stems upwards
+> >>and ?he first voice with stems downwards. In the latest commit 298, I
+> >>arranged 1:1 NoteEdit and file's voice numbers. But I'm not sure if
+> >>that was the smartest thing to do. There are quite a few lines of code
+> >>for VoiceMapper. Can anyone help me?
+> >
+> >Hi Matev?,
+> >
+> >just returned from vacation today. As I wrote the XMl code I should be
+> > able to help you. Will have a look at your questions and reply later.
+> >
+> >Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Aug  9 13:36:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 09 Aug 2005 13:36:08 +0200
+Subject: [Noteedit-devel] The architecture of NKeySig
+In-Reply-To: <200508081020.15366.leon.vinken@hetnet.nl>
+References: <42EBA4F0.1010605@guest.arnes.si>
+	 <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si>
+	 <200508081020.15366.leon.vinken@hetnet.nl>
+Message-ID: <1123587368.7637.49.camel@localhost>
+
+Hi! 
+
+I've committed some changes related to NKeySig.
+
+The code was not really changed, only some bugs and code duplications
+were removed, commented the methods in the header, and changed some
+method names for cleaner understandability.
+
+Some words about NKeySig:
+===========================
+
+This class handles the key signatures and temporary key signatures.
+
+Key signatures: the flat / sharp accents, placed after the bar line.
+It can be regular (0, 1#, ... 6#, 1b, ... 6b), and non regular.
+
+Temporary key signatures: Modifiers (natural, sharp, flat) are valid
+until the next bar line. The bar line terminates these modifiers. These
+modifiers are the temporary key signatures.
+
+For the correct operation, this class requires the proper clef. The clef
+is not always set correctly in the current code, and that cause bugs.
+
+Methods:                Old name:     Description:
+====================================================
+
+General:
+
+- constr., destr.
+- change()                           // it's like a copy constructor
+- clone()                            //  - same -
+- isEqual()                          // like the == operator
+- toString()            printKeys()  // converts to ASCII
+- getType ()                         // T_KEYSIG
+
+- setClef()                          // sets the belonging clef
+- getOffset()           computeOffs()// ofs of a line with the modifiers
+
+Accent related:
+
+- setAccent()           setKey()     // set a note accented (#,b,nat.)
+- setAccentByNoteName() addSign()    //  - same -, note is in ASCII
+- getAccent()           getStatus()  // the accent for a note
+- setTempAccent()       setTempAcc() // sets the temp accents
+- deleteTempAccents()   resetAtBar() // delete temp acc (new bar line)
+- accentNeeded()        accNeeded()  // acc needed to draw the note
+
+Regularity:
+
+- setRegular                         // creates a reg. key sig
+- isRegular                          // tells if the keysig is regular
+
+Drawing:
+
+- isDrawable()                       // true if the key sig is not empty
+- setPreviousKeySig                  // previous required for resolving
+- draw()                             // drawing function
+- calculateDimensionsAndPixmaps()    // calculates the pixmap of key sig
+
+Methods belonging to other classes:
+
+- reset()                            // sets the key sig to default
+- changeHalfTone()                   // changes the half notes 
+                                     // according to the keysig (b,#)
+- determineDistanceUp()              // note dist. from the upper line
+
+Context key sig (???):
+
+- drawContextKeySig()                // ???
+- changeInContextKeySig()            // ???
+- calculateContextPixmap()           // ???
+
+
+
+Best regards,
+
+    Csaba
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Aug  9 19:47:00 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 09 Aug 2005 19:47:00 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <200508081020.15366.leon.vinken@hetnet.nl>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl>
+Message-ID: <42F8EC14.6060502@guest.arnes.si>
+
+Thanks for the reply!
+
+Ok, I see now. I didn't know MusicXML format has unique numbers from the
+first to the last staff. I'm reimplementing the code I removed in that
+revision at the moment and testing it. I'll commit the changes ASAP.
+
+Meanwhile, I'd like you to visit our private development wiki and go to
+http://193.95.242.3/NoteEditWiki/index.php/NoteEdit_-_MusicXML_bugs/wishes .
+I made two examples of MusicXML files. The first, more complex one,
+describes a DTD error when importing the xml file to Finale. And the
+second example describes the lack of tuplet support in NoteEdit's
+MusicXML code (<time-modification> block is not recognized by NoteEdit).
+What do you think?
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Matev?,
+>
+>the reason for having the voice mapper is to be able to easily assign the 
+>minimum number of voices necessary. As you probably know, a MusicXML part may 
+>contain more than one staff (typical example: piano music, two staves). The 
+>voice numbers are, however, unique for the part, not for the staff. This 
+>means that for a piano part with two voices in both treble and bass staff, 
+>the voices will be numbered 1 up through 4 (1 and 2 on the treble staff, 3 
+>and 4 on the bass staff).
+>
+>The voicemapper implementation makes it easy to assign only two voices to both 
+>NoteEdit staves created. This is the behaviour as it is in the 2.8.0 release, 
+>which I would consider correct. Your implementation correctly assigns two 
+>voices to the treble staff, but (incorrectly, IMHO) assigns four voices to 
+>the bass staff. Two of the four voices are completely empty.
+>
+>Normally stem direction should not be an issue on importing, as well-behaving 
+>MusicXML implementations should write explicit stem directions. Importing 
+>MusicXML files without explicit stem direction should be the exception, not 
+>the rule.
+>
+>Summarizing, I think the removal of the voicemapper usage and the 1:1 NE and 
+>MusicXML voice assignment is not a good idea. It doesn't solve any real 
+>problem but creates unnecessary empty voices. Please revert to the original 
+>impementation.
+>
+>In case of further questions don't hesitate to contact me, either on 
+>noteedit-devel or via private email (address is in the source files).
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050809/0e925203/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Aug  9 20:38:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 09 Aug 2005 20:38:02 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <200508081020.15366.leon.vinken@hetnet.nl>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl>
+Message-ID: <42F8F80A.7010305@guest.arnes.si>
+
+Hi Leon!
+
+I'm digging through the changes I made and found out the reason, why I
+made the 1:1 voice numbers in the first place. The problem occured, if I
+wanted to import a score, where the non-first voice started (and the
+first voice had rests (hidden) until it entered). An example is a
+baroque fugue, where first the 2nd voice starts, then the 1st and later
+the 3rd. Also, many choir examples can be found, where altos first enter
+and sopranos after them.
+
+Now, the way NoteEdit imported these kinds of files before, was to
+assign a new voice in xml file to the first available new voice in
+NoteEdit. This way, 2nd voice became the first one, first voice became
+the second one in the above mentioned examples and so on. You can
+imagine the mess with stem directions and other voice number related
+stuff that happened then.
+
+Now, to combine both funcionalities, I'd suggest the following:
+1) import the voice numbers as they were prior to R272 (via voicemapper)
+2) add a new function that sorts the voices as they're sorted in xml file.
+3) this way voice numbers 4,5,6 in xml file will be imported as voices
+1,2,3, no matter which one starts first.
+
+I'm trying to implement this now. Comments and better ideas are always
+welcome:-)?
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050809/47b3cbe6/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 10 00:58:47 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 10 Aug 2005 00:58:47 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F8EC14.6060502@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl> <42F8EC14.6060502@guest.arnes.si>
+Message-ID: <42F93527.10804@schwaben.de>
+
+Only as a small remark: In trunk file kguitar_.../fingerlist.h is
+missing. Copying from the other branches helps ..
+
+Hopefully I'll follow more your efforts! Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 10 10:22:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 10 Aug 2005 10:22:41 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F93527.10804@schwaben.de>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl> <42F8EC14.6060502@guest.arnes.si> <42F93527.10804@schwaben.de>
+Message-ID: <42F9B951.6040007@guest.arnes.si>
+
+Yes, fingerlist.h is created out of fingerlist.h.qt2 or fingerlist.h.qt3
+when you run configure. It's not actually needed in SVN. I deleted it,
+because local SVN always marked it as modified and wanted to commit it.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Only as a small remark: In trunk file kguitar_.../fingerlist.h is
+>missing. Copying from the other branches helps ..
+>
+>Hopefully I'll follow more your efforts! Georg
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050810/2642fe05/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 10 14:27:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 10 Aug 2005 14:27:40 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F8F80A.7010305@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508051745.56341.leon.vinken@hetnet.nl> <42F38BA1.80206@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl> <42F8F80A.7010305@guest.arnes.si>
+Message-ID: <42F9F2BC.9050605@guest.arnes.si>
+
+I implemented the code, but it's not working. NE usually crashes,
+because it can't move first voice to non-first voice and vice versa, as
+first voice includes signs as well. So I'm dropping this feature
+(pending for the complete rewrite of musElement list internals, not
+dependent on the first voice only?). I reverted the voice changes as
+they were before R292. However, a new function void moveVoice(uint
+srcNr, uint tgtNr); is present in NStaff class, which moves the voice
+numbered with srcNr before the voice numbered with tgtNr. It might
+become useful in the future, especially for voice management as well.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Now, to combine both funcionalities, I'd suggest the following:
+>1) import the voice numbers as they were prior to R272 (via voicemapper)
+>2) add a new function that sorts the voices as they're sorted in xml file.
+>3) this way voice numbers 4,5,6 in xml file will be imported as voices
+>1,2,3, no matter which one starts first.
+>
+>I'm trying to implement this now. Comments and better ideas are always
+>welcome:-)?
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050810/9c492916/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 10 21:08:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 10 Aug 2005 21:08:40 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F8F80A.7010305@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl> <42F8F80A.7010305@guest.arnes.si>
+Message-ID: <200508102108.40184.leon.vinken@hetnet.nl>
+
+On Tuesday 09 August 2005 20:38, noteedit-devel-admin at berlios.de wrote:
+> Now, to combine both funcionalities, I'd suggest the following:
+> 1) import the voice numbers as they were prior to R272 (via voicemapper)
+> 2) add a new function that sorts the voices as they're sorted in xml file.
+> 3) this way voice numbers 4,5,6 in xml file will be imported as voices
+> 1,2,3, no matter which one starts first.
+>
+> I'm trying to implement this now. Comments and better ideas are always
+> welcome:-)?
+
+Sounds OK to me. But be careful, as in NoteEdit the first voice is special: 
+all "special" elements should go into the first voice. All other voices can 
+only contain notes and rests.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 10 21:11:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 10 Aug 2005 21:11:02 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F8EC14.6060502@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl> <42F8EC14.6060502@guest.arnes.si>
+Message-ID: <200508102111.02699.leon.vinken@hetnet.nl>
+
+On Tuesday 09 August 2005 19:47, noteedit-devel-admin at berlios.de wrote:
+>
+> Meanwhile, I'd like you to visit our private development wiki and go to
+> http://193.95.242.3/NoteEditWiki/index.php/NoteEdit_-_MusicXML_bugs/wishes
+> . I made two examples of MusicXML files. The first, more complex one,
+> describes a DTD error when importing the xml file to Finale. And the second
+> example describes the lack of tuplet support in NoteEdit's
+> MusicXML code (<time-modification> block is not recognized by NoteEdit).
+> What do you think?
+
+Will do, provided you explain how I can login ... :-).
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 10 21:48:16 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 10 Aug 2005 21:48:16 +0200
+Subject: [Noteedit-devel] MusicXML question
+In-Reply-To: <42F8EC14.6060502@guest.arnes.si>
+References: <42EBA4F0.1010605@guest.arnes.si> <200508081020.15366.leon.vinken@hetnet.nl> <42F8EC14.6060502@guest.arnes.si>
+Message-ID: <200508102148.16761.leon.vinken@hetnet.nl>
+
+On Tuesday 09 August 2005 19:47, noteedit-devel-admin at berlios.de wrote:
+>
+> Meanwhile, I'd like you to visit our private development wiki and go to
+> http://193.95.242.3/NoteEditWiki/index.php/NoteEdit_-_MusicXML_bugs/wishes
+> . I made two examples of MusicXML files. The first, more complex one,
+> describes a DTD error when importing the xml file to Finale. And the second
+> example describes the lack of tuplet support in NoteEdit's
+> MusicXML code (<time-modification> block is not recognized by NoteEdit).
+> What do you think?
+
+Looks good. All three issues describe bugs and/or missing features, e.g. 
+layout support has been on my todo list for some time, but I never managed to 
+start working on it. Day-time jobs have a nasty tendency to use up a lot of 
+your time.
+
+It might be useful to transfer these to the "normal" bug and feature request 
+database.
+
+I would like to try to fix the Finale import bug, but don't have Finale 
+available mysel, so I need to compare the generated XML with the DTD'd by 
+hand.
+
+Regards, Leon.
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 11 23:22:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 11 Aug 2005 23:22:46 +0200
+Subject: [Noteedit-devel] lilypond export update
+In-Reply-To: <42EB7717.4060202@schwaben.de>
+References: <42EB7717.4060202@schwaben.de>
+Message-ID: <42FBC1A6.501@schwaben.de>
+
+Hi,
+
+again a small lily export update:
+
+-- A \paper block instead of \layout makes the composer string nicely
+right aligned with the music.
+-- The property string Last Author is exported as arranger.
+
+Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 12 00:08:24 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 12 Aug 2005 00:08:24 +0200
+Subject: [Noteedit-devel] lilypond export update
+In-Reply-To: <42FBC1A6.501@schwaben.de>
+References: <42EB7717.4060202@schwaben.de> <42FBC1A6.501@schwaben.de>
+Message-ID: <42FBCC58.7000908@guest.arnes.si>
+
+I also committed a small patch to Lily code today in R325, just to let
+you know. Taken out from Changelog:
+- LilyPond export filter successfully tested with version 2.6.3 and
+2.4.5 (\version updated)
+- Ritardando and Accellerando now printed in italic and below the staff
+by default
+- Arbitrary text is not printed in bold anymore, because it's too
+aggressive. It's only \large and it's for the whole text (not just the
+first word).
+- noteedit -> NoteEdit in header
+- if Lily26 is found, utf8 encoding is set by default
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi,
+>
+>again a small lily export update:
+>
+>-- A \paper block instead of \layout makes the composer string nicely
+>right aligned with the music.
+>-- The property string Last Author is exported as arranger.
+>
+>Regards,
+>Georg.
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050812/60e86a2d/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Aug 13 12:47:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 13 Aug 2005 12:47:30 +0200
+Subject: [Noteedit-devel] Placing notes on hidden rests?
+In-Reply-To: <42EE6A5A.9010106@guest.arnes.si>
+References: <42EE6A5A.9010106@guest.arnes.si>
+Message-ID: <42FDCFC2.7020100@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>I was thinking about the new feature - if you place a note on exactly
+>the hidden rest, the note shouldn't be inserted like now, but the hidden
+>rest should be replaced with the new note. If the length of the note is
+>smaller, a new hidden rest should be placed after it, so the whole
+>length should still satisfy the original hidden rest's length.
+>
+>What do you think? Is it a useful feature?
+>  
+
+Hi Matev?,
+
+it's been long ago your question, and only now I find a relaxed moment
+to think about it and offer my thought on it:
+
+To overwrite and leave the not used time intact is a good feature.
+Somehow it's an overwrite mode. And because I'm spoilt, because I have a
+simple midi keyboard (and I know some piano playing) which I prefer to
+input notes in NoteEdit, I think of two overwrite modes beeing attractive:
+
+1) overwrite mode, which takes the notes and the timing from the new input
+2) overwrite mode, which leaves the rhythmic structure unchanged, but
+takes the notes/notes pitches from the new input
+
+Often I find it hard work to specify the rhythm again and again. I would
+in the new place put a copy with the rhythm I usualy did already, then
+overwrite quickly with the midi keyboard, and will be done.
+I'll try to be more on the wiki pages. Overwrite mode 1) will allow to
+have an empty partiur with mostly only rests, and to fill it up with
+music whereever you like.
+
+Best Regards,
+Georg
+
+>  
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 17 21:59:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 17 Aug 2005 21:59:32 +0200
+Subject: [Noteedit-devel] New internals
+Message-ID: <43039724.80101@guest.arnes.si>
+
+Hi Karai!
+
+I think myself and the entire development team appreciate all the
+efforts you made the last bunch of commits about reorganizing NoteEdit's
+internals. My thoughts are the same - NoteEdit needs much reorganization
+of the current code, so there will be space for tons of new major
+features and enhancements we have in mind. I was thinking many times
+about the base code and a way to improve some organization stuff (along
+with configure/make). But unfortunately, I'm not so skilled and self
+confident to actually do the reorganization stuff. But I'm trying to
+beat that:).
+
+Btw. Can you prefer any advanced C++ programming and project management
+books or resources (which covers something like NoteEdit and other
+GNU-based projects). I really think I should read more about the things
+how they should be done in common practice - I get the feeling just too
+many times that I improvize or "heat the already warm water" (or how
+it's said in English:)).
+
+I see you made a new entry in our development Wiki. I read it through
+today and I'm quite impressed. The changes and new strcuture reminds me
+on the Qt library on times, but I think it's, as I said before, probably
+more a standard for Object oriented programming (the new casting methods).
+
+If you have time, maybe you could visit the private development forum at
+Berlios and give a word or two about yourself. Anyway, keep up the good
+work!
+
+
+Best wishes!
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050817/206936aa/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Aug 17 23:30:24 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 17 Aug 2005 23:30:24 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <43039724.80101@guest.arnes.si>
+References: <43039724.80101@guest.arnes.si>
+Message-ID: <4303AC70.8070902@web.de>
+
+Hi Matev?,
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi Karai!
+> 
+> I think myself and the entire development team appreciate all the
+> efforts you made the last bunch of commits about reorganizing NoteEdit's
+> internals. My thoughts are the same - NoteEdit needs much reorganization
+> of the current code, so there will be space for tons of new major
+> features and enhancements we have in mind. I was thinking many times
+> about the base code and a way to improve some organization stuff (along
+> with configure/make). But unfortunately, I'm not so skilled and self
+> confident to actually do the reorganization stuff. But I'm trying to
+> beat that:).
+
+I can only second your thoughts! Myself I didn't look very deep into
+the internals as the program is quite large and complex. But reading
+the ML and trying to figure out some code places already showed me
+that there is room for enhancement (especially comments).
+
+If I had more time I would try to create some overview documentation
+over the code so that it is easier for new developers to get their/our
+ideas implemented. That what I had in my mind since NoteEdit was
+moved to Berlios. Up to now I only created a doxygen documentation
+with several picture. There is one very large picture showing all
+classes but it's not the simple overview I had in my mind.
+
+> Btw. Can you prefer any advanced C++ programming and project management
+> books or resources (which covers something like NoteEdit and other
+> GNU-based projects). I really think I should read more about the things
+> how they should be done in common practice - I get the feeling just too
+> many times that I improvize or "heat the already warm water" (or how
+> it's said in English:)).
+
+Well I had many recommendation for Design with the book "Effectice C++".
+This one covers the basic program design matters, and an second one
+"More Effective C++" the more advanced themes. Also the STL (Standard
+Templace Library) is covered in an extra book. General design books
+concerning software projects should be based on UML-2. I have two
+books, but they are both in german (basics and advanced topics).
+Maybe UML-2-Toolkit is a book for you if you want to learn more
+about software analysis and design. The UML-Bible on the contrary
+is a book covering everything about UML, for those who want to get
+an UML expert. I want to buy a new book less covering UML itself but
+concentrating on the software design process. Maybe the book
+"Object-Oriented Analysis and Design : Understanding System Development 
+with UML 2.0" helps you if you want to take a similar approach.
+And finally you might be interested in Interface design books...
+
+> I see you made a new entry in our development Wiki. I read it through
+> today and I'm quite impressed. The changes and new strcuture reminds me
+> on the Qt library on times, but I think it's, as I said before, probably
+> more a standard for Object oriented programming (the new casting methods).
+
+Yes I agree, also the Qt book by the Qt authors is really worth a read.
+
+Best regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 08:46:27 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 08:46:27 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <4303AC70.8070902@web.de>
+References: <43039724.80101@guest.arnes.si>  <4303AC70.8070902@web.de>
+Message-ID: <1124347587.9303.20.camel@localhost>
+
+Thanks for the kind words. I was a bit afraid, that my work will cause 
+lots of troubles, because of the very big changes.
+
+Some words about my plan:
+
+The music elements should be placed into a linked list, which have
+'next' and 'prev' methods and inherits from QObject. This would be the
+base of the new architecture. 
+
+If an element requires the clef for example, just walks through the
+'prev' methods, till finds it. 
+
+If a new Clef is inserted, clefChanged(NClef *) signal will be emitted
+for all affected items in the linked list (the clefs are cached).
+
+With an architecture like that, quite high code separation could be
+reached.
+
+The current architecture is very very far from it. That's why I wrote,
+that it requires half year or more to finish.
+
+Bye,
+
+    Csaba
+
+2005-08-17, sze keltez?ssel 23.30-kor noteedit-devel-admin at berlios.de
+ezt ?rta:
+> Hi Matev?,
+> 
+> noteedit-devel-admin at berlios.de schrieb:
+> > Hi Karai!
+> > 
+> > I think myself and the entire development team appreciate all the
+> > efforts you made the last bunch of commits about reorganizing NoteEdit's
+> > internals. My thoughts are the same - NoteEdit needs much reorganization
+> > of the current code, so there will be space for tons of new major
+> > features and enhancements we have in mind. I was thinking many times
+> > about the base code and a way to improve some organization stuff (along
+> > with configure/make). But unfortunately, I'm not so skilled and self
+> > confident to actually do the reorganization stuff. But I'm trying to
+> > beat that:).
+> 
+> I can only second your thoughts! Myself I didn't look very deep into
+> the internals as the program is quite large and complex. But reading
+> the ML and trying to figure out some code places already showed me
+> that there is room for enhancement (especially comments).
+> 
+> If I had more time I would try to create some overview documentation
+> over the code so that it is easier for new developers to get their/our
+> ideas implemented. That what I had in my mind since NoteEdit was
+> moved to Berlios. Up to now I only created a doxygen documentation
+> with several picture. There is one very large picture showing all
+> classes but it's not the simple overview I had in my mind.
+> 
+> > Btw. Can you prefer any advanced C++ programming and project management
+> > books or resources (which covers something like NoteEdit and other
+> > GNU-based projects). I really think I should read more about the things
+> > how they should be done in common practice - I get the feeling just too
+> > many times that I improvize or "heat the already warm water" (or how
+> > it's said in English:)).
+> 
+> Well I had many recommendation for Design with the book "Effectice C++".
+> This one covers the basic program design matters, and an second one
+> "More Effective C++" the more advanced themes. Also the STL (Standard
+> Templace Library) is covered in an extra book. General design books
+> concerning software projects should be based on UML-2. I have two
+> books, but they are both in german (basics and advanced topics).
+> Maybe UML-2-Toolkit is a book for you if you want to learn more
+> about software analysis and design. The UML-Bible on the contrary
+> is a book covering everything about UML, for those who want to get
+> an UML expert. I want to buy a new book less covering UML itself but
+> concentrating on the software design process. Maybe the book
+> "Object-Oriented Analysis and Design : Understanding System Development 
+> with UML 2.0" helps you if you want to take a similar approach.
+> And finally you might be interested in Interface design books...
+> 
+> > I see you made a new entry in our development Wiki. I read it through
+> > today and I'm quite impressed. The changes and new strcuture reminds me
+> > on the Qt library on times, but I think it's, as I said before, probably
+> > more a standard for Object oriented programming (the new casting methods).
+> 
+> Yes I agree, also the Qt book by the Qt authors is really worth a read.
+> 
+> Best regards,
+> 
+> Reinhard
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 09:01:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 09:01:53 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <1124347587.9303.20.camel@localhost>
+References: <43039724.80101@guest.arnes.si>  <4303AC70.8070902@web.de> <1124347587.9303.20.camel@localhost>
+Message-ID: <43043261.2010004@guest.arnes.si>
+
+That's exactly the problem I had in mind too!
+
+It would resolve much troubles, like better export filters (every voice
+could have special elements - bars, clefs etc. in .ly file) and you
+should have the ability to place barlines in non-1st voice (which is a
+clumsy problem for myself). Actually, we'd achieved that 1st voice isn't
+the main alpha and omega one, but is equal to any other like it should
+be from the first place. Also, copying from any voice to any voice and
+other voice operations would become possible.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Thanks for the kind words. I was a bit afraid, that my work will cause 
+>lots of troubles, because of the very big changes.
+>
+>Some words about my plan:
+>
+>The music elements should be placed into a linked list, which have
+>'next' and 'prev' methods and inherits from QObject. This would be the
+>base of the new architecture. 
+>
+>If an element requires the clef for example, just walks through the
+>'prev' methods, till finds it. 
+>
+>If a new Clef is inserted, clefChanged(NClef *) signal will be emitted
+>for all affected items in the linked list (the clefs are cached).
+>
+>With an architecture like that, quite high code separation could be
+>reached.
+>
+>The current architecture is very very far from it. That's why I wrote,
+>that it requires half year or more to finish.
+>
+>Bye,
+>
+>    Csaba
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050818/b650c545/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 10:07:57 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 10:07:57 +0200
+Subject: [Noteedit-devel] New LilyPond info
+Message-ID: <430441DD.4070307@guest.arnes.si>
+
+LilyPond team yesterday released a new development 2.7.5 version, which
+brought a new major feature IMO - text scripts (along with lyrics) now
+detect vertical&horizontal collision with other music elements (slurs,
+noteheads, other markings). Also, if the sillable in lyrics is to wide
+and doesn't fit, the space between notes is extended, to fit.
+
+I just thought I might tell you that as I usually had many problems with
+fine-tuning text markings in Lily document, but now it's all
+automatically. I don't need to use #padding anymore!:)
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050818/fd667b1b/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 17:45:51 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 17:45:51 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <43039724.80101@guest.arnes.si>
+References: <43039724.80101@guest.arnes.si>
+Message-ID: <1124379951.28547.42.camel@localhost>
+
+> I think myself and the entire development team appreciate all the
+> efforts you made the last bunch of commits about reorganizing NoteEdit's
+> internals. My thoughts are the same - NoteEdit needs much reorganization
+> of the current code, so there will be space for tons of new major
+> features and enhancements we have in mind. I was thinking many times
+> about the base code and a way to improve some organization stuff (along
+> with configure/make). But unfortunately, I'm not so skilled and self
+> confident to actually do the reorganization stuff. But I'm trying to
+> beat that:).
+
+My reorganizing steps are very easy.
+
+
+I try to remove as many methods from NMusElement as possible by
+moving them into other classes where they logically belongs (the context
+helps a lot). 
+
+After making it, I'll reach the base class. A small class in which every
+method is understandable. The other classes can be built onto this class
+gradually.
+
+The heart of a code is placed in the headers. So if the headers are
+reorganized, the code will also be reorganized.
+
+Awful implementation is not as big error as awful headers.
+Implementation can be changed any time without much pain.
+
+Telling the truth, in the Krusader project I made code reorganizing.
+I changed only the headers, and the implementation followed it. Big
+work, but worths the effort. 
+
+Best regards,
+
+   Csaba
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 20:28:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 20:28:37 +0200
+Subject: [Noteedit-devel] NMusElement class description
+In-Reply-To: <43043261.2010004@guest.arnes.si>
+References: <43039724.80101@guest.arnes.si>  <4303AC70.8070902@web.de>
+	 <1124347587.9303.20.camel@localhost>  <43043261.2010004@guest.arnes.si>
+Message-ID: <1124389718.19181.22.camel@localhost>
+
+Good evening!
+
+I managed to gain the NMusElement base class.
+The class is committed into the SVN.
+
+NMusElement:
+============
+
+Responsible for storing and printing the music elements.
+
+Element variables:
+
+actual_       - a flag whether the element is the actual (drawn in red)
+pixmapHeight_ - the height of the element's pixmap
+pixmapWidth_  - the width of the element's pixmap
+bbox_         - the outliner rectangle on the screen
+staff_props_  - staff properties
+main_props_   - main properties
+xpos_         - X position on the screen (width0+width1+...)
+sequNr_       - a sequence number (how many elements are before this)
+midiTime_     - ???
+
+Methods:
+
+constructor, destructor
+
+change:                        - at changing the element, sets NMusEdit
+                                 properties
+clone:                         - clones the element
+getType:                       - gives the type of the element 
+                                 (T_CLEF,T_CHORD,...)
+getSubType:                    - gives the sub type of the element
+draw:                          - draws out the element
+calculateDimensionsAndPixmaps: - creates the pixmaps and calculates its 
+                                 height/width
+setStaffProps:                 - sets the staff properties
+setMainProps:                  - sets the main properties
+getMidiLength:                 - gives the midi length of the element
+getBbox:                       - gives the outliner rectangle
+intersects:                    - check a point whether it is in the rect
+intersects_horizontally:       - ???
+setActual:                     - sets the element actual/nonactual (red)
+reposit:                       - sets the sequence numbers / X position
+getXposDecorated:              - ???
+getXpos:                       - gives the X position of the element
+getSequNr:                     - gives the sequence number of the element
+
+and the conversion methods:
+
+playable(), chord(), rest(), clef(), keySig(), timeSig(), sign(), text()
+
+Bye,
+
+    Csaba
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 21:13:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 21:13:11 +0200
+Subject: [Noteedit-devel] NMusElement class description
+In-Reply-To: <1124389718.19181.22.camel@localhost>
+References: <43039724.80101@guest.arnes.si>  <4303AC70.8070902@web.de>	 <1124347587.9303.20.camel@localhost>  <43043261.2010004@guest.arnes.si> <1124389718.19181.22.camel@localhost>
+Message-ID: <4304DDC7.2030205@guest.arnes.si>
+
+
+>midiTime_     - ???
+>  
+>
+The MIDI time in ticks, where the element starts.
+
+
+Regards,
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050818/a02b87e2/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 21:21:22 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 21:21:22 +0200
+Subject: [Noteedit-devel] New LilyPond info
+In-Reply-To: <430441DD.4070307@guest.arnes.si>
+References: <430441DD.4070307@guest.arnes.si>
+Message-ID: <4304DFB2.6030902@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>LilyPond team yesterday released a new development 2.7.5 version, which
+>brought a new major feature IMO - text scripts (along with lyrics) now
+>detect vertical&horizontal collision with other music elements (slurs,
+>noteheads, other markings). Also, if the sillable in lyrics is to wide
+>and doesn't fit, the space between notes is extended, to fit.
+>
+>I just thought I might tell you that as I usually had many problems with
+>fine-tuning text markings in Lily document, but now it's all
+>automatically. I don't need to use #padding anymore!:)
+>
+>
+>Regards.
+>- Matev?
+>
+>  
+Hi Matev?,
+
+thanks for this hint. I also ran in this often, so I thought to do a
+oneline patch to add " " \raise #0.4 in every text item, so you can
+adjust quickly the number in the .ly file, manually. \raise, #padding
+and #extra-offset are all similar, and, not perfect. If lilypond would
+do it automatically, it would be better. I experimented with 2.7.5, and
+it works only when the notes that touch the text have a slur. Without
+slur, there's still overlap. \raise and a slur would be compatible.
+
+So, the lilypond developers are aware of the problem, sooner or later
+they'll solve it :)
+
+Btw: The paper selection in lilypond export is great! Landscape now
+works well, I like it for proof reading. Thanks.
+
+Regards,
+Georg.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 21:38:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 21:38:37 +0200
+Subject: [Noteedit-devel] New LilyPond info
+In-Reply-To: <4304DFB2.6030902@schwaben.de>
+References: <430441DD.4070307@guest.arnes.si> <4304DFB2.6030902@schwaben.de>
+Message-ID: <4304E3BD.9060707@guest.arnes.si>
+
+
+
+>Btw: The paper selection in lilypond export is great! Landscape now
+>works well, I like it for proof reading. Thanks.
+>  
+>
+Yes, but the problem in custom page sizes in Lily code is still there.
+Or is it me, who doesn't know how to convience LilyPond to use custom
+paper size (and not only the workspace where it engraves as now -
+textheight and linewidth didn't work for me since 2.4.x). I'm gonna have
+to ask at lily-user mailing list.
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050818/0381d90d/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 18 22:13:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 18 Aug 2005 22:13:35 +0200
+Subject: [Noteedit-devel] New LilyPond info
+In-Reply-To: <4304E3BD.9060707@guest.arnes.si>
+References: <430441DD.4070307@guest.arnes.si> <4304DFB2.6030902@schwaben.de> <4304E3BD.9060707@guest.arnes.si>
+Message-ID: <4304EBEF.4060501@schwaben.de>
+
+>, but the problem in custom page sizes in Lily code is still there.
+>Or is it me, who doesn't know how to convience LilyPond to use custom
+>paper size (and not only the workspace where it engraves as now -
+>textheight and linewidth didn't work for me since 2.4.x). I'm gonna have
+>to ask at lily-user mailing list.
+>
+>  
+Gratulation, this made me also doubt on myself. For me the fixed papers
+variant now is great.
+
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 14:27:20 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 14:27:20 +0200
+Subject: [Noteedit-devel] doxygen
+Message-ID: <200508191427.20772.walstra@science.uva.nl>
+
+Hello,
+I've subscribed some time ago to the developers list and downloaded the source 
+code. I'm wondering about the following:
+Where is the software documentation? Doxygen (or something like this) is not 
+used to describe the functions or classes. Files have a name and that's it. 
+The only comment header is a GNU licence but no explanation what it is doing. 
+I have started to work through the code to get an idea how much work it is to 
+add basso continuo lines, but it would help to have some more software 
+documentation available somewhere.
+Is there a bugtracking system in use, releasemanagement document or something 
+like that? 
+Taco Walstra
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 20:35:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 20:35:37 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <1124379951.28547.42.camel@localhost>
+References: <43039724.80101@guest.arnes.si> <1124379951.28547.42.camel@localhost>
+Message-ID: <43062679.20703@schwaben.de>
+
+>I try to remove as many methods from NMusElement as possible by
+>moving them into other classes where they logically belongs (the context
+>helps a lot). 
+>
+>After making it, I'll reach the base class. A small class in which every
+>method is understandable. The other classes can be built onto this class
+>gradually.
+>
+>The heart of a code is placed in the headers. So if the headers are
+>reorganized, the code will also be reorganized.
+>
+>Awful implementation is not as big error as awful headers.
+>Implementation can be changed any time without much pain.
+>  
+Hi Csaba,
+
+basically I agree with you, and I surfed webcsv to look a little bit
+what you are doing. I think, even in a big reorganisation, the project
+should build and run, maybe have a serious bug here or there not more
+than three days.
+
+I did a few checkouts these days. Only yesterday I recognized that
+exporting to lilypond gives faulty results, and today it even crashes with
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00002aaaaac73dd6 in NChord::countOfLyricsLines () from
+/opt/kde3/lib64/libnoteedit.so.1
+(gdb)
+
+Maybe you know easily what's wrong. Nevertheless, today I'll try to
+debug this more, before I go to a one week vacation. ABC export is
+working well, also XML import/export.
+
+That's it for now,
+Regards,
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 21:09:16 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 21:09:16 +0200
+Subject: [Noteedit-devel] doxygen
+In-Reply-To: <200508191427.20772.walstra@science.uva.nl>
+References: <200508191427.20772.walstra@science.uva.nl>
+Message-ID: <43062E5C.3010908@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+>Hello,
+>I've subscribed some time ago to the developers list and downloaded the source 
+>code. I'm wondering about the following:
+>Where is the software documentation? Doxygen (or something like this) is not 
+>used to describe the functions or classes. Files have a name and that's it. 
+>The only comment header is a GNU licence but no explanation what it is doing. 
+>I have started to work through the code to get an idea how much work it is to 
+>add basso continuo lines, but it would help to have some more software 
+>documentation available somewhere.
+>Is there a bugtracking system in use, releasemanagement document or something 
+>like that? 
+>Taco Walstra
+>  
+Hi Taco,
+
+welcome. The bad news is, that there is almost no documentation, just
+the sources. So, this can improve.
+
+At least, the bugtracking system on berlios is excellent. It might be
+neccessary to get a login there to submit and follow the bugs. The
+releasemanagement document is a a4 page of one liners, the News file.
+And the updated online help, hopefully translated ...
+
+Anyway, I'm interested how you would like the basso continuo look like?
+Is it a seperate stave, more with general bass numbers? These we don't
+have yet.
+
+Best Regards,
+Georg
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 22:54:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 22:54:19 +0200
+Subject: [Noteedit-devel] New internals
+Message-ID: <0Pb6H1hsPDjr.SbNWM80Z@smtp.pannongsm.hu>
+
+Please do a complete rebuild from scratch. It'll help.
+
+Csaba
+
+-- original message --
+Subject:	Re: [Noteedit-devel] New internals
+From:	noteedit-devel-admin at berlios.de
+Date:		2005. augusztus 19 20:35:37
+
+
+>I try to remove as many methods from NMusElement as possible by
+>moving them into other classes where they logically belongs (the context
+>helps a lot). 
+>
+>After making it, I'll reach the base class. A small class in which every
+>method is understandable. The other classes can be built onto this class
+>gradually.
+>
+>The heart of a code is placed in the headers. So if the headers are
+>reorganized, the code will also be reorganized.
+>
+>Awful implementation is not as big error as awful headers.
+>Implementation can be changed any time without much pain.
+>  
+Hi Csaba,
+
+basically I agree with you, and I surfed webcsv to look a little bit
+what you are doing. I think, even in a big reorganisation, the project
+should build and run, maybe have a serious bug here or there not more
+than three days.
+
+I did a few checkouts these days. Only yesterday I recognized that
+exporting to lilypond gives faulty results, and today it even crashes with
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00002aaaaac73dd6 in NChord::countOfLyricsLines () from
+/opt/kde3/lib64/libnoteedit.so.1
+(gdb)
+
+Maybe you know easily what's wrong. Nevertheless, today I'll try to
+debug this more, before I go to a one week vacation. ABC export is
+working well, also XML import/export.
+
+That's it for now,
+Regards,
+Georg
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 22:54:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 22:54:19 +0200
+Subject: [Noteedit-devel] New internals
+Message-ID: <0Pb6H1hsPDjr.SbNWM80Z@smtp.pannongsm.hu>
+
+Please do a complete rebuild from scratch. It'll help.
+
+Csaba
+
+-- original message --
+Subject:	Re: [Noteedit-devel] New internals
+From:	noteedit-devel-admin at berlios.de
+Date:		2005. augusztus 19 20:35:37
+
+
+>I try to remove as many methods from NMusElement as possible by
+>moving them into other classes where they logically belongs (the context
+>helps a lot). 
+>
+>After making it, I'll reach the base class. A small class in which every
+>method is understandable. The other classes can be built onto this class
+>gradually.
+>
+>The heart of a code is placed in the headers. So if the headers are
+>reorganized, the code will also be reorganized.
+>
+>Awful implementation is not as big error as awful headers.
+>Implementation can be changed any time without much pain.
+>  
+Hi Csaba,
+
+basically I agree with you, and I surfed webcsv to look a little bit
+what you are doing. I think, even in a big reorganisation, the project
+should build and run, maybe have a serious bug here or there not more
+than three days.
+
+I did a few checkouts these days. Only yesterday I recognized that
+exporting to lilypond gives faulty results, and today it even crashes with
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00002aaaaac73dd6 in NChord::countOfLyricsLines () from
+/opt/kde3/lib64/libnoteedit.so.1
+(gdb)
+
+Maybe you know easily what's wrong. Nevertheless, today I'll try to
+debug this more, before I go to a one week vacation. ABC export is
+working well, also XML import/export.
+
+That's it for now,
+Regards,
+Georg
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 23:59:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 23:59:30 +0200
+Subject: [Noteedit-devel] New internals
+Message-ID: <FLDFZMxSG5p5.GjLFB0jf@smtp.pannongsm.hu>
+
+To tell the truth, the reorganizing steps changed the majority of the code. I don't think, that I made serious bugs, but I cannot grant it. Changing the internals is a painful thing.
+ 
+Unfortunately the reorganization is not yet finished. Similar steps should be done for increasing the understandability.
+
+I know that it's nearly impossible to develop, when the internals are always changing, and because of that, I WON'T DO MORE REORGANIZING STEPS for some time.
+
+Excuse me for the temporary instability, I caused in the code. I gladly help in stabilizing the code again.
+
+Before making the next similar reorganizing steps, I'll ask permission on the mailing list. The instability cannot be avoided after making such a big changes.
+
+Excuse me again for the inconveniencies,
+
+Best regards,
+
+Csaba
+
+-- original message --
+Subject:	Re: [Noteedit-devel] New internals
+From:	noteedit-devel-admin at berlios.de
+Date:		2005. augusztus 19 20:35:37
+
+
+>I try to remove as many methods from NMusElement as possible by
+>moving them into other classes where they logically belongs (the context
+>helps a lot). 
+>
+>After making it, I'll reach the base class. A small class in which every
+>method is understandable. The other classes can be built onto this class
+>gradually.
+>
+>The heart of a code is placed in the headers. So if the headers are
+>reorganized, the code will also be reorganized.
+>
+>Awful implementation is not as big error as awful headers.
+>Implementation can be changed any time without much pain.
+>  
+Hi Csaba,
+
+basically I agree with you, and I surfed webcsv to look a little bit
+what you are doing. I think, even in a big reorganisation, the project
+should build and run, maybe have a serious bug here or there not more
+than three days.
+
+I did a few checkouts these days. Only yesterday I recognized that
+exporting to lilypond gives faulty results, and today it even crashes with
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00002aaaaac73dd6 in NChord::countOfLyricsLines () from
+/opt/kde3/lib64/libnoteedit.so.1
+(gdb)
+
+Maybe you know easily what's wrong. Nevertheless, today I'll try to
+debug this more, before I go to a one week vacation. ABC export is
+working well, also XML import/export.
+
+That's it for now,
+Regards,
+Georg
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 19 23:59:30 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 19 Aug 2005 23:59:30 +0200
+Subject: [Noteedit-devel] New internals
+Message-ID: <FLDFZMxSG5p5.GjLFB0jf@smtp.pannongsm.hu>
+
+To tell the truth, the reorganizing steps changed the majority of the code. I don't think, that I made serious bugs, but I cannot grant it. Changing the internals is a painful thing.
+ 
+Unfortunately the reorganization is not yet finished. Similar steps should be done for increasing the understandability.
+
+I know that it's nearly impossible to develop, when the internals are always changing, and because of that, I WON'T DO MORE REORGANIZING STEPS for some time.
+
+Excuse me for the temporary instability, I caused in the code. I gladly help in stabilizing the code again.
+
+Before making the next similar reorganizing steps, I'll ask permission on the mailing list. The instability cannot be avoided after making such a big changes.
+
+Excuse me again for the inconveniencies,
+
+Best regards,
+
+Csaba
+
+-- original message --
+Subject:	Re: [Noteedit-devel] New internals
+From:	noteedit-devel-admin at berlios.de
+Date:		2005. augusztus 19 20:35:37
+
+
+>I try to remove as many methods from NMusElement as possible by
+>moving them into other classes where they logically belongs (the context
+>helps a lot). 
+>
+>After making it, I'll reach the base class. A small class in which every
+>method is understandable. The other classes can be built onto this class
+>gradually.
+>
+>The heart of a code is placed in the headers. So if the headers are
+>reorganized, the code will also be reorganized.
+>
+>Awful implementation is not as big error as awful headers.
+>Implementation can be changed any time without much pain.
+>  
+Hi Csaba,
+
+basically I agree with you, and I surfed webcsv to look a little bit
+what you are doing. I think, even in a big reorganisation, the project
+should build and run, maybe have a serious bug here or there not more
+than three days.
+
+I did a few checkouts these days. Only yesterday I recognized that
+exporting to lilypond gives faulty results, and today it even crashes with
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00002aaaaac73dd6 in NChord::countOfLyricsLines () from
+/opt/kde3/lib64/libnoteedit.so.1
+(gdb)
+
+Maybe you know easily what's wrong. Nevertheless, today I'll try to
+debug this more, before I go to a one week vacation. ABC export is
+working well, also XML import/export.
+
+That's it for now,
+Regards,
+Georg
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Aug 20 12:30:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 20 Aug 2005 12:30:32 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <43062679.20703@schwaben.de>
+References: <43039724.80101@guest.arnes.si>
+	 <1124379951.28547.42.camel@localhost>  <43062679.20703@schwaben.de>
+Message-ID: <1124533832.11473.3.camel@localhost>
+
+Found the lilyexport bug and committed the fix into the SVN. 
+
+Sorry again for the troubles, 
+
+Csaba
+
+2005-08-19, p keltez?ssel 20.35-kor noteedit-devel-admin at berlios.de ezt
+?rta:
+> >I try to remove as many methods from NMusElement as possible by
+> >moving them into other classes where they logically belongs (the context
+> >helps a lot). 
+> >
+> >After making it, I'll reach the base class. A small class in which every
+> >method is understandable. The other classes can be built onto this class
+> >gradually.
+> >
+> >The heart of a code is placed in the headers. So if the headers are
+> >reorganized, the code will also be reorganized.
+> >
+> >Awful implementation is not as big error as awful headers.
+> >Implementation can be changed any time without much pain.
+> >  
+> Hi Csaba,
+> 
+> basically I agree with you, and I surfed webcsv to look a little bit
+> what you are doing. I think, even in a big reorganisation, the project
+> should build and run, maybe have a serious bug here or there not more
+> than three days.
+> 
+> I did a few checkouts these days. Only yesterday I recognized that
+> exporting to lilypond gives faulty results, and today it even crashes with
+> 
+> Program received signal SIGSEGV, Segmentation fault.
+> 0x00002aaaaac73dd6 in NChord::countOfLyricsLines () from
+> /opt/kde3/lib64/libnoteedit.so.1
+> (gdb)
+> 
+> Maybe you know easily what's wrong. Nevertheless, today I'll try to
+> debug this more, before I go to a one week vacation. ABC export is
+> working well, also XML import/export.
+> 
+> That's it for now,
+> Regards,
+> Georg
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Aug 20 16:31:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 20 Aug 2005 16:31:12 +0200
+Subject: [Noteedit-devel] Re: doxygen
+In-Reply-To: <20050820100009.23280.7261.Mailman@bat.berlios.de>
+References: <20050820100009.23280.7261.Mailman@bat.berlios.de>
+Message-ID: <200508201631.12234.walstra@science.uva.nl>
+
+On Saturday 20 August 2005 12:00, noteedit-devel-admin at berlios.de wrote:
+
+> Hi Taco,
+
+> Anyway, I'm interested how you would like the basso continuo look like?
+> Is it a seperate stave, more with general bass numbers? These we don't
+> have yet.
+>
+> Best Regards,
+> Georg
+Basso continuo is what everyone used until approx. 1750 to play a bass on 
+organ, harpsichord, theorbo, cello etc. etc. For example Bach wrote for all 
+cantates a continuo line and not a written out harpsichord part in 2 keys 
+like all modern editions. It looks like a single bass line with numbers below 
+it. One expected from the player (especially before Bach, like all French 
+baroque, Monteverdi, etc. etc.) that he or she knew what kind of chord and 
+scale one had to play, so very often even the numbers are missing. A continuo 
+part is very free and more like a jazz tune: one has to improvise to make it 
+nice. The numbers indicate what kind of chord to play on the note, a little 
+bit like guitar chords. So, it's a combination of numbers: 6, 7, #, B (moll) 
+etc. sometimes more difficult like 6\n4# 7\n4\n3 (2 resp 3 numbers with or 
+without # below eachother).
+So I presume it should be put in a separate stave or in a lyric way or this 
+guitar extension way. Don't know yet.
+
+I'll first have a look into the code and perhaps I can help with getting a few 
+things on paper how everythings works together with some doxygen tags as a 
+start.
+Taco
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Aug 21 00:35:40 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 21 Aug 2005 00:35:40 +0200
+Subject: [Noteedit-devel] New internals
+In-Reply-To: <FLDFZMxSG5p5.GjLFB0jf@smtp.pannongsm.hu>
+References: <FLDFZMxSG5p5.GjLFB0jf@smtp.pannongsm.hu>
+Message-ID: <4307B03C.60106@guest.arnes.si>
+
+Hi Csaba!
+
+I'm sure Georg didn't want to offend you in any way about that Lily
+export bug. Hey, that's the reason why we have SVN for development, that
+we can roll-back to the last-known stable version. And after all,
+reorganizing the code is PITA and unstability is expected from all of
+us. I'm glad there's no crashes when writing the score in the main view
+or even crashes at startup!
+
+I hope we didn't scare you away and that the bottom sentence written in
+capitals just means, that currently, you won't have much time to code,
+but you'll get back to it as soon as you're able to, and not anything else.
+
+
+Best regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>To tell the truth, the reorganizing steps changed the majority of the code. I don't think, that I made serious bugs, but I cannot grant it. Changing the internals is a painful thing.
+> 
+>Unfortunately the reorganization is not yet finished. Similar steps should be done for increasing the understandability.
+>
+>I know that it's nearly impossible to develop, when the internals are always changing, and because of that, I WON'T DO MORE REORGANIZING STEPS for some time.
+>
+>Excuse me for the temporary instability, I caused in the code. I gladly help in stabilizing the code again.
+>
+>Before making the next similar reorganizing steps, I'll ask permission on the mailing list. The instability cannot be avoided after making such a big changes.
+>
+>Excuse me again for the inconveniencies,
+>
+>Best regards,
+>
+>Csaba
+>  
+>
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050821/f94aad47/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Aug 21 00:58:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 21 Aug 2005 00:58:35 +0200
+Subject: [Noteedit-devel] Re: doxygen
+In-Reply-To: <200508201631.12234.walstra@science.uva.nl>
+References: <20050820100009.23280.7261.Mailman@bat.berlios.de> <200508201631.12234.walstra@science.uva.nl>
+Message-ID: <4307B59B.5000909@guest.arnes.si>
+
+Hi Taco!
+
+The easiest way to implement general bass markings (or basso continuo
+markings) would be IMO, to simply take the lyrics code and refit it to
+basso continuo markings (you actually only need numbers, accidentals,
+line, everything in columns). The downside unforunately is, that if
+you'd want to assign multi non-harmonic elements (held, apoggiatura,
+rearrangement, anticipation) to a single note, you won't have the length
+control over markings.
+
+I think, this could be changed in the future, when the new Context-based
+structure of the score (similar to LilyPond) is introduced to NE. So the
+class Context would actually be the parent class of staff, lyrics,
+tablature, dynamics, basso continuo/function markings and others. You
+should be also available to set the correspondence between them then
+(and ability to take the others contexts' properties (rhythm in this
+case), define these areas and so on).
+
+
+Regards.
+- Matev?
+
+>So I presume it should be put in a separate stave or in a lyric way or this 
+>guitar extension way. Don't know yet.
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050821/fa612000/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 25 15:42:55 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 25 Aug 2005 15:42:55 +0200
+Subject: [Noteedit-devel] 2.8.0 question
+Message-ID: <200508251542.55870.walstra@science.uva.nl>
+
+hi,
+this afternoon I wanted to start with this basso continuo extension I 
+mentioned a few days ago and started with digging into mainframewidget.cpp 
+and opening several files into Qt. Perhaps somebody can give me an answer to 
+the following: Why is there no Qt project file? Any reason for this or is the 
+2.8.0 tarball incomplete? I would expect that menu settings etc. are easily 
+changed from the qt developer environment, as with slots and signals.  It's 
+crashing by the way; 2.7.4 is fine.
+Taco 
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 25 18:29:49 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 25 Aug 2005 18:29:49 +0200
+Subject: [Noteedit-devel] 2.8.0 question
+In-Reply-To: <200508251542.55870.walstra@science.uva.nl>
+References: <200508251542.55870.walstra@science.uva.nl>
+Message-ID: <430DF1FD.9060205@guest.arnes.si>
+
+Hi Taco.
+
+Some windows are already built with Qt designer (eg. Export file dialog,
+Staff properties dialog and some other, smaller dialogs). However, the
+main window is unfortunately not the case - the whole form is built in
+the mainframe constructor.
+
+About the crash, can you send a crash report (compile the project in
+debugging mode and send the name of the function, where it crashes). If
+it crashes when splash->show() method is called, try installing NoteEdit
+by "make install".
+
+You should also try to grab the latest SVN version of NoteEdit IMO, if
+you're planning to do any changes on the code.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>hi,
+>this afternoon I wanted to start with this basso continuo extension I 
+>mentioned a few days ago and started with digging into mainframewidget.cpp 
+>and opening several files into Qt. Perhaps somebody can give me an answer to 
+>the following: Why is there no Qt project file? Any reason for this or is the 
+>2.8.0 tarball incomplete? I would expect that menu settings etc. are easily 
+>changed from the qt developer environment, as with slots and signals.  It's 
+>crashing by the way; 2.7.4 is fine.
+>Taco 
+>  
+>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050825/e29b9839/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Aug 25 23:40:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 25 Aug 2005 23:40:12 +0200
+Subject: [Noteedit-devel] 2.8.0 question
+In-Reply-To: <200508251542.55870.walstra@science.uva.nl>
+References: <200508251542.55870.walstra@science.uva.nl>
+Message-ID: <430E3ABC.3090409@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> hi,
+
+> changed from the qt developer environment, as with slots and signals.  It's 
+> crashing by the way; 2.7.4 is fine.
+> Taco 
+
+Well the reason is simple: It's no Qt project. NoteEdit was
+in history a Qt-only project and inbetween both KDE and Qt could
+be used. Currently it requires KDE though. KDE has it's own way
+to create menus in a way not compatible with the designer. I don't
+know but maybe it's possible to edit the menu graphically with
+kdevelop.
+
+2.8.0 does not crash for me. There are some possibilities
+that could lead to a crash: Newer gcc compiler in combination
+with an older unpatched tse3 library. Also some midi kernel
+modules need to be loaded or (I did not test this personally)
+maybe it's enough to start NoteEdit without tse3.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Aug 26 09:57:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 26 Aug 2005 09:57:18 +0200
+Subject: [Noteedit-devel] 2.8.0 question
+In-Reply-To: <430E3ABC.3090409@web.de>
+References: <200508251542.55870.walstra@science.uva.nl> <430E3ABC.3090409@web.de>
+Message-ID: <200508260957.18539.walstra@science.uva.nl>
+
+On Thursday 25 August 2005 23:40, noteedit-devel-admin at berlios.de wrote:
+> noteedit-devel-admin at berlios.de schrieb:
+>
+> Well the reason is simple: It's no Qt project. NoteEdit was
+> in history a Qt-only project and inbetween both KDE and Qt could
+> be used. Currently it requires KDE though. KDE has it's own way
+> to create menus in a way not compatible with the designer. I don't
+> know but maybe it's possible to edit the menu graphically with
+> kdevelop.
+>
+I don't like graphical development environments and am satisfied with vim, but 
+was wondering for the reason of partly using Qt but it's clear now. Still a 
+pity that it;s kde-only because it limits portability, but anyway, kde has 
+future and few people -if any- want to support a windows version.
+
+> 2.8.0 does not crash for me. There are some possibilities
+> that could lead to a crash: Newer gcc compiler in combination
+> with an older unpatched tse3 library. Also some midi kernel
+> modules need to be loaded or (I did not test this personally)
+> maybe it's enough to start NoteEdit without tse3.
+>
+Found the reason. I had an old suse install in /opt/kde3. stupid of me.
+Taco
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Aug 28 22:09:21 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 28 Aug 2005 22:09:21 +0200
+Subject: [Noteedit-devel] New printing possibilities
+Message-ID: <431219F1.6060709@web.de>
+
+Hi,
+
+I've added some pages to the NoteEdit wiki's concerning
+my ideas for changing export options, adding printing and
+print preview as well as the additional settings needed for
+doing so. I'm a bit unsure about the export (not the dialog
+itself but the separation of printable and non-printable
+export formats).
+
+http://193.95.242.3/NoteEditWiki/index.php/RFE_-_New_printing_possibilities
+
+Comments are welcome (and can be added to the Wiki
+as well).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+

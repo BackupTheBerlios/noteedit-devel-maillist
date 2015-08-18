@@ -1,0 +1,382 @@
+From noteedit-devel-admin at lists.berlios.de  Tue Dec 13 21:31:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 13 Dec 2005 21:31:59 +0100
+Subject: [Noteedit-devel] Re: NoteEdit icons
+In-Reply-To: <439BCE38.6010003@nycap.rr.com>
+References: <439BCE38.6010003@nycap.rr.com>
+Message-ID: <439F2FBF.5050409@web.de>
+
+Hi Ken,
+
+I wasn't aware of these install problems but you should always be
+able to define the pathes via configure options. But we use the
+default place for KDE icons so I think we would get problems with
+other distributions like redhat. I can't judge it for my system
+as it uses the menu system where every application has it's own
+entry. Maybe some of the other developer has experience for redhat,
+suse and debian. The icon path is defined in noteedit/icons/Makefile.am
+so it shouldn't be difficult to write a patch for your distributions's
+package.
+
+On my system Noteedit is installed in (Multimedia)/Sound.
+
+Regards,
+
+Reinhard Katzmann
+
+Ken Zalewski wrote:
+> Hi Reinhard and David,
+> 
+> NoteEdit is a great piece of software, and I appreciate the time and
+> effort that you and the other developers have put into this project.
+> 
+> I am a Slackware package builder, and there is one minor annoyance with
+> the building of this package:  the desktop icons do not install in the
+> proper location.
+> 
+> Upon installation, *all* of the icons are copied into
+> /opt/kde/share/apps/noteedit/icons/.  [Note that I use /opt/kde as my
+> prefix].
+> 
+> That is fine for icons that are not "public".  However, the
+> noteedit.desktop file  (in /opt/kde/share/applnk/Utilities/) refers to
+> "Icon=noteedit", which means that you need to make the noteedit.png
+> image available publicly.
+> 
+> The proper place to put noteedit.png is in /opt/kde/share/icons/, not in
+> /opt/kde/share/apps/.
+> 
+> This will allow KDE to properly find noteedit.png.
+> 
+> You currently have 8 versions of noteedit.png (5 hicolor sizes and 3
+> locolor sizes).  They are installed as:
+> 
+> /opt/kde/share/apps/noteedit/icons/hicolor/32x32/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/hicolor/22x22/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/hicolor/16x16/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/hicolor/48x48/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/hicolor/64x64/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/locolor/22x22/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/locolor/16x16/apps/noteedit.png
+> /opt/kde/share/apps/noteedit/icons/locolor/32x32/apps/noteedit.png
+> 
+> Instead, they should be installed as:
+> 
+> /opt/kde/share/icons/hicolor/32x32/apps/noteedit.png
+> /opt/kde/share/icons/hicolor/22x22/apps/noteedit.png
+> /opt/kde/share/icons/hicolor/16x16/apps/noteedit.png
+> /opt/kde/share/icons/hicolor/48x48/apps/noteedit.png
+> /opt/kde/share/icons/hicolor/64x64/apps/noteedit.png
+> /opt/kde/share/icons/locolor/22x22/apps/noteedit.png
+> /opt/kde/share/icons/locolor/16x16/apps/noteedit.png
+> /opt/kde/share/icons/locolor/32x32/apps/noteedit.png
+> 
+> For now, I am forced to manually create the directories and copy those 8
+> icons.  Please consider updating your "make install" to do this
+> correctly.  It would save packagers such as myself a great deal of time.
+> 
+> Sidenote: Is "Utilities" the best place to put NoteEdit?  Would
+> "Multimedia" be a better choice?  Or maybe "Utilities -> Editors" (new
+> in KDE 3.5)?
+> 
+> Thanks,
+> 
+> Ken Zalewski
+> 
+
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Dec 22 13:39:02 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 22 Dec 2005 13:39:02 +0100
+Subject: [Noteedit-devel] LAC2006 in Karlsruhe
+Message-ID: <43AA9E66.3000504@schwaben.de>
+
+Hello list,
+
+the Call for Papers, Call for Music etc. for the 4th International Linux 
+Audio Conference (LAC2006) is still running until January 8th, 2006. As 
+I plan to attend a few days, I'll submit a BOF (birds of feather 
+session) for NoteEdit. The poster from last year should be modified a 
+little, I guess (to show progress). I would be glad to see some of you 
+there.
+
+On LAU where about three threads on NoteEdit. Just, if someone is 
+interested. I posted one reply, among other things, that printing is in 
+the works. I hope this was okay :)
+During the years change I hope to work something on NoteEdit!!
+
+Regards,
+Georg
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Dec 26 08:12:08 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 25 Dec 2005 23:12:08 -0800
+Subject: [Noteedit-devel] Noteedit broken on KDE 3.5.0?
+Message-ID: <43AF97C8.7070404@charter.net>
+
+I built noteedit 2.8.0 on PCLinuxOS and it worked.  Then Texstar built 
+noteedit 2.8.0 and abcm2ps rpms for the distribution.  I tried those and 
+they also worked.  Then PCLinuxOS moved to KDE 3.5.0 and strange things 
+happened with Noteedit.  (No other programs have showed this behavior.)  
+The arrow keys quit working in noteedit, and the note insertion tool is 
+permanently activated no matter what button is pushed on the toolbar. 
+I will submit this bug to the pclinuxos developer's list as well.  I 
+found the same problem on two computers, my laptop and my desktop 
+computer.  I did a make uninstall, make clean, and make distclean, 
+before I installed the rpm.  After removing the rpm,  I also tried to 
+rebuild noteedit with the kdelibs but I got an error 2, after it was 
+unable to find nscaleedit.h.
+
+  -c -o staffProps.lo `test -f 'staffProps.cc' || echo './'`staffProps.cc; \
+then mv -f ".deps/staffProps.Tpo" ".deps/staffProps.Plo"; \
+else rm -f ".deps/staffProps.Tpo"; exit 1; \
+fi
+staffProps.cc:26:24: nscaleedit.h: No such file or directory
+make[3]: *** [staffProps.lo] Error 1
+make[3]: Leaving directory `/home/galen/src/noteedit-2.8.0/noteedit'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/home/galen/src/noteedit-2.8.0/noteedit'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/galen/src/noteedit-2.8.0'
+make: *** [all] Error 2
+
+Thank you,
+Galen Seaman
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Dec 29 14:26:46 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 29 Dec 2005 14:26:46 +0100
+Subject: [Noteedit-devel] Scons project administration
+Message-ID: <43B3E416.8080702@web.de>
+
+Hi,
+
+I hope you all had a nice christmas eve and holidays. A little bit late
+I have a present for you: NoteEdit scons project administration.
+
+I've created scons files for NoteEdit. I want to move away from automake
+tools (less dependency, less hassle with dependencies). scons supports
+QT, I used bksys kde.py (actually kde.py from KDE svn fixing several
+bugs like translation). I wrote a midi.py for TSE3 / kmid support and
+added printing options to general.py (see scons_admin directory).
+
+Building is simple: Just invoke scons without any parameters from
+the 'trunk' directory. If you want to manually configure just  call
+'scons configure' and the relevant options (Use scons -h to see the
+options like debug=full). If you only want to build something in a
+subdirectory do it this way: 'cd <subdir>; scons -u'.
+
+To build and install NoteEdit with scons simply use 'scons install'.
+You can also invoke 'scons' install as root after building it.
+
+scons creates a cache and retrieves files from the cache if you delete
+them manually. Manually this can be switched off with --no-cache.
+
+The SConstruct is the main scons file residing in the main directory.
+doc, kguitar_excerpt, noteedit have their own SConscript files being
+invoked by SConstruct (env.BuildDir, env.subdirs).
+
+On my system currently libnotedit.* is installed into the kde directory
+and no longer into the $KDEDIR/lib directory. (that could be
+/usr/lib/kde3 or /opt/kde/lib). This happends because I use kobject
+from kde.py for creating the shared / static library and not the
+official scons way (ToDo).
+
+I haven't tested everything. There could be a problem with a missing
+config.h file (either uncomment the corresponding line in the referenced
+file and send problems afterwards to the list or copy config.h from
+a different place). Also installation doesn't seem to install the
+icons (at least I haven't wrote anything for these extra files only
+needing to be installed but not to be build).
+
+I use scons 0.96.1. I've seen that newer versions of scons are
+available. I think it would be good to be able to reduce the cache
+size used by scons (i.e. implicit --cache-disable). I can't recommand
+the implicit cache as it seems to make the cache grow continuously.
+Here you are free to make your own experiments.
+
+Best regards
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Dec 29 15:12:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 29 Dec 2005 15:12:09 +0100
+Subject: [Noteedit-devel] NoteEdit eclipse strikes again
+Message-ID: <43B3EEB9.5060802@web.de>
+
+Hi,
+
+With scons I finally managed some debug sessions with Eclipse.
+You need to install the sconsbuilder (Use as update page
+http://nic-nac-project.de/~lothar/eclipse/update/ in the
+eclipse update manager). Check out NoteEdit in the way
+I already described:
+
+3) Install subclipse (subversion support for eclipse) from
+   http://subclipse.tigris.org/ either manually as described
+   on the download page or via
+   Help => Software Updates => Find and install =>
+   Search for new features to install => Next
+   New Remote Site => Subclipse; http://subclipse.tigris.org/update; OK
+   Finish
+   Check Subclipse => Next => Accept => Next => Finish => Install
+
+4) If you haven't already a working (and perhabs modified) working
+   directory like me I recommand to setup a new subversion workspace:
+   Window => Open Perspective => SVN Repository Exploring.
+   On the SVN Repository perspective (tab) select the (rightmost)
+   "Add SVN repository" tool button.
+   Use the URL svn://svn.berlios.de/noteedit/trunk (root is
+   svn://svn.berlios.de/noteedit). Enter username / passwd if you
+   want to be able to commit your files.
+
+5) You should now have the trunk as a list of files (containing
+   directories like admin, doc, noteedit). On the
+   svn://svn.berlios.de/noteedit/trunk directory use the
+   right mouse button and select "Check Out As...".
+
+I couldn't test the check out step up to now but in my experience
+up to now you can't directly create a scons project. Instead you
+have to create a C/C++ project and after that you can add scons
+administration to it using the "New -> Convert to Scons project" menu
+entry from the context menu from the NoteEdit folder. Note that
+changing the NoteEdit properties (project menu or context menu)
+often overwrites the NoteEdit SConstruct file when changing the
+scons options so make a copy in your workspace directory and restore
+the original file (it also leads to compile errors due to the wrong
+SConstruct file). I'll try to find a way to integrate the NoteEdit
+SConstruct requirement with the sconsbuilder.
+
+By default NoteEdit is automatically rebuild when you save a file
+and scons uses the implicit cache mechanism. By changing the
+scons properties you can switch this mechanism off (recommanded).
+Also to be able to debug NoteEdit you have to add the variable
+LD_LIBRARY_PATH to <path_to_home>/workspace/NoteEdit/noteedit
+so the libnoteedit.so from this directory can be found. Also I
+have uninstalled noteedit and libnoteedit from my system.
+
+One of the reasons I want to be able to use eclipse is the
+refactoring mechanism and an easier access to all the NoteEdit
+classes. kdevelop is not bad in this regard but it's not as
+platform independant as eclipse due to the fact that kde up
+to now has used automake / autoconf. Another reason is cppunit
+integration but that's a different story.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Dec 29 15:25:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 29 Dec 2005 15:25:39 +0100
+Subject: [Noteedit-devel] LAC2006 in Karlsruhe
+In-Reply-To: <43AA9E66.3000504@schwaben.de>
+References: <43AA9E66.3000504@schwaben.de>
+Message-ID: <43B3F1E3.9000807@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hello list,
+> 
+> the Call for Papers, Call for Music etc. for the 4th International Linux
+> Audio Conference (LAC2006) is still running until January 8th, 2006. As
+> I plan to attend a few days, I'll submit a BOF (birds of feather
+> session) for NoteEdit. The poster from last year should be modified a
+> little, I guess (to show progress). I would be glad to see some of you
+> there.
+> 
+> On LAU where about three threads on NoteEdit. Just, if someone is
+> interested. I posted one reply, among other things, that printing is in
+> the works. I hope this was okay :)
+> During the years change I hope to work something on NoteEdit!!
+> 
+> Regards,
+> Georg
+> 
+
+To repeat myself (the plan has not changed):
+
+Personally I want to participate again as last year but don't want to
+spend my small free time for NoteEdit on writing a paper but continuing
+on the development (especially the scripting engine). But it would be
+in ideal possibility to do an inofficial NoteEdit developer meeting and
+do a workshop or a NoteEdit demo of the new features we have developed
+until then.
+
+I think the conference itself is worth a visit and this years conference
+already had a large inspiration on the development. What do you think ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Dec 30 21:57:21 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 30 Dec 2005 21:57:21 +0100
+Subject: [Noteedit-devel] New previewPrint class
+Message-ID: <43B59F31.1060208@web.de>
+
+Hi,
+
+I separated the printing feature from mainframewidget.cpp.
+I have created a new NPreviewPrint class having a small
+interface to NMainFrameWidget (two methods, one for
+preview and the other for printing). Currently these
+function as well as the export manager do an initialization
+of the export frame. In the future this should only happen
+if necessary.
+
+The print methods have been slightly changed and some code
+duplication was removed. Lilypond preview does work now,
+I still can't print with KDE on my system (though the temporary
+file can be sent to the printer with lpr with no problem).
+I also checked my cups file and only have an access to the
+printer deamon but no actual log entry that there was an
+invalid file type sent to cups as KDE printing system said to me.
+
+I also changed uiconnect.cpp and splitted startExport in
+a way that the export itself can be invoked separately
+("doExport").
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+GnuPG Public Key available on request
+
+

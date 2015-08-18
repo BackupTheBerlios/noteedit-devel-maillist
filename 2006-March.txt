@@ -1,0 +1,1032 @@
+From noteedit-devel-admin at lists.berlios.de  Fri Mar 10 23:46:57 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 10 Mar 2006 23:46:57 +0100
+Subject: [Noteedit-devel] compiler issues
+Message-ID: <200603102346.58832.conrad.berhoerster@gmx.de>
+
+Hello all, 
+i try to compile noteedit 2.8.0 on my SUSE 10.0 distribution. there 
+the ./configure give my an error , because SUSE has the new gcc 4.0.2 
+compiler but .configure looking for gcc 2 or 3 
+
+------------------------------------
+Testing compiler version ... 4
+Cannot determine g++ version
+Check your compiler installation or
+try to find out why "./compvers" doesn't
+supply "2" or "3"!
+----------------------------  
+
+can you please fix this ? 
+
+Further ... i tried to use the lilypond export with noteedit 2.7.3. after 
+inserting a key and some notes, i tried the standard export. 
+and the following error came up. 
+
+Noteedit hat die Partitur nach LilyPond exportiert. Aber es gibt
+einige Probleme, die ein erfolgreiches Arbeiten von LilyPond verhindert.
+Zeile 1; Takt 1 hat 0: 128tel; es sollten aber 96 sein
+
+is this fixed in the 2.8.0 version
+
+thanks c~
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Mar 11 08:56:35 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 11 Mar 2006 08:56:35 +0100
+Subject: [Noteedit-devel] compiler issues
+In-Reply-To: <200603102346.58832.conrad.berhoerster@gmx.de>
+References: <200603102346.58832.conrad.berhoerster@gmx.de>
+Message-ID: <441282B3.8030505@gmail.com>
+
+Try the latest SVN version - gcc4 support is there or you can wait for
+2.8.1 to come out.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hello all, 
+>i try to compile noteedit 2.8.0 on my SUSE 10.0 distribution. there 
+>the ./configure give my an error , because SUSE has the new gcc 4.0.2 
+>compiler but .configure looking for gcc 2 or 3 
+>
+>------------------------------------
+>Testing compiler version ... 4
+>Cannot determine g++ version
+>Check your compiler installation or
+>try to find out why "./compvers" doesn't
+>supply "2" or "3"!
+>----------------------------  
+>
+>can you please fix this ? 
+>
+>Further ... i tried to use the lilypond export with noteedit 2.7.3. after 
+>inserting a key and some notes, i tried the standard export. 
+>and the following error came up. 
+>
+>Noteedit hat die Partitur nach LilyPond exportiert. Aber es gibt
+>einige Probleme, die ein erfolgreiches Arbeiten von LilyPond verhindert.
+>Zeile 1; Takt 1 hat 0: 128tel; es sollten aber 96 sein
+>
+>is this fixed in the 2.8.0 version
+>
+>thanks c~
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>  
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Mar 13 13:23:50 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 13 Mar 2006 13:23:50 +0100
+Subject: [Noteedit-devel] compiler issues
+In-Reply-To: <441282B3.8030505@gmail.com>
+References: <200603102346.58832.conrad.berhoerster@gmx.de> <441282B3.8030505@gmail.com>
+Message-ID: <200603131323.52657.conrad.berhoerster@gmx.de>
+
+Am Samstag 11 M?rz 2006 08:56 schrieb noteedit-devel-admin at berlios.de:
+> Try the latest SVN version - gcc4 support is there or you can wait for
+> 2.8.1 to come out.
+Thanks, that helped. 
+>
+>
+> >Noteedit hat die Partitur nach LilyPond exportiert. Aber es gibt
+> >einige Probleme, die ein erfolgreiches Arbeiten von LilyPond verhindert.
+> >Zeile 1; Takt 1 hat 0: 128tel; es sollten aber 96 sein
+> >
+> >is this fixed in the 2.8.0 version
+
+Am i right, that the llypond "integration" is quite old and lilypond has 
+changed it's language. Are there some people out, who use noteedit as a 
+frontend for lilypond? 
+
+thanks c~
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Mar 13 19:35:09 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 13 Mar 2006 19:35:09 +0100
+Subject: [Noteedit-devel] compiler issues
+In-Reply-To: <200603131323.52657.conrad.berhoerster@gmx.de>
+References: <200603102346.58832.conrad.berhoerster@gmx.de> <441282B3.8030505@gmail.com> <200603131323.52657.conrad.berhoerster@gmx.de>
+Message-ID: <4415BB5D.3020000@gmail.com>
+
+>Am i right, that the llypond "integration" is quite old and lilypond has 
+>changed it's language. Are there some people out, who use noteedit as a 
+>frontend for lilypond? 
+>
+convert-ly should update the exported syntax to the latest available
+Lilypond. Otherwise, current SVN NoteEdit should be Lily 2.6 compatible.
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Mar 14 20:13:53 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 14 Mar 2006 20:13:53 +0100 (CET)
+Subject: [Noteedit-devel] compiler issues
+In-Reply-To: <200603131323.52657.conrad.berhoerster@gmx.de>
+References: <200603102346.58832.conrad.berhoerster@gmx.de> <441282B3.8030505@gmail.com>
+ <200603131323.52657.conrad.berhoerster@gmx.de>
+Message-ID: <Pine.LNX.4.58.0603142010500.17620@dront.rosnix>
+
+> Am i right, that the llypond "integration" is quite old and lilypond has
+> changed it's language. Are there some people out, who use noteedit as a
+> frontend for lilypond?
+
+I do. The best score editor and the best typesetter :-)
+(currently using noteedit 2.7.3 and lilypond from debian stable)
+
+/Per Eric
+--
+^): Per Eric Ros?n http://rosnix.net/~per/
+/   per at rosnix.net GPG 7A7A BD68 ADC0 01E1 F560 79FD 33D1 1EC3 1EBB 7311
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Mar 15 11:00:28 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 15 Mar 2006 11:00:28 +0100
+Subject: [Noteedit-devel] compiler issues
+In-Reply-To: <4415BB5D.3020000@gmail.com>
+References: <200603102346.58832.conrad.berhoerster@gmx.de> <200603131323.52657.conrad.berhoerster@gmx.de> <4415BB5D.3020000@gmail.com>
+Message-ID: <200603151100.29086.conrad.berhoerster@gmx.de>
+
+Am Montag 13 M?rz 2006 19:35 schrieb noteedit-devel-admin at berlios.de:
+> >Am i right, that the llypond "integration" is quite old and lilypond has
+> >changed it's language. Are there some people out, who use noteedit as a
+> >frontend for lilypond?
+>
+> convert-ly should update the exported syntax to the latest available
+> Lilypond. Otherwise, current SVN NoteEdit should be Lily 2.6 compatible.
+>
+
+Hello all, 
+i don't understand lilypond language, but this bug can be reproduced. 
+it is the "repeat open/close" tag in noteedit. this will produce an error with 
+lilypond 2.6.3
+
+here are the files. very simple. any ideas?
+
+c~
+-------------- next part --------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                  %
+%   LilyPond output generated by   %
+%           "noteedit"             %
+%                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\version "2.4.2"
+
+#(set-global-staff-size 16)
+
+flat = \markup { \raise #0.4 \smaller \musicglyph #"accidentals--2" }
+sharp = \markup { \raise #0.6 \smaller \musicglyph #"accidentals-2" }
+textcodaysym = \markup { \hspace #1 \raise #1.1 \musicglyph #"scripts-coda"}
+
+StaffA = \relative c' {
+	\repeat "volta" 2 {
+	a'4 b b a 
+	}
+	
+	\repeat "volta" 2 {
+		}
+\score {
+	\relative <<
+		\context Staff = cStaffAA <<
+			\context Voice = cStaffAA \StaffA
+		>>
+
+		\set Score.skipBars = ##t
+		\set Score.melismaBusyProperties = #'()
+	>>
+	\layout {
+		linewidth = 170.000 \mm
+		textheight = 250.000 \mm
+	}
+}
+-------------- next part --------------
+header
+score
+	pedstyle = pedstar
+	staffs = 1
+music
+midi 1 1: 0 "channel=1"; 0 "program=0";
+midi 1 1: 0 "parameter=7,80";
+midi 1 1: 0 "parameter=93,0";
+midi 1 1: 0 "parameter=91,0";
+midi 1 1: 0 "parameter=10,64";
+1 1: 4a; 4b; 4b; 4a; 
+repeatboth // 1
+
+From noteedit-devel-admin at lists.berlios.de  Tue Mar 21 20:21:49 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 21 Mar 2006 20:21:49 +0100
+Subject: [Noteedit-devel] Preparing Release 2.8.1
+Message-ID: <4420524D.9010700@web.de>
+
+Hi,
+
+I'm currently busy preparing the next release. I plan
+to put out the beta version in the course of the week
+with two additions to the current SVN:
+
+- Improved scons support, now requires the latest version
+  of scons 0.96.91 to work with the recent bksys 1.0.2.
+  The scons files will get even more clear this way.
+- Added additional warning dialogs for preview or
+  printing problems
+
+I hope that we can track down the preview problem on
+Georg's machine. I'd also like to know if anyone tried
+it on SuSE 9.3 or newer. Of course you can wait for the
+Beta to try it out.
+
+Also I will fix the bug that the custom settings are
+not shown correctly on the settings dialog and add a
+printer icon for it before putting out the release
+candidate.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Mar 21 20:52:14 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 21 Mar 2006 20:52:14 +0100
+Subject: [Noteedit-devel] Review on Linux Journal
+Message-ID: <4420596E.70006@web.de>
+
+Hi,
+
+For those who haven't already read it:
+There was a really great article comparing the Lilypond
+frontends Denemo, NoteEdit and Rosegarden by Dave Phillips.
+NoteEdit got a very good review I'm really happy about!
+
+Read the full article here:
+http://www.linuxjournal.com/article/8928
+
+A big thanks to Dave Phillips for the reviews!
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Mar 26 22:22:35 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 26 Mar 2006 22:22:35 +0200
+Subject: [Noteedit-devel] Concerning the 2.8.1 (beta) release: Many problems
+Message-ID: <4426F80B.5050606@web.de>
+
+Hi!
+
+I have really big difficulties preparing the release.
+One of them is scons (see separate mail on scons development).
+The other are
+- I have no idea how stable the noteedit trunk is. We have made many
+  changes, even internal restructuring. My own code is quite useable.
+- Changelog etc. is not quite up to date. Anyone having time should
+  try to add missing items
+- The release version needs to be set to 2.8.1 (partially done).
+- NEWS file should contain the most important changes
+
+I suffer much lack of time due to my music projects, preparation
+on the LAC, Canorus of course etc. So if anyone can help me reducing
+the huge load of things to be done before the beta release can be
+put out, I'd be very thankful.
+
+My main concern is the stability of the trunk. I admit I did no changes
+to the stable tree, everything is on the trunk from me.
+If we can't make a release from the trunk because of stability issues
+I'm unable to promise a release in the next weeks.
+
+I'm really sorry about all the issues, but I don't want to put out
+something more unstable than the previous release.
+
+As inbetween solution I suggest a alpha release from the trunk and hope
+that some have time to test and compare against the current stable
+version. These tests need of course time as well. I hope Georg and
+Matevz can help me to find out the stability status of the trunk.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Mar 26 22:40:25 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 26 Mar 2006 22:40:25 +0200
+Subject: [Noteedit-devel] Scons news
+Message-ID: <4426FC39.8060402@web.de>
+
+Hi,
+
+As I wrote in the announcements for the beta release I worked
+on scons files. I updated to the recent scons and noteedit can
+again be compiled but installation is unchanged (i.e. incomplete).
+
+The main issue remains midi.py. The tse3 library is detected fine
+and I set the CXXFLAGS properly. But upon compiling the flags
+are not added. I compared with other scripts and changed my own
+script but still no luck (compare R416 to the current R431).
+
+Searching for an example I browsed the scons/bksys homepage (the
+scons_admin files are based upon bksys). I was quite astonished
+to find out that there is no more bksys development. Instead the
+author has started a new scons branch called waf. See
+http://www.freehackers.org/~tnagy/bksys.html for details and reasons.
+
+The KDE folks seem to have moved away currently from scons just
+last month. They have migrated their projects to CMAKE for
+various reasons. This is in my opinion a step back though cmake
+has several advantages compared to bksys.
+
+bksys/cmake is the framework (or build tool) similar to autoconf.
+scons/make are the build systems to create the libraries and executables.
+
+This of course puts me into a troublesome situation as I invested
+so much time in scons (and still think it superiour from the
+basic concept though it still need much time to mature).
+
+To make the long story short, I will try somewhen in the not so
+near future to work on a cmake port because I don't see a real
+alternative (midi/tse3 is not supported by cmake similar as bksys).
+There is a tool making migration from automake easier but a
+FindTSE3 module I would have to develop myself (this is the hard
+part).
+
+Several reasons get me to do this:
+- Testing how good cmake is in practice
+- Hope that cmake makes it easier for people to port to windows
+  (though automake/autoconf is not bad in this regard)
+- Only build system except qmake with QT4 support (for Canorus).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Mar 27 07:42:26 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 27 Mar 2006 07:42:26 +0200
+Subject: [Noteedit-devel] News from trunk / release
+Message-ID: <44277B42.6070900@web.de>
+
+Hi,
+
+I've talked to Matevz and Georg yesterday and we did several things to
+get the Beta finally out. These are
+
+- Icons for the print/preview menu
+- Icon for print settings
+- Fix problem on showing custom print/prefix settings
+- More fixes to icons upon install
+- Translation updates (german translation stil needs updates)
+- Stability tests in the last weeks by both Matevz and Georg showed
+  that the release can be published (*relieve* :-)
+- No scons/cmake support in the 2.8.1 release
+
+Best regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Mar 27 22:22:38 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 27 Mar 2006 22:22:38 +0200
+Subject: [Noteedit-devel] beta Release: NoteEdit 2.8.1
+Message-ID: <4428498E.1090402@web.de>
+
+Hi,
+
+The beta release of NoteEdit 2.8.1 has been published by
+me this morning. Report any problems to the lists during
+your tests. Thanks and have fun with the Beta!
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Mar 28 09:14:16 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 28 Mar 2006 09:14:16 +0200
+Subject: [Noteedit-devel] Call for translators
+Message-ID: <4428E248.3000205@guest.arnes.si>
+
+Dear NoteEdit users&developers.
+
+We released NoteEdit 2.8.1-b1 yesterday and one of the issues before the
+stable release are the updated translations.
+
+Current status:
+- English (original, done)
+- German (Reinhard, Georg?)
+- Slovenian (done)
+- Italian (updated for 2.8.0, 15% missing)
+- Hungarian (updated for 2.7.x, 35% missing)
+- Spanish (updated for 2.8.0, 25% missing)
+- French (updated for 2.7.x, 35% missing)
+- Swedish (updated for 2.7.x, 40% missing)
+- Slovakian (updated for 2.7.x, 35% missing)
+- Russian (updated for 2.8.0, 20% missing)
+
+Anyone interested in translation, please confirm your presence, grab
+your latest .po files and send translations ASAP. Deadline for completed
+translations is April 9th. New translations are of course also welcome!
+After the deadline, release candidate releases will soon follow and I
+advice only minor fixes to get there.
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 254 bytes
+Desc: OpenPGP digital signature
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060328/000c66ab/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Mar 28 16:42:59 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 28 Mar 2006 11:42:59 -0300
+Subject: [Noteedit-devel] Call for translators
+In-Reply-To: <4428E248.3000205@guest.arnes.si>
+References: <4428E248.3000205@guest.arnes.si>
+Message-ID: <200603281143.06082.rafadev@gmail.com>
+
+On Tuesday 28 March 2006 04:14, noteedit-devel-admin at berlios.de wrote:
+> Dear NoteEdit users&developers.
+>
+> We released NoteEdit 2.8.1-b1 yesterday and one of the issues before the
+> stable release are the updated translations.
+>
+> Current status:
+> - English (original, done)
+> - German (Reinhard, Georg?)
+> - Slovenian (done)
+> - Italian (updated for 2.8.0, 15% missing)
+> - Hungarian (updated for 2.7.x, 35% missing)
+> - Spanish (updated for 2.8.0, 25% missing)
+> - French (updated for 2.7.x, 35% missing)
+> - Swedish (updated for 2.7.x, 40% missing)
+> - Slovakian (updated for 2.7.x, 35% missing)
+> - Russian (updated for 2.8.0, 20% missing)
+>
+> Anyone interested in translation, please confirm your presence, grab
+> your latest .po files and send translations ASAP. Deadline for completed
+> translations is April 9th. New translations are of course also welcome!
+> After the deadline, release candidate releases will soon follow and I
+> advice only minor fixes to get there.
+>
+>
+> Regards.
+> - Matev?
+
+I'll finish up the spanish translations. In three days at most I'll have it 
+finished. 
+
+Regards,
+	
+		Rafael   
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 191 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060328/7c843d2a/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Mar 28 16:58:01 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 28 Mar 2006 16:58:01 +0200
+Subject: [Noteedit-devel] Call for translators
+In-Reply-To: <200603281143.06082.rafadev@gmail.com>
+References: <4428E248.3000205@guest.arnes.si> <200603281143.06082.rafadev@gmail.com>
+Message-ID: <44294EF9.2070206@gmail.com>
+
+Great! I'll mark that up.
+
+Regards.
+- Matev?
+> I'll finish up the spanish translations. In three days at most I'll have it 
+> finished. 
+>
+> Regards,
+> 	
+> 		Rafael   
+>   
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Mar 29 03:22:46 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 28 Mar 2006 22:22:46 -0300
+Subject: [Noteedit-devel] Translation
+Message-ID: <ab955ef30603281722wa793af0yd16e407e9a90a9f5@mail.gmail.com>
+
+Hi,
+
+   I would like to offer my work to translate Noteedit to brazilian
+portuguese. Count me on it. I started to do it and am allmost in the
+half of the file. I may end it in 3 or 4 days, at most. I can
+translate the documentation too, but it will take more time and I
+can't guarantee any deadline.
+
+   But I have a question... how do I give the finished file to you?
+Through the mail list or in the BerliOS comunity site?
+
+   Thanks for the wonderfull work you've made.
+
+--
+-------------------------------------------
+Denis A. Altoe Falqueto
+-------------------------------------------
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Mar 29 08:19:32 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 29 Mar 2006 08:19:32 +0200
+Subject: [Noteedit-devel] Translation
+In-Reply-To: <ab955ef30603281722wa793af0yd16e407e9a90a9f5@mail.gmail.com>
+References: <ab955ef30603281722wa793af0yd16e407e9a90a9f5@mail.gmail.com>
+Message-ID: <442A26F4.60305@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi,
+> 
+>    I would like to offer my work to translate Noteedit to brazilian
+> portuguese. Count me on it. I started to do it and am allmost in the
+> half of the file. I may end it in 3 or 4 days, at most. I can
+> translate the documentation too, but it will take more time and I
+> can't guarantee any deadline.
+> 
+>    But I have a question... how do I give the finished file to you?
+> Through the mail list or in the BerliOS comunity site?
+> 
+>    Thanks for the wonderfull work you've made.
+> 
+
+The easiest for us is to send it as attachment to the list, but you
+can also do it in the patch manager on the project site it that's
+easier for you.
+
+Thanks and Best regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Mar 29 08:19:32 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 29 Mar 2006 08:19:32 +0200
+Subject: [Noteedit-devel] Translation
+In-Reply-To: <ab955ef30603281722wa793af0yd16e407e9a90a9f5@mail.gmail.com>
+References: <ab955ef30603281722wa793af0yd16e407e9a90a9f5@mail.gmail.com>
+Message-ID: <442A26F4.60305@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi,
+> 
+>    I would like to offer my work to translate Noteedit to brazilian
+> portuguese. Count me on it. I started to do it and am allmost in the
+> half of the file. I may end it in 3 or 4 days, at most. I can
+> translate the documentation too, but it will take more time and I
+> can't guarantee any deadline.
+> 
+>    But I have a question... how do I give the finished file to you?
+> Through the mail list or in the BerliOS comunity site?
+> 
+>    Thanks for the wonderfull work you've made.
+> 
+
+The easiest for us is to send it as attachment to the list, but you
+can also do it in the patch manager on the project site it that's
+easier for you.
+
+Thanks and Best regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Mar 30 23:24:54 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 30 Mar 2006 18:24:54 -0300
+Subject: [Noteedit-devel] Problem running noteedit cvs // Translation
+Message-ID: <200603301825.00462.rafadev@gmail.com>
+
+If I run noteedit CVS without using any option (it tries to use ALSA) it 
+crashes.
+This is the gdb backtrace output:
+
+Starting program: /usr/kde/3.5/bin/noteedit
+[Thread debugging using libthread_db enabled]
+[New Thread 16384 (LWP 23028)]
+LilyPond check: found version: 2.8.0
+
+Program received signal SIGABRT, Aborted.
+[Switching to Thread 16384 (LWP 23028)]
+0xb600b811 in kill () from /lib/libc.so.6
+(gdb) backtrace
+#0  0xb600b811 in kill () from /lib/libc.so.6
+#1  0xb620a2e0 in pthread_kill () from /lib/libpthread.so.0
+#2  0xb620a63b in raise () from /lib/libpthread.so.0
+#3  0xb600b3f2 in raise () from /lib/libc.so.6
+#4  0xb600cc50 in abort () from /lib/libc.so.6
+#5  0xb61b7b97 in __cxa_call_unexpected () 
+from /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/libstdc++.so.5
+#6  0xb61b7bd4 in std::terminate () 
+from /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/libstdc++.so.5
+#7  0xb61b7d96 in __cxa_throw () 
+from /usr/lib/gcc-lib/i686-pc-linux-gnu/3.3.5-20050130/libstdc++.so.5
+#8  0xb7cf1d8c in TSE3::MidiSchedulerFactory::createScheduler () 
+from /usr/lib/libtse3.so.0
+#9  0xb7e2fd12 in NMidiMapper (this=0x81c6270) at midimapper.cpp:321
+#10 0x0804a825 in main (argc=1, argv=0xbfe58a34) at main.cpp:155
+
+If I use the --noalsa option it starts well but, of course, without midi. I'm 
+using alsa with timidity and arts.
+If I use the --arts option, it starts ok, but it doesn't play any sound. I've 
+checked artscontrol and it seems fine, but I'm no expert and I don't like 
+arts very much. I need to make noteedit work with timidity.
+
+I would try to debug it myself but I'm still not very into the code and maybe 
+you had faced this problem before.
+
+I'm finishing up the spanish translation, but it has several "innaccuracies". 
+Once it's all finished I will probably have to do it from scratch. The actual 
+version is not wrong, but there will probably be innaccuracies or differences 
+between the translation for one concept in different places. For an accurate 
+translation I will need to gather some very specific information about the 
+denomination of some things that apparently were not clear enough for the 
+translator that came before me and are not very clear to me. 
+As an example, the translation for beam or slur that I found the translator is  
+had done is sometimes wrong or simply incomplete. Therefore, I will need to 
+gather some information and retranslate the whole thing.
+As this will take me longer than the actual deadline I'm finishing up, and 
+clearing up the translation that was done. 
+
+I would like to hear your opinion about this.
+
+Thank you very much,
+                                     Rafael.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/pgp-signature
+Size: 191 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060330/bb8c883b/attachment.pgp>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Mar 30 23:56:26 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 30 Mar 2006 23:56:26 +0200
+Subject: [Noteedit-devel] Problem running noteedit cvs // Translation
+In-Reply-To: <200603301825.00462.rafadev@gmail.com>
+References: <200603301825.00462.rafadev@gmail.com>
+Message-ID: <442C540A.2080608@gmail.com>
+
+noteedit-devel-admin at berlios.de wrote:
+> If I run noteedit CVS without using any option (it tries to use ALSA) it 
+> crashes.
+> This is the gdb backtrace output:
+>
+>   
+Is your ALSA midi working? Did you try pmidi --list and tse3play?
+NoteEdit is known to crash, when it tries to create a midi scheduler, if
+no alsa devices are present. The bug is still there...
+
+> I'm finishing up the spanish translation, but it has several "innaccuracies". 
+> Once it's all finished I will probably have to do it from scratch. The actual 
+> version is not wrong, but there will probably be innaccuracies or differences 
+> between the translation for one concept in different places. For an accurate 
+> translation I will need to gather some very specific information about the 
+> denomination of some things that apparently were not clear enough for the 
+> translator that came before me and are not very clear to me. 
+> As an example, the translation for beam or slur that I found the translator is  
+> had done is sometimes wrong or simply incomplete. Therefore, I will need to 
+> gather some information and retranslate the whole thing.
+> As this will take me longer than the actual deadline I'm finishing up, and 
+> clearing up the translation that was done. 
+>
+> I would like to hear your opinion about this.
+>   
+
+I'd advice you to translate as much as frequent terms as possible. Don't
+stick to a few trickier translations and lose precious time on those -
+write a simple translation (could be a bit longer, but means what it
+should) - you'll improve your translation, if you'll have time after.
+Know that you actually have all the time till the release (end of
+April?). The deadline is only a recommendation for multiple people
+translating the same translation in blocks, so they mainly finish until
+the deadline and only proof-read after.
+
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Mar 31 02:34:35 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 30 Mar 2006 21:34:35 -0300
+Subject: [Noteedit-devel] Problem running noteedit cvs // Translation
+In-Reply-To: <442C540A.2080608@gmail.com>
+References: <200603301825.00462.rafadev@gmail.com> <442C540A.2080608@gmail.com>
+Message-ID: <200603302134.35895.rafadev@gmail.com>
+
+I forgot to change the sender and I sent it with the other mail. Just ignore 
+the rafa.dex at gmail.com one.
+
+On Thursday 30 March 2006 18:56, noteedit-devel-admin at berlios.de wrote:
+> noteedit-devel-admin at berlios.de wrote:
+> > If I run noteedit CVS without using any option (it tries to use ALSA) it
+> > crashes.
+> > This is the gdb backtrace output:
+>
+> Is your ALSA midi working? Did you try pmidi --list and tse3play?
+> NoteEdit is known to crash, when it tries to create a midi scheduler, if
+> no alsa devices are present. The bug is still there...
+
+I tried using pmidi and it plays perfectly, it lists the following: 
+
+128:0     TiMidity                          TiMidity port 0
+128:1     TiMidity                          TiMidity port 1
+128:2     TiMidity                          TiMidity port 2
+128:3     TiMidity                          TiMidity port 3
+129:0     Client-129                        aRts
+129:1     Client-129                        aRts
+129:2     Client-129                        aRts
+129:3     Client-129                        aRts
+
+The curious thing is that when I try to play with tse3play I get the following 
+(it doesn't play a thing):
+TSE3: Cannot subscribe to 129:0
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:1
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:2
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:3
+      (Operation not permitted)
+-------------------------------
+
+
+
+
+
+
+
+
+       Finished playing
+
+
+0-1-2-3-4-5-6-7-8-9-A-B-C-D-E-F
+-------------------------------
+0:1       (LA: 10)
+
+If I list with tse3play I get the following:
+TSE3: Cannot subscribe to 129:0
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:1
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:2
+      (Operation not permitted)
+TSE3: Cannot subscribe to 129:3
+      (Operation not permitted)
+MidiScheduler details follow
+
+  Implementation name: AlsaMidiScheduler version [0.9] 1.02
+            Num ports: 8
+  ------- Port number: 128
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 0 128:0
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 129
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 1 128:1
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 130
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 2 128:2
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 131
+                 Type: ALSA MIDI port
+                 Name: TiMidity port 3 128:3
+          Is readable: No
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 132
+                 Type: ALSA MIDI port
+                 Name: aRts 129:0
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 133
+                 Type: ALSA MIDI port
+                 Name: aRts 129:1
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 134
+                 Type: ALSA MIDI port
+                 Name: aRts 129:2
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+  ------- Port number: 135
+                 Type: ALSA MIDI port
+                 Name: aRts 129:3
+          Is readable: Yes
+         Is writeable: Yes
+         Destination:  External
+
+
+Well hope that you can help me with this.
+Thanks a lot,
+                            Rafael.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Mar 31 12:14:17 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 31 Mar 2006 12:14:17 +0200
+Subject: [Noteedit-devel] Problem running noteedit cvs // Translation
+In-Reply-To: <200603302134.35895.rafadev@gmail.com>
+References: <200603301825.00462.rafadev@gmail.com> <442C540A.2080608@gmail.com> <200603302134.35895.rafadev@gmail.com>
+Message-ID: <442D00F9.3000302@gmail.com>
+
+> TSE3: Cannot subscribe to 129:0
+>       (Operation not permitted)
+Are devices
+/dev/sequencer
+/dev/snd/seq
+
+writeable by user? I have the following permissions set:
+crw-rw---- 1 root audio 14, 1 2006-03-31 14:01 /dev/sequencer
+crw-rw---- 1 root audio 116, 1 2006-03-31 14:01 /dev/snd/seq
+
+and I'm a member of audio group.
+
+Did you try to disable arts (KDE control center -> sound system)? Maybe
+it's blocking midi.
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Mar 31 18:31:57 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 31 Mar 2006 13:31:57 -0300
+Subject: [Noteedit-devel] How to Test a translation
+Message-ID: <ab955ef30603310831p1ce49751nf0b5c82c6eb1bef0@mail.gmail.com>
+
+Hi, folks!
+
+   I volunteered to make the translation to brazilian portuguese and
+it is finished... but I would like to test it before sending (I need
+to change the menu shortcuts and wuold like to see it in action). It
+seems that is not enough to put the .po file in some directory. I
+needs to be "compiled" in some way... How can I do it?
+
+   Thanks in advance and best regards.
+
+--
+Denis A. Altoe Falqueto
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Mar 31 22:19:44 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 31 Mar 2006 22:19:44 +0200
+Subject: [Noteedit-devel] How to Test a translation
+In-Reply-To: <ab955ef30603310831p1ce49751nf0b5c82c6eb1bef0@mail.gmail.com>
+References: <ab955ef30603310831p1ce49751nf0b5c82c6eb1bef0@mail.gmail.com>
+Message-ID: <442D8EE0.80904@web.de>
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi, folks!
+> 
+>    I volunteered to make the translation to brazilian portuguese and
+> it is finished... but I would like to test it before sending (I need
+> to change the menu shortcuts and wuold like to see it in action). It
+> seems that is not enough to put the .po file in some directory. I
+> needs to be "compiled" in some way... How can I do it?
+> 
+>    Thanks in advance and best regards.
+> 
+
+Well the magic spell is to type
+"make"
+and
+"make install"
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Mar 31 22:31:17 2006
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 31 Mar 2006 22:31:17 +0200
+Subject: [Noteedit-devel] How to Test a translation
+In-Reply-To: <ab955ef30603310831p1ce49751nf0b5c82c6eb1bef0@mail.gmail.com>
+References: <ab955ef30603310831p1ce49751nf0b5c82c6eb1bef0@mail.gmail.com>
+Message-ID: <442D9195.1020408@gmail.com>
+
+You have to add the .po filename to the Makefile.in /po directory and
+then re-run make -f Makefile.cvs / configure / make.
+What is the iso-character of the language/state for your translation? I
+can send you the remade makefile for you to the list, which includes the
+build commands for the new translation, if you need it.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi, folks!
+>
+>    I volunteered to make the translation to brazilian portuguese and
+> it is finished... but I would like to test it before sending (I need
+> to change the menu shortcuts and wuold like to see it in action). It
+> seems that is not enough to put the .po file in some directory. I
+> needs to be "compiled" in some way... How can I do it?
+>
+>    Thanks in advance and best regards.
+>   
+
+
+
+

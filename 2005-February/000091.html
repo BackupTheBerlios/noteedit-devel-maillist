@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20%5BBug%20%233249%5D%202.7.4%20beta%20crash%20on%20RH7.2%20fixed&In-Reply-To=%3C200502032128.04982.leon.vinken%40hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000089.html">
+   <LINK REL="Next"  HREF="000092.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20%5BBug%20%233249%5D%202.7.4%20beta%20crash%20on%20RH7.2%20fixed&In-Reply-To=%3C200502032128.04982.leon.vinken%40hetnet.nl%3E"
+       TITLE="[Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Feb  3 21:28:04 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000089.html">[Noteedit-devel] Documentation / Help menu
+</A></li>
+        <LI>Next message: <A HREF="000092.html">[Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+apparently I was too tired to think clearly yesterday, after a good night of 
+sleep I had a &quot;Eureka-moment&quot; (would that be &quot;aha-erlebnis&quot; in german ?) and 
+realized fixing yesterday's crash was trivial. The loop termination condition 
+was incorrect. On my Core 3 system the bug did also occur, but not as a 
+crash. Instead the listbox in &quot;edit / cleanup rests&quot; contained way too many 
+strings.
+
+Fix was committed to svn a few minutes ago. Hope nobody spent too much time on 
+this.
+
+Regards, Leon.
+
+On Thursday 03 February 2005 19:52, you wrote:
+&gt;<i> Bug #3249, was updated on 2005-Feb-03 19:52
+</I>&gt;<i> Here is a current snapshot of the bug.
+</I>&gt;<i>
+</I>&gt;<i> Project: Noteedit - A Score Editor
+</I>&gt;<i> Category: None
+</I>&gt;<i> Status: Open
+</I>&gt;<i> Resolution: None
+</I>&gt;<i> Bug Group: New
+</I>&gt;<i> Priority: 5
+</I>&gt;<i> Submitted by: lvinken
+</I>&gt;<i> Assigned to : none
+</I>&gt;<i> Summary: 2.7.4 beta crash on RH7.2
+</I>&gt;<i>
+</I>&gt;<i> Details: Crashes when initializing on RedHat 7.2, apparently in
+</I>&gt;<i> smallestRestFrm's constructor. It seems the loop in smallestRestFrm's
+</I>&gt;<i> constructor (there is only one) does not terminate, which finally results
+</I>&gt;<i> in a sig 11. Note: the relevant piece of code is unchanged since 2.7.3 or
+</I>&gt;<i> older.
+</I>&gt;<i>
+</I>&gt;<i> For detailed info, follow this link:
+</I>&gt;<i> <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=3249&amp;group_id=2232">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=3249&amp;group_id=2232</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000089.html">[Noteedit-devel] Documentation / Help menu
+</A></li>
+	<LI>Next message: <A HREF="000092.html">[Noteedit-devel] [Bug #3249] 2.7.4 beta crash on RH7.2 fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

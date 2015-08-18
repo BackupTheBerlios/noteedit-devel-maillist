@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Noteedit%202.8.0-rc1%20not%20starting&In-Reply-To=%3C20050607232347.GA668%40chicagoguitar.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000352.html">
+   <LINK REL="Next"  HREF="000354.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Noteedit 2.8.0-rc1 not starting</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Noteedit%202.8.0-rc1%20not%20starting&In-Reply-To=%3C20050607232347.GA668%40chicagoguitar.com%3E"
+       TITLE="[Noteedit-devel] Noteedit 2.8.0-rc1 not starting">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Jun  8 01:23:47 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000352.html">[Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+</A></li>
+        <LI>Next message: <A HREF="000354.html">[Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Jun 08, 2005 at 12:29:11AM +0200, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hmm, maybe you could try it the other way around? I'm also on amd64, and
+</I>&gt;<i> things are working nicely. Maybe your sound is not working at all? Maybe
+</I>&gt;<i> you should first get timidity running in server mode, connect it, with
+</I>&gt;<i> kaconnect or something else, with vkeybd and play some sounds? Then
+</I>&gt;<i> start NoteEdit. (I also have KDE's artsd shut down, and run timidity on
+</I>&gt;<i> jack.)
+</I>
+So I launched jack then I launched timidity with the following options:
+
+timidity  -iA -Oj
+
+This launched timidity with jack output and as an alsa sequencer client.
+Then I did aconnect 64:0 128:0 and hit a few keys on my keyboard. I had sound.
+
+Noteedit crashed again with the same errors. I decided to run it in gdb
+and do a backtrace on it. 
+
+The binary does not have debugging support enabled. I can recompile it
+with debugging into the binary if you think it will help.
+
+Here it is:
+
+Program received signal SIGABRT, Aborted.
+[Switching to Thread 16384 (LWP 31214)]
+0x00002aaaaeeebe69 in kill () from /lib/libc.so.6
+(gdb) bt
+#0  0x00002aaaaeeebe69 in kill () from /lib/libc.so.6
+#1  0x00002aaaae589891 in pthread_kill () from /lib/libpthread.so.0
+#2  0x00002aaaae589c12 in raise () from /lib/libpthread.so.0
+#3  0x00002aaaaeeebb62 in raise () from /lib/libc.so.6
+#4  0x00002aaaaeeecef2 in abort () from /lib/libc.so.6
+#5  0x00002aaaaeaeac38 in __gnu_cxx::__verbose_terminate_handler () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#6  0x00002aaaaeae8e06 in __cxa_call_unexpected () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#7  0x00002aaaaeae8e33 in std::terminate () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#8  0x00002aaaaeae8f33 in __cxa_throw () from
+/usr/lib/gcc/x86_64-pc-linux-gnu/3.4.3/libstdc++.so.6
+#9  0x00002aaaaafaa260 in TSE3::MidiSchedulerFactory::createScheduler ()
+from /usr/lib/libtse3.so.0
+#10 0x00002aaaaacd03ec in NMidiMapper::NMidiMapper () from
+/usr/lib/libnoteedit.so.1
+#11 0x0000000000402e8e in ?? ()
+#12 0x00002aaaaeed8e31 in __libc_start_main () from /lib/libc.so.6
+
+
+I guess maybe the problem is with tse3 or somethings.
+
+
+Thanks,
+Jeremiah
+
+
+&gt;<i> 
+</I>&gt;<i> Report what's going on,
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000352.html">[Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+</A></li>
+	<LI>Next message: <A HREF="000354.html">[Noteedit-devel] Noteedit 2.8.0-rc1 not starting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

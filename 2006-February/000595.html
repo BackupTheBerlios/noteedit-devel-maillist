@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] scons error ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20scons%20error%20...&In-Reply-To=%3C43E201ED.2070003%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000596.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] scons error ...</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20scons%20error%20...&In-Reply-To=%3C43E201ED.2070003%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] scons error ...">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Feb  2 13:58:21 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000596.html">[Noteedit-devel] scons error ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm having problem locating the libkguitar_excerpt.so. The copy is
+located in kguitar_excerpt dir and in has a symlink in noteedit dir as well.
+
+Any ideas?
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:~/apps/noteedit/trunk$ scons
+scons: Reading SConscript files ...
+The path to 1st source is: abcexport.cpp
+WARNING: moc.cpp for noteedit_part.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for numberdisplay.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for previewprint.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for staffPropFrm.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for textDialog_impl.h consider using #include
+&lt;file.moc&gt; instead
+WARNING: moc.cpp for scaleedit_impl.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for noteedit_part.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for numberdisplay.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for previewprint.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for staffPropFrm.h consider using #include &lt;file.moc&gt;
+instead
+WARNING: moc.cpp for textDialog_impl.h consider using #include
+&lt;file.moc&gt; instead
+WARNING: moc.cpp for scaleedit_impl.h consider using #include &lt;file.moc&gt;
+instead
+scons: done reading SConscript files.
+scons: Building targets ...
+Retrieved `noteedit/grammar.cc' from cache
+bison -y -d -pNEDIT -o noteedit/grammar.cc noteedit/grammar.yy
+g++ -Wl,--rpath=/usr/lib -Wl,--rpath=/usr/lib/kde3 -Wl,--rpath=/usr/lib
+-o noteedit/noteedit noteedit/main.o -Lnoteedit -L/usr/lib -L/usr/lib
+-lnoteedit
+/usr/bin/ld: warning: libkguitar_excerpt.so, needed by
+noteedit/libnoteedit.so, not found (try using -rpath or -rpath-link)
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::transposeChordName(QString*, int)'
+noteedit/libnoteedit.so: undefined reference to `note_name_res(int, int)'
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::reconfigureMenues()'
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::ChordSelector(NMainFrameWidget*, char const*)'
+noteedit/libnoteedit.so: undefined reference to `identifyChord(QString,
+char*, QString&amp;, int&amp;, int&amp;, int&amp;, int&amp;, int&amp;, int&amp;, int&amp;)'
+noteedit/libnoteedit.so: undefined reference to
+`ChordSelector::setFingers(char*)'
+noteedit/libnoteedit.so: undefined reference to `buildName(int, int,
+int, int, int, int, int, int, int, int, int)'
+collect2: ld returned 1 exit status
+scons: *** [noteedit/noteedit] Error 1
+scons: building terminated because of errors.
+
+
+Regards.
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060202/027d80d8/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20060202/027d80d8/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000596.html">[Noteedit-devel] scons error ...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

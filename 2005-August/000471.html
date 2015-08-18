@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] New LilyPond info
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20New%20LilyPond%20info&In-Reply-To=%3C4304DFB2.6030902%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000467.html">
+   <LINK REL="Next"  HREF="000472.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] New LilyPond info</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20New%20LilyPond%20info&In-Reply-To=%3C4304DFB2.6030902%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] New LilyPond info">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Thu Aug 18 21:21:22 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000467.html">[Noteedit-devel] New LilyPond info
+</A></li>
+        <LI>Next message: <A HREF="000472.html">[Noteedit-devel] New LilyPond info
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i>LilyPond team yesterday released a new development 2.7.5 version, which
+</I>&gt;<i>brought a new major feature IMO - text scripts (along with lyrics) now
+</I>&gt;<i>detect vertical&amp;horizontal collision with other music elements (slurs,
+</I>&gt;<i>noteheads, other markings). Also, if the sillable in lyrics is to wide
+</I>&gt;<i>and doesn't fit, the space between notes is extended, to fit.
+</I>&gt;<i>
+</I>&gt;<i>I just thought I might tell you that as I usually had many problems with
+</I>&gt;<i>fine-tuning text markings in Lily document, but now it's all
+</I>&gt;<i>automatically. I don't need to use #padding anymore!:)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Regards.
+</I>&gt;<i>- Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>Hi Matev&#382;,
+
+thanks for this hint. I also ran in this often, so I thought to do a
+oneline patch to add &quot; &quot; \raise #0.4 in every text item, so you can
+adjust quickly the number in the .ly file, manually. \raise, #padding
+and #extra-offset are all similar, and, not perfect. If lilypond would
+do it automatically, it would be better. I experimented with 2.7.5, and
+it works only when the notes that touch the text have a slur. Without
+slur, there's still overlap. \raise and a slur would be compatible.
+
+So, the lilypond developers are aware of the problem, sooner or later
+they'll solve it :)
+
+Btw: The paper selection in lilypond export is great! Landscape now
+works well, I like it for proof reading. Thanks.
+
+Regards,
+Georg.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000467.html">[Noteedit-devel] New LilyPond info
+</A></li>
+	<LI>Next message: <A HREF="000472.html">[Noteedit-devel] New LilyPond info
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

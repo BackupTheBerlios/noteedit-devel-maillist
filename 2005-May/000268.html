@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Better splitting of time values
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Better%20splitting%20of%20time%20values&In-Reply-To=%3C4288E479.9000002%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000267.html">
+   <LINK REL="Next"  HREF="000269.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Better splitting of time values</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Better%20splitting%20of%20time%20values&In-Reply-To=%3C4288E479.9000002%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] Better splitting of time values">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon May 16 20:20:41 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000267.html">[Noteedit-devel] On IRC (Freenode)
+</A></li>
+        <LI>Next message: <A HREF="000269.html">[Noteedit-devel] Splash in a thread
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+when a note or chord is inserted and there is not enough room left in
+the current bar NoteEdit places the rest of it nicely in the next bar
+and ties it, as it should be. I made a small patch that makes my life
+easier: When the part before bar sign consists itself of a shorter and a
+longer value, NoteEdit now flushes the longer part in second place, just
+before the bar sign. I think, in all cases this gives a better rhythmic
+notation. So no corrections by hand in this case any more. If I oversaw
+something, please let it know.
+
+There are issues with auto bar insertion when placing 8 beat notes.
+Maybe I'll look at those soon.
+
+Best Regards,
+Georg.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000267.html">[Noteedit-devel] On IRC (Freenode)
+</A></li>
+	<LI>Next message: <A HREF="000269.html">[Noteedit-devel] Splash in a thread
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,2833 @@
+From noteedit-devel-admin at lists.berlios.de  Tue Apr  5 02:41:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 05 Apr 2005 02:41:18 +0200
+Subject: [Noteedit-devel] hard crash on midi playing/export fixed
+Message-ID: <4251DEAE.3090503@schwaben.de>
+
+Hi all,
+
+after quite some investigations, and although not yet fully 
+understanding the inner workings of this area of noteedit, anyway I 
+think the attatched fix is a good fix for bug #3503. The tool pmem shows 
+that no memory whole is introduced. And things are working again. 3503 I 
+closed now, svn rev 69.
+
+I didn't do any cleanup work as a reminder, because similar code 
+contructs with segno repeats might show similar problems. This needs to 
+be kept an eye on, maybe.
+
+Thanks for the bug report.
+
+Best Regards,
+Georg
+
+
+
+
+
+--------------010805080706070106020406
+Content-Type: text/plain;
+ name="patch.staff.cpp"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="patch.staff.cpp"
+
+Index: staff.cpp
+===================================================================
+--- staff.cpp	(revision 68)
++++ staff.cpp	(working copy)
+@@ -504,7 +504,13 @@
+ 	NVoice *voice_elem;
+ 	playClef_ = repeatClef_;
+ 	if (playKeySig_) {
+-		delete playKeySig_;
++		/* This delete commented out fixes crash bug #3503, which hitted midi playing
++		and export whith multiple repeats. The tool pmem doesn't show a memory leak
++		caused by this. Similar constructs should come under investigation, see below?
++		The parameter "again" is set but not actually in use. 4/2005.
++		*/
++		// delete playKeySig_;
++		
+ 	}
+ 	playKeySig_ = repeatKeySig_;
+ 	voice_elem = voicelist_.first();
+
+--------------010805080706070106020406--
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr  5 02:46:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 05 Apr 2005 02:46:52 +0200
+Subject: [Noteedit-devel] crash on midi import
+In-Reply-To: <42234432.70803@schwaben.de>
+References: <42234432.70803@schwaben.de>
+Message-ID: <4251DFFC.4060509@schwaben.de>
+
+Hi,
+
+bug #3483 is now closed with a similar patch, svn rev 70.
+
+Will now have time for other areas hopefully! I know, segno, fermata, tse3 user interface, homepage ...
+export to lily needs fixing ...
+
+Best Regards,
+Georg
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr  6 22:30:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 06 Apr 2005 22:30:54 +0200
+Subject: [Noteedit-devel] GUI Patch #403
+Message-ID: <425446FE.8060301@web.de>
+
+Hi,
+
+This evening I looked into the GUI patch. In contains the following 
+changes to make the menu structure more logical:
+
+- "New window" moved to the file menu (probably better to be placed
+   below "New"
+- Submenu for import and export
+- First Import submenu, then Export submenu
+- Close All (close all windows) in the file menu
+- Comments changed in the edit menu (with errors)
+- Setting (staff) moved to the menu Format
+- New menu "Format"
+- Extras/Tools menu moved to the right of the TSE3 menu
+- Output parameters moved to the menu settings
+- Swap "Keyboard config" and "Configure noteedit"
+- Comment to the help menu (to be corrected).
+
+To test the patch: Save the raw patch as noteeditui.rc and replace
+this file from the one in the noteedit subdirectory. If you have
+noteedit already installed you might need to replace the installed
+file (restoring it should be no problem) as noteedit might use the
+installed one instead of the one installed in the noteedit directory.
+
+I'd like to have some feedback before I apply the (modified) patch
+to svn. Thanks for your help!
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Apr  7 01:52:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 07 Apr 2005 01:52:18 +0200
+Subject: [Noteedit-devel] GUI Patch #403
+In-Reply-To: <425446FE.8060301@web.de>
+References: <425446FE.8060301@web.de>
+Message-ID: <42547632.7060609@guest.arnes.si>
+
+If I understsand you correctly, Staff becomes Format? So we should
+change add to add staff, remove to remove staff, voices to staff voices
+etc. I'd somehow (though it needs a lot of work) merge the voices and
+staff properties menu options into one form widget, but this should be a
+question for other thread sometime in the future.
+
+Otherwise, I like it. We're finally moving towards a standard outlook of
+apps menus.
+
+
+Regards.
+- Matev?
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi,
+>
+> This evening I looked into the GUI patch. In contains the following 
+> changes to make the menu structure more logical:
+>
+> - "New window" moved to the file menu (probably better to be placed
+>   below "New"
+> - Submenu for import and export
+> - First Import submenu, then Export submenu
+> - Close All (close all windows) in the file menu
+> - Comments changed in the edit menu (with errors)
+> - Setting (staff) moved to the menu Format
+> - New menu "Format"
+> - Extras/Tools menu moved to the right of the TSE3 menu
+> - Output parameters moved to the menu settings
+> - Swap "Keyboard config" and "Configure noteedit"
+> - Comment to the help menu (to be corrected).
+>
+> To test the patch: Save the raw patch as noteeditui.rc and replace
+> this file from the one in the noteedit subdirectory. If you have
+> noteedit already installed you might need to replace the installed
+> file (restoring it should be no problem) as noteedit might use the
+> installed one instead of the one installed in the noteedit directory.
+>
+> I'd like to have some feedback before I apply the (modified) patch
+> to svn. Thanks for your help!
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr  8 01:05:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 08 Apr 2005 01:05:03 +0200
+Subject: [Noteedit-devel] GUI Patch #403
+In-Reply-To: <42547632.7060609@guest.arnes.si>
+References: <425446FE.8060301@web.de> <42547632.7060609@guest.arnes.si>
+Message-ID: <4255BC9F.6090201@web.de>
+
+Hello Matev?,
+
+noteedit-devel-admin at berlios.de schrieb:
+> If I understsand you correctly, Staff becomes Format? So we should
+> change add to add staff, remove to remove staff, voices to staff voices
+> etc. I'd somehow (though it needs a lot of work) merge the voices and
+> staff properties menu options into one form widget, but this should be a
+> question for other thread sometime in the future.
+
+No, just the menu point "staff properties" was moved to the menu format.
+Concerning merging voices and staff properties: We could do that simply
+by using tabs. I tend not to completely merge it as this makes the
+dialog quite crowded.
+
+Also: Does anyone know if there is a way to move a menu item betwenn
+a default menu. I'm currently unable to move "window new" to the place
+I want to have it.
+
+> Otherwise, I like it. We're finally moving towards a standard outlook of
+> apps menus.
+> 
+
+Thanks for your feedback,
+
+Reinhard Katzmann
+
+> Regards.
+> - Matev?
+> 
+> 
+> noteedit-devel-admin at berlios.de wrote:
+> 
+>> Hi,
+>>
+>> This evening I looked into the GUI patch. In contains the following 
+>> changes to make the menu structure more logical:
+>>
+>> - "New window" moved to the file menu (probably better to be placed
+>>   below "New"
+>> - Submenu for import and export
+>> - First Import submenu, then Export submenu
+>> - Close All (close all windows) in the file menu
+>> - Comments changed in the edit menu (with errors)
+>> - Setting (staff) moved to the menu Format
+>> - New menu "Format"
+>> - Extras/Tools menu moved to the right of the TSE3 menu
+>> - Output parameters moved to the menu settings
+>> - Swap "Keyboard config" and "Configure noteedit"
+>> - Comment to the help menu (to be corrected).
+>>
+>> To test the patch: Save the raw patch as noteeditui.rc and replace
+>> this file from the one in the noteedit subdirectory. If you have
+>> noteedit already installed you might need to replace the installed
+>> file (restoring it should be no problem) as noteedit might use the
+>> installed one instead of the one installed in the noteedit directory.
+>>
+>> I'd like to have some feedback before I apply the (modified) patch
+>> to svn. Thanks for your help!
+>>
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr  8 12:37:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 08 Apr 2005 12:37:41 +0200
+Subject: [Noteedit-devel] GUI Patch #403
+In-Reply-To: <4255BC9F.6090201@web.de>
+References: <425446FE.8060301@web.de> <42547632.7060609@guest.arnes.si> <4255BC9F.6090201@web.de>
+Message-ID: <42565EF5.3090709@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hello Matev?,
+>
+> noteedit-devel-admin at berlios.de schrieb:
+>
+>> If I understsand you correctly, Staff becomes Format? So we should
+>> change add to add staff, remove to remove staff, voices to staff voices
+>> etc. I'd somehow (though it needs a lot of work) merge the voices and
+>> staff properties menu options into one form widget, but this should be a
+>> question for other thread sometime in the future.
+>
+>
+> No, just the menu point "staff properties" was moved to the menu format.
+> Concerning merging voices and staff properties: We could do that simply
+> by using tabs. I tend not to completely merge it as this makes the
+> dialog quite crowded.
+
+But currently, there's no Format menu at all. What other submenus should 
+Format include besides staff properties?
+
+About merging voices and staff properties dialog, IMO the best suitable 
+option would be to join voices & staff dialogs into single dialog 
+including two tabs (one for general/instrument/layout and the other for 
+voices). But the options should still be available separately. That is 
+click on staff properties submenu would bring you staff properties 
+dialog with general tab opened and voices should bring you up staff 
+properties dialog with vioces tab opened.
+
+btw. Could you fix a typo "Voice:"->"Instrument:" in Staff properties 
+dialog above the instrument list.
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 10 18:53:57 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 10 Apr 2005 18:53:57 +0200
+Subject: [Noteedit-devel] GUI Patch #403
+In-Reply-To: <42565EF5.3090709@guest.arnes.si>
+References: <425446FE.8060301@web.de> <42547632.7060609@guest.arnes.si> <4255BC9F.6090201@web.de> <42565EF5.3090709@guest.arnes.si>
+Message-ID: <42595A25.6070909@web.de>
+
+Hi,
+
+>> No, just the menu point "staff properties" was moved to the menu format.
+>> Concerning merging voices and staff properties: We could do that simply
+>> by using tabs. I tend not to completely merge it as this makes the
+>> dialog quite crowded.
+> 
+> 
+> But currently, there's no Format menu at all. What other submenus should 
+> Format include besides staff properties?
+
+Score Layout and Score Information.
+I checked the file into svn. You should now be able to take a look
+at it for yourself.
+
+> About merging voices and staff properties dialog, IMO the best suitable 
+> option would be to join voices & staff dialogs into single dialog 
+> including two tabs (one for general/instrument/layout and the other for 
+> voices). But the options should still be available separately. That is 
+> click on staff properties submenu would bring you staff properties 
+> dialog with general tab opened and voices should bring you up staff 
+> properties dialog with vioces tab opened.
+> 
+> btw. Could you fix a typo "Voice:"->"Instrument:" in Staff properties 
+> dialog above the instrument list.
+
+Done (Already in svn).
+Will take a look at the staff / voices dialogs this evening.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 11 15:14:59 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 11 Apr 2005 15:14:59 +0200
+Subject: [Noteedit-devel] Slovenian update
+Message-ID: <425A7853.7080305@guest.arnes.si>
+
+I'm sending an updated Slovenian translation, which includes the 
+"Voice:"->"Instrument:" updated line (or is there another way of 
+updating the translation when an UI changes?) and some other minor fixes.
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sl.patch
+Type: text/x-patch
+Size: 2607 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050411/ec0e04f7/attachment.bin>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr 13 23:55:25 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 13 Apr 2005 23:55:25 +0200
+Subject: [Noteedit-devel] Design proposal for staff properties
+Message-ID: <425D954D.9000208@web.de>
+
+Hi,
+
+I developed a design proposal for the staff properties
+(new with voices included). I've included it into the
+attachment (use the qt3 (3.3.4) designer to view it).
+
+Due to place restrictions the selection of the staff
+name has to be done via combobox instead of tabs. Even
+if we do not join staff properties and voice dialog it
+would be a good idea to be able to select a different
+staff via combobox.
+
+The staff property dialog has a wrong order of the
+buttons below. I corrected this as well as the buttons
+are no longer on the same height as staff itself.
+
+I don't like the position of the create voice button.
+Maybe someone has a better idea how to create a voice.
+
+I also removed the help button as it does not show any
+context sensitive help for the staff properties. It's
+better to create real context sensitive help with a '?'
+icon (using the Whats this functions).
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: editdelete.png
+Type: image/png
+Size: 833 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050413/b01f5141/attachment.png>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050413/b01f5141/attachment.html>
+
+From noteedit-devel-admin at lists.berlios.de  Thu Apr 14 12:52:19 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 14 Apr 2005 12:52:19 +0200
+Subject: [Noteedit-devel] Design proposal for staff properties
+In-Reply-To: <425D954D.9000208@web.de>
+References: <425D954D.9000208@web.de>
+Message-ID: <425E4B63.6070702@guest.arnes.si>
+
+I like it. It's something very similar I had in mind! I like the new 
+delete buttons.
+
+A small bug though: voice numbers (under delete voice buttons) are not 
+justified to center.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi,
+>
+> I developed a design proposal for the staff properties
+> (new with voices included). I've included it into the
+> attachment (use the qt3 (3.3.4) designer to view it).
+>
+> Due to place restrictions the selection of the staff
+> name has to be done via combobox instead of tabs. Even
+> if we do not join staff properties and voice dialog it
+> would be a good idea to be able to select a different
+> staff via combobox.
+>
+> The staff property dialog has a wrong order of the
+> buttons below. I corrected this as well as the buttons
+> are no longer on the same height as staff itself.
+>
+> I don't like the position of the create voice button.
+> Maybe someone has a better idea how to create a voice.
+>
+> I also removed the help button as it does not show any
+> context sensitive help for the staff properties. It's
+> better to create real context sensitive help with a '?'
+> icon (using the Whats this functions).
+>
+> Regards,
+>
+> Reinhard Katzmann
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Apr 14 13:16:16 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 14 Apr 2005 13:16:16 +0200
+Subject: [Noteedit-devel] Translation question
+Message-ID: <425E5100.3080903@guest.arnes.si>
+
+I'm preparing a new version of Slovenian translation and I have two 
+questions:
+1) Staff->New is a duplicate of File->New. I'd suggest to split these 
+commands (add additional argument), because in Slovenian language, there 
+should be New document and New staff (just New is not ok, because of 
+syntax rules)
+2) If you delete a staff (Staff->Delete), there is a warning about 
+deleting the voice, not the staff. ("This deletes current voice! Are you 
+sure?" string).
+
+I'll send a new translation soon.
+
+
+Regards.
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr 15 08:43:09 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 15 Apr 2005 08:43:09 +0200
+Subject: [Noteedit-devel] another midi export crash fixed
+Message-ID: <425F627D.40909@schwaben.de>
+
+Hi,
+
+by the findings of deiussum
+
+    Bug #3786    Midi export crashes NoteEdit
+
+is now fixed. I put that also in our NEWS file.
+
+
+Regards,
+Georg
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr 15 12:01:43 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 15 Apr 2005 12:01:43 +0200
+Subject: [Noteedit-devel] Major translation update
+Message-ID: <425F9107.3030908@guest.arnes.si>
+
+I fixed some bugs in UI and added some features:
+- Staff -> Delete staff warning used Delete voice confirmation. Now it 
+uses Delete staff confirmation.
+- Staff -> Import recording used This ovverrides current voice 
+confirmation. Now it uses current staff confirmation.
+- I updated all the translations - I rebuilt them from source (make 
+package-messages). This also added the new "Format" menu into .po files 
+and updated some pretty old translations.
+- Added noteedit.pot - the template for the translators
+- Updated Slovenian translation (IMPORTANT!)
+- Updated the po/Makefile.in to actually make Slovenian translation work
+
+The attachment consists of:
+noteedit/NEWS.patch - updated Slovenian translation, fixed UI bugs etc.
+noteedit/noteedit/mainframewidget.cpp.patch - fixed Delete voice -> 
+Delete staff warnings
+noteedit/po/*.po - updated translations, Slovenian is moslty rewritten
+noteedit/po/noteedit.pot - added the template for translators
+noteedit/po/Makefile.in.patch - added actua Slovenian support
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: patch.tgz
+Type: application/x-gtar
+Size: 233081 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050415/c5852c8e/attachment.tgz>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 17 15:15:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 17 Apr 2005 15:15:45 +0200
+Subject: [Noteedit-devel] Major translation update
+In-Reply-To: <425F9107.3030908@guest.arnes.si>
+References: <425F9107.3030908@guest.arnes.si>
+Message-ID: <42626181.8020801@schwaben.de>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> I fixed some bugs in UI and added some features:
+> - Staff -> Delete staff warning used Delete voice confirmation. Now it 
+> uses Delete staff confirmation.
+> - Staff -> Import recording used This ovverrides current voice 
+> confirmation. Now it uses current staff confirmation.
+> - I updated all the translations - I rebuilt them from source (make 
+> package-messages). This also added the new "Format" menu into .po 
+> files and updated some pretty old translations.
+> - Added noteedit.pot - the template for the translators
+> - Updated Slovenian translation (IMPORTANT!)
+> - Updated the po/Makefile.in to actually make Slovenian translation work
+>
+> The attachment consists of:
+> noteedit/NEWS.patch - updated Slovenian translation, fixed UI bugs etc.
+> noteedit/noteedit/mainframewidget.cpp.patch - fixed Delete voice -> 
+> Delete staff warnings
+> noteedit/po/*.po - updated translations, Slovenian is moslty rewritten
+> noteedit/po/noteedit.pot - added the template for translators
+> noteedit/po/Makefile.in.patch - added actua Slovenian support
+>
+>
+> Regards.
+> - Matev?
+>
+Hello Matev?,
+
+your work is checked in. I also did now a make package-messages, and it 
+only worked with KDEDIR properly set through all the build process. I'm 
+still learning how everything works, and wondering why the po- and 
+pot-files get again modified against svn.
+
+Anyway, Reinhard added you to the list of developers, hopefully you agree.
+
+Best Regards,
+Georg.
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 17 23:41:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 17 Apr 2005 22:41:53 +0100
+Subject: [Noteedit-devel] From command line
+Message-ID: <1113774113.7788.63.camel@ubuntu.midominio>
+
+Hello. I've been looking for some documentation about how to
+execute NoteEdit from command line, but I don't find anything. In "man
+noteedit" there are some options to execute some characteristics from
+terminal, but it's not enough.
+
+       My idea is to import a midi file from my code and show the score.
+so I would like to know how to do it from command line.
+
+       I asked for it in the noteedit-user list, and the administrator
+told me to say to you my wish :-) I would like to know if it's posible
+to do it.
+
+       Thank you very much.
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr 19 13:03:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 19 Apr 2005 13:03:07 +0200
+Subject: [Noteedit-devel] Major translation update
+In-Reply-To: <42626181.8020801@schwaben.de>
+References: <425F9107.3030908@guest.arnes.si> <42626181.8020801@schwaben.de>
+Message-ID: <4264E56B.5020504@guest.arnes.si>
+
+Yes, I noticed changing sl.po file upon running make package-messages. 
+It actually replaces
+
+msgstr "STRING"
+
+with
+
+msgstr ""
+"STRING"
+
+, but I don't know why. :( Other translations are left alone.
+
+> Hello Matev?,
+>
+> your work is checked in. I also did now a make package-messages, and 
+> it only worked with KDEDIR properly set through all the build process. 
+> I'm still learning how everything works, and wondering why the po- and 
+> pot-files get again modified against svn.
+>
+> Anyway, Reinhard added you to the list of developers, hopefully you 
+> agree.
+
+Yeah, of course I like it:). Does this mean I have a SVN write access as 
+well?
+
+
+Regards.
+- Matevz
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr 19 14:16:22 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 19 Apr 2005 14:16:22 +0200
+Subject: [Noteedit-devel] Major translation update
+In-Reply-To: <4264E56B.5020504@guest.arnes.si>
+References: <425F9107.3030908@guest.arnes.si> <42626181.8020801@schwaben.de> <4264E56B.5020504@guest.arnes.si>
+Message-ID: <4264F696.8010102@web.de>
+
+Hello Matev?,
+
+> Yes, I noticed changing sl.po file upon running make package-messages. 
+> It actually replaces
+> 
+> msgstr "STRING"
+> 
+> with
+> 
+> msgstr ""
+> "STRING"
+> 
+> , but I don't know why. :( Other translations are left alone.
+
+I have the same problem. It seem to me that messages including "\n"
+or having string with several lines. But I also noted that the msgid
+has the same format, so the translation should still work (not tested).
+
+>> Hello Matev?,
+>>
+>> your work is checked in. I also did now a make package-messages, and 
+>> it only worked with KDEDIR properly set through all the build process. 
+>> I'm still learning how everything works, and wondering why the po- and 
+>> pot-files get again modified against svn.
+>>
+>> Anyway, Reinhard added you to the list of developers, hopefully you 
+>> agree.
+> 
+> 
+> Yeah, of course I like it:). Does this mean I have a SVN write access as 
+> well?
+> 
+
+Yes and you have more access rights to the project as well like 
+Moderator for the forums or admin for all the managers (so you
+f.e. can add new categories for a manager).
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Apr 21 22:23:23 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 21 Apr 2005 22:23:23 +0200
+Subject: [Noteedit-devel] Noteedit on the LAC 2005 in Karlsruhe
+Message-ID: <42680BBB.8050602@web.de>
+
+Hi,
+ann
+On Friday the 22. April (Tomorrow) I and Georg will hold
+an BOFS for noteedit. We will present noteedit to the
+interested audience and discuss the current development
+progress.
+
+We already collected and discussed some ideas:
+- Macros for noteedit making it easier to enter groups
+   of notes (somewhat based on feature request #518/519)
+- Improve midi input (manual edit mode), can be combined
+   with the macros
+
+Best regards,
+
+Reinhard Katzm
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Apr 21 22:33:33 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 21 Apr 2005 22:33:33 +0200
+Subject: [Noteedit-devel] Re: [Noteedit-user] Noteedit on the LAC 2005 in Karlsruhe
+In-Reply-To: <42680BBB.8050602@web.de>
+References: <42680BBB.8050602@web.de>
+Message-ID: <42680E1D.9080901@web.de>
+
+Oh well, I forgot the time and the place:
+LAC2005 is in Karlsruhe (http://lac.zkm.de)
+and the BOFS is at 15.30.
+The conference is streamed. See http://lac2005.zkm.de/
+for more information.
+
+Thanks and best regards,
+
+Reinhard Katzmann
+
+noteedit-user-admin at berlios.de schrieb:
+> Hi,
+> ann
+> On Friday the 22. April (Tomorrow) I and Georg will hold
+> an BOFS for noteedit. We will present noteedit to the
+> interested audience and discuss the current development
+> progress.
+> 
+> We already collected and discussed some ideas:
+> - Macros for noteedit making it easier to enter groups
+>   of notes (somewhat based on feature request #518/519)
+> - Improve midi input (manual edit mode), can be combined
+>   with the macros
+> 
+> Best regards,
+> 
+> Reinhard Katzm
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr 22 14:32:31 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 22 Apr 2005 14:32:31 +0200
+Subject: [Noteedit-devel] build from svn question
+Message-ID: <4268EEDF.9030209@guest.arnes.si>
+
+Building from the svn subtree is still not functioning. Is there really 
+a reason why we don't keep admin files from 2.7.4 version in the current 
+trunk tree as well (as described in bug #2814)?
+
+ps. According to the bug discussion, KDE 2 support is IMO not needed 
+anymore (J.A. recommended this more than a year ago?!). I'm currently 
+aware of only Debian stable distribution, which still includes 2.2.2 
+version of KDE (but it doesn't include NoteEdit package - available 
+under testing/unstable only, which have KDE 3.3.2 currently).
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr 22 22:50:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 22 Apr 2005 22:50:41 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <4268EEDF.9030209@guest.arnes.si>
+References: <4268EEDF.9030209@guest.arnes.si>
+Message-ID: <426963A1.50302@web.de>
+
+Hi Matev?,
+
+> Building from the svn subtree is still not functioning. Is there really 
+> a reason why we don't keep admin files from 2.7.4 version in the current 
+> trunk tree as well (as described in bug #2814)?
+
+Not really for me, I just don't know how well they behave on other 
+systems. I have managed to get all working with the current kde version
+and created admin files with the help of kdevelop. But I had to patch
+the noteedit/Makefile.am file to get things running properly.
+
+Can some of you test, if everything runs well with the applied patch ?
+If I don't apply the patch I can no longer build noteedit because
+libtool does not correctly ignore some of the moc files.
+
+Another issue for me is that the kdevelop project I created has the
+problem that the uic (user interface compiler) doesn't get invoked.
+make from the console works fine. Also the "run automake and friends"
+does not work correctly, only running "make -f Makefile.cvs" manually 
+seems to produce the correct configure file.
+I have put my current kdevelop files to svn (Requires version 3.1.2). 
+Maybe there is a bug in one of the options I changed or something 
+different has to be changed to get things working correctly with kdevelop.
+
+> ps. According to the bug discussion, KDE 2 support is IMO not needed 
+> anymore (J.A. recommended this more than a year ago?!). I'm currently 
+> aware of only Debian stable distribution, which still includes 2.2.2 
+> version of KDE (but it doesn't include NoteEdit package - available 
+> under testing/unstable only, which have KDE 3.3.2 currently).
+
+I don't really think it is necessary as well. I already thought about
+splitting the uiconnect.h/cpp files and making several ui.h files as
+it is usually done for QT3 (so subclassing is only neets to be done when 
+really needed).
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: patch_Makefile.am
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050422/b362602b/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 23 00:13:14 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 23 Apr 2005 00:13:14 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426963A1.50302@web.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de>
+Message-ID: <426976FA.5080703@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi Matev?,
+>
+>> Building from the svn subtree is still not functioning. Is there 
+>> really a reason why we don't keep admin files from 2.7.4 version in 
+>> the current trunk tree as well (as described in bug #2814)?
+>
+>
+> Not really for me, I just don't know how well they behave on other 
+> systems. I have managed to get all working with the current kde version
+> and created admin files with the help of kdevelop. But I had to patch
+> the noteedit/Makefile.am file to get things running properly.
+>
+> Can some of you test, if everything runs well with the applied patch ?
+> If I don't apply the patch I can no longer build noteedit because
+> libtool does not correctly ignore some of the moc files.
+>
+> Another issue for me is that the kdevelop project I created has the
+> problem that the uic (user interface compiler) doesn't get invoked.
+> make from the console works fine. Also the "run automake and friends"
+> does not work correctly, only running "make -f Makefile.cvs" manually 
+> seems to produce the correct configure file.
+> I have put my current kdevelop files to svn (Requires version 3.1.2). 
+> Maybe there is a bug in one of the options I changed or something 
+> different has to be changed to get things working correctly with 
+> kdevelop.
+
+Ok, I cleaned my tree and redownloaded the current svn version and 
+applied your patch. But when I invoked make -f Makefile.cvs, I get 
+immediate error that libtool.m4.in is not found. When I renamed 
+admin/old-* to admin/*, the error was fixed, but got another one:( :
+matevz at mojazver:~/apps/noteedit$ make -f Makefile.cvs
+This Makefile is only for the CVS repository
+This will be deleted before making the distribution
+
+*** Creating acinclude.m4
+!!! If you get recursion errors from autoconf, it is advisable to set the
+    environment variable M4 to something including "--nesting-limit=500"
+*** Creating list of subdirectories
+*** Creating configure.in
+*** Creating aclocal.m4
+configure.in:67: warning: underquoted definition of FIND_PACKAGE
+  run info '(automake)Extending aclocal'
+  or see 
+http://sources.redhat.com/automake/automake.html#Extending%20aclocal
+configure.in:94: warning: underquoted definition of AC_NEW_ARG
+acinclude.m4:44: warning: underquoted definition of KDE_PATH_X_DIRECT
+acinclude.m4:168: warning: underquoted definition of AC_FIND_FILE
+acinclude.m4:187: warning: underquoted definition of KDE_FIND_PATH
+acinclude.m4:240: warning: underquoted definition of KDE_MOC_ERROR_MESSAGE
+acinclude.m4:252: warning: underquoted definition of KDE_UIC_ERROR_MESSAGE
+acinclude.m4:265: warning: underquoted definition of KDE_CHECK_UIC_FLAG
+...
+acinclude.m4:4482: warning: underquoted definition of KDE_CHECK_INITGROUPS
+acinclude.m4:4522: warning: underquoted definition of KDE_CHECK_JAVA_DIR
+acinclude.m4:4655: warning: underquoted definition of KDE_NEED_FLEX
+acinclude.m4:4667: warning: underquoted definition of AC_PATH_QTOPIA
+/usr/share/aclocal/smpeg.m4:13: warning: underquoted definition of 
+AM_PATH_SMPEG
+/usr/share/aclocal/ost_check2.m4:25: warning: underquoted definition of 
+OST_CCXX2_DYNLOADER
+/usr/share/aclocal/ost_check2.m4:33: warning: underquoted definition of 
+OST_CCXX2_VERSION
+/usr/share/aclocal/ost_check2.m4:100: warning: underquoted definition of 
+OST_CCXX2_FOX
+/usr/share/aclocal/ost_check2.m4:111: warning: underquoted definition of 
+OST_CCXX2_HOARD
+/usr/share/aclocal/ost_check2.m4:121: warning: underquoted definition of 
+OST_CCXX2_XML
+/usr/share/aclocal/lib3ds.m4:4: warning: underquoted definition of 
+AM_PATH_LIB3DS
+/usr/share/aclocal/glib.m4:8: warning: underquoted definition of 
+AM_PATH_GLIB
+/usr/share/aclocal/allegro.m4:14: warning: underquoted definition of 
+AM_PATH_ALLEGRO
+/usr/share/aclocal/aalib.m4:12: warning: underquoted definition of 
+AM_PATH_AALIB
+configure.in:570: error: m4_popdef: undefined macro: AC_Dest
+autoconf/status.m4:848: AC_CONFIG_FILES is expanded from...
+configure.in:570: the top level
+autom4te: /usr/bin/m4 failed with exit status: 1
+aclocal: autom4te failed with exit status: 1
+make[1]: *** [cvs] Error 1
+make: *** [all] Error 2
+
+I didn't want to copy any other files from non-svn version anymore then. 
+I unpatched the Makefile.am of your patch, but the error stayed. When 
+KDevelop wanted to run automake & friends, it returned the same errors 
+(it just runs make -f Makefile.cvs?). Any other files/patches needed?
+Using automake 1.8.5, make 3.0, g++ 3.3.5, kde 3.3.2, qt 3.3.4 and 
+kdevelop 3.2.0, Debian unstable.
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 23 09:28:00 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 23 Apr 2005 09:28:00 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426976FA.5080703@guest.arnes.si>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si>
+Message-ID: <4269F900.7070703@web.de>
+
+Hi Matev?,
+
+>> Can some of you test, if everything runs well with the applied patch ?
+>> If I don't apply the patch I can no longer build noteedit because
+>> libtool does not correctly ignore some of the moc files.
+>>
+>> Another issue for me is that the kdevelop project I created has the
+>> problem that the uic (user interface compiler) doesn't get invoked.
+>> make from the console works fine. Also the "run automake and friends"
+>> does not work correctly, only running "make -f Makefile.cvs" manually 
+>> seems to produce the correct configure file.
+>> I have put my current kdevelop files to svn (Requires version 3.1.2). 
+>> Maybe there is a bug in one of the options I changed or something 
+>> different has to be changed to get things working correctly with 
+>> kdevelop.
+> 
+> 
+> Ok, I cleaned my tree and redownloaded the current svn version and 
+> applied your patch. But when I invoked make -f Makefile.cvs, I get 
+> immediate error that libtool.m4.in is not found. When I renamed 
+> admin/old-* to admin/*, the error was fixed, but got another one:( :
+> matevz at mojazver:~/apps/noteedit$ make -f Makefile.cvs
+> This Makefile is only for the CVS repository
+> This will be deleted before making the distribution
+> 
+
+<huge list of problems deleted>
+
+> 
+> I didn't want to copy any other files from non-svn version anymore then. 
+> I unpatched the Makefile.am of your patch, but the error stayed. When 
+> KDevelop wanted to run automake & friends, it returned the same errors 
+> (it just runs make -f Makefile.cvs?). Any other files/patches needed?
+> Using automake 1.8.5, make 3.0, g++ 3.3.5, kde 3.3.2, qt 3.3.4 and 
+> kdevelop 3.2.0, Debian unstable.
+
+The admin files in svn requires automake 1.4 and probably autoconf 2.1.
+I have uploaded admin files I created with Mandriva Linux 10.2. You
+can test these as well if you wish.
+
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 23 13:24:32 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 23 Apr 2005 13:24:32 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <4269F900.7070703@web.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de>
+Message-ID: <426A3070.3040006@guest.arnes.si>
+
+>>
+>> I didn't want to copy any other files from non-svn version anymore 
+>> then. I unpatched the Makefile.am of your patch, but the error 
+>> stayed. When KDevelop wanted to run automake & friends, it returned 
+>> the same errors (it just runs make -f Makefile.cvs?). Any other 
+>> files/patches needed?
+>> Using automake 1.8.5, make 3.0, g++ 3.3.5, kde 3.3.2, qt 3.3.4 and 
+>> kdevelop 3.2.0, Debian unstable.
+>
+>
+> The admin files in svn requires automake 1.4 and probably autoconf 2.1.
+> I have uploaded admin files I created with Mandriva Linux 10.2. You
+> can test these as well if you wish.
+
+I downloaded your admin files and make -f Makefile.cvs made a working 
+configure script. I ran configure and tried to compile the program. 
+Everything worked fine for a while (makefiles were created in subdirs 
+correctly), but at the end I got the linking error:
+
+...
+main.cpp:79: warning: unused variable `NResource*nr'
+/bin/sh ../libtool --silent --tag=CXX --mode=link g++  
+-Wnon-virtual-dtor -Wno-long-long -Wundef -Wall -W -Wpointer-arith 
+-Wwrite-strings -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align 
+-Wconversion -Wchar-subscripts -O2 -Wformat-security 
+-Wmissing-format-attribute -fno-exceptions -fno-check-new -fno-common    
+-o noteedit -R /usr/lib -R /usr/share/qt3/lib -R /usr/X11R6/lib main.o 
+libnoteedit.la
+
+*** Warning: Linking the executable noteedit against the loadable module
+*** libnoteedit.so is not portable!
+./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+collect2: ld returned 1 exit status
+make[3]: *** [noteedit] Error 1
+make[3]: Leaving directory `/home/matevz/apps/noteedit/noteedit'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/home/matevz/apps/noteedit/noteedit'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/matevz/apps/noteedit'
+make: *** [all] Error 2
+
+I'm using automake 1.9 (when using 1.4, it said that KDE requires at 
+least 1.6 version).
+
+
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 23 20:12:18 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 23 Apr 2005 20:12:18 +0200
+Subject: [Noteedit-devel] Soprano clef
+Message-ID: <426A9002.6030000@guest.arnes.si>
+
+I've done RFE #573 (request for soprano clef). I updated all the export 
+filters as well (tested MusicXML, LilyPond, ABC and MIDI) and MusicXML 
+import filter. Saving/Loading works ok afaik. Anyway, please test.
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 23 23:59:38 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 23 Apr 2005 23:59:38 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426A3070.3040006@guest.arnes.si>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si>
+Message-ID: <426AC54A.1070404@web.de>
+
+Hi Matev?,
+
+>> The admin files in svn requires automake 1.4 and probably autoconf 2.1.
+>> I have uploaded admin files I created with Mandriva Linux 10.2. You
+>> can test these as well if you wish.
+> 
+> 
+> I downloaded your admin files and make -f Makefile.cvs made a working 
+> configure script. I ran configure and tried to compile the program. 
+> Everything worked fine for a while (makefiles were created in subdirs 
+> correctly), but at the end I got the linking error:
+> 
+> ...
+> main.cpp:79: warning: unused variable `NResource*nr'
+> /bin/sh ../libtool --silent --tag=CXX --mode=link g++  
+> -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall -W -Wpointer-arith 
+> -Wwrite-strings -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -Wcast-align 
+> -Wconversion -Wchar-subscripts -O2 -Wformat-security 
+> -Wmissing-format-attribute -fno-exceptions -fno-check-new -fno-common    
+> -o noteedit -R /usr/lib -R /usr/share/qt3/lib -R /usr/X11R6/lib main.o 
+> libnoteedit.la
+> 
+> *** Warning: Linking the executable noteedit against the loadable module
+> *** libnoteedit.so is not portable!
+> ./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+> ./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+> ./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+> collect2: ld returned 1 exit status
+> make[3]: *** [noteedit] Error 1
+> make[3]: Leaving directory `/home/matevz/apps/noteedit/noteedit'
+> make[2]: *** [all-recursive] Error 1
+> make[2]: Leaving directory `/home/matevz/apps/noteedit/noteedit'
+> make[1]: *** [all-recursive] Error 1
+> make[1]: Leaving directory `/home/matevz/apps/noteedit'
+> make: *** [all] Error 2
+> 
+> I'm using automake 1.9 (when using 1.4, it said that KDE requires at 
+> least 1.6 version).
+
+Hmm, that error didn't occur to me, maybe the Mandriva folks did somehow
+patch KDE or automake to get these things working.
+
+I looked at my Makefile and the Makefile.am. Your problems seems to be
+that YYLINENO (i.e. LEX_LINENO), YYRESTART (LEX_RESTART) and YYPARSE
+(YACC_PARSE) are not defined in the Makefile. For me they have the
+values NEDITlineno, NEDITrestart , NEDITparse. I have not found out
+who is generating these three symbols.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 06:17:04 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 06:17:04 +0200
+Subject: [Noteedit-devel] Soprano clef
+In-Reply-To: <426A9002.6030000@guest.arnes.si>
+References: <426A9002.6030000@guest.arnes.si>
+Message-ID: <426B1DC0.70900@schwaben.de>
+
+Hello Matev?,
+
+nice to see this been done! The noteheads in lilypond (2.4.4) needed to
+be lifted one octave higher. I ckecked that in, hopefully you agree with
+that. I also added lilypond support for the octaviated soprano clef
+variants.
+
+And I unloaded a minor patch into svn that prints an empty stanza number
+when we have only one verse of lyrics.
+
+The slowenian translation doesn't build any more. If you can't
+reproduce/correct it, I can give you details.
+
+Best Regards,
+Georg.
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+> I've done RFE #573 (request for soprano clef). I updated all the
+> export filters as well (tested MusicXML, LilyPond, ABC and MIDI) and
+> MusicXML import filter. Saving/Loading works ok afaik. Anyway, please
+> test.
+>
+>
+> Regards.
+> - Matev?
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 12:26:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 12:26:11 +0200
+Subject: [Noteedit-devel] Soprano clef
+In-Reply-To: <426A9002.6030000@guest.arnes.si>
+References: <426A9002.6030000@guest.arnes.si>
+Message-ID: <426B7443.8010003@web.de>
+
+Hi Matev?,
+
+Great work! I tested it out and (with the changes of Georg) found
+no principal problem with the Soprano Clef.
+
+I just noted that mup doesn't like clef changes in the mid of the
+bar.
+
+Concerning the lilypond output: Clef changes on my Schubert
+example are shown before the bar in lilypond but after the
+bar in noteedit. One of them has to be wrong...
+I've only attached the noteedit file. I'm using lilypond 2.4.6.
+
+noteedit-devel-admin at berlios.de schrieb:
+> I've done RFE #573 (request for soprano clef). I updated all the export 
+> filters as well (tested MusicXML, LilyPond, ABC and MIDI) and MusicXML 
+> import filter. Saving/Loading works ok afaik. Anyway, please test.
+> 
+> 
+> Regards.
+> - Matev?
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: stand_viola_.ly
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050424/1cb90f4e/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 12:29:01 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 12:29:01 +0200
+Subject: [Noteedit-devel] Soprano clef
+In-Reply-To: <426B1DC0.70900@schwaben.de>
+References: <426A9002.6030000@guest.arnes.si> <426B1DC0.70900@schwaben.de>
+Message-ID: <426B74ED.7070502@web.de>
+
+Hi Georg,
+
+> The slowenian translation doesn't build any more. If you can't
+> reproduce/correct it, I can give you details.
+> 
+> Best Regards,
+> Georg.
+> 
+
+I've got no problems with the current slowenian translation.
+Note that I compiled the stuff with my own admin changes I
+uploaded Friday.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 12:50:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 12:50:35 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426AC54A.1070404@web.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de>
+Message-ID: <426B79FB.2090602@web.de>
+
+>> *** Warning: Linking the executable noteedit against the loadable module
+>> *** libnoteedit.so is not portable!
+>> ./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+>> ./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+>> ./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+
+> 
+> I looked at my Makefile and the Makefile.am. Your problems seems to be
+> that YYLINENO (i.e. LEX_LINENO), YYRESTART (LEX_RESTART) and YYPARSE
+> (YACC_PARSE) are not defined in the Makefile. For me they have the
+> values NEDITlineno, NEDITrestart , NEDITparse. I have not found out
+> who is generating these three symbols.
+> 
+
+Some more information about this:
+In configure.in.in "NEDIT" is defined as PREFIX for LEX/YACC.
+After running configure the PREFIX gets added to all the
+parse/restart/lineno methods (This is done dynamically when
+generating the file noteedit/grammar.cpp and noteedit/lexik.cpp).
+So your configure.in and your configure file should have the lines
+LEX_PREFIX="NEDIT"
+LEX_RESTART="${LEX_PREFIX}restart"
+LEX_LINENO="${LEX_PREFIX}lineno"
+YACC_PARSE="${LEX_PREFIX}parse"
+YACC_LVAL="${LEX_PREFIX}lval"
+
+The noteedit/Makefile already should contain several variable
+definitions like
+LEX_LINENO = NEDITlineno
+LEX_PREFIX = NEDIT
+LEX_RESTART = NEDITrestart
+and (very important)
+PREFIX_DEF = -DYYLINENO=$(LEX_LINENO) -DYYRESTART=$(LEX_RESTART) 
+-DYYPARSE=$(YACC_PARSE) -DYYLVAL=$(YACC_LVAL)
+
+and finally lexik.cpp contains the definition for the symbol
+/* Substitute the variable and function names.  */
+#define yyparse NEDITparse
+#define yylex   NEDITlex
+#define yyerror NEDITerror
+#define yylval  NEDITlval
+#define yychar  NEDITchar
+#define yydebug NEDITdebug
+#define yynerrs NEDITnerrs
+
+Please check all these and tell me if anything is missing. Also
+helpful could be warning when creating lexik.cpp or grammar.cpp
+concerning the above definitions.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 16:12:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 16:12:37 +0200
+Subject: [Noteedit-devel] Soprano clef
+In-Reply-To: <426B7443.8010003@web.de>
+References: <426A9002.6030000@guest.arnes.si> <426B7443.8010003@web.de>
+Message-ID: <426BA955.20705@guest.arnes.si>
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi Matev?,
+>
+> Great work! I tested it out and (with the changes of Georg) found
+> no principal problem with the Soprano Clef.
+>
+> I just noted that mup doesn't like clef changes in the mid of the
+> bar.
+
+Could you be more specific? I made a test with a treble clef long 2.5 
+measures, then I placed a soprano clef in the middle of the third 
+measure and continued writing in it. I saved, closed NE, open it again 
+and it showed fine.
+
+>
+> Concerning the lilypond output: Clef changes on my Schubert
+> example are shown before the bar in lilypond but after the
+> bar in noteedit. One of them has to be wrong...
+> I've only attached the noteedit file. I'm using lilypond 2.4.6.
+
+Yes, I noticed, but I don't think it's a bug, it's Lilypond's feature:). 
+In NoteEdit, your composition is more technically correct:
+For 4 measures, you write in treble clef. The fifth measure is in 
+soprano clef. So you place the first element in the fifth measure the 
+soprano clef (you closed the 4 measures long segment with a measureline 
+and started a new segment in the fifth one). Placing the soprano clef as 
+the last element in the fourth measure is nonsense, because a 
+measureline doesn't depend on the clef (it doesn't have pitch, so it 
+doesn't need it).
+
+Lilypond tries to make the outlook nicer and more readable by the performer:
+It ignores the exact position of the clef in .ly file (before or right 
+after the measureline), but always places it before the measureline 
+where the clef is about to change. Why is it good? Well, the performer 
+register it more quickly. And besides it's quite common in literature (I 
+checked my Henle's Chopin's Etudes and Edition Peters Czerny's Etudes) 
+to place the new clef right before the measure where it changes and not 
+in the measure measure itself. That's the LilyPond view.
+
+IMO, this works as it should from the first place. Or did you have 
+something else in mind?
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 16:14:43 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 16:14:43 +0200
+Subject: [Noteedit-devel] Soprano clef
+In-Reply-To: <426B1DC0.70900@schwaben.de>
+References: <426A9002.6030000@guest.arnes.si> <426B1DC0.70900@schwaben.de>
+Message-ID: <426BA9D3.3050307@guest.arnes.si>
+
+Hm.. wierd. It builds and works here. What's the error output? Anyway, 
+I'm planning to commit another change this evening, so it should work.
+
+
+Regards.
+- Matev?
+
+>The slowenian translation doesn't build any more. If you can't
+>reproduce/correct it, I can give you details.
+>  
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 16:25:56 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 16:25:56 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426B79FB.2090602@web.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de> <426B79FB.2090602@web.de>
+Message-ID: <426BAC74.4050903@guest.arnes.si>
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>>> *** Warning: Linking the executable noteedit against the loadable 
+>>> module
+>>> *** libnoteedit.so is not portable!
+>>> ./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+>>> ./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+>>> ./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+>>
+>
+>>
+>> I looked at my Makefile and the Makefile.am. Your problems seems to be
+>> that YYLINENO (i.e. LEX_LINENO), YYRESTART (LEX_RESTART) and YYPARSE
+>> (YACC_PARSE) are not defined in the Makefile. For me they have the
+>> values NEDITlineno, NEDITrestart , NEDITparse. I have not found out
+>> who is generating these three symbols.
+>>
+>
+God I hate Makefiles stuff:).
+
+> Some more information about this:
+> In configure.in.in "NEDIT" is defined as PREFIX for LEX/YACC.
+> After running configure the PREFIX gets added to all the
+> parse/restart/lineno methods (This is done dynamically when
+> generating the file noteedit/grammar.cpp and noteedit/lexik.cpp).
+> So your configure.in and your configure file should have the lines
+> LEX_PREFIX="NEDIT"
+> LEX_RESTART="${LEX_PREFIX}restart"
+> LEX_LINENO="${LEX_PREFIX}lineno"
+> YACC_PARSE="${LEX_PREFIX}parse"
+> YACC_LVAL="${LEX_PREFIX}lval"
+
+Yes, I have them in both configure and configure.in.
+
+> The noteedit/Makefile already should contain several variable
+> definitions like
+> LEX_LINENO = NEDITlineno
+> LEX_PREFIX = NEDIT
+> LEX_RESTART = NEDITrestart
+> and (very important)
+> PREFIX_DEF = -DYYLINENO=$(LEX_LINENO) -DYYRESTART=$(LEX_RESTART) 
+> -DYYPARSE=$(YACC_PARSE) -DYYLVAL=$(YACC_LVAL)
+
+Yes, I have those too in noteedit/Makefile.
+
+> and finally lexik.cpp contains the definition for the symbol
+> /* Substitute the variable and function names.  */
+> #define yyparse NEDITparse
+> #define yylex   NEDITlex
+> #define yyerror NEDITerror
+> #define yylval  NEDITlval
+> #define yychar  NEDITchar
+> #define yydebug NEDITdebug
+> #define yynerrs NEDITnerrs
+
+Hm... you mean noteedit/lexik.cc? I didn't find those in it. Also 
+lexik.ll only has few yylex and yytext phrases, but no 
+yyparse/yyerror/yychar and others... Isn't lexik.cc/cpp created from 
+lexik.ll by flex? I'm using the current svn's lexik.ll file.
+
+
+Regards.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 16:27:39 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 16:27:39 +0200
+Subject: [Noteedit-devel] Soprano clef
+In-Reply-To: <426BA955.20705@guest.arnes.si>
+References: <426A9002.6030000@guest.arnes.si> <426B7443.8010003@web.de> <426BA955.20705@guest.arnes.si>
+Message-ID: <426BACDB.3070403@web.de>
+
+>> I just noted that mup doesn't like clef changes in the mid of the
+>> bar.
+> 
+> 
+> Could you be more specific? I made a test with a treble clef long 2.5 
+> measures, then I placed a soprano clef in the middle of the third 
+> measure and continued writing in it. I saved, closed NE, open it again 
+> and it showed fine.
+
+Just use the Schubert piece I sent with the mail and save it.
+
+Here is the error message:
+
+staff 1; measure 5: MUP cannot deal with clef changes in the middle of 
+measure
+
+But as I said I think it's a general problem, not something special
+about the Soprano clef.
+
+> Lilypond tries to make the outlook nicer and more readable by the 
+> performer:
+> It ignores the exact position of the clef in .ly file (before or right 
+> after the measureline), but always places it before the measureline 
+> where the clef is about to change. Why is it good? Well, the performer 
+> register it more quickly. And besides it's quite common in literature (I 
+> checked my Henle's Chopin's Etudes and Edition Peters Czerny's Etudes) 
+> to place the new clef right before the measure where it changes and not 
+> in the measure measure itself. That's the LilyPond view.
+> 
+> IMO, this works as it should from the first place. Or did you have 
+> something else in mind?
+
+So from the point of view of the mup file noteedit behaves correct.
+Only if the user would like to see the position of the clef where
+it will be placed by lilypond it'd be a minor issue.
+
+Thanks for the comment and best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 17:28:11 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 17:28:11 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426BAC74.4050903@guest.arnes.si>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de> <426B79FB.2090602@web.de> <426BAC74.4050903@guest.arnes.si>
+Message-ID: <426BBB0B.9080201@web.de>
+
+>>> I looked at my Makefile and the Makefile.am. Your problems seems to be
+>>> that YYLINENO (i.e. LEX_LINENO), YYRESTART (LEX_RESTART) and YYPARSE
+>>> (YACC_PARSE) are not defined in the Makefile. For me they have the
+>>> values NEDITlineno, NEDITrestart , NEDITparse. I have not found out
+>>> who is generating these three symbols.
+>>>
+>>
+> God I hate Makefiles stuff:).
+
+Hmmm.. you can always compile everything manually ;-)
+
+>> and finally lexik.cpp contains the definition for the symbol
+>> /* Substitute the variable and function names.  */
+>> #define yyparse NEDITparse
+>> #define yylex   NEDITlex
+>> #define yyerror NEDITerror
+>> #define yylval  NEDITlval
+>> #define yychar  NEDITchar
+>> #define yydebug NEDITdebug
+>> #define yynerrs NEDITnerrs
+> 
+> 
+> Hm... you mean noteedit/lexik.cc? I didn't find those in it. Also 
+> lexik.ll only has few yylex and yytext phrases, but no 
+> yyparse/yyerror/yychar and others... Isn't lexik.cc/cpp created from 
+> lexik.ll by flex? I'm using the current svn's lexik.ll file.
+> 
+
+Now that's interesting. In my Makefile LEX / YACC is defined as
+LEX = flex -l
+LEXLIB = -lfl
+YACC = bison -y -d
+
+So you are right, lexik.ll is generated by flex. The interesting
+thing is how the cc files are created out of the ll files. The
+Makefile.am contains some lines including .ll.cc / .yy.cc directives
+(i.e. if the makefiles encounters a .ll / .yy file, the corresponding
+.cc file is creating by using the commands found in the directive.
+Now your problem might have two solutions:
+
+1) Remove the directives from the Makefile.am (they are generated
+with newer automake anyway automagically).
+
+2) Remove the automatically generated directives from the Makefile.
+Even in my Makefile both directives are present. Not something which
+I particulary like. I'll do some test of this on my system as well.
+
+Regards,
+
+Reinhard Katzmann
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 18:28:07 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 18:28:07 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426BBB0B.9080201@web.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de> <426B79FB.2090602@web.de> <426BAC74.4050903@guest.arnes.si> <426BBB0B.9080201@web.de>
+Message-ID: <426BC917.5070601@guest.arnes.si>
+
+>
+> Now that's interesting. In my Makefile LEX / YACC is defined as
+> LEX = flex -l
+> LEXLIB = -lfl
+> YACC = bison -y -d
+>
+Yes, I have the same, except the LEX = flex (without -l parameter).
+
+> So you are right, lexik.ll is generated by flex. The interesting
+> thing is how the cc files are created out of the ll files. The
+> Makefile.am contains some lines including .ll.cc / .yy.cc directives
+> (i.e. if the makefiles encounters a .ll / .yy file, the corresponding
+> .cc file is creating by using the commands found in the directive.
+> Now your problem might have two solutions:
+>
+> 1) Remove the directives from the Makefile.am (they are generated
+> with newer automake anyway automagically).
+>
+Sorry, but I'm not following you:-(. Which directives?
+
+
+- M
+
+
+From noteedit-devel-admin at lists.berlios.de  Sun Apr 24 18:43:52 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sun, 24 Apr 2005 18:43:52 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426BC917.5070601@guest.arnes.si>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de> <426B79FB.2090602@web.de> <426BAC74.4050903@guest.arnes.si> <426BBB0B.9080201@web.de> <426BC917.5070601@guest.arnes.si>
+Message-ID: <426BCCC8.5070800@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> 
+>>
+>> Now that's interesting. In my Makefile LEX / YACC is defined as
+>> LEX = flex -l
+>> LEXLIB = -lfl
+>> YACC = bison -y -d
+>>
+> Yes, I have the same, except the LEX = flex (without -l parameter).
+
+ From the manpage:
+
+  -l     turns on maximum compatibility with the original AT&T lex imple-
+         mentation.  Note that this does  not  mean  full  compatibility.
+         Use  of  this option costs a considerable amount of performance,
+         and it cannot be used with the -+, -f, -F, -Cf, or -CF  options.
+         For  details on the compatibilities it provides, see the section
+         "Incompatibilities With Lex And POSIX" below.  This option  also
+         results  in  the  name YY_FLEX_LEX_COMPAT being #define'd in the
+         generated scanner.
+
+>> So you are right, lexik.ll is generated by flex. The interesting
+>> thing is how the cc files are created out of the ll files. The
+>> Makefile.am contains some lines including .ll.cc / .yy.cc directives
+>> (i.e. if the makefiles encounters a .ll / .yy file, the corresponding
+>> .cc file is creating by using the commands found in the directive.
+>> Now your problem might have two solutions:
+>>
+>> 1) Remove the directives from the Makefile.am (they are generated
+>> with newer automake anyway automagically).
+>>
+> Sorry, but I'm not following you:-(. Which directives?
+> 
+
+I just show you the lines of Makefile.am:
+
+.yy.cc:
+	$(YACC) $(AM_YFLAGS) $(YFLAGS) $<
+
+<more stuff>
+
+.ll.cc:
+	$(LEX) -P$(LEX_PREFIX) -olex.yy.c $<
+<more stuff>
+
+So to test it you could have removed these two
+directives (they are telling the make program
+what to do with the (lexik).ll / (grammer).yy files.
+
+I don't have success though when I try that. So
+perhabs you should first look for the lines
+".yy.cc:" and ".ll.cc:" in the Makefile and
+remove the ones not being the same as in the
+Makefile.am file.
+
+Currently I don't know how to tell automake not
+to automatically place them into the Makefile.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 00:03:29 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 00:03:29 +0200
+Subject: [Noteedit-devel] Qt Port of Mainwindow and menu
+Message-ID: <426C17B1.6070108@web.de>
+
+Hi,
+
+I started the port of the main window to raw Qt. I looked
+into mainframewidget.cpp and found out that the code base
+doesn't seem to be too difficult to move back for these
+components. I includeded a designer ui file for a first
+impression. I used the KDE crystalsvg icons as a base,
+this can of course be changed if you know similar good
+looking icons.
+
+I also made several small corrections to the menus and
+started grouping some of the insert of notes and other
+musical symbols. There is a technical problem to this
+though as you know longer see that you have selected
+one of the symbols of such a group to be inserted (i.e.
+you see which symbol is selected but not that you
+have selected the group for input). This probably can
+be worked around as a Toolbar is a Dockwindow where
+other widgets could be added as well.
+
+Of course several toolbars are still missing and some
+menu points have to be added (Qt requires for every
+toolbar item one menu item), and of course all the slots
+for the menu have to be added to the mainwindow.ui.h file.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050425/8f6d3846/attachment.html>
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 07:57:53 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 07:57:53 +0200
+Subject: [Noteedit-devel] Qt Port of Mainwindow and menu
+In-Reply-To: <426C17B1.6070108@web.de>
+References: <426C17B1.6070108@web.de>
+Message-ID: <426C86E1.4000508@schwaben.de>
+
+Is there a way to make this configurable? I would find it sad if the
+integration into kde would be removed. I tend to respect the work the
+authers of noteedit did ...
+
+Persoonally I don't need the integration, but I just imagine the shuffle
+of files on the Desktop to call noteedit might be easier. More
+substantial critic I can't give in the moment. The option to be able to
+run without kde is a plus, of course.
+
+Best Regards,
+Georg.
+
+
+noteedit-devel-admin at berlios.de wrote:
+> Hi,
+>
+> I started the port of the main window to raw Qt. I looked
+> into mainframewidget.cpp and found out that the code base
+> doesn't seem to be too difficult to move back for these
+> components. I includeded a designer ui file for a first
+> impression. I used the KDE crystalsvg icons as a base,
+> this can of course be changed if you know similar good
+> looking icons.
+>
+> I also made several small corrections to the menus and
+> started grouping some of the insert of notes and other
+> musical symbols. There is a technical problem to this
+> though as you know longer see that you have selected
+> one of the symbols of such a group to be inserted (i.e.
+> you see which symbol is selected but not that you
+> have selected the group for input). This probably can
+> be worked around as a Toolbar is a Dockwindow where
+> other widgets could be added as well.
+>
+> Of course several toolbars are still missing and some
+> menu points have to be added (Qt requires for every
+> toolbar item one menu item), and of course all the slots
+> for the menu have to be added to the mainwindow.ui.h file.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 08:13:50 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 08:13:50 +0200
+Subject: [Noteedit-devel] 2.7.5 / 2.8 Release and FRQ #310
+Message-ID: <426C8A9E.7040306@web.de>
+
+Hi,
+
+I'd suggest we bring out a new 2.7.5 release (or 2.8.0 ) before I start 
+doing to many change to the user interface for Feature Request #310.
+After that I would make a 2.8 branch for the current stable release
+and 2.9 for the development just on the above feature, so changes
+to 2.8 can be easily merged into 2.9. I'll try to finish the
+Voices / Staff properties integration this week.
+
+Best Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 08:32:15 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 08:32:15 +0200
+Subject: [Noteedit-devel] Qt Port of Mainwindow and menu
+In-Reply-To: <426C86E1.4000508@schwaben.de>
+References: <426C17B1.6070108@web.de> <426C86E1.4000508@schwaben.de>
+Message-ID: <426C8EEF.3040404@web.de>
+
+Hi Georg,
+
+noteedit-devel-admin at berlios.de schrieb:
+> Is there a way to make this configurable? I would find it sad if the
+> integration into kde would be removed. I tend to respect the work the
+> authers of noteedit did ...
+
+Theoretically we could maintain both a Qt and KDE Version of NoteEdit
+but I think it would mean quite some work to keep both versions as
+not only for the main window and the menu there has to be code doubled
+but also for file dialogs, settings, standard dialogs etc.
+Of course I do respect the works of the original noteedit author(s)
+as well. Going to pure Qt will make things a little bit more 
+complicated. OTOH it is much easier to port to other platforms after
+this step as we are only dependent on one user interface API.
+
+> Persoonally I don't need the integration, but I just imagine the shuffle
+> of files on the Desktop to call noteedit might be easier. More
+> substantial critic I can't give in the moment. The option to be able to
+> run without kde is a plus, of course.
+
+Concerning the KDE integration maybe we could support a minimal
+desktop integration (mainly for theming and such). It would have
+to be done in a way that these addons can be switched easily with
+#ifdef KDE. Other things like Midi / TSE3 / arts (the audio integration)
+is a completely different topic I would not change at this time.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 11:13:27 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 11:13:27 +0200
+Subject: [Noteedit-devel] 2.7.5 / 2.8 Release and FRQ #310
+In-Reply-To: <426C8A9E.7040306@web.de>
+References: <426C8A9E.7040306@web.de>
+Message-ID: <426CB4B7.4000202@guest.arnes.si>
+
+Yes, I think we should release 2.8.0 version and split the 
+stable/unstable branches immediately. I have a question about Qt though: 
+Are there any big API differences between Qt3.x and Qt4.x 
+APIs/libraries? Because Qt4.0 has a release date in June afaik.
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> Hi,
+>
+> I'd suggest we bring out a new 2.7.5 release (or 2.8.0 ) before I 
+> start doing to many change to the user interface for Feature Request 
+> #310.
+> After that I would make a 2.8 branch for the current stable release
+> and 2.9 for the development just on the above feature, so changes
+> to 2.8 can be easily merged into 2.9. I'll try to finish the
+> Voices / Staff properties integration this week.
+>
+> Best Regards,
+>
+> Reinhard Katzmann
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 15:27:35 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 15:27:35 +0200
+Subject: [Noteedit-devel] Lily export broken
+Message-ID: <426CF047.8050700@guest.arnes.si>
+
+In the end of exported .ly file, there's
+\context PianoStaff
+<
+    \context staff=StaffA
+    \context staff=StaffB
+ >
+
+there should be double << and >> signs
+\context PianoStaff
+<<
+    \context staff=StaffA
+    \context staff=StaffB
+ >>
+
+Otherwise LilyPond won't compile it. Using 2.4.2. Georg, could you fix that?
+
+
+- Matev?
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 19:01:44 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 19:01:44 +0200
+Subject: [Noteedit-devel] 2.7.5 / 2.8 Release and FRQ #310
+In-Reply-To: <426CB4B7.4000202@guest.arnes.si>
+References: <426C8A9E.7040306@web.de> <426CB4B7.4000202@guest.arnes.si>
+Message-ID: <426D2278.9020304@web.de>
+
+noteedit-devel-admin at berlios.de schrieb:
+> Yes, I think we should release 2.8.0 version and split the 
+> stable/unstable branches immediately. I have a question about Qt though: 
+> Are there any big API differences between Qt3.x and Qt4.x 
+> APIs/libraries? Because Qt4.0 has a release date in June afaik.
+
+Indeed there are big differences between Qt4.0 and the current one.
+They build in a compatibility layer so the developers can slowly
+switch to the new Qt4.0 API. Also the designer has changed a lot
+in it's functionality (as I read last there was no longer a possibility
+to code with the designer). They have split up the library. Many
+of the classes which were not accessible without subclassing are
+no accessible, OTOH several classes were removed AFAIK.
+
+I'll try to get a beta release ready at the weekend so we get
+the release out quite soon. I'll set the version on the corresponding
+files if no one has time this week to do this.
+
+Concerning the split: You should check out the 2.8.0 branch as soon
+as I created it. The "HEAD" branch will then be the 2.9.0. I'll
+give some instructions as soon as I have done it.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 19:33:05 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 19:33:05 +0200
+Subject: [Noteedit-devel] 2.7.5 / 2.8 Release and FRQ #310
+In-Reply-To: <426D2278.9020304@web.de>
+References: <426C8A9E.7040306@web.de> <426CB4B7.4000202@guest.arnes.si> <426D2278.9020304@web.de>
+Message-ID: <426D29D1.1030704@guest.arnes.si>
+
+Ok, I'll try to squash some more bugs meanwhile;-).
+(just fixed "#3862 - measures after multirests not numbered correctly" 
+and looking forward to #3861 tomorrow)
+
+
+Regards.
+- Matev?
+
+noteedit-devel-admin at berlios.de wrote:
+
+> noteedit-devel-admin at berlios.de schrieb:
+>
+>> Yes, I think we should release 2.8.0 version and split the 
+>> stable/unstable branches immediately. I have a question about Qt 
+>> though: Are there any big API differences between Qt3.x and Qt4.x 
+>> APIs/libraries? Because Qt4.0 has a release date in June afaik.
+>
+>
+> Indeed there are big differences between Qt4.0 and the current one.
+> They build in a compatibility layer so the developers can slowly
+> switch to the new Qt4.0 API. Also the designer has changed a lot
+> in it's functionality (as I read last there was no longer a possibility
+> to code with the designer). They have split up the library. Many
+> of the classes which were not accessible without subclassing are
+> no accessible, OTOH several classes were removed AFAIK.
+>
+> I'll try to get a beta release ready at the weekend so we get
+> the release out quite soon. I'll set the version on the corresponding
+> files if no one has time this week to do this.
+>
+> Concerning the split: You should check out the 2.8.0 branch as soon
+> as I created it. The "HEAD" branch will then be the 2.9.0. I'll
+> give some instructions as soon as I have done it.
+>
+> Best regards,
+>
+> Reinhard Katzmann
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Mon Apr 25 23:55:00 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Mon, 25 Apr 2005 23:55:00 +0200
+Subject: [Noteedit-devel] Lily export broken
+In-Reply-To: <426CF047.8050700@guest.arnes.si>
+References: <426CF047.8050700@guest.arnes.si>
+Message-ID: <426D6734.1030500@schwaben.de>
+
+Hi Matev?,
+
+I'm puzzled, a score block of a piano staff now looks more like
+
+\score {
+        \relative <<
+                \context GrandStaff = cStaffAA <<
+                        \context Staff = cStaffAA <<
+                                \context Voice = cStaffAA \StaffA
+                        >>
+
+                        \context Staff = cStaffBB <<
+                                \context Voice = cStaffBB \StaffB
+                        >>
+                >>
+
+                \set Score.skipBars = ##t
+                \set Score.melismaBusyProperties = #'()
+        >>
+        \layout {
+                linewidth = 170.000 \mm
+                textheight = 250.000 \mm
+        }
+}
+
+I would fix it, but I guess you might happen to have grabbed an old
+version of noteedit, or your lilypond is not found?
+Best Regards,
+Georg.
+
+
+
+
+noteedit-devel-admin at berlios.de wrote:
+> In the end of exported .ly file, there's
+> \context PianoStaff
+> <
+>    \context staff=StaffA
+>    \context staff=StaffB
+> >
+>
+> there should be double << and >> signs
+> \context PianoStaff
+> <<
+>    \context staff=StaffA
+>    \context staff=StaffB
+> >>
+>
+> Otherwise LilyPond won't compile it. Using 2.4.2. Georg, could you fix
+> that?
+>
+>
+> - Matev?
+>
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr 26 01:35:49 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Apr 2005 01:35:49 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426BCCC8.5070800@web.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de> <426B79FB.2090602@web.de> <426BAC74.4050903@guest.arnes.si> <426BBB0B.9080201@web.de> <426BC917.5070601@guest.arnes.si> <426BCCC8.5070800@web.de>
+Message-ID: <426D7ED5.4010709@schwaben.de>
+
+Hi,
+
+so I also tried a clean svn build with an copied-over admin-tarball, and
+had to come down the same road: The first block of building
+midimapper.cpp could be removed with Reinhard's patch patch_Makefile.am,
+but now it fails also with
+
+/bin/sh ../libtool --silent --tag=CXX --mode=link g++ 
+-Wnon-virtual-dtor -Wno-long-long -Wundef -Wall
+ -W -Wpointer-arith -Wwrite-strings -ansi -D_XOPEN_SOURCE=500
+-D_BSD_SOURCE -Wcast-align -Wconversion
+-Wchar-subscripts -O2 -Wformat-security -Wmissing-format-attribute
+-fno-exceptions -fno-check-new -fno
+-common    -o noteedit -R /opt/kde3/lib64 -R /usr/lib/qt3/lib64 -R
+/usr/X11R6/lib64 main.o libnoteedit
+.la 
+
+*** Warning: Linking the executable noteedit against the loadable module
+*** libnoteedit.so is not portable!
+./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+collect2: ld returned 1 exit status
+make[4]: *** [noteedit] Fehler 1
+make[4]: Leaving directory `/home/rud/ne_admin/noteedit/noteedit'
+make[3]: *** [all-recursive] Fehler 1
+make[3]: Leaving directory `/home/rud/ne_admin/noteedit/noteedit'
+make[2]: *** [all-recursive] Fehler 1
+make[2]: Leaving directory `/home/rud/ne_admin/noteedit'
+make[1]: *** [all] Fehler 2
+make[1]: Leaving directory `/home/rud/ne_admin/noteedit'
+make: *** [prep] Fehler 2
+rud at nb64:~/ne_admin>
+
+When someone generates a patch I could run this further. I'm here on
+Suse 9.3 x86-64, seems to be no special case.
+Regards,
+Georg.
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr 26 07:45:26 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Apr 2005 07:45:26 +0200
+Subject: [Noteedit-devel] build from svn question
+In-Reply-To: <426D7ED5.4010709@schwaben.de>
+References: <4268EEDF.9030209@guest.arnes.si> <426963A1.50302@web.de> <426976FA.5080703@guest.arnes.si> <4269F900.7070703@web.de> <426A3070.3040006@guest.arnes.si> <426AC54A.1070404@web.de> <426B79FB.2090602@web.de> <426BAC74.4050903@guest.arnes.si> <426BBB0B.9080201@web.de> <426BC917.5070601@guest.arnes.si> <426BCCC8.5070800@web.de> <426D7ED5.4010709@schwaben.de>
+Message-ID: <426DD576.8070904@web.de>
+
+Hi Georg,
+
+Thanks for the feedback! Yesterday I added a workaround in the
+filehandler.cpp to solve the problem for me and when I this
+morning thought about it I finally found out the reason:
+I had removed a critical dependency to filehandler.lo in the
+Makefile.am! So again I append the corrected Makefile.am to
+this mail. If nothing goes wrong anymore I upload this to svn.
+
+Thanks for all the help!
+
+Best regards,
+
+Reinhard Katzmann
+
+noteedit-devel-admin at berlios.de schrieb:
+> Hi,
+> 
+> so I also tried a clean svn build with an copied-over admin-tarball, and
+> had to come down the same road: The first block of building
+> midimapper.cpp could be removed with Reinhard's patch patch_Makefile.am,
+> but now it fails also with
+> 
+> /bin/sh ../libtool --silent --tag=CXX --mode=link g++ 
+> -Wnon-virtual-dtor -Wno-long-long -Wundef -Wall
+>  -W -Wpointer-arith -Wwrite-strings -ansi -D_XOPEN_SOURCE=500
+> -D_BSD_SOURCE -Wcast-align -Wconversion
+> -Wchar-subscripts -O2 -Wformat-security -Wmissing-format-attribute
+> -fno-exceptions -fno-check-new -fno
+> -common    -o noteedit -R /opt/kde3/lib64 -R /usr/lib/qt3/lib64 -R
+> /usr/X11R6/lib64 main.o libnoteedit
+> .la 
+> 
+> *** Warning: Linking the executable noteedit against the loadable module
+> *** libnoteedit.so is not portable!
+> ./.libs/libnoteedit.so: undefined reference to `YYLINENO'
+> ./.libs/libnoteedit.so: undefined reference to `YYRESTART(_IO_FILE*)'
+> ./.libs/libnoteedit.so: undefined reference to `YYPARSE()'
+> collect2: ld returned 1 exit status
+> make[4]: *** [noteedit] Fehler 1
+> make[4]: Leaving directory `/home/rud/ne_admin/noteedit/noteedit'
+> make[3]: *** [all-recursive] Fehler 1
+> make[3]: Leaving directory `/home/rud/ne_admin/noteedit/noteedit'
+> make[2]: *** [all-recursive] Fehler 1
+> make[2]: Leaving directory `/home/rud/ne_admin/noteedit'
+> make[1]: *** [all] Fehler 2
+> make[1]: Leaving directory `/home/rud/ne_admin/noteedit'
+> make: *** [prep] Fehler 2
+> rud at nb64:~/ne_admin>
+> 
+> When someone generates a patch I could run this further. I'm here on
+> Suse 9.3 x86-64, seems to be no special case.
+> Regards,
+> Georg.
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> http://lists.berlios.de/mailman/listinfo/noteedit-devel
+> 
+
+
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: Makefile.am
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050426/86d06d51/attachment.ksh>
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr 26 11:26:36 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Apr 2005 11:26:36 +0200
+Subject: [Noteedit-devel] Lily export broken
+In-Reply-To: <426D6734.1030500@schwaben.de>
+References: <426CF047.8050700@guest.arnes.si> <426D6734.1030500@schwaben.de>
+Message-ID: <426E094C.7000907@guest.arnes.si>
+
+Oops, yes I use Debian's prebuilt Lily packages, which are named 
+lilypond-snapshot and NE doesn't find it by default. Sorry:-).
+
+
+- Matev?
+
+>I would fix it, but I guess you might happen to have grabbed an old
+>version of noteedit, or your lilypond is not found?
+>Best Regards,
+>Georg.
+>
+>
+>
+>
+>noteedit-devel-admin at berlios.de wrote:
+>  
+>
+>>In the end of exported .ly file, there's
+>>\context PianoStaff
+>><
+>>   \context staff=StaffA
+>>   \context staff=StaffB
+>>    
+>>
+>>there should be double << and >> signs
+>>\context PianoStaff
+>><<
+>>   \context staff=StaffA
+>>   \context staff=StaffB
+>>    
+>>
+>>Otherwise LilyPond won't compile it. Using 2.4.2. Georg, could you fix
+>>that?
+>>
+>>
+>>- Matev?
+>>
+>>_______________________________________________
+>>Noteedit-devel mailing list
+>>Noteedit-devel at lists.berlios.de
+>>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>>
+>>
+>>    
+>>
+>
+>
+>_______________________________________________
+>Noteedit-devel mailing list
+>Noteedit-devel at lists.berlios.de
+>http://lists.berlios.de/mailman/listinfo/noteedit-devel
+>
+>
+>  
+>
+
+
+From noteedit-devel-admin at lists.berlios.de  Tue Apr 26 15:22:45 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Tue, 26 Apr 2005 15:22:45 +0200
+Subject: [Noteedit-devel] MultiRest issues resolved
+Message-ID: <426E40A5.3080102@guest.arnes.si>
+
+Hello to all.
+
+I finally resolved multirest issues. They are now numbered correctly and 
+their length is set according to the current time signature. I tried 
+Lily export and it works fine. Measure numberings in NE are the same as 
+Lily's. Note that inserting a multirest + key signature/clef + 
+measureline works as well (my patch yesterday needed explicetly 
+multirest + measureline in order to make measures numberings work). I 
+also attached a screenshot of NE & multirests in action.
+
+I'm not sure if my patches were the best possible solutions to problems, 
+but elementary they work this way:
+- #3862 - measures after multirests not numbered correctly:
+When placing a barline (of any type) NE now checks if any element of 
+getType()==T_REST and getSubType()==MULTIREST exists in previous measure 
+(an iterration until a measureline of any kind is found or the beginning 
+of the document). If found, than place the measureLine with 
+numbering+=lengthOfMultiRest (ie. the number of measures that mulitrest 
+is long). If not, then make an ordanary measureline with numbering++.
+- #3861 - Multirests in non-4/4 measure broken:
+When placing a Multirest, its length_ variable (rest length in MIDI 
+units) was set to voice->getStaff()->staff_props->getMeasureLength() 
+multiplied by lengthOfMultiRest (number of measures). That would be 
+fine, if getMeasureLength() would be properly set. But it was set to a 
+constant 4*QUARTER_LENGTH. What I made was a new function 
+NVoice::getCurrentMeasureMidiLength(), which tries to find the first 
+time signature from that element backwards. It iterated until the time 
+signature or the beginning of document was found. If found, it returned 
+the correctly calculated measure length. If not found, it returned the 
+default 4*QUARTER_LENGTH. Now, the getMeasureLength() is calculated by 
+calling NVoice::getCurrentMeasureMidiLength() and is not set to a 
+constant anymore.
+
+What I'd like to know is if these patches are implemented correctly. Or 
+are these functions and principles I took already implemented somewhere? 
+In anyway, please test:-)
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: extendedTies1.jpg
+Type: image/jpeg
+Size: 51130 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050426/a378a6e9/attachment.jpg>
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr 27 09:44:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Apr 2005 09:44:12 +0200
+Subject: [Noteedit-devel] MultiRest issues resolved
+In-Reply-To: <426E40A5.3080102@guest.arnes.si>
+References: <426E40A5.3080102@guest.arnes.si>
+Message-ID: <426F42CC.4050701@schwaben.de>
+
+HiMatev?,
+
+thanks! It's very nice to have this, great work, I'll use it. When I
+have time I'll test it more. On the first glance it just works. Your
+code I'll study, which will teach me more about the inner workings. And
+thanks for the screenshot, it looked nice.
+
+More on this soon hopefully,
+Regards,
+Georg.
+
+noteedit-devel-admin at berlios.de wrote:
+> Hello to all.
+>
+> I finally resolved multirest issues. They are now numbered correctly
+> and their length is set according to the current time signature. I
+> tried Lily export and it works fine. Measure numberings in NE are the
+> same as Lily's. Note that inserting a multirest + key signature/clef +
+> measureline works as well (my patch yesterday needed explicetly
+> multirest + measureline in order to make measures numberings work). I
+> also attached a screenshot of NE & multirests in action.
+>
+> I'm not sure if my patches were the best possible solutions to
+> problems, but elementary they work this way:
+> - #3862 - measures after multirests not numbered correctly:
+> When placing a barline (of any type) NE now checks if any element of
+> getType()==T_REST and getSubType()==MULTIREST exists in previous
+> measure (an iterration until a measureline of any kind is found or the
+> beginning of the document). If found, than place the measureLine with
+> numbering+=lengthOfMultiRest (ie. the number of measures that
+> mulitrest is long). If not, then make an ordanary measureline with
+> numbering++.
+> - #3861 - Multirests in non-4/4 measure broken:
+> When placing a Multirest, its length_ variable (rest length in MIDI
+> units) was set to voice->getStaff()->staff_props->getMeasureLength()
+> multiplied by lengthOfMultiRest (number of measures). That would be
+> fine, if getMeasureLength() would be properly set. But it was set to a
+> constant 4*QUARTER_LENGTH. What I made was a new function
+> NVoice::getCurrentMeasureMidiLength(), which tries to find the first
+> time signature from that element backwards. It iterated until the time
+> signature or the beginning of document was found. If found, it
+> returned the correctly calculated measure length. If not found, it
+> returned the default 4*QUARTER_LENGTH. Now, the getMeasureLength() is
+> calculated by calling NVoice::getCurrentMeasureMidiLength() and is not
+> set to a constant anymore.
+>
+> What I'd like to know is if these patches are implemented correctly.
+> Or are these functions and principles I took already implemented
+> somewhere? In anyway, please test:-)
+>
+>
+> Regards.
+> - Matev?
+>
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr 27 10:34:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Apr 2005 10:34:41 +0200
+Subject: [Noteedit-devel] developer wiki?
+Message-ID: <426F4EA1.5070706@guest.arnes.si>
+
+Does anyone know if Berlios offers any non-public wikies? I'd like to 
+discuss some things and introduce some of my ideas for the future, but I 
+wouldn't like them to be available to non-NoteEdit developers. I have a 
+completely different UI in mind, different file formats for saving the 
+score, the whole new NE API for making scripts&macros, which includes 
+replacement for most of the inner parts of the current NE (yesterday 
+multirest's implementation gave me a headache because of NE's clumsyness 
+for eg.), different MIDI output and interaction etc. Since this mailing 
+list is public, I wouldn't like to discuss them here, cause I'm a bit 
+affraid that big brother's watching, oops reading us:-).
+
+
+Regrads.
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr 27 19:22:12 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Apr 2005 19:22:12 +0200
+Subject: [Noteedit-devel] developer wiki?
+In-Reply-To: <426F4EA1.5070706@guest.arnes.si>
+References: <426F4EA1.5070706@guest.arnes.si>
+Message-ID: <426FCA44.70601@web.de>
+
+Hi Matev?,
+
+noteedit-devel-admin at berlios.de schrieb:
+> Does anyone know if Berlios offers any non-public wikies? I'd like to 
+> discuss some things and introduce some of my ideas for the future, but I 
+> wouldn't like them to be available to non-NoteEdit developers. I have a 
+
+Berlios itself does not offer non-public wikies. But we can add our
+own wiki to the noteedit homepage.
+
+> completely different UI in mind, different file formats for saving the 
+> score, the whole new NE API for making scripts&macros, which includes 
+> replacement for most of the inner parts of the current NE (yesterday 
+> multirest's implementation gave me a headache because of NE's clumsyness 
+> for eg.), different MIDI output and interaction etc. Since this mailing 
+> list is public, I wouldn't like to discuss them here, cause I'm a bit 
+> affraid that big brother's watching, oops reading us:-).
+
+Concerning Midi I have also some ideas, but I have to investigate
+first a little bit further the whole thing before I can make a concept.
+
+Berlios does not allow to create "Private" Mailing lists.  As far as I 
+see the TOS of Berlios do not forbid to set up disclosed pages for 
+development. So if you really want to have a disclosed place for
+discussion (I personally don't mind about it) it would be possible with
+a closed forum or wiki.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr 27 19:56:37 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Apr 2005 19:56:37 +0200
+Subject: [Noteedit-devel] Private Developer Forum
+Message-ID: <426FD255.9060407@web.de>
+
+Hi,
+
+I created (reopened) a private developer forum for
+discussion not to be ment for the public place.
+
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Wed Apr 27 21:36:03 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Wed, 27 Apr 2005 21:36:03 +0200
+Subject: [Noteedit-devel] Apply + Cancel on Properties / Dialogs
+Message-ID: <426FE9A3.8020703@web.de>
+
+Hi,
+
+While working on joining Staff properties and the voice
+dialog I noticed some very unusual behaviour of noteedit:
+
+If you press "Apply" the properties are globally saved.
+If you press "Cancel" afterwards the previous properties are
+restored.
+
+All the applications I know of have the following behaviour:
+If you press "Apply" the properties are globally saved.
+Pressing Cancel does not restore the previous values.
+Several programms additionally
+- Disable Apply/Cancel if no property was changed
+- Disable Apply/Cancel if apply was pressed.
+
+Do you know if this is a usual noteedit behaviour
+and why this is done this way ?
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Thu Apr 28 23:49:24 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Thu, 28 Apr 2005 23:49:24 +0200
+Subject: [Noteedit-devel] MultiRest issues resolved
+In-Reply-To: <426E40A5.3080102@guest.arnes.si>
+References: <426E40A5.3080102@guest.arnes.si>
+Message-ID: <42715A64.7010504@schwaben.de>
+
+Hi Matev?,
+
+a look through your patches gave me confidence that things are working
+better than before. It's well done. Though I will test more on
+multirests the time coming. Btw., recently I tried to fix #3503 (abc
+export bug), because I thought I could do it, but got stucked. Maybe a
+search backwards like you did it for multirest would give me there a
+solution.
+
+I did in the meantime some little cleaning, just things I stumbled over
+recently:
+-- A few printf's for midi-debugging are disabled. They could overflow
+the KDE-console (relevant when startet from a desktop icon) that
+noteedit would crash after a long and heavy session.
+-- In lilyexport text markups go now without \fattext, so texts by
+default will not influence the horizontal spacing of notes. This is what
+I we most of the time want, I think.
+-- The tie (~) is written before the octaviation command, so lilypond
+will not choke on this anymore.
+
+Best Regards,
+Georg.
+
+
+
+
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr 29 07:38:48 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Apr 2005 07:38:48 +0200
+Subject: [Noteedit-devel] Apply + Cancel on Properties / Dialogs
+In-Reply-To: <426FE9A3.8020703@web.de>
+References: <426FE9A3.8020703@web.de>
+Message-ID: <4271C868.5030006@web.de>
+
+> Hi,
+> 
+> While working on joining Staff properties and the voice
+> dialog I noticed some very unusual behaviour of noteedit:
+> 
+> If you press "Apply" the properties are globally saved.
+> If you press "Cancel" afterwards the previous properties are
+> restored.
+> 
+
+I took a deeper thought into this. I guess it would be good
+to test the values on the screen for the user before really
+applying it. There are two possibilities for that:
+
+- Save every value twice in the staffPropFrm class
+- When changing a value show the changes at once in the
+   mainframe widget.
+
+I tend to do the second as you can still Cancel your complete
+action and see the effects of your change.
+
+In the other case I would have to add a "Test" button so it is
+possible to test the values before applying them. Maybe it is
+even better to rename the "Apply" button to "Test".
+
+What do you think?
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Fri Apr 29 15:19:54 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Fri, 29 Apr 2005 15:19:54 +0200
+Subject: [Noteedit-devel] MultiRest issues resolved
+In-Reply-To: <42715A64.7010504@schwaben.de>
+References: <426E40A5.3080102@guest.arnes.si> <42715A64.7010504@schwaben.de>
+Message-ID: <4272347A.1050507@guest.arnes.si>
+
+
+noteedit-devel-admin at berlios.de wrote:
+
+>Hi Matev?,
+>
+>a look through your patches gave me confidence that things are working
+>better than before. It's well done. Though I will test more on
+>multirests the time coming. Btw., recently I tried to fix #3503 (abc
+>export bug), because I thought I could do it, but got stucked. Maybe a
+>search backwards like you did it for multirest would give me there a
+>solution.
+>  
+>
+Ugh. I hate this kind of bugs, mostly because of weak NoteEdit structure 
+:(. I didn't dig into the bug though, but I persume that NoteEdit 
+doesn't have a function that would return you the notes that are in 
+timing above the current, in other voice (chord). You could then seek 
+the previous element of every first-voice note (above the current one) 
+and if this element is a measureline or similar, then the measureline 
+should be before the current note as well.
+The other way I'd prefer more, is that measurelines of any kind should 
+be written in non-first voices as well. This would easily resolve RFE (I 
+don't remember the number), which suggested writing measurelines in 
+non-first voices as well.
+All in all, everything above should require a thought or two thoughts 
+more:). I hope you have some better ideas than I do in the moment!
+
+>I did in the meantime some little cleaning, just things I stumbled over
+>recently:
+>-- A few printf's for midi-debugging are disabled. They could overflow
+>the KDE-console (relevant when startet from a desktop icon) that
+>noteedit would crash after a long and heavy session.
+>  
+>
+That's great.
+
+>-- In lilyexport text markups go now without \fattext, so texts by
+>default will not influence the horizontal spacing of notes. This is what
+>I we most of the time want, I think.
+>  
+>
+Yes, that's fine IMO. Although NE shows FatText all the time in UI.
+
+>-- The tie (~) is written before the octaviation command, so lilypond
+>will not choke on this anymore.
+>  
+>
+I have a feeling that NEWS file is getting mature for the new release:).
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 30 02:38:17 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Apr 2005 02:38:17 +0200
+Subject: [Noteedit-devel] fixed some bugs...
+Message-ID: <4272D379.90106@guest.arnes.si>
+
+I fixed and updated the following bugs/areas:
+- Do you want to save changes dialog, when hitting close button (in 
+titlebar, not by File-->Quit) ignored the Cancel hit. Therefore, if you 
+made a change and quit by using the X button, NE asked you that you have 
+unsaved changes, but if you hit cancel, it exited anyway. This is now fixed.
+- When deleting an element and having the next element non-playable 
+(measureline), NE didn't mark document as edited. Second, when selecting 
+a region, and hitting Del key, NE ignored it. Only Backspace worked for 
+deleting a region. Third, hitting Del or Backspace when no elements 
+selected always marked document as non-edited (although you could make 
+changes to the document before). Last but not least, I implemented a 
+rule that if using Del key, it works only until you reach the end of 
+document. This way, holding Del key won't delete the whole staff if you 
+hold it too long. Backspace does though.
+- Last bar numberings were wrong until at least version 2.7.1. Last bar 
+number was always one ahead than actual bar number (the endbar number). 
+This way, Edit-->Goto bar option always showed you the last bar number 
+increased by one. This was because bar numberings used barNr_++ and not 
+++barNr_, whereas the initial value of barNr_ should be 1 and not 2. 
+This works now as it should.
+- One click MIDI import implemented using File-->Import-->MIDI import. 
+It's actually only a shortcut to TSE3-->MIDI In and 
+TSE3-->TSE3toDocument. If all goes well, it brings you a nice notice 
+that you should use Edit-->Autobar & Autobeam and other tools for making 
+score nicer or you should take a look in documentation for further 
+details. The downside is that it uses the TSE3 score for MIDI import. So 
+if you already have any scores currently loaded in TSE3, it will be 
+lost. I also updated the .po files to include this notice.
+
+Please test and report any spotted bugs:). I think NE is mature for a 
+new release? (2.7.5)
+
+
+Best wishes!
+- Matev?
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 30 17:50:41 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Apr 2005 17:50:41 +0200
+Subject: [Noteedit-devel] Makefile.am for icons directory
+Message-ID: <4273A951.9090007@web.de>
+
+Hi,
+
+I changed the Makefile.am in the icons directory.
+When installing Noteedit an error occured when
+installing it. Reason is that $datadir references
+$kde_datadir and this variable again references
+$datadir. I changed $datadir to $(prefix)/share/apps.
+
+I know it's not the best solution in case $kde_datadir
+changes one day but I didn't find other way around
+the recursion problem.
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - http://www.pertergrin.de
+Project: Noteedit - a score editor - http://noteedit.berlios.de
+GnuPG Public Key available on request
+
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 30 22:47:21 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Apr 2005 22:47:21 +0200
+Subject: [Noteedit-devel] double quotes allowed
+Message-ID: <4273EED9.4080705@guest.arnes.si>
+
+Sorry for being annoying again, but bringing some good news I hope ... :)
+
+Double quotes (") can now be used in score title, composer, comments
+etc. now. Also, staff names can have them too. I also updated Lily and
+ABC export filters, which caused troubles if you used them. MID,
+MusicXML, PMX and MusiXTeX export worked fine.
+
+Please test and fetch any bugs. A nice screenshot showing the working 
+double quotes attached.
+btw. Is there a way, I could update our site a bit. I'd like to clean 
+the FAQ area and bring a little life to the NE site.
+
+Georg, using LilyExport (2.4.5) and Choir staff I get an
+error if using non-default staff names and lyrics (something messed up 
+with voice names or something). Could you check it out please? If you 
+won't I'll do it myself though in the following days, but I think you're 
+more familiar with things there at the moment:).
+
+
+Regards.
+- Matev?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: doubleQuotes.jpg
+Type: image/jpeg
+Size: 84875 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050430/77ee55fc/attachment.jpg>
+
+From noteedit-devel-admin at lists.berlios.de  Sat Apr 30 15:02:01 2005
+From: noteedit-devel-admin at lists.berlios.de (noteedit-devel-admin at lists.berlios.de)
+Date: Sat, 30 Apr 2005 15:02:01 +0200
+Subject: [Noteedit-devel] double quotes allowed
+Message-ID: <427381C9.9010901@guest.arnes.si>
+
+Sorry for being annoying again :-).
+
+Double quotes (") can now be used in score title, composer, comments 
+etc. now. Also, staff names can have them too. I also updated Lily and 
+ABC export filters, which caused troubles if you used them. MID, 
+MusicXML, PMX and MusiXTeX worked fine.
+
+Please test and fetch any bugs. A nice screenshot attached.
+
+Georg, using LilyExport and Choir staff, (using Lily 2.4.5) I get some 
+errors out of the box (something messed up with names, 'c' character is 
+in front of voice names etc.). Could you check it out please?
+
+
+Regards.
+- Matev?
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: doubleQuotes.jpg
+Type: image/jpeg
+Size: 147815 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050430/56eb773a/attachment.jpg>
+

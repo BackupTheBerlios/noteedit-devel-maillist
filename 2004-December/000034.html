@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] how to build?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2004-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20how%20to%20build%3F&In-Reply-To=%3CHNEXFE119NmXyYmbssk0002a57a%40hnexfe11.hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000031.html">
+   <LINK REL="Next"  HREF="000033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] how to build?</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20how%20to%20build%3F&In-Reply-To=%3CHNEXFE119NmXyYmbssk0002a57a%40hnexfe11.hetnet.nl%3E"
+       TITLE="[Noteedit-devel] how to build?">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Dec  1 23:44:07 CET 2004</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000031.html">[Noteedit-devel] how to build?
+</A></li>
+        <LI>Next message: <A HREF="000033.html">[Noteedit-devel] Bug #2528 Triplets unfunctional
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+summary of problems attached below, part(s) of your mail deleted for brevity. 
+Please note that I will not be able to work on NoteEdit for the next week, so 
+I won't be able to test things quickly.
+
+Regards, Leon.
+
+On Wednesday 01 December 2004 08:49 pm, you wrote:
+&gt;<i> Hi Leon,
+</I>&gt;<i>
+</I>&gt;<i> Thank you for the feedback.
+</I>&gt;<i>
+</I>&gt;<i> What exactly wents wrong when you try to build noteedit ?
+</I>&gt;<i> You don't need to specify any options. If you have installed
+</I>&gt;<i> the libtse3 devel files (oldlily option is only needed, if
+</I>&gt;<i> Fedora Core 3 does use a quite old version of lilypond) usually
+</I>&gt;<i> the build should work flawlessly. You could also try the configure
+</I>&gt;<i> files delivered with the current release.
+</I>
+What I do is simply take the source tree exactly as it is in svn and then run 
+&quot;make -f Makefile.cvs&quot;, &quot;./configure&quot; and &quot;make&quot;. Shortened (i.e. many lines 
+of similar errors deleted) transcript is attached below. If it helps, I could 
+send the whole transcript in a text file. Lines started with &quot;...&quot; and &quot;-&gt;&quot; 
+are my comments.
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">lvi at localhost</A> noteedit]$ make -f Makefile.cvs
+This Makefile is only for the CVS repository
+This will be deleted before making the distribution
+
+*** Creating acinclude.m4
+!!! If you get recursion errors from autoconf, it is advisable to set the
+    environment variable M4 to something including &quot;--nesting-limit=500&quot;
+*** Creating list of subdirectories
+*** Creating configure.in
+*** Creating aclocal.m4
+configure.in:67: warning: underquoted definition of FIND_PACKAGE
+  run info '(automake)Extending aclocal'
+  or see <A HREF="http://sources.redhat.com/automake/automake.html#Extending-aclocal">http://sources.redhat.com/automake/automake.html#Extending-aclocal</A>
+configure.in:94: warning: underquoted definition of AC_NEW_ARG
+... many similar warnings deleted
+acinclude.m4:4667: warning: underquoted definition of AC_PATH_QTOPIA
+*** Creating configure
+*** Creating config.h template
+*** Creating Makefile templates
+*** Postprocessing Makefile templates
+*** Creating date/time stamp
+*** Finished
+    Don't forget to run ./configure
+    If you haven't done so in a while, run ./configure --help
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">lvi at localhost</A> noteedit]$ ./configure --with_printing
+configure: error: unrecognized option: --with_printing
+Try `./configure --help' for more information.
+-&gt; please note that my favorite option is not available anymore
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">lvi at localhost</A> noteedit]$ ./configure
+... seems to run OK, ends in:
+checking if po should be compiled... yes
+configure: creating ./config.status
+fast creating ./Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">lvi at localhost</A> noteedit]$ make
+-&gt; runs aclocal (again, same &quot;underquoted&quot; errors)
+-&gt; fails with:
+Making all in autom4te.cache
+make[2]: Entering directory 
+`/ext1/lvi/src/noteedit-build-fc3/noteedit/autom4te.cache'
+make[2]: *** No rule to make target `all'.  Stop.
+
+Finally one remark, in order to support our current users, who may be using 
+old software (such as &quot;old lily&quot;), I think we should try to keep existing 
+build-time configuration options intact for as much as reasonably possible. 
+Simply removing these options would force our users to upgrade, which may or 
+may not be feasible.
+
+&gt;<i>
+</I>&gt;<i> &gt;&gt;You can use kdevelop for yourself to create a project and
+</I>&gt;<i> &gt;&gt;update the admin files so they match for your system.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; As I am rather unfamiliar with kdevelop and autoconf/automake I am afraid
+</I>&gt;<i> &gt; I won't be able to provide much help here, besides testing.
+</I>&gt;<i>
+</I>&gt;<i> Concerning kdevelop: You only need to  import the noteedit files into a
+</I>&gt;<i> new project (this can be even done with svn, though I haven't tried it).
+</I>&gt;<i> The project type has to be a &quot;KDE C++ Application (automake based).&quot;
+</I>
+That's simple enough, thank you for the clarification.
+
+&gt;<i>
+</I>&gt;<i> I have no deep insight in the automake process but I'd recommand to
+</I>&gt;<i> first try old version of automake (1.4) before trying a more recent
+</I>&gt;<i> version.
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard Katzmann
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000031.html">[Noteedit-devel] how to build?
+</A></li>
+	<LI>Next message: <A HREF="000033.html">[Noteedit-devel] Bug #2528 Triplets unfunctional
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

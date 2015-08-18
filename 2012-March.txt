@@ -1,0 +1,24 @@
+From bogus@does.not.exist.com  Wed Mar 14 15:31:00 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 14:31:00 -0000
+Subject: No subject
+Message-ID: <mailman.0.1331735465.6883.noteedit-devel@lists.berlios.de>
+
+- Duplicate env string in lilytest.cpp, so the path won't get truncated
+- Added kpdf as preview program
+- Use KProcess:AllOutput on export instead of All
+- Use Lilyponds PDF output for preview and print
+- Use QProcess for preview as KProcess::NotifyOnExit is broken on my system
+- Parent parameters for QProcess and KProcess in preview and export
+
+Regards,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] noteedit-2.7.4 released
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20noteedit-2.7.4%20released&In-Reply-To=%3C421F4E19.4050506%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000108.html">
+   <LINK REL="Next"  HREF="000112.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] noteedit-2.7.4 released</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20noteedit-2.7.4%20released&In-Reply-To=%3C421F4E19.4050506%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] noteedit-2.7.4 released">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Feb 25 17:11:05 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000108.html">[Noteedit-devel] Re: Crash w/o synth
+</A></li>
+        <LI>Next message: <A HREF="000112.html">[Noteedit-devel] noteedit-2.7.4 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#111">[ date ]</a>
+              <a href="thread.html#111">[ thread ]</a>
+              <a href="subject.html#111">[ subject ]</a>
+              <a href="author.html#111">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+the noteedit release 2.7.4 is now online. Please check it out and enjoy. 
+Thanks everybody who contributed and made it possible! Svn is now widely 
+open for improvements again.
+
+Okay, I messed a bit around 'till I got the tarball up, even had to take 
+my first one down again, so here is shown what's finally inside, also 
+for future reference (it's a makefile extract):
+
+B = noteedit-2.7.4
+A = noteedit-2.7.4_beta1
+
+build_tar_ball:
+    rm -rf $B
+    svn export svn+<A HREF="ssh://svn.berlios.de/svnroot/repos/noteedit">ssh://svn.berlios.de/svnroot/repos/noteedit</A> $B
+    cp $A/configure.in         $B
+    cp $A/Makefile.in          $B
+    cp $A/acinclude.m4       $B
+    cp $A/aclocal.m4            $B
+    cp $A/configure              $B
+    rm -f $B/Makefile.cvs
+    tar cvf $B.tar $B
+    gzip $B.tar
+
+You see, I had a beta tarball around. I wonder only where the beta got 
+these files from :)
+For changes see the NEWS file and the website. Don't know how to tag svn 
+version 60 with this release event.
+
+Best Regards,
+Georg Rudolph
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000108.html">[Noteedit-devel] Re: Crash w/o synth
+</A></li>
+	<LI>Next message: <A HREF="000112.html">[Noteedit-devel] noteedit-2.7.4 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#111">[ date ]</a>
+              <a href="thread.html#111">[ thread ]</a>
+              <a href="subject.html#111">[ subject ]</a>
+              <a href="author.html#111">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

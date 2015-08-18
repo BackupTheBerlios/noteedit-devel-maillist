@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Noteedit-devel%20digest%2C%20Vol%201%20%23235%20-%205%20msgs&In-Reply-To=%3C44334C1B.7060708%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000661.html">
+   <LINK REL="Next"  HREF="000660.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20Noteedit-devel%20digest%2C%20Vol%201%20%23235%20-%205%20msgs&In-Reply-To=%3C44334C1B.7060708%40charter.net%3E"
+       TITLE="[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Apr  5 06:48:27 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000661.html">[Noteedit-devel] Portuguese translation
+</A></li>
+        <LI>Next message: <A HREF="000660.html">[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#659">[ date ]</a>
+              <a href="thread.html#659">[ thread ]</a>
+              <a href="subject.html#659">[ subject ]</a>
+              <a href="author.html#659">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i>    I had this problem too but I solved it with this patch. I made it
+</I>&gt;<i> after a patch that was in the patches section from the project site.
+</I>&gt;<i> It seems that qt 3.3.5 doesen't have the nscaledit.h file anymore (my
+</I>&gt;<i> guess...) and there was two files in the Noteedit distribution that
+</I>&gt;<i> refered to it. One file is noteedit/staffProps.ui and the other is
+</I>&gt;<i> noteedit/pmxexportform.ui. The patch in the project site
+</I>&gt;<i> (noteedit-2.8.0-qt-3.3.5.patch) was merged into the CVS for the beta
+</I>&gt;<i> release. But the second file still suffer from this problem and this
+</I>&gt;<i> patch can solve it. I applied it with
+</I>&gt;<i> 
+</I>&gt;<i> patch -Np1 -i noteedit-2.8.1-qt-3.3.5.patch
+</I>&gt;<i> 
+</I>&gt;<i> in the top level dir of the Noteedit distribution.
+</I>&gt;<i> 
+</I>&gt;<i> I hope that helps.
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> -------------------------------------------
+</I>&gt;<i> Denis A. Altoe Falqueto
+</I>&gt;<i> -------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> ------=_Part_19019_16938681.1144066161849
+</I>&gt;<i> Content-Type: application/octet-stream; name=&quot;noteedit-2.8.1-qt-3.3.5.patch&quot;
+</I>&gt;<i> Content-Transfer-Encoding: base64
+</I>&gt;<i> Content-Disposition: attachment; filename=&quot;noteedit-2.8.1-qt-3.3.5.patch&quot;
+</I>&gt;<i> X-Attachment-Id: f_elkro8b9
+</I>&gt;<i> 
+</I>&gt;<i> LS0tIG5vdGVlZGl0LTIuOC4xLWJldGEvbm90ZWVkaXQvcG14ZXhwb3J0Zm9ybS51aS5vbGQJMjAw
+</I>&gt;<i> Ni0wMy0yOCAyMzowOTo1MC4wMDAwMDAwMDAgLTAzMDAKKysrIG5vdGVlZGl0LTIuOC4xLWJldGEv
+</I>&gt;<i> bm90ZWVkaXQvcG14ZXhwb3J0Zm9ybS51aQkyMDA2LTAzLTI4IDIzOjExOjA5LjAwMDAwMDAwMCAt
+</I>&gt;<i> MDMwMApAQCAtMjU2LDcgKzI1Niw0IEBACiAgICAgPC9pbWFnZT4KIDwvaW1hZ2VzPgogPGxheW91
+</I>&gt;<i> dGRlZmF1bHRzIHNwYWNpbmc9IjYiIG1hcmdpbj0iMTEiLz4KLTxpbmNsdWRlaGludHM+Ci0gICAg
+</I>&gt;<i> PGluY2x1ZGVoaW50Pm5zY2FsZWVkaXQuaDwvaW5jbHVkZWhpbnQ+Ci08L2luY2x1ZGVoaW50cz4K
+</I>&gt;<i> IDwvVUk+Cg==
+</I>&gt;<i> ------=_Part_19019_16938681.1144066161849--
+</I>&gt;<i> 
+</I>&gt;<i> --__--__--
+</I>&gt;<i>
+</I>
+I appreciate your response and I'm very eager to try it out.  How do I 
+save this attachment?  I'm sorry if this is a silly question.  I 
+received your response as a digest with these scrambled letters above.
+I also looked for &gt; noteedit-2.8.1-qt-3.3.5.patch on the noteedit site 
+and could not find it there.  Thanks.
+Galen
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000661.html">[Noteedit-devel] Portuguese translation
+</A></li>
+	<LI>Next message: <A HREF="000660.html">[Noteedit-devel] Re: Noteedit-devel digest, Vol 1 #235 - 5 msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#659">[ date ]</a>
+              <a href="thread.html#659">[ thread ]</a>
+              <a href="subject.html#659">[ subject ]</a>
+              <a href="author.html#659">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

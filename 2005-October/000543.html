@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] release-critical bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20release-critical%20bug&In-Reply-To=%3C4364AA84.2040403%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000539.html">
+   <LINK REL="Next"  HREF="000544.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] release-critical bug</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20release-critical%20bug&In-Reply-To=%3C4364AA84.2040403%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] release-critical bug">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Oct 30 12:12:04 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000539.html">[Noteedit-devel] disabling TSE3 dependency
+</A></li>
+        <LI>Next message: <A HREF="000544.html">[Noteedit-devel] release-critical bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#543">[ date ]</a>
+              <a href="thread.html#543">[ thread ]</a>
+              <a href="subject.html#543">[ subject ]</a>
+              <a href="author.html#543">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Karai and others!
+
+If I open a new document, place two different key signatures one by
+another and delete the first one, I get a crash. There is a segmentation
+fault in Keysig.cpp @ line 435.
+
+The crash appeared in R317 (ckarai):
+FIXED: problem with natural keys before the KeySig
+
+The problem is that if I place a simple if (previousKeySig_) return;
+sentence before the loop, there's no crash, but the second key signature
+isn't correctly updated (the naturals that eliminate the previous keysig
+accidentals aren't cleared).
+
+Could any of you (Karai?) properly resolve this issue? I'm currently
+digging in the beaming code and found this bug accidently;).
+
+
+Regards.
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051030/10c890dd/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20051030/10c890dd/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000539.html">[Noteedit-devel] disabling TSE3 dependency
+</A></li>
+	<LI>Next message: <A HREF="000544.html">[Noteedit-devel] release-critical bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#543">[ date ]</a>
+              <a href="thread.html#543">[ thread ]</a>
+              <a href="subject.html#543">[ subject ]</a>
+              <a href="author.html#543">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

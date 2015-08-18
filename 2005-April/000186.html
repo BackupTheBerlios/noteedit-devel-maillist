@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] MultiRest issues resolved
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MultiRest%20issues%20resolved&In-Reply-To=%3C4272347A.1050507%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000184.html">
+   <LINK REL="Next"  HREF="000180.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] MultiRest issues resolved</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MultiRest%20issues%20resolved&In-Reply-To=%3C4272347A.1050507%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] MultiRest issues resolved">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Apr 29 15:19:54 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000184.html">[Noteedit-devel] MultiRest issues resolved
+</A></li>
+        <LI>Next message: <A HREF="000180.html">[Noteedit-devel] developer wiki?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i>a look through your patches gave me confidence that things are working
+</I>&gt;<i>better than before. It's well done. Though I will test more on
+</I>&gt;<i>multirests the time coming. Btw., recently I tried to fix #3503 (abc
+</I>&gt;<i>export bug), because I thought I could do it, but got stucked. Maybe a
+</I>&gt;<i>search backwards like you did it for multirest would give me there a
+</I>&gt;<i>solution.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Ugh. I hate this kind of bugs, mostly because of weak NoteEdit structure 
+:<i>(. I didn't dig into the bug though, but I persume that NoteEdit 
+</I>doesn't have a function that would return you the notes that are in 
+timing above the current, in other voice (chord). You could then seek 
+the previous element of every first-voice note (above the current one) 
+and if this element is a measureline or similar, then the measureline 
+should be before the current note as well.
+The other way I'd prefer more, is that measurelines of any kind should 
+be written in non-first voices as well. This would easily resolve RFE (I 
+don't remember the number), which suggested writing measurelines in 
+non-first voices as well.
+All in all, everything above should require a thought or two thoughts 
+more:). I hope you have some better ideas than I do in the moment!
+
+&gt;<i>I did in the meantime some little cleaning, just things I stumbled over
+</I>&gt;<i>recently:
+</I>&gt;<i>-- A few printf's for midi-debugging are disabled. They could overflow
+</I>&gt;<i>the KDE-console (relevant when startet from a desktop icon) that
+</I>&gt;<i>noteedit would crash after a long and heavy session.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>That's great.
+
+&gt;<i>-- In lilyexport text markups go now without \fattext, so texts by
+</I>&gt;<i>default will not influence the horizontal spacing of notes. This is what
+</I>&gt;<i>I we most of the time want, I think.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Yes, that's fine IMO. Although NE shows FatText all the time in UI.
+
+&gt;<i>-- The tie (~) is written before the octaviation command, so lilypond
+</I>&gt;<i>will not choke on this anymore.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>I have a feeling that NEWS file is getting mature for the new release:).
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000184.html">[Noteedit-devel] MultiRest issues resolved
+</A></li>
+	<LI>Next message: <A HREF="000180.html">[Noteedit-devel] developer wiki?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

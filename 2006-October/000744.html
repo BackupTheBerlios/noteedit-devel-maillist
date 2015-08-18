@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] [Canorus-devel] NoteEdit for performance analysis visualisation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20%5BCanorus-devel%5D%20NoteEdit%20for%20performance%0A%20analysis%20visualisation&In-Reply-To=%3C452C03BA.3070809%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000743.html">
+   <LINK REL="Next"  HREF="000745.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] [Canorus-devel] NoteEdit for performance analysis visualisation</H1>
+    <B>noteedit-devel at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20%5BCanorus-devel%5D%20NoteEdit%20for%20performance%0A%20analysis%20visualisation&In-Reply-To=%3C452C03BA.3070809%40web.de%3E"
+       TITLE="[Noteedit-devel] [Canorus-devel] NoteEdit for performance analysis visualisation">noteedit-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Oct 10 22:34:02 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000743.html">[Noteedit-devel] NoteEdit for performance analysis visualisation
+</A></li>
+        <LI>Next message: <A HREF="000745.html">[Noteedit-devel] [Canorus-devel] NoteEdit for performance analysis visualisation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#744">[ date ]</a>
+              <a href="thread.html#744">[ thread ]</a>
+              <a href="subject.html#744">[ subject ]</a>
+              <a href="author.html#744">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;<i> Hi there,
+</I>&gt;<i>
+</I>&gt;<i> I have just received a reply to the email below which I sent to the
+</I>&gt;<i> NoteEdit list. Takeshi Hamasaki  informed me that I would be better off
+</I>&gt;<i> asking questions on this list.
+</I>&gt;<i>
+</I>&gt;<i> Is the Canorus code stable enough for me to develop the system described
+</I>&gt;<i> below, and is it advanced enough for my requirements: supporting at
+</I>&gt;<i> least staff display, note selection and MusicXML import/export.
+</I>&gt;<i>   
+</I>Canorus is probably not stable enough for your aim - NoteEdit is much
+more stable in this regard but integration of new feature could prove to
+be much more work than with the new code structure of Canorus.
+
+Canorus has of course staff display and some sort of note selection but
+there is still some work to do on the latter part to make it complete.
+Mainly
+showing perspectives to edit things like key/time signature or copy/paste
+actions.
+
+MusicXML import/export has not been implemented by now but the interface
+has been done to do it. The CanorusML file format itself can serve as an
+example
+how to implement a proper import/export modules.
+&gt;<i> If the main development push has moved towards Canorus, I would much
+</I>&gt;<i> rather develop here, but unfortunately I need this tool relatively quickly.
+</I>&gt;<i>
+</I>&gt;<i> How much, if any of the noteedit code has been reused? I'm thinking:
+</I>&gt;<i> would it be worthwhile developing on noteedit, with the view to
+</I>&gt;<i> migrating to canorus once the program has matured?
+</I>&gt;<i>   
+</I>NoteEdit code up to now is not really used for Canorus. We will use some
+of the
+code for the import/export things and the one or other part of it
+containing some
+clever but still understandable algorithms.
+
+OTOH Canorus has already scripting support and we just started on a
+plugin engine
+including plugin management. The main difference to NoteEdit IMO still
+is that Canorus
+is largely based on the Model-View pattern concept making it very easy
+to add views on the
+score model. On the User interface part it's the abandon of KDE3 in
+favour of single Qt4
+usage. Qt4 has integrated several new features making it easier to go
+away from KDE3. Also
+we have running versions for Windows, Linux and Mac OS-X.
+&gt;&gt;<i> I am considering using noteedit as a visualisation tool for performance    
+</I>&gt;&gt;<i> analysis. I have a system which performs analyses on an audio 
+</I>&gt;&gt;<i> performance in the context of the musical score, and I need a tool which 
+</I>&gt;&gt;<i> will allow me to display the analysis information beside the score. I 
+</I>&gt;&gt;<i> have done some work with Rosegarden in this area, but too much musical 
+</I>&gt;&gt;<i> information is lost through it's midi-centric representation of pitch 
+</I>&gt;&gt;<i> (it is first and foremost, a midi sequencer after all). I assume being 
+</I>&gt;&gt;<i> primarily a notation editor noteedit would be more sympathetic to my needs.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The two layout alternatives I imagine are:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1. Modifying the horizontal layout to make the note positions on the 
+</I>&gt;&gt;<i> staff coincide with their positions in the analysis panel.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2. Make the analysis panel scroll to, and highlight the relevant 
+</I>&gt;&gt;<i> information when the note(s) are selected on the staff.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The latter option would probably be preferable, allowing the analysis 
+</I>&gt;&gt;<i> panel to be zoomed without making the score illegible.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I had a quick look at the code last night, and it seemed like it might 
+</I>&gt;&gt;<i> not be too big a job (relatively speaking) to create a working 
+</I>&gt;&gt;<i> prototype. However, there are a couple of questions I couldn't answer 
+</I>&gt;&gt;<i> last night:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> How exactly is pitch stored eg. Class, Octave &amp; Accidental, or staff 
+</I>&gt;&gt;<i> line &amp; accidental?
+</I>&gt;&gt;<i>     
+</I>Concerning NoteEdit code: No idea, Matevz can probably help you
+on that questions.
+
+Concerning Canorus: Currently the pitch is stored as midi pitch. There
+are already some basic plans for microtonal extensions regarding the
+pitches.
+The class is CAPlayable. Matevz the author of the Canorus model can
+explain it
+to you more detailled. The Canorus wiki contains a class diagram showing you
+the basic design of the model
+(<A HREF="http://canorus.berlios.de/wiki/index.php/Technical_ideas">http://canorus.berlios.de/wiki/index.php/Technical_ideas</A>)
+but you should be aware that the picture is a bit out of date now.
+&gt;&gt;<i> Some of my work involves microtonal music. How easily do you think this 
+</I>&gt;&gt;<i> could be included into noteedit? I have no need for midi support for 
+</I>&gt;&gt;<i> microtonal music, merely that it be displayed and stored correctly.
+</I>&gt;&gt;<i>     
+</I>So far I have collected some microtonal concepts, like setting of
+accidentals for
+the tighter pitches (thanks to Hans-Peter Beer for a User Interface idea
+on editing
+these accidentals). We also had some discussion on I think the NE user
+ML. As this
+feature doesn't enjoy a high priority on my list I haven't created a
+Wiki page for it
+up to now (also my spare time was quite small unfortunately).
+&gt;&gt;<i> How is TSE integrated? It seems that a TSE document is created from the 
+</I>&gt;&gt;<i> noteedit content for playback, is this correct? Ie - if I wanted to make 
+</I>&gt;&gt;<i> adjustments I do so within noteedit, not TSE.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I welcome any  comments or advice anyone might have on this.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>Again I can't tell you only a &quot;probably yes&quot;, as I don't know much about
+the NoteEdit
+internals. Canorus uses a different midi library for playback. As midi
+isn't really suitable
+for microtonal features we probably have to look for alternatives or
+rely on some midi
+hacks (that was discussed over a year ago on the Linux Audio development
+mailing list).
+I'd prefer to use OSC being quite well supported in the Linux audio
+community. OM-Synth
+is a very good example for such a program (and could be used as an
+interface to other
+programs too with jack).
+
+I guess a Canorus plugin would be a good base for your analysis tool.
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - <A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000743.html">[Noteedit-devel] NoteEdit for performance analysis visualisation
+</A></li>
+	<LI>Next message: <A HREF="000745.html">[Noteedit-devel] [Canorus-devel] NoteEdit for performance analysis visualisation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#744">[ date ]</a>
+              <a href="thread.html#744">[ thread ]</a>
+              <a href="subject.html#744">[ subject ]</a>
+              <a href="author.html#744">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

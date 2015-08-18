@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] lily-2.4 export added
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20lily-2.4%20export%20added&In-Reply-To=%3C41FAAAC9.8030200%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000060.html">
+   <LINK REL="Next"  HREF="000063.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] lily-2.4 export added</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20lily-2.4%20export%20added&In-Reply-To=%3C41FAAAC9.8030200%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] lily-2.4 export added">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Jan 28 22:12:41 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000060.html">[Noteedit-devel] lily-2.4 export added
+</A></li>
+        <LI>Next message: <A HREF="000063.html">[Noteedit-devel] lily-2.4 export added
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+Hi Matev&#382;,
+
+thanks for your insights.
+
+&gt;<i>
+</I>&gt;<i> Did you change the \version to &quot;2.4.2&quot; in the beginning of the export?
+</I>&gt;<i>
+</I>Yes, when it detects a lily &gt;= 2.4.0, and in all others cases \version 
+&quot;2.0.3&quot;, even when it exports for older lilies. It's okay, I think.
+
+&gt;<i>
+</I>&gt;<i> I'm not sure how lyrics are treated in NoteEdit, but LilyPond has the 
+</I>&gt;<i> following: ......
+</I>
+Thank you very much for your valuable explanation. I'll study it, learn 
+it, though not easy ..
+
+&gt;<i> For rests, there is a common notation nowadays (and don't ask me why, 
+</I>&gt;<i> because it's stupid and harder to read IMHO) that if a certain measure 
+</I>&gt;<i> is empty (doesn't contain any notes), it has the whole rest which 
+</I>&gt;<i> means that this measure is really empty (despite the actual number of 
+</I>&gt;<i> beats/length of the measure).
+</I>&gt;<i>
+</I>So r1 in a three beat bar should be accepted by lily 2.4.2, no 
+correction in noteedit neccessary?
+
+&gt;<i> LilyPond also offers a separate context for lyrics which is 
+</I>&gt;<i> independent to actual staves, but can connect to certain real voices 
+</I>&gt;<i> as well. I'd think more in that way. So we should have something like
+</I>&gt;<i> Insert--Context--Staff
+</I>&gt;<i>               --Lyrics
+</I>&gt;<i>               --Chords
+</I>&gt;<i>               --Tablature
+</I>&gt;<i>               --GeneralBas markings
+</I>&gt;<i>               --Harmonics
+</I>&gt;<i>
+</I>&gt;<i> Which is more or less the LilyPond syntax already. Applying certain 
+</I>&gt;<i> Lyrics to voice as I said should be also possible if not necessary.
+</I>&gt;<i> A few brainstorming ideas for the future:).
+</I>&gt;<i>
+</I>About the mechanics of lilypond context I don't have a good idea yet. 
+Maybe I'll post my proposal of the syntax template, and you might check 
+it then ...
+
+Best Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000060.html">[Noteedit-devel] lily-2.4 export added
+</A></li>
+	<LI>Next message: <A HREF="000063.html">[Noteedit-devel] lily-2.4 export added
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

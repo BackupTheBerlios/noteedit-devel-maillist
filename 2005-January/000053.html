@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] 2.7.4 release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%202.7.4%20release&In-Reply-To=%3C41EEE1B0.5060909%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000052.html">
+   <LINK REL="Next"  HREF="000055.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] 2.7.4 release</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%202.7.4%20release&In-Reply-To=%3C41EEE1B0.5060909%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] 2.7.4 release">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Jan 19 23:39:44 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000052.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+        <LI>Next message: <A HREF="000055.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#53">[ date ]</a>
+              <a href="thread.html#53">[ thread ]</a>
+              <a href="subject.html#53">[ subject ]</a>
+              <a href="author.html#53">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Leon,
+
+the easy answers come here immediately:
+
+&gt;&gt;<i>It works only with mouse input, not by external midi
+</I>&gt;&gt;<i>keyboard, or vkeybd, if you don't have a real one. Leon, could you look
+</I>&gt;&gt;<i>at this, maybe?
+</I>&gt;&gt;<i>
+</I>
+In other words: I discovered that triplet input works only when you 
+insert notes with the mouse, not with the midi keyboard. This is in non 
+edit mode, of course. If you want to see it: start noteedit, kaconnect 
+and vkeybd. Connect in kaconnect vkeybd (in my setup usually 131:0) with 
+noteedit (usually 130:0). When you press the black keyboard icon in 
+noteedit you should hear the playing from vkeybd. When you press the red 
+keyboard icon in noteedit you can enter notes like you do with the mouse.
+
+&gt;<i>Is it releated to my triplet changes ? What exactly happens ?
+</I>&gt;<i>
+</I>The setting of the triplet icon is just ignored when the triplet notes 
+come from vkeybd. (With an external keyboard it's very convenient to 
+insert chords.) Triplets insert works now atleast better.
+
+&gt;<i>....
+</I>&gt;<i>Would it help if we merged the Suse patch into the source tree, if possible ? 
+</I>&gt;<i>Building the SVN tree is still an issue that should be solved IMHO. For the 
+</I>&gt;<i>time being I also build by starting with the 2.7.3 tarball and adding the 
+</I>&gt;<i>changed sources.
+</I>&gt;<i>
+</I>About the build processes to be supported some others time ...
+
+Best Regards,
+Georg.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000052.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+	<LI>Next message: <A HREF="000055.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#53">[ date ]</a>
+              <a href="thread.html#53">[ thread ]</a>
+              <a href="subject.html#53">[ subject ]</a>
+              <a href="author.html#53">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

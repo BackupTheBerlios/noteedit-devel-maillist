@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Concerning rc1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Concerning%20rc1&In-Reply-To=%3C42A2C2C2.2070703%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000335.html">
+   <LINK REL="Next"  HREF="000337.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Concerning rc1</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Concerning%20rc1&In-Reply-To=%3C42A2C2C2.2070703%40web.de%3E"
+       TITLE="[Noteedit-devel] Concerning rc1">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Jun  5 11:15:46 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000335.html">[Noteedit-devel] Concerning rc1
+</A></li>
+        <LI>Next message: <A HREF="000337.html">[Noteedit-devel] Concerning rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#336">[ date ]</a>
+              <a href="thread.html#336">[ thread ]</a>
+              <a href="subject.html#336">[ subject ]</a>
+              <a href="author.html#336">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> I think I should rather call  this a temporary fix, because 1) it's 
+</I>&gt;<i> dependent on voiceBox and actual voices and 2) it doesn't support undo, 
+</I>&gt;<i> neither the cancel button works for voices, but it doesn't work for 
+</I>&gt;<i> deleting/creating voice too, so I'm not the only one:). In 2.9.x I think 
+</I>&gt;<i> the staff properties dialog should be worked on even more to fix these 
+</I>&gt;<i> issues.
+</I>
+Agreed. I saw this weakness when I implemented the staff/voice 
+properties but as it was already existant I didn't change it as
+I don't know much about the NoteEdit internals. (Also undo/redo
+improvement is already on our list).
+
+&gt;<i> What I like in staff properties is that the overspace, underspace is 
+</I>&gt;<i> reflected in the score the same time you move the scroll. What do you 
+</I>&gt;<i> think about the current state of staff properties, Reinhard, Georg? I'm 
+</I>&gt;<i> gonna update wiki to write some ideas down about the staff properties.
+</I>&gt;<i> 
+</I>
+Here I don't understand what you are trying to explain. Also I can't
+say much about staff properties currently as I don't know all 
+possibilities NoteEdit has or can have.
+
+&gt;<i> btw. I've been thinking about submitting a Summer of code 
+</I>&gt;<i> (<A HREF="http://code.google.com/summerofcode.html">http://code.google.com/summerofcode.html</A>) project on NoteEdit. I'd like 
+</I>&gt;<i> to implement a scripting language similar to Lisp for NoteEdit 
+</I>&gt;<i> (command-line beside the mouse&amp;keyboard interface, macro&amp;plugin support) 
+</I>&gt;<i> and a more advanced NoteEdit API (so the scripts written could do 
+</I>&gt;<i> anything useful at all). Well, I probably won't even get among those 200 
+</I>&gt;<i> lucky projects, but anyway:).
+</I>
+I'm against a lisp scripting language as it is for the normal user much
+more complicated to learn than an object oriented programming language.
+My favourite is ruby. Concerning Lilypond: If a user is able to make 
+changes in his lilypond score that touch the lisp interface of lilypond
+than he has completely different abilities than a normal NoteEdit user
+has. Many of the possible NoteEdit users I know would ever dare to touch
+a script written in a lisp language.
+
+The first step for an advanced API is to actually document the API. The
+base is of course the doxygen documentation and with that I would have
+to find out where the interface between the script and NoteEdit has to
+be drawn. The NoteEdit library is too big as an API for the scripting 
+language itself (actually it contains complete NoteEdit, I ask myself
+why the library is so big). What could be inside the API ?
+
+- control of all typesetting elements
+- control of staff / voices
+- editing control
+- file control
+- Midi interface control
+- import/export control
+
+Things like transposition, change clef etc. should be done via scripts
+or macros in the future. Also my idea is to provide many default macros 
+to the user as a base for composition work and for own scripts/macros.
+
+There probably is no real difference between macros and scripts. I would
+call a macro a short script which can be recorded and played back within
+noteedit. This would be another way to create a basic script that can
+later be expanded with your favourite text editor :).
+
+Currently I can't really imagine why NoteEdit requires a real plugin
+support. I think scripting / macros support is enough. It still probably
+will be painful enough to expand NoteEdit so that a scripting interface
+can be created.
+
+&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i> 
+</I>
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000335.html">[Noteedit-devel] Concerning rc1
+</A></li>
+	<LI>Next message: <A HREF="000337.html">[Noteedit-devel] Concerning rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#336">[ date ]</a>
+              <a href="thread.html#336">[ thread ]</a>
+              <a href="subject.html#336">[ subject ]</a>
+              <a href="author.html#336">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

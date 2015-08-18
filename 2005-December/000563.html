@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Re: NoteEdit icons
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-December/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20NoteEdit%20icons&In-Reply-To=%3C439F2FBF.5050409%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000564.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Re: NoteEdit icons</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Re%3A%20NoteEdit%20icons&In-Reply-To=%3C439F2FBF.5050409%40web.de%3E"
+       TITLE="[Noteedit-devel] Re: NoteEdit icons">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Dec 13 21:31:59 CET 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000564.html">[Noteedit-devel] LAC2006 in Karlsruhe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ken,
+
+I wasn't aware of these install problems but you should always be
+able to define the pathes via configure options. But we use the
+default place for KDE icons so I think we would get problems with
+other distributions like redhat. I can't judge it for my system
+as it uses the menu system where every application has it's own
+entry. Maybe some of the other developer has experience for redhat,
+suse and debian. The icon path is defined in noteedit/icons/Makefile.am
+so it shouldn't be difficult to write a patch for your distributions's
+package.
+
+On my system Noteedit is installed in (Multimedia)/Sound.
+
+Regards,
+
+Reinhard Katzmann
+
+Ken Zalewski wrote:
+&gt;<i> Hi Reinhard and David,
+</I>&gt;<i> 
+</I>&gt;<i> NoteEdit is a great piece of software, and I appreciate the time and
+</I>&gt;<i> effort that you and the other developers have put into this project.
+</I>&gt;<i> 
+</I>&gt;<i> I am a Slackware package builder, and there is one minor annoyance with
+</I>&gt;<i> the building of this package:  the desktop icons do not install in the
+</I>&gt;<i> proper location.
+</I>&gt;<i> 
+</I>&gt;<i> Upon installation, *all* of the icons are copied into
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/.  [Note that I use /opt/kde as my
+</I>&gt;<i> prefix].
+</I>&gt;<i> 
+</I>&gt;<i> That is fine for icons that are not &quot;public&quot;.  However, the
+</I>&gt;<i> noteedit.desktop file  (in /opt/kde/share/applnk/Utilities/) refers to
+</I>&gt;<i> &quot;Icon=noteedit&quot;, which means that you need to make the noteedit.png
+</I>&gt;<i> image available publicly.
+</I>&gt;<i> 
+</I>&gt;<i> The proper place to put noteedit.png is in /opt/kde/share/icons/, not in
+</I>&gt;<i> /opt/kde/share/apps/.
+</I>&gt;<i> 
+</I>&gt;<i> This will allow KDE to properly find noteedit.png.
+</I>&gt;<i> 
+</I>&gt;<i> You currently have 8 versions of noteedit.png (5 hicolor sizes and 3
+</I>&gt;<i> locolor sizes).  They are installed as:
+</I>&gt;<i> 
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/hicolor/32x32/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/hicolor/22x22/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/hicolor/16x16/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/hicolor/48x48/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/hicolor/64x64/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/locolor/22x22/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/locolor/16x16/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/apps/noteedit/icons/locolor/32x32/apps/noteedit.png
+</I>&gt;<i> 
+</I>&gt;<i> Instead, they should be installed as:
+</I>&gt;<i> 
+</I>&gt;<i> /opt/kde/share/icons/hicolor/32x32/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/hicolor/22x22/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/hicolor/16x16/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/hicolor/48x48/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/hicolor/64x64/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/locolor/22x22/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/locolor/16x16/apps/noteedit.png
+</I>&gt;<i> /opt/kde/share/icons/locolor/32x32/apps/noteedit.png
+</I>&gt;<i> 
+</I>&gt;<i> For now, I am forced to manually create the directories and copy those 8
+</I>&gt;<i> icons.  Please consider updating your &quot;make install&quot; to do this
+</I>&gt;<i> correctly.  It would save packagers such as myself a great deal of time.
+</I>&gt;<i> 
+</I>&gt;<i> Sidenote: Is &quot;Utilities&quot; the best place to put NoteEdit?  Would
+</I>&gt;<i> &quot;Multimedia&quot; be a better choice?  Or maybe &quot;Utilities -&gt; Editors&quot; (new
+</I>&gt;<i> in KDE 3.5)?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> 
+</I>&gt;<i> Ken Zalewski
+</I>&gt;<i> 
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000564.html">[Noteedit-devel] LAC2006 in Karlsruhe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] build from svn question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20build%20from%20svn%20question&In-Reply-To=%3C426963A1.50302%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000148.html">
+   <LINK REL="Next"  HREF="000150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] build from svn question</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20build%20from%20svn%20question&In-Reply-To=%3C426963A1.50302%40web.de%3E"
+       TITLE="[Noteedit-devel] build from svn question">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Apr 22 22:50:41 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000148.html">[Noteedit-devel] build from svn question
+</A></li>
+        <LI>Next message: <A HREF="000150.html">[Noteedit-devel] build from svn question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+
+&gt;<i> Building from the svn subtree is still not functioning. Is there really 
+</I>&gt;<i> a reason why we don't keep admin files from 2.7.4 version in the current 
+</I>&gt;<i> trunk tree as well (as described in bug #2814)?
+</I>
+Not really for me, I just don't know how well they behave on other 
+systems. I have managed to get all working with the current kde version
+and created admin files with the help of kdevelop. But I had to patch
+the noteedit/Makefile.am file to get things running properly.
+
+Can some of you test, if everything runs well with the applied patch ?
+If I don't apply the patch I can no longer build noteedit because
+libtool does not correctly ignore some of the moc files.
+
+Another issue for me is that the kdevelop project I created has the
+problem that the uic (user interface compiler) doesn't get invoked.
+make from the console works fine. Also the &quot;run automake and friends&quot;
+does not work correctly, only running &quot;make -f Makefile.cvs&quot; manually 
+seems to produce the correct configure file.
+I have put my current kdevelop files to svn (Requires version 3.1.2). 
+Maybe there is a bug in one of the options I changed or something 
+different has to be changed to get things working correctly with kdevelop.
+
+&gt;<i> ps. According to the bug discussion, KDE 2 support is IMO not needed 
+</I>&gt;<i> anymore (J.A. recommended this more than a year ago?!). I'm currently 
+</I>&gt;<i> aware of only Debian stable distribution, which still includes 2.2.2 
+</I>&gt;<i> version of KDE (but it doesn't include NoteEdit package - available 
+</I>&gt;<i> under testing/unstable only, which have KDE 3.3.2 currently).
+</I>
+I don't really think it is necessary as well. I already thought about
+splitting the uiconnect.h/cpp files and making several ui.h files as
+it is usually done for QT3 (so subclassing is only neets to be done when 
+really needed).
+
+Best regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer for Embedded Devices
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: patch_Makefile.am
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050422/b362602b/attachment.ksh">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050422/b362602b/attachment.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000148.html">[Noteedit-devel] build from svn question
+</A></li>
+	<LI>Next message: <A HREF="000150.html">[Noteedit-devel] build from svn question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#149">[ date ]</a>
+              <a href="thread.html#149">[ thread ]</a>
+              <a href="subject.html#149">[ subject ]</a>
+              <a href="author.html#149">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] 2.7.4 release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%202.7.4%20release&In-Reply-To=%3C200501191902.42033.leon.vinken%40hetnet.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000050.html">
+   <LINK REL="Next"  HREF="000053.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] 2.7.4 release</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%202.7.4%20release&In-Reply-To=%3C200501191902.42033.leon.vinken%40hetnet.nl%3E"
+       TITLE="[Noteedit-devel] 2.7.4 release">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Jan 19 19:02:41 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000050.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+        <LI>Next message: <A HREF="000053.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg,
+
+answers below (as far as I have them).
+
+Regards, Leon.
+
+On Wednesday 19 January 2005 02:34, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hi Leon,
+</I>&gt;<i>
+</I>&gt;<i> I appreciate very much your release proposals. That makes sense.
+</I>&gt;<i>
+</I>&gt;<i> I think the LAC in april in Karlsruhe is also an event to show noteedit
+</I>&gt;<i> is alive, and I hope to put a poster there. Last year I attended one
+</I>&gt;<i> day, and it was very interesting, and fun.
+</I>&gt;<i>
+</I>&gt;<i> In my vacations I did some adaptions to lilypond 2.4 export. This gives
+</I>&gt;<i> nice lyrics printout, with many verses possible over and beneath the
+</I>&gt;<i> score. But instead of spreading many if's for the different lily
+</I>&gt;<i> versions, I propose to duplicate NLilyExport::exportStaffs() in
+</I>&gt;<i> lilyexport.cpp for lilypond &gt;= 2.4. I'm afraid to damage export for
+</I>&gt;<i> older lily's, which I don't have nor test. Does anyone have a thought
+</I>&gt;<i> about that? I think we should have two of them. lily develops nicely,
+</I>&gt;<i> with many (small) changes.
+</I>
+That would probably be workable, but I suspect it would lead to a large code 
+duplication. I am not fundamentally against that, but we should try to avoid 
+it. Note that I don't have an easy way out either. The best solution depends 
+on the amount of common code anyway.
+
+Possible other solutions might be to put all the required if's in anyway and 
+do regression testing to verify nothing is broken.
+
+Or, do it the object-oriented way: create a LilyPond export class containing 
+the common code, and use inheritance to support the differences required for 
+the different versions. Never tried this myself, don't know if it would work.
+
+&gt;<i>
+</I>&gt;<i> At the weekend I did some arranging, and suddenly triples input didn't
+</I>&gt;<i> work anymore: It works only with mouse input, not by external midi
+</I>&gt;<i> keyboard, or vkeybd, if you don't have a real one. Leon, could you look
+</I>&gt;<i> at this, maybe?
+</I>
+For the time being I don't completely understand your problem. Is it releated 
+to my triplet changes ? What exactly happens ? How can I reproduce it ? Could 
+you send more info off-list ?
+
+&gt;<i>
+</I>&gt;<i> Something more: My devel machine is a suse 9.2 x64, and my build process
+</I>&gt;<i> is adventerous. The suse provided noteedit-2.7.3 rpm builds by itself,
+</I>&gt;<i> thanks. It includes a patch. This is my base. What works is 1) download
+</I>&gt;<i> svn repository from berlios 2) apply the patch from suse rpm 3) workout
+</I>&gt;<i> the commands according to the suse spec file. Although this beeing very
+</I>&gt;<i> intuitive it gives me atleast a working noteedit. The documentation is
+</I>&gt;<i> far from that. The bones of my script are:
+</I>&gt;<i>
+</I>&gt;<i>     cd noteedit
+</I>&gt;<i>     cp /usr/src/packages/SOURCES/noteedit-2.7.3/configure.in .
+</I>&gt;<i>     cp /usr/src/packages/SOURCES/noteedit-2.7.3/Makefile.in .
+</I>&gt;<i>     patch -p1 &lt; /usr/src/packages/SOURCES/noteedit-2.7.3.dif
+</I>&gt;<i>     cp /opt/kde3/share/apps/kdelibs/admin/acinclude.m4.in acinclude.m4
+</I>&gt;<i>     libtoolize --force
+</I>&gt;<i>     aclocal
+</I>&gt;<i>     autoconf
+</I>&gt;<i>     ./configure --prefix=/opt/kde3 --libdir=/opt/kde3/lib64
+</I>&gt;<i> --with-qt-libraries=/usr/lib/qt3/lib64 \
+</I>&gt;<i>         --disable-final --with-libtse3-libs=/usr/lib64
+</I>&gt;<i>     make
+</I>&gt;<i>
+</I>&gt;<i> How should we deal with that magic? Should I try something? Maybe to
+</I>&gt;<i> postpone it for later?
+</I>
+Would it help if we merged the Suse patch into the source tree, if possible ? 
+Building the SVN tree is still an issue that should be solved IMHO. For the 
+time being I also build by starting with the 2.7.3 tarball and adding the 
+changed sources.
+
+&gt;<i>
+</I>&gt;<i> Best Regards,
+</I>&gt;<i> Georg.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Noteedit-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000050.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+	<LI>Next message: <A HREF="000053.html">[Noteedit-devel] 2.7.4 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

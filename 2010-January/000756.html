@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] patch: concurrent uptext and downtext in lilypond	export
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20patch%3A%20concurrent%20uptext%20and%20downtext%20in%20lilypond%0A%09export&In-Reply-To=%3Calpine.DEB.1.10.1001111612170.25713%40dront.rosnix%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000757.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] patch: concurrent uptext and downtext in lilypond	export</H1>
+    <B>noteedit-devel at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20patch%3A%20concurrent%20uptext%20and%20downtext%20in%20lilypond%0A%09export&In-Reply-To=%3Calpine.DEB.1.10.1001111612170.25713%40dront.rosnix%3E"
+       TITLE="[Noteedit-devel] patch: concurrent uptext and downtext in lilypond	export">noteedit-devel at lists.berlios.de
+       </A><BR>
+    <I>Mon Jan 11 16:13:02 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000757.html">[Noteedit-devel] patch: concurrent uptext and downtext in lilypond export
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#756">[ date ]</a>
+              <a href="thread.html#756">[ thread ]</a>
+              <a href="subject.html#756">[ subject ]</a>
+              <a href="author.html#756">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+Yes, I know development have moved on to Canorus, and hope it proceeds 
+smoothly. However, if anyone is interested I have a patched a small bug:
+
+Concurrent text sections or dynamics was not exported properly to 
+lilypond. For example, if you have both a piano and and forte between two 
+notes (perhaps useful when ending a crescendo) only the last &quot;\f&quot; would be 
+exported. In the same way, only the last text section would be exported 
+(for example, no &quot;Allargando&quot; above and &quot;tutti&quot; below possible).
+
+This patch fixes that (by using a list), and allows any number of 
+text/dynamics to be exported. It may be useful also if you, like me, are 
+embedding lilypond syntax in the noteedit source (to get many lilypond 
+features not directly supported by export) and post-processing the 
+exported .ly. (I can send my post-processor if anyone is interested).
+
+regards
+Per Eric Ros&#233;n, Uppsala, Sweden
+--
+^): Per Eric Ros&#233;n <A HREF="http://rosnix.net/~per/">http://rosnix.net/~per/</A>
+/   <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">per at rosnix.net</A> GPG 7A7A BD68 ADC0 01E1 F560 79FD 33D1 1EC3 1EBB 7311
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: noteedit-2.8.1-pending_texts.diff
+Type: text/x-diff
+Size: 9764 bytes
+Desc: 
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20100111/f24e4ff6/attachment.diff">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20100111/f24e4ff6/attachment.diff</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000757.html">[Noteedit-devel] patch: concurrent uptext and downtext in lilypond export
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#756">[ date ]</a>
+              <a href="thread.html#756">[ thread ]</a>
+              <a href="subject.html#756">[ subject ]</a>
+              <a href="author.html#756">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

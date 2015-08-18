@@ -1,0 +1,521 @@
+From noteedit-devel at lists.berlios.de  Fri Oct  6 14:42:09 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 06 Oct 2006 13:42:09 +0100
+Subject: [Noteedit-devel] NoteEdit for performance analysis visualisation
+Message-ID: <45264F21.8050403@elec.gla.ac.uk>
+
+
+
+
+Hi all,
+
+I am considering using noteedit as a visualisation tool for performance 
+analysis. I have a system which performs analyses on an audio 
+performance in the context of the musical score, and I need a tool which 
+will allow me to display the analysis information beside the score. I 
+have done some work with Rosegarden in this area, but too much musical 
+information is lost through it's midi-centric representation of pitch 
+(it is first and foremost, a midi sequencer after all). I assume being 
+primarily a notation editor noteedit would be more sympathetic to my needs.
+
+The two layout alternatives I imagine are:
+
+1. Modifying the horizontal layout to make the note positions on the 
+staff coincide with their positions in the analysis panel.
+
+2. Make the analysis panel scroll to, and highlight the relevant 
+information when the note(s) are selected on the staff.
+
+The latter option would probably be preferable, allowing the analysis 
+panel to be zoomed without making the score illegible.
+
+
+I had a quick look at the code last night, and it seemed like it might 
+not be too big a job (relatively speaking) to create a working 
+prototype. However, there are a couple of questions I couldn't answer 
+last night:
+
+How exactly is pitch stored eg. Class, Octave & Accidental, or staff 
+line & accidental?
+
+Some of my work involves microtonal music. How easily do you think this 
+could be included into noteedit? I have no need for midi support for 
+microtonal music, merely that it be displayed and stored correctly.
+
+How is TSE integrated? It seems that a TSE document is created from the 
+noteedit content for playback, is this correct? Ie - if I wanted to make 
+adjustments I do so within noteedit, not TSE.
+
+I welcome any  comments or advice anyone might have on this.
+
+
+Cheers,
+Dougie
+
+
+-- 
+ _________________________________________
+ Douglas McGilvray		
+ Centre for Music Technology	
+ Rankine Building
+ University of Glasgow                                                
+ Glasgow, G12 8QQ
+
+ http://cmt.gla.ac.uk/
+
+
+
+From noteedit-devel at lists.berlios.de  Fri Oct  6 16:09:57 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 6 Oct 2006 14:09:57 GMT
+Subject: [Noteedit-devel] NoteEdit for performance analysis visualisation
+In-Reply-To: Your message of "Fri, 06 Oct 2006 13:42:09 +0100".
+	<45264F21.8050403@elec.gla.ac.uk>
+Message-ID: <061006230957.M0206869@mix.syd.odn.ne.jp>
+
+Hello Dougie,
+
+Now Canorus inherited Noteedit's main developers as you can see at
+Noteedit web page. http://noteedit.berlios.de/
+
+>> Note that this is probably the last major version of NoteEdit released. 
+>> Smaller critical bug fixes and translations could be released separately 
+>> though, but the core developers have now moved to a new Canorus - The next
+>> generation music score editor
+>> http://canorus.berlios.de/
+
+If you want to continue on Noteedit knowing the transition,
+I don't bother you any more.
+It is possible that you can get more comment if you continue this topic 
+on Canorus.
+
+Regards,
+--------------------------------------------------
+    Takeshi Hamasaki
+    E-mail: hma at syd.odn.ne.jp
+
+In article <45264F21.8050403 at elec.gla.ac.uk>
+noteedit-devel at lists.berlios.de writes:
+
+>> Hi all,
+>> 
+>> I am considering using noteedit as a visualisation tool for performance 
+>> analysis. I have a system which performs analyses on an audio 
+
+
+From noteedit-devel at lists.berlios.de  Fri Oct  6 17:34:30 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 06 Oct 2006 16:34:30 +0100
+Subject: [Noteedit-devel] NoteEdit for performance analysis visualisation
+In-Reply-To: <061006230957.M0206869@mix.syd.odn.ne.jp>
+References: <061006230957.M0206869@mix.syd.odn.ne.jp>
+Message-ID: <45267786.3090306@elec.gla.ac.uk>
+
+
+Thanks, I hadn't realised this. I will contact the Canorus mailing list, 
+and decide from there.
+
+Many thanks,
+Dougie
+
+
+noteedit-devel at lists.berlios.de wrote:
+> Hello Dougie,
+>
+> Now Canorus inherited Noteedit's main developers as you can see at
+> Noteedit web page. http://noteedit.berlios.de/
+>
+>   
+>>> Note that this is probably the last major version of NoteEdit released. 
+>>> Smaller critical bug fixes and translations could be released separately 
+>>> though, but the core developers have now moved to a new Canorus - The next
+>>> generation music score editor
+>>> http://canorus.berlios.de/
+>>>       
+>
+> If you want to continue on Noteedit knowing the transition,
+> I don't bother you any more.
+> It is possible that you can get more comment if you continue this topic 
+> on Canorus.
+>
+> Regards,
+> --------------------------------------------------
+>     Takeshi Hamasaki
+>     E-mail: hma at syd.odn.ne.jp
+>
+> In article <45264F21.8050403 at elec.gla.ac.uk>
+> noteedit-devel at lists.berlios.de writes:
+>
+>   
+>>> Hi all,
+>>>
+>>> I am considering using noteedit as a visualisation tool for performance 
+>>> analysis. I have a system which performs analyses on an audio 
+>>>       
+> _______________________________________________
+> Noteedit-devel mailing list
+> Noteedit-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/noteedit-devel
+>   
+
+
+-- 
+ _________________________________________
+ Douglas McGilvray		
+ Centre for Music Technology	
+ Rankine Building
+ University of Glasgow                                                
+ Glasgow, G12 8QQ
+
+ http://cmt.gla.ac.uk/
+
+
+
+From noteedit-devel at lists.berlios.de  Fri Oct  6 18:40:02 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 06 Oct 2006 17:40:02 +0100
+Subject: [Noteedit-devel]  NoteEdit for performance analysis visualisation
+Message-ID: <452686E2.2080303@elec.gla.ac.uk>
+
+
+
+
+Hi there,
+
+I have just received a reply to the email below which I sent to the 
+NoteEdit list. Takeshi Hamasaki  informed me that I would be better off 
+asking questions on this list.
+
+Is the Canorus code stable enough for me to develop the system described 
+below, and is it advanced enough for my requirements: supporting at 
+least staff display, note selection and MusicXML import/export.
+
+If the main development push has moved towards Canorus, I would much 
+rather develop here, but unfortunately I need this tool relatively quickly.
+
+How much, if any of the noteedit code has been reused? I'm thinking: 
+would it be worthwhile developing on noteedit, with the view to 
+migrating to canorus once the program has matured?
+
+Thanks for your help,
+Dougie
+
+
+> I am considering using noteedit as a visualisation tool for performance    
+> analysis. I have a system which performs analyses on an audio 
+> performance in the context of the musical score, and I need a tool which 
+> will allow me to display the analysis information beside the score. I 
+> have done some work with Rosegarden in this area, but too much musical 
+> information is lost through it's midi-centric representation of pitch 
+> (it is first and foremost, a midi sequencer after all). I assume being 
+> primarily a notation editor noteedit would be more sympathetic to my needs.
+> 
+> The two layout alternatives I imagine are:
+> 
+> 1. Modifying the horizontal layout to make the note positions on the 
+> staff coincide with their positions in the analysis panel.
+> 
+> 2. Make the analysis panel scroll to, and highlight the relevant 
+> information when the note(s) are selected on the staff.
+> 
+> The latter option would probably be preferable, allowing the analysis 
+> panel to be zoomed without making the score illegible.
+> 
+> 
+> I had a quick look at the code last night, and it seemed like it might 
+> not be too big a job (relatively speaking) to create a working 
+> prototype. However, there are a couple of questions I couldn't answer 
+> last night:
+> 
+> How exactly is pitch stored eg. Class, Octave & Accidental, or staff 
+> line & accidental?
+> 
+> Some of my work involves microtonal music. How easily do you think this 
+> could be included into noteedit? I have no need for midi support for 
+> microtonal music, merely that it be displayed and stored correctly.
+> 
+> How is TSE integrated? It seems that a TSE document is created from the 
+> noteedit content for playback, is this correct? Ie - if I wanted to make 
+> adjustments I do so within noteedit, not TSE.
+> 
+> I welcome any  comments or advice anyone might have on this.
+> 
+
+Cheers,
+Dougie
+
+
+-- 
+  _________________________________________
+  Douglas McGilvray		
+  Centre for Music Technology	
+  Rankine Building
+  University of Glasgow
+  Glasgow, G12 8QQ
+
+  http://cmt.gla.ac.uk/
+
+_______________________________________________
+Noteedit-devel mailing list
+Noteedit-devel at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/noteedit-devel
+
+
+From noteedit-devel at lists.berlios.de  Fri Oct  6 18:44:25 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Fri, 06 Oct 2006 17:44:25 +0100
+Subject: [Noteedit-devel] NoteEdit for performance analysis visualisation
+In-Reply-To: <452686E2.2080303@elec.gla.ac.uk>
+References: <452686E2.2080303@elec.gla.ac.uk>
+Message-ID: <452687E9.6020503@elec.gla.ac.uk>
+
+
+
+Sorry, wrong list! :)
+
+-- 
+ _________________________________________
+ Douglas McGilvray		
+ Centre for Music Technology	
+ Rankine Building
+ University of Glasgow                                                
+ Glasgow, G12 8QQ
+
+ http://cmt.gla.ac.uk/
+
+
+
+From noteedit-devel at lists.berlios.de  Tue Oct 10 22:34:02 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Tue, 10 Oct 2006 22:34:02 +0200
+Subject: [Noteedit-devel] [Canorus-devel] NoteEdit for performance
+ analysis visualisation
+In-Reply-To: <45268827.6080600@elec.gla.ac.uk>
+References: <45268827.6080600@elec.gla.ac.uk>
+Message-ID: <452C03BA.3070809@web.de>
+
+
+>
+> Hi there,
+>
+> I have just received a reply to the email below which I sent to the
+> NoteEdit list. Takeshi Hamasaki  informed me that I would be better off
+> asking questions on this list.
+>
+> Is the Canorus code stable enough for me to develop the system described
+> below, and is it advanced enough for my requirements: supporting at
+> least staff display, note selection and MusicXML import/export.
+>   
+Canorus is probably not stable enough for your aim - NoteEdit is much
+more stable in this regard but integration of new feature could prove to
+be much more work than with the new code structure of Canorus.
+
+Canorus has of course staff display and some sort of note selection but
+there is still some work to do on the latter part to make it complete.
+Mainly
+showing perspectives to edit things like key/time signature or copy/paste
+actions.
+
+MusicXML import/export has not been implemented by now but the interface
+has been done to do it. The CanorusML file format itself can serve as an
+example
+how to implement a proper import/export modules.
+> If the main development push has moved towards Canorus, I would much
+> rather develop here, but unfortunately I need this tool relatively quickly.
+>
+> How much, if any of the noteedit code has been reused? I'm thinking:
+> would it be worthwhile developing on noteedit, with the view to
+> migrating to canorus once the program has matured?
+>   
+NoteEdit code up to now is not really used for Canorus. We will use some
+of the
+code for the import/export things and the one or other part of it
+containing some
+clever but still understandable algorithms.
+
+OTOH Canorus has already scripting support and we just started on a
+plugin engine
+including plugin management. The main difference to NoteEdit IMO still
+is that Canorus
+is largely based on the Model-View pattern concept making it very easy
+to add views on the
+score model. On the User interface part it's the abandon of KDE3 in
+favour of single Qt4
+usage. Qt4 has integrated several new features making it easier to go
+away from KDE3. Also
+we have running versions for Windows, Linux and Mac OS-X.
+>> I am considering using noteedit as a visualisation tool for performance    
+>> analysis. I have a system which performs analyses on an audio 
+>> performance in the context of the musical score, and I need a tool which 
+>> will allow me to display the analysis information beside the score. I 
+>> have done some work with Rosegarden in this area, but too much musical 
+>> information is lost through it's midi-centric representation of pitch 
+>> (it is first and foremost, a midi sequencer after all). I assume being 
+>> primarily a notation editor noteedit would be more sympathetic to my needs.
+>>
+>> The two layout alternatives I imagine are:
+>>
+>> 1. Modifying the horizontal layout to make the note positions on the 
+>> staff coincide with their positions in the analysis panel.
+>>
+>> 2. Make the analysis panel scroll to, and highlight the relevant 
+>> information when the note(s) are selected on the staff.
+>>
+>> The latter option would probably be preferable, allowing the analysis 
+>> panel to be zoomed without making the score illegible.
+>>
+>>
+>> I had a quick look at the code last night, and it seemed like it might 
+>> not be too big a job (relatively speaking) to create a working 
+>> prototype. However, there are a couple of questions I couldn't answer 
+>> last night:
+>>
+>> How exactly is pitch stored eg. Class, Octave & Accidental, or staff 
+>> line & accidental?
+>>     
+Concerning NoteEdit code: No idea, Matevz can probably help you
+on that questions.
+
+Concerning Canorus: Currently the pitch is stored as midi pitch. There
+are already some basic plans for microtonal extensions regarding the
+pitches.
+The class is CAPlayable. Matevz the author of the Canorus model can
+explain it
+to you more detailled. The Canorus wiki contains a class diagram showing you
+the basic design of the model
+(http://canorus.berlios.de/wiki/index.php/Technical_ideas)
+but you should be aware that the picture is a bit out of date now.
+>> Some of my work involves microtonal music. How easily do you think this 
+>> could be included into noteedit? I have no need for midi support for 
+>> microtonal music, merely that it be displayed and stored correctly.
+>>     
+So far I have collected some microtonal concepts, like setting of
+accidentals for
+the tighter pitches (thanks to Hans-Peter Beer for a User Interface idea
+on editing
+these accidentals). We also had some discussion on I think the NE user
+ML. As this
+feature doesn't enjoy a high priority on my list I haven't created a
+Wiki page for it
+up to now (also my spare time was quite small unfortunately).
+>> How is TSE integrated? It seems that a TSE document is created from the 
+>> noteedit content for playback, is this correct? Ie - if I wanted to make 
+>> adjustments I do so within noteedit, not TSE.
+>>
+>> I welcome any  comments or advice anyone might have on this.
+>>
+>>
+>>     
+Again I can't tell you only a "probably yes", as I don't know much about
+the NoteEdit
+internals. Canorus uses a different midi library for playback. As midi
+isn't really suitable
+for microtonal features we probably have to look for alternatives or
+rely on some midi
+hacks (that was discussed over a year ago on the Linux Audio development
+mailing list).
+I'd prefer to use OSC being quite well supported in the Linux audio
+community. OM-Synth
+is a very good example for such a program (and could be used as an
+interface to other
+programs too with jack).
+
+I guess a Canorus plugin would be a good base for your analysis tool.
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - http://canorus.berlios.de
+GnuPG Public Key available on request
+
+
+
+From noteedit-devel at lists.berlios.de  Thu Oct 12 11:31:06 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Thu, 12 Oct 2006 10:31:06 +0100
+Subject: [Noteedit-devel] [Canorus-devel] NoteEdit for performance
+ analysis visualisation
+In-Reply-To: <452C03BA.3070809@web.de>
+References: <45268827.6080600@elec.gla.ac.uk> <452C03BA.3070809@web.de>
+Message-ID: <452E0B5A.4070304@elec.gla.ac.uk>
+
+
+
+> Concerning Canorus: Currently the pitch is stored as midi pitch. There
+> are already some basic plans for microtonal extensions regarding the
+> pitches.
+>   
+
+This surprises me a little, I would have thought for a notation program 
+it would be much easier to store pitch as note, octave & accidental. I 
+assume the midi pitch is accompanied by an accidental to preserve 
+enharmonic spelling (like Rosegarden)? Anyway, I'm sure this has been 
+argued over many times already ;).
+
+I'll probably wait a little longer, until I have more time to commit to 
+it. Maybe at that time I can help implement microtonal support if it's 
+still missing.
+
+Cheers,
+Dougie
+
+
+-- 
+ _________________________________________
+ Douglas McGilvray		
+ Centre for Music Technology	
+ Rankine Building
+ University of Glasgow                                                
+ Glasgow, G12 8QQ
+
+ http://cmt.gla.ac.uk/
+
+
+
+From noteedit-devel at lists.berlios.de  Thu Oct 12 12:42:12 2006
+From: noteedit-devel at lists.berlios.de (noteedit-devel at lists.berlios.de)
+Date: Thu, 12 Oct 2006 12:42:12 +0200
+Subject: [Noteedit-devel] [Canorus-devel] NoteEdit for performance
+ analysis visualisation
+In-Reply-To: <452E0B5A.4070304@elec.gla.ac.uk>
+References: <45268827.6080600@elec.gla.ac.uk> <452C03BA.3070809@web.de>
+	<452E0B5A.4070304@elec.gla.ac.uk>
+Message-ID: <452E1C04.3010106@gmail.com>
+
+Sorry, that's wrong. Canorus stores the pitch as a note number +
+accidental of course. Besides it also stores midi pitch.
+
+
+Regards.
+- Matev?
+
+noteedit-devel at lists.berlios.de pravi:
+>   
+>> Concerning Canorus: Currently the pitch is stored as midi pitch. There
+>> are already some basic plans for microtonal extensions regarding the
+>> pitches.
+>>   
+>>     
+>
+> This surprises me a little, I would have thought for a notation program 
+> it would be much easier to store pitch as note, octave & accidental. I 
+> assume the midi pitch is accompanied by an accidental to preserve 
+> enharmonic spelling (like Rosegarden)? Anyway, I'm sure this has been 
+> argued over many times already ;).
+>
+> I'll probably wait a little longer, until I have more time to commit to 
+> it. Maybe at that time I can help implement microtonal support if it's 
+> still missing.
+>
+> Cheers,
+> Dougie
+>
+>
+>   
+
+
+
+

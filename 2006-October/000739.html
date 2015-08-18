@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] NoteEdit for performance analysis visualisation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20NoteEdit%20for%20performance%20analysis%20visualisation&In-Reply-To=%3C45264F21.8050403%40elec.gla.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000740.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] NoteEdit for performance analysis visualisation</H1>
+    <B>noteedit-devel at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20NoteEdit%20for%20performance%20analysis%20visualisation&In-Reply-To=%3C45264F21.8050403%40elec.gla.ac.uk%3E"
+       TITLE="[Noteedit-devel] NoteEdit for performance analysis visualisation">noteedit-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Oct  6 14:42:09 CEST 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000740.html">[Noteedit-devel] NoteEdit for performance analysis visualisation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#739">[ date ]</a>
+              <a href="thread.html#739">[ thread ]</a>
+              <a href="subject.html#739">[ subject ]</a>
+              <a href="author.html#739">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+
+Hi all,
+
+I am considering using noteedit as a visualisation tool for performance 
+analysis. I have a system which performs analyses on an audio 
+performance in the context of the musical score, and I need a tool which 
+will allow me to display the analysis information beside the score. I 
+have done some work with Rosegarden in this area, but too much musical 
+information is lost through it's midi-centric representation of pitch 
+(it is first and foremost, a midi sequencer after all). I assume being 
+primarily a notation editor noteedit would be more sympathetic to my needs.
+
+The two layout alternatives I imagine are:
+
+1. Modifying the horizontal layout to make the note positions on the 
+staff coincide with their positions in the analysis panel.
+
+2. Make the analysis panel scroll to, and highlight the relevant 
+information when the note(s) are selected on the staff.
+
+The latter option would probably be preferable, allowing the analysis 
+panel to be zoomed without making the score illegible.
+
+
+I had a quick look at the code last night, and it seemed like it might 
+not be too big a job (relatively speaking) to create a working 
+prototype. However, there are a couple of questions I couldn't answer 
+last night:
+
+How exactly is pitch stored eg. Class, Octave &amp; Accidental, or staff 
+line &amp; accidental?
+
+Some of my work involves microtonal music. How easily do you think this 
+could be included into noteedit? I have no need for midi support for 
+microtonal music, merely that it be displayed and stored correctly.
+
+How is TSE integrated? It seems that a TSE document is created from the 
+noteedit content for playback, is this correct? Ie - if I wanted to make 
+adjustments I do so within noteedit, not TSE.
+
+I welcome any  comments or advice anyone might have on this.
+
+
+Cheers,
+Dougie
+
+
+-- 
+ _________________________________________
+ Douglas McGilvray		
+ Centre for Music Technology	
+ Rankine Building
+ University of Glasgow                                                
+ Glasgow, G12 8QQ
+
+ <A HREF="http://cmt.gla.ac.uk/">http://cmt.gla.ac.uk/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000740.html">[Noteedit-devel] NoteEdit for performance analysis visualisation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#739">[ date ]</a>
+              <a href="thread.html#739">[ thread ]</a>
+              <a href="subject.html#739">[ subject ]</a>
+              <a href="author.html#739">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

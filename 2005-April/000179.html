@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] MultiRest issues resolved
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-April/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MultiRest%20issues%20resolved&In-Reply-To=%3C426F42CC.4050701%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000178.html">
+   <LINK REL="Next"  HREF="000184.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] MultiRest issues resolved</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20MultiRest%20issues%20resolved&In-Reply-To=%3C426F42CC.4050701%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] MultiRest issues resolved">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Wed Apr 27 09:44:12 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000178.html">[Noteedit-devel] MultiRest issues resolved
+</A></li>
+        <LI>Next message: <A HREF="000184.html">[Noteedit-devel] MultiRest issues resolved
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>HiMatev&#382;,
+
+thanks! It's very nice to have this, great work, I'll use it. When I
+have time I'll test it more. On the first glance it just works. Your
+code I'll study, which will teach me more about the inner workings. And
+thanks for the screenshot, it looked nice.
+
+More on this soon hopefully,
+Regards,
+Georg.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hello to all.
+</I>&gt;<i>
+</I>&gt;<i> I finally resolved multirest issues. They are now numbered correctly
+</I>&gt;<i> and their length is set according to the current time signature. I
+</I>&gt;<i> tried Lily export and it works fine. Measure numberings in NE are the
+</I>&gt;<i> same as Lily's. Note that inserting a multirest + key signature/clef +
+</I>&gt;<i> measureline works as well (my patch yesterday needed explicetly
+</I>&gt;<i> multirest + measureline in order to make measures numberings work). I
+</I>&gt;<i> also attached a screenshot of NE &amp; multirests in action.
+</I>&gt;<i>
+</I>&gt;<i> I'm not sure if my patches were the best possible solutions to
+</I>&gt;<i> problems, but elementary they work this way:
+</I>&gt;<i> - #3862 - measures after multirests not numbered correctly:
+</I>&gt;<i> When placing a barline (of any type) NE now checks if any element of
+</I>&gt;<i> getType()==T_REST and getSubType()==MULTIREST exists in previous
+</I>&gt;<i> measure (an iterration until a measureline of any kind is found or the
+</I>&gt;<i> beginning of the document). If found, than place the measureLine with
+</I>&gt;<i> numbering+=lengthOfMultiRest (ie. the number of measures that
+</I>&gt;<i> mulitrest is long). If not, then make an ordanary measureline with
+</I>&gt;<i> numbering++.
+</I>&gt;<i> - #3861 - Multirests in non-4/4 measure broken:
+</I>&gt;<i> When placing a Multirest, its length_ variable (rest length in MIDI
+</I>&gt;<i> units) was set to voice-&gt;getStaff()-&gt;staff_props-&gt;getMeasureLength()
+</I>&gt;<i> multiplied by lengthOfMultiRest (number of measures). That would be
+</I>&gt;<i> fine, if getMeasureLength() would be properly set. But it was set to a
+</I>&gt;<i> constant 4*QUARTER_LENGTH. What I made was a new function
+</I>&gt;<i> NVoice::getCurrentMeasureMidiLength(), which tries to find the first
+</I>&gt;<i> time signature from that element backwards. It iterated until the time
+</I>&gt;<i> signature or the beginning of document was found. If found, it
+</I>&gt;<i> returned the correctly calculated measure length. If not found, it
+</I>&gt;<i> returned the default 4*QUARTER_LENGTH. Now, the getMeasureLength() is
+</I>&gt;<i> calculated by calling NVoice::getCurrentMeasureMidiLength() and is not
+</I>&gt;<i> set to a constant anymore.
+</I>&gt;<i>
+</I>&gt;<i> What I'd like to know is if these patches are implemented correctly.
+</I>&gt;<i> Or are these functions and principles I took already implemented
+</I>&gt;<i> somewhere? In anyway, please test:-)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000178.html">[Noteedit-devel] MultiRest issues resolved
+</A></li>
+	<LI>Next message: <A HREF="000184.html">[Noteedit-devel] MultiRest issues resolved
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

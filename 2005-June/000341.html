@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Concerning rc1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-June/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Concerning%20rc1&In-Reply-To=%3C42A369EB.7040405%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000338.html">
+   <LINK REL="Next"  HREF="000340.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Concerning rc1</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Concerning%20rc1&In-Reply-To=%3C42A369EB.7040405%40web.de%3E"
+       TITLE="[Noteedit-devel] Concerning rc1">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Jun  5 23:08:59 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000338.html">[Noteedit-devel] Concerning rc1
+</A></li>
+        <LI>Next message: <A HREF="000340.html">[Noteedit-devel] Concerning rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;&gt;<i> My favourite is ruby. Concerning Lilypond: If a user is able to make 
+</I>&gt;&gt;<i> changes in his lilypond score that touch the lisp interface of lilypond
+</I>&gt;&gt;<i> than he has completely different abilities than a normal NoteEdit user
+</I>&gt;&gt;<i> has. Many of the possible NoteEdit users I know would ever dare to touch
+</I>&gt;&gt;<i> a script written in a lisp language. 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Personally I don't know the lisp language. I'm only aware of it through 
+</I>&gt;<i> LilyPond, so that's why I first took a look on lisp. I'll take a look at 
+</I>&gt;<i> ruby this evening. Also, what about python or perl languages? Or lua? 
+</I>&gt;<i> What I have are some short ideas of why the scripts could be used for. 
+</I>&gt;<i> I'm still searching the net for the right language as we're not going to 
+</I>&gt;<i> write our own one, right?
+</I>
+Ok, I have found a python &lt;-&gt; ruby comparison on the ruby page (FAQ):
+<A HREF="http://www.rubygarden.org/faq/entry/show/14">http://www.rubygarden.org/faq/entry/show/14</A>
+
+And a comparison chart:
+<A HREF="http://www.approximity.com/ruby/Comparison_rb_st_m_java.html">http://www.approximity.com/ruby/Comparison_rb_st_m_java.html</A>
+
+I cannot recommand perl as it's syntax tends programmers to make
+unreadable code. It's of course very powerful and has a lot of
+add-on modules (CPan) but it's no pure object-oriented language like 
+ruby (python has also procedural elements like Perl). I don't know
+LUA but from it's description it's also a procedural language. The
+main difference between Python and Ruby seems to be the complexity.
+You can also download a ruby book:
+
+The basic question is if we want to have every element of Noteedit
+as an object or not. I vote for yes as it is the more natural way
+of programming. It also should make the transition from C++ NoteEdit
+code to scripting code more easily.
+
+&gt;&gt;<i> The first step for an advanced API is to actually document the API. The
+</I>&gt;&gt;<i> base is of course the doxygen documentation and with that I would have
+</I>&gt;&gt;<i> to find out where the interface between the script and NoteEdit has to
+</I>&gt;&gt;<i> be drawn. The NoteEdit library is too big as an API for the scripting 
+</I>&gt;&gt;<i> language itself (actually it contains complete NoteEdit, I ask myself
+</I>&gt;&gt;<i> why the library is so big). What could be inside the API ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> - control of all typesetting elements
+</I>&gt;&gt;<i> - control of staff / voices
+</I>&gt;&gt;<i> - editing control
+</I>&gt;&gt;<i> - file control
+</I>&gt;&gt;<i> - Midi interface control
+</I>&gt;&gt;<i> - import/export control
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Some features that just came to my mind that NoteEdit should also 
+</I>&gt;<i> provide are actions like Selecting the certain chord (which selects all 
+</I>&gt;<i> the notes in all voices and staffs which are held simultaniously at that 
+</I>&gt;<i> moment), calculating intervals (the quality (major, minor, perfect, 
+</I>&gt;<i> diminished, augmented) and quantity (prime, second, third, fourth, fifth 
+</I>&gt;<i> etc.)) and so on. I think the scripts should have a useful framework so 
+</I>&gt;<i> they could actually be made useful (for harmonization or whatever already).
+</I>
+Selection of whatever (notes, chords, systems, voices, ...) if of course
+part of editing control. The rest would probably be simple methods on
+one note (concerning interval calculating). Maybe it would help to sort
+the API also on objects (note, staffs, voices, files, rests, ...)
+
+&gt;&gt;<i> There probably is no real difference between macros and scripts. I would
+</I>&gt;&gt;<i> call a macro a short script which can be recorded and played back within
+</I>&gt;&gt;<i> noteedit. This would be another way to create a basic script that can
+</I>&gt;&gt;<i> later be expanded with your favourite text editor :).
+</I>&gt;<i> 
+</I>&gt;<i> Yes, a very important feature of a scripting language should be 
+</I>&gt;<i> inclusion of other scripts. So NoteEdit should offer some basic scripts 
+</I>&gt;<i> (or macros). You should then only include them and make a more complex 
+</I>&gt;<i> scenario based on the included scripts.
+</I>
+All of the above languages support such an include feature.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000338.html">[Noteedit-devel] Concerning rc1
+</A></li>
+	<LI>Next message: <A HREF="000340.html">[Noteedit-devel] Concerning rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

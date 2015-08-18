@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Code restructuring, step 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431CAC90.90502%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000505.html">
+   <LINK REL="Next"  HREF="000502.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Code restructuring, step 2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431CAC90.90502%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Code restructuring, step 2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Sep  5 22:37:36 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000505.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+        <LI>Next message: <A HREF="000502.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#507">[ date ]</a>
+              <a href="thread.html#507">[ thread ]</a>
+              <a href="subject.html#507">[ subject ]</a>
+              <a href="author.html#507">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>I didn't start the change yet. 
+</I>&gt;<i>I've never created any branch on SVN, so I have to look after how to do it.  
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Something like:
+$ svn copy svn+<A HREF="ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/trunk">ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/trunk</A>
+svn+<A HREF="ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2">ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2</A>
+
+should directly do the trick. You will get a new revision number then
+and on the next svn update, local sources will get updated as well.
+
+Whenever you are going to apply your changes to the mainstream trunk,
+you should use:
+$svn merge -r &lt;the_revision_number,when_your_branch_was_created&gt;:HEAD
+svn+<A HREF="ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2">ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2</A>
+svn+<A HREF="ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/trunk">ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/trunk</A>
+
+This will make a diff from revision
+&lt;the_revision_number,when_your_branch_was_created&gt; to the latest one of
+/csaba_coderewrite2, and apply that diff to the /trunk.
+
+And if you want to delete your branch some day (when the merge is
+complete), use:
+$svn delete
+svn+<A HREF="ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2">ssh://ckarai@svn.berlios.de/svnroot/repos/noteedit/branches/csaba_coderewrite2</A>
+
+
+Regards.
+- Matev&#382;
+
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050905/6492bd48/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050905/6492bd48/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000505.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+	<LI>Next message: <A HREF="000502.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#507">[ date ]</a>
+              <a href="thread.html#507">[ thread ]</a>
+              <a href="subject.html#507">[ subject ]</a>
+              <a href="author.html#507">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Code restructuring, step 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431B6CA1.1010103%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000507.html">
+   <LINK REL="Next"  HREF="000504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Code restructuring, step 2</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Code%20restructuring%2C%20step%202&In-Reply-To=%3C431B6CA1.1010103%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Code restructuring, step 2">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun Sep  4 23:52:33 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000507.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+        <LI>Next message: <A HREF="000504.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#502">[ date ]</a>
+              <a href="thread.html#502">[ thread ]</a>
+              <a href="subject.html#502">[ subject ]</a>
+              <a href="author.html#502">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Csaba!
+
+My vote gets the complete name changes throughout the code as well. I
+would advise you though, to copy the current /trunk branch to the
+separate one, eg. /branches/csaba-coderewrite2. This way, if any
+show-stopper bugs occur in your work, you won't influence on the trunk
+branch. But when your code is mature enough, you can simply merge your
+branch with the trunk one. I think there won't be any major changes and
+implementations in this and the following month around status and
+similar internal structures. However, if any minor features get
+implemented, which use status in any way, they can get quickly fixed on
+the merge.
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i>I only unified the status_ and status2_ variables.
+</I>&gt;<i>
+</I>&gt;<i>The setter / getter methods were not made.
+</I>&gt;<i>
+</I>&gt;<i>I had the following problems:
+</I>&gt;<i>
+</I>&gt;<i>- the name 'status_' should be changed to 'property_' as
+</I>&gt;<i>  status_ was misleading
+</I>&gt;<i>- for better understandability in each local variable 'status' should
+</I>&gt;<i>  be changed to 'property'
+</I>&gt;<i>- the 'status' member of NNote should also be changed to 'property'
+</I>&gt;<i>- some structure names contain 'status' and this requires also change
+</I>&gt;<i>- constants beginning with STAT_ should be changed to PROP_
+</I>&gt;<i>
+</I>&gt;<i>This requires more than a single day to make, and may cause big
+</I>&gt;<i>instability. More than 1000 lines should be changed.
+</I>&gt;<i>
+</I>&gt;<i>What would be the best solution?
+</I>&gt;<i>- don't rename 'status' to 'property',even though 'status' is misleading
+</I>&gt;<i>- change 'status' to 'property' only in a small part of the code
+</I>&gt;<i>  which may cause naming incoherency
+</I>&gt;<i>- make the changes gradually
+</I>&gt;<i>- postpone and do it later with a cleaner code
+</I>&gt;<i>- don't make setter / getter methods
+</I>&gt;<i>...
+</I>&gt;<i>
+</I>&gt;<i>I think, that this kind of immense changes requires some discussion.
+</I>&gt;<i>
+</I>&gt;<i>Bye,
+</I>&gt;<i>
+</I>&gt;<i>    Csaba
+</I>&gt;<i>
+</I>&gt;<i>2005-09-04, v keltez&#233;ssel 15.37-kor <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> ezt
+</I>&gt;<i>&#237;rta:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Thanks for the bug report.
+</I>&gt;&gt;<i>Fix committed into SVN.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Bye,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    Csaba
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>2005-09-03, szo keltez&#233;ssel 07.43-kor <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A>
+</I>&gt;&gt;<i>ezt &#237;rta:
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Hi,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>from me also a thanks for cleaning up the code. For production I
+</I>&gt;&gt;&gt;<i>switched now to our stable branch.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Copying notes will crash in the head revision, easy producable: In a new
+</I>&gt;&gt;&gt;<i>file insert a key, timesig and a few notes. Select a few notes and copy
+</I>&gt;&gt;&gt;<i>them (middle mouse button) to the end. Then I get:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Program received signal SIGSEGV, Segmentation fault.
+</I>&gt;&gt;&gt;<i>0x00002aaaaad39a9a in NVoice::pasteAtPosition (this=0x987810,
+</I>&gt;&gt;&gt;<i>    xpos=13365136, clipboard=0x9879a8,
+</I>&gt;&gt;&gt;<i>    complete=true, part_in_current_measure=&lt;value optimized out&gt;,
+</I>&gt;&gt;&gt;<i>    dest_midi_time=&lt;value optimized out&gt;, countof128th=0x7fffffec22dc)
+</I>&gt;&gt;&gt;<i>at muselement.h:77
+</I>&gt;&gt;&gt;<i>/home/rud/svn2/noteedit/trunk/noteedit/muselement.h:77:3739:beg:0x2aaaaad39a9a
+</I>&gt;&gt;&gt;<i>(gdb)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>I post it only as it might be some help, as it might be easier to fix it
+</I>&gt;&gt;&gt;<i>immediately, like the lilypond export bug.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>A hello to all, especially Csaba this time,
+</I>&gt;&gt;&gt;<i>Regards,
+</I>&gt;&gt;&gt;<i>Georg
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Noteedit-devel mailing list
+</I>&gt;&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Noteedit-devel mailing list
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Noteedit-devel mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i><A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 256 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050904/1b410786/attachment.pgp">https://lists.berlios.de/pipermail/noteedit-devel/attachments/20050904/1b410786/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000507.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+	<LI>Next message: <A HREF="000504.html">[Noteedit-devel] Code restructuring, step 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#502">[ date ]</a>
+              <a href="thread.html#502">[ thread ]</a>
+              <a href="subject.html#502">[ subject ]</a>
+              <a href="author.html#502">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

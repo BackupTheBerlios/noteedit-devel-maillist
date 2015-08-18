@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Mouse scroll wheel behaviour
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Mouse%20scroll%20wheel%20behaviour&In-Reply-To=%3C42EDF382.4090507%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000439.html">
+   <LINK REL="Next"  HREF="000444.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Mouse scroll wheel behaviour</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Mouse%20scroll%20wheel%20behaviour&In-Reply-To=%3C42EDF382.4090507%40web.de%3E"
+       TITLE="[Noteedit-devel] Mouse scroll wheel behaviour">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Mon Aug  1 12:03:46 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000439.html">[Noteedit-devel] New keyboard shortcuts
+</A></li>
+        <LI>Next message: <A HREF="000444.html">[Noteedit-devel] Mouse scroll wheel behaviour
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> schrieb:
+&gt;<i> -----BEGIN PGP SIGNED MESSAGE-----
+</I>&gt;<i> Hash: SHA1
+</I>&gt;<i> 
+</I>&gt;<i> Hm... ok, but how do you define and use more than one scroll wheel in
+</I>&gt;<i> Qt? And if it's not present, what next etc.
+</I>&gt;<i> 
+</I>
+<A HREF="http://64.233.183.104/search?q=cache:30nwGlNWeMAJ:doc.trolltech.com/4.0/qwheelevent.html+&amp;hl=de">http://64.233.183.104/search?q=cache:30nwGlNWeMAJ:doc.trolltech.com/4.0/qwheelevent.html+&amp;hl=de</A>
+
+(Main difference to the qt3 wheel event are supported extra mouse
+buttons), with delta and orientation that should be no problem. Also we
+could later combine with left mouse button or so to make it real
+complicated to use ;-). Diagonal movements are probably sent as several
+horizontal and vertical movements.
+
+That said you don't have to care which wheel was pressed and how but
+only on the Qt flags. Everything else is up to the user how he has
+assigned the wheel buttons to certain wheel events in his xorg.conf
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000439.html">[Noteedit-devel] New keyboard shortcuts
+</A></li>
+	<LI>Next message: <A HREF="000444.html">[Noteedit-devel] Mouse scroll wheel behaviour
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

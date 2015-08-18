@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Hotkeys do not work
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Hotkeys%20do%20not%20work&In-Reply-To=%3C4386BDA3.7070706%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000555.html">
+   <LINK REL="Next"  HREF="000557.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Hotkeys do not work</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Hotkeys%20do%20not%20work&In-Reply-To=%3C4386BDA3.7070706%40web.de%3E"
+       TITLE="[Noteedit-devel] Hotkeys do not work">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Fri Nov 25 08:30:43 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000555.html">[Noteedit-devel] DE Eclipse 3
+</A></li>
+        <LI>Next message: <A HREF="000557.html">[Noteedit-devel] Missing features
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#556">[ date ]</a>
+              <a href="thread.html#556">[ thread ]</a>
+              <a href="subject.html#556">[ subject ]</a>
+              <a href="author.html#556">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+This is from the help forum:
+
+Recently I have noticed a few bugs:
+
+1) noteedit won't compile with g++ &gt; 3.x The current version of g++ in
+many distros is 4.x However, SuSE applies a patch for enabling
+compilation with 4.x
+
+2) when compiled under KDE 3.5 RC1, Qt 3.3.5 or if one compiles version
+2.8.0, the hotkeys cease to work. Compilation works, though.
+
+Any ideas ?
+
+My current system is a SuSE 10.0, KDE 3.4.2 and qt 3.3.4. I would like
+to upgrade to KDE 3.5.x and qt 3.3.5 but then -&gt; noteedit loses a lot of
+functionality due to the lack of hotkey access.
+
+Any ideas ?
+
+Thanks
+Thomas
+
+      By: suamor ( Reinhard Katzmann )
+      RE: Hotkeys do not work [ reply ]
+      2005-Nov-25 07:21
+      1) We have a patch in SVN for gcc4 to work, actually you only need
+a new configure script. The patch 599 should help you though it was a
+bit improved in svn.
+
+      2) I have no qt 3.3.5 and no current KDE on my Mandriva 2006
+system. There was patch 679 to probably fix it but I cannot check it myself.
+
+      I won't upgrade to the latest qt/kde versions until they are
+stable in my distribution (i.e. about february/march 2006). I hope some
+of our developers has the possibility to test it with a more recent
+version. Is there a stable live CD/DVD (KUbuntu/Knoppix) with the latest
+KDE/QT ?
+
+      Regards,
+
+      Reinhard
+
+            By: suamor ( Reinhard Katzmann )
+            RE: Hotkeys do not work [ reply ]
+            2005-Nov-25 07:24
+            I just checked the patch and it does not resolve the hotkeys
+            problem. I'll write a mail on the development list.
+
+It might be the meanwhile deprecated hotkey usage in NoteEdit causing
+problems but I really don't know. It's not difficult to change but
+still quite some work to do it due to the large number of changes
+(mainframewidget.cpp).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Noteedit - a score editor - <A HREF="http://noteedit.berlios.de">http://noteedit.berlios.de</A>
+Project: Pertergrin - a RPG system - <A HREF="http://www.pertergrin.de">http://www.pertergrin.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000555.html">[Noteedit-devel] DE Eclipse 3
+</A></li>
+	<LI>Next message: <A HREF="000557.html">[Noteedit-devel] Missing features
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#556">[ date ]</a>
+              <a href="thread.html#556">[ thread ]</a>
+              <a href="subject.html#556">[ subject ]</a>
+              <a href="author.html#556">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] double quotes allowed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20double%20quotes%20allowed&In-Reply-To=%3C4274F80F.6090001%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000194.html">
+   <LINK REL="Next"  HREF="000198.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] double quotes allowed</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20double%20quotes%20allowed&In-Reply-To=%3C4274F80F.6090001%40schwaben.de%3E"
+       TITLE="[Noteedit-devel] double quotes allowed">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Sun May  1 17:38:55 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000194.html">[Noteedit-devel] double quotes allowed
+</A></li>
+        <LI>Next message: <A HREF="000198.html">[Noteedit-devel] double quotes allowed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#197">[ date ]</a>
+              <a href="thread.html#197">[ thread ]</a>
+              <a href="subject.html#197">[ subject ]</a>
+              <a href="author.html#197">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+&gt;<i> Hm... wierd. I think there's not a problem with double quotes at all.
+</I>&gt;<i> I get an error if using two two-voice staffs connected with continuing
+</I>&gt;<i> barline and bracket (normal choir score layout) + lyrics + change
+</I>&gt;<i> staffnames to something. Lily returns:
+</I>I think it's only the combination of two voices and lyrics. Noteedit is
+&quot;confused&quot; to which voice to specify the lyrics timing to. Have to think
+about it. Without any gui control noteedit should specify the lyrics to
+the first voice, probably.
+
+Copying between voices and staffs seems not to be very compatible. I'm
+more guessing then speaking from experience.
+
+Personally I'm used to have every singer on a seperate staff and combine
+them in lilypond like in the satb example of lilypond. This area is good
+for a RFC. In the example you supplied you could go with chords instead
+of with voices.
+
+Thanks for spotting this,
+Georg.
+
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:~/tmp$ lilypond export.ly
+</I>&gt;<i> GNU LilyPond 2.4.5
+</I>&gt;<i> Processing `export.ly'
+</I>&gt;<i> Parsing...
+</I>&gt;<i> Interpreting music...
+</I>&gt;<i> warning: cannot find Voice `cTheXfirstXstaffAA'
+</I>&gt;<i>
+</I>&gt;<i> [4]
+</I>&gt;<i> Preprocessing graphical objects...
+</I>&gt;<i> Calculating line breaks... [3][4]
+</I>&gt;<i> Layout output to `export.tex'...
+</I>&gt;<i> Converting to `export.dvi'...
+</I>&gt;<i> Converting to `export.ps'...
+</I>&gt;<i> Converting to `export.pdf'...
+</I>&gt;<i>
+</I>&gt;<i> If any other combination is used (default staff names or no lyrics or
+</I>&gt;<i> no choir staff?), it works fine. I attached my .not file.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+</I>&gt;&gt;<i>With staff names I didn't see any problem, and with lyrics I did a
+</I>&gt;&gt;<i>substitute of (&quot;) with two ('). With texts I'll do the same, if  that
+</I>&gt;&gt;<i>works out.
+</I>&gt;&gt;<i>  
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000194.html">[Noteedit-devel] double quotes allowed
+</A></li>
+	<LI>Next message: <A HREF="000198.html">[Noteedit-devel] double quotes allowed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#197">[ date ]</a>
+              <a href="thread.html#197">[ thread ]</a>
+              <a href="subject.html#197">[ subject ]</a>
+              <a href="author.html#197">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>

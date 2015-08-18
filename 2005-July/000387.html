@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Noteedit-devel] Problems installing noteedit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/noteedit-devel/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problems%20installing%20noteedit&In-Reply-To=%3C42D3B2C0.2050500%40guest.arnes.si%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000386.html">
+   <LINK REL="Next"  HREF="000388.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Noteedit-devel] Problems installing noteedit</H1>
+    <B>noteedit-devel-admin at lists.berlios.de</B> 
+    <A HREF="mailto:noteedit-devel%40lists.berlios.de?Subject=Re%3A%20%5BNoteedit-devel%5D%20Problems%20installing%20noteedit&In-Reply-To=%3C42D3B2C0.2050500%40guest.arnes.si%3E"
+       TITLE="[Noteedit-devel] Problems installing noteedit">noteedit-devel-admin at lists.berlios.de
+       </A><BR>
+    <I>Tue Jul 12 14:08:32 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000386.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+        <LI>Next message: <A HREF="000388.html">[Noteedit-devel] Problems installing noteedit (Solved)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#387">[ date ]</a>
+              <a href="thread.html#387">[ thread ]</a>
+              <a href="subject.html#387">[ subject ]</a>
+              <a href="author.html#387">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+I use TSE3 0.3.0 from the author's homepage. I configured it with
+- --with-alsa --without-arts --without-oss and compiled and installed it
+with default options. It installed itself at /usr/local/lib and
+/usr/local/include/tse3.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:/usr/local/lib$ ll libtse3*
+lrwxrwxrwx  1 root staff      13 2005-07-12 08:47 libtse3 -&gt; libtse3.0.0.0
+lrwxrwxrwx  1 root staff      13 2005-07-12 08:47 libtse3.0 -&gt;
+libtse3.0.0.0
+- -rwxr-xr-x  1 root staff 8682963 2005-07-12 08:47 libtse3.0.0.0
+- -rwxr-xr-x  1 root staff     684 2005-07-12 08:47 libtse3.la
+lrwxrwxrwx  1 root staff      13 2005-07-12 09:49 libtse3.so -&gt;
+libtse3.0.0.0
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:/usr/local/include$ ll
+drwxr-sr-x   9 root staff  1328 2005-07-12 08:47 tse3
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">matevz at mojazver</A>:/usr/local/include$ ll tse3
+drwxr-sr-x  2 root staff   264 2005-07-12 08:47 app
+drwxr-sr-x  2 root staff   272 2005-07-12 08:47 cmd
+- -rw-r--r--  1 root staff 11111 2005-07-12 08:47 DisplayParams.h
+- -rw-r--r--  1 root staff  7014 2005-07-12 08:47 Error.h
+- -rw-r--r--  1 root staff  7337 2005-07-12 08:47 EventTrack.h
+drwxr-sr-x  2 root staff    96 2005-07-12 08:47 file
+- -rw-r--r--  1 root staff 12051 2005-07-12 08:47 FileBlockParser.h
+- -rw-r--r--  1 root staff  1812 2005-07-12 08:47 Filter.h
+- -rw-r--r--  1 root staff  3327 2005-07-12 08:47 FlagTrack.h
+drwxr-sr-x  2 root staff   112 2005-07-12 08:47 ins
+- -rw-r--r--  1 root staff  7326 2005-07-12 08:47 KeySigTrack.h
+drwxr-sr-x  5 root staff   912 2005-07-12 08:47 listen
+- -rw-r--r--  1 root staff  9384 2005-07-12 08:47 Metronome.h
+- -rw-r--r--  1 root staff  2566 2005-07-12 08:47 MidiCommandFilter.h
+- -rw-r--r--  1 root staff  3548 2005-07-12 08:47 MidiData.h
+- -rw-r--r--  1 root staff  4592 2005-07-12 08:47 MidiEcho.h
+- -rw-r--r--  1 root staff 12587 2005-07-12 08:47 MidiFile.h
+- -rw-r--r--  1 root staff 11501 2005-07-12 08:47 MidiFilter.h
+- -rw-r--r--  1 root staff 27078 2005-07-12 08:47 Midi.h
+- -rw-r--r--  1 root staff  3312 2005-07-12 08:47 MidiMapper.h
+- -rw-r--r--  1 root staff  5983 2005-07-12 08:47 MidiParams.h
+- -rw-r--r--  1 root staff 34038 2005-07-12 08:47 MidiScheduler.h
+- -rw-r--r--  1 root staff 11975 2005-07-12 08:47 Mixer.h
+- -rw-r--r--  1 root staff 11054 2005-07-12 08:47 Mutex.h
+- -rw-r--r--  1 root staff 25592 2005-07-12 08:47 Notifier.h
+- -rw-r--r--  1 root staff  9898 2005-07-12 08:47 Panic.h
+- -rw-r--r--  1 root staff 11203 2005-07-12 08:47 Part.h
+- -rw-r--r--  1 root staff 18914 2005-07-12 08:47 PhraseEdit.h
+- -rw-r--r--  1 root staff  5931 2005-07-12 08:47 Phrase.h
+- -rw-r--r--  1 root staff  8575 2005-07-12 08:47 PhraseList.h
+- -rw-r--r--  1 root staff  5771 2005-07-12 08:47 Playable.h
+drwxr-sr-x  2 root staff   264 2005-07-12 08:47 plt
+- -rw-r--r--  1 root staff  2157 2005-07-12 08:47 Progress.h
+- -rw-r--r--  1 root staff  4082 2005-07-12 08:47 RepeatTrack.h
+- -rw-r--r--  1 root staff  9281 2005-07-12 08:47 Serializable.h
+- -rw-r--r--  1 root staff 12352 2005-07-12 08:47 Song.h
+- -rw-r--r--  1 root staff  3719 2005-07-12 08:47 TempoTrack.h
+- -rw-r--r--  1 root staff  4715 2005-07-12 08:47 TimeSigTrack.h
+- -rw-r--r--  1 root staff 10655 2005-07-12 08:47 Track.h
+- -rw-r--r--  1 root staff 22659 2005-07-12 08:47 Transport.h
+- -rw-r--r--  1 root staff  4243 2005-07-12 08:47 TSE2MDL.h
+- -rw-r--r--  1 root staff  4351 2005-07-12 08:47 TSE3.h
+- -rw-r--r--  1 root staff  6881 2005-07-12 08:47 TSE3MDL.h
+drwxr-sr-x  2 root staff   296 2005-07-12 08:47 util
+
+
+Configure script looks only for libtse3.so or libtse3.a in libs
+directory and tse3/TSE3.h in include directory. Default libs
+directories are /usr/lib and /usr/local/lib. Default include
+directories are /usr/include and /usr/local/include.
+
+Using the latest SVN version of NoteEdit (I just made a fresh
+reinstall), with make -f Makefile.cvs; ./configure; make and it works
+out of the box for me. Which compiler and distro are you using?
+
+
+Regards.
+- - Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A> wrote:
+
+&gt;<i> Did some more tries with tse3-0.2.5 and tse3-0.3.0. The
+</I>&gt;<i> installation of tse3-0.2.5 does create the right file names for
+</I>&gt;<i> libs:
+</I>&gt;<i>
+</I>&gt;<i> -rwxr-xr-x 1 root root 1474 Jul 12 13:12 libtse3.la lrwxrwxrwx 1
+</I>&gt;<i> root root 16 Jul 12 13:12 libtse3.so -&gt; libtse3.so.0.0.0
+</I>&gt;<i> lrwxrwxrwx 1 root root 16 Jul 12 13:12 libtse3.so.0 -&gt;
+</I>&gt;<i> libtse3.so.0.0.0 -rwxr-xr-x 1 root root 997660 Jul 12 13:12
+</I>&gt;<i> libtse3.so.0.0.0
+</I>&gt;<i>
+</I>&gt;<i> And tse3-0.3.0 does not as you can see in the privious mails.
+</I>&gt;<i> Unfortunately, your hint of linking the library to a file with
+</I>&gt;<i> correct name does not help. Also tried to rename all files (and
+</I>&gt;<i> running ldconfig afterwards).
+</I>&gt;<i>
+</I>&gt;<i> How do your tse3 lib files look? Where are they located?
+</I>&gt;<i>
+</I>&gt;<i> Greetings, Andre
+</I>&gt;<i>
+</I>&gt;<i> On Tuesday 12 July 2005 09:53, <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">noteedit-devel-admin at berlios.de</A>
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Try linking libtse3.so -&gt; libtse3.0.0.0. It works for me.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regards. - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________ Noteedit-devel
+</I>&gt;<i> mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/noteedit-devel">Noteedit-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="http://lists.berlios.de/mailman/listinfo/noteedit-devel">http://lists.berlios.de/mailman/listinfo/noteedit-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://enigmail.mozdev.org">http://enigmail.mozdev.org</A>
+
+iD8DBQFC07LAm1IQqmP8KVgRAuZWAJ0YFAF6knYmopwpPU46UZMd/AqqOACfbPMS
+LdpkmWN3jJBr1BpLYljSgVc=
+=/GPD
+-----END PGP SIGNATURE-----
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000386.html">[Noteedit-devel] Problems installing noteedit
+</A></li>
+	<LI>Next message: <A HREF="000388.html">[Noteedit-devel] Problems installing noteedit (Solved)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#387">[ date ]</a>
+              <a href="thread.html#387">[ thread ]</a>
+              <a href="subject.html#387">[ subject ]</a>
+              <a href="author.html#387">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/noteedit-devel">More information about the Noteedit-devel
+mailing list</a><br>
+</body></html>
